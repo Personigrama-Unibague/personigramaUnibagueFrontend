@@ -6,19 +6,31 @@ import typography from './typography';
 const theme = createTheme({
   palette: {
     background: {
-      default: '#F4F6F8',
+      default: '##193F76',
       paper: colors.common.white
     },
     primary: {
-      light: '#5c5c5c',
-      main: '#333333',
-      dark: '#0c0c0c',
+      light: '#193F76',
+      main: '#193F76',
+      dark: '#193F76',
       contrastText: '#ffffff',
     },
     secondary: {
-      light: '#ffea70',
-      main: '#ddb83f',
-      dark: '#a88800',
+      light: '#1B5DA7',
+      main: '#1B5DA7',
+      dark: '#1B5DA7',
+      contrastText: '#000000',
+    },
+    tertiary: {
+      light: '#0F1F39',
+      main: '#0F1F39',
+      dark: '#0F1F39',
+      contrastText: '#000000',
+    },
+    dropdowns: {
+      light: '#02AFD8',
+      main: '#039EC2',
+      dark: '#017A97',
       contrastText: '#000000',
     },
     text: {
