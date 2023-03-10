@@ -1,4 +1,4 @@
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme } from "@mui/material/styles";
 import { colors } from '@material-ui/core';
 import shadows from './shadows';
 import typography from './typography';

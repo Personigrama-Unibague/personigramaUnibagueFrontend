@@ -1,19 +1,12 @@
 import Prueba from '../components/prueba';
+import React, { Component }  from 'react';
 
 const routes = [
-  {
-    path: 'app',
-    element: <Prueba />,
-    children: [
-      { path: 'account', element: <Prueba /> },
-
-    ]
-  },
   {
     path: '/',
     element: <Prueba />,
     children: [
-      { path: 'Login', element: <Prueba /> },
+      //{ path: 'Login', element: <Prueba /> },
     ]
   }
 ];
