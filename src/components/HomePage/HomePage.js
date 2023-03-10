@@ -22,10 +22,8 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useDrag, useDrop } from "react-dnd";
-import organization from "../org.json";
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-
-//import { Tree, TreeNode } from "react-organizational-chart";
+import organization from "../../org.json";
+import { createMuiTheme} from '@material-ui/core/styles';
 
 
 /* Estilos */
