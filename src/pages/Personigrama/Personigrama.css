@@ -1,0 +1,20 @@
+.search {
+  position: "relative";
+  border-radius: "30px";
+  background-color: #0f1f39;
+  margin-left: 0;
+  width: "100%";
+}
+
+.CardsContainer {
+  display: inline-block;
+}
+
+.PersonigramaCards {
+  width: 220px;
+  height: 332px;
+}
+
+.Cards {
+  display: flex;
+}

@@ -1,0 +1,105 @@
+.card {
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1000ms;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+
+.cardBack,
+.cardFront {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.cardFront {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+}
+
+.cardBackContainer {
+  margin: 30px 30px 0 30px;
+}
+
+.cardMedia {
+  height: 245px;
+  width: 100% !important;
+}
+
+.profileName {
+  font-weight: 900 !important;
+  font-size: 15px !important;
+  line-height: 18px !important;
+  color: #0f1f39;
+  padding-bottom: 10px;
+}
+
+.profileCharge {
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  line-height: 18px !important;
+  color: #7f8081;
+}
+
+.profileSubtitle {
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  color: #7f8081;
+  padding-top: 40px;
+}
+
+.profileSubInfo {
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  color: #04b8e2;
+}
+
+.dotContainer {
+  text-align: center;
+  width: 100% !important;
+  position: fixed !important;
+  bottom: 0 !important;
+}
+
+.footerDot {
+  background-color: #1b5da7;
+
+  border-radius: 50% / 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  height: 59px;
+  width: 131px;
+
+  position: fixed !important;
+  bottom: 0 !important;
+
+  text-align: center !important;
+  padding-top: 15px;
+}
+
+.FooterTitle {
+  color: #ffffff;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 14px !important;
+}
+
+.FooterDescription {
+  color: #ffffff;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  line-height: 24px !important;
+  letter-spacing: 0.02em !important;
+}

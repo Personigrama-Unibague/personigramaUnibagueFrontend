@@ -1,6 +1,7 @@
 import React from 'react';
-import HomePage from '../components/HomePage/HomePage';
+import HomePage from '../pages/HomePage';
 import AdminLogin from '../components/AdminLogin/AdminLogin';
+import Personigrama from '../pages/Personigrama/Personigrama';
 
 
 const routes = [
@@ -14,6 +15,13 @@ const routes = [
   {
     path: 'adminLogin',
     element: <AdminLogin/>,
+    children: [
+      //{ path: 'Login', element: <Prueba /> },
+    ]
+  },
+  {
+    path: 'personigrama',
+    element: <Personigrama />,
     children: [
       //{ path: 'Login', element: <Prueba /> },
     ]
