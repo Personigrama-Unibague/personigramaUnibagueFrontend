@@ -6,6 +6,7 @@ import PrincipalTemporal from '../pages/PrincipalTemporal';
 import AdminUnidades from '../pages/AdminUnidades/AdminUnidades';
 import AdminUsuarios from '../pages/AdminUsuarios/AdminUsuarios';
 import ConfigurarSecciones from '../pages/ConfigurarSecciones/ConfigurarSecciones';
+import NotFound from '../pages/NotFound/NotFound';
 
 
 const routes = [
@@ -58,12 +59,12 @@ const routes = [
       //{ path: 'Login', element: <Prueba /> },
     ]
   },
-  /* {
+  {
     path: '*',
     element: <NotFound/>,
     children: [
     ]
-  }, */
+  },
   
 ];
 
