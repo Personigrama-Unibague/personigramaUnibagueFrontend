@@ -1,0 +1,47 @@
+.inputIcon {
+  background-color: #04b8e2 !important;
+  color: white !important;
+}
+
+.MuiInput-underline:before {
+  border-bottom: 0px !important;
+}
+
+.MuiInput-underline:after {
+  border-bottom: 0px !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .textField {
+    width: 70vw !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .textField {
+    width: 45vw !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .textField {
+    width: 45vw !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .textField {
+    width: 35vw !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .textField {
+    width: 35vw !important;
+  }
+}
