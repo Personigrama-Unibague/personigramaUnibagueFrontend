@@ -1,7 +1,11 @@
-import { Button, Grid, makeStyles, TextField } from "@material-ui/core";
-import fondo from "../../utils/images/adminLoginBackground.jpeg"
+import { Button, Grid, makeStyles, TextField, AppBar } from "@material-ui/core";
+import fondo from "../../utils/images/adminLoginBackground.jpeg";
+import navbar from "../../utils/images/navbar.jfif";
 import React from "react";
 import "./styles.css";
+import InputAdornment from "@mui/material/InputAdornment";
+import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
+import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     height: "100vh",
   },
+  navbar: {
+    backgroundImage: `url(${navbar})`,
+  },
 }));
 
 function AdminLogin() {
@@ -19,32 +26,59 @@ function AdminLogin() {
   return (
     <Grid container component="main" className={classes.root}>
       <Grid item xs={6} md={6}></Grid>
-      <Grid item xs={6} md={6}>
-        <form
-          className="form"
-          style={{ textAlign: "center", alignItems: "center", display: "flex" }}
-        >
+      <Grid
+        rowSpacing={3}
+        xs={6}
+        md={6}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Grid item>
           <TextField
-            labelText="Email"
-            id="email"
-            formControlProps={{
-              fullWidth: true,
+            placeholder="Usuario"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Person2OutlinedIcon />
+                </InputAdornment>
+              ),
             }}
-            type="text"
+            style={{
+              backgroundColor: "#FFFFFF",
+              borderRadius: "30px",
+              width: "443px",
+              height: "42px",
+            }}
           />
+        </Grid>
+        <Grid item>
           <TextField
-            labelText="Password"
-            id="password"
-            formControlProps={{
-              fullWidth: true,
+            placeholder="Contraseña"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <HttpsOutlinedIcon />
+                </InputAdornment>
+              ),
             }}
-            type="password"
+            style={{
+              backgroundColor: "#FFFFFF",
+              margin: "20px",
+              borderRadius: "30px",
+              width: "443px",
+              height: "42px",
+            }}
           />
-
-          <Button type="button" color="primary">
-            Log in
+        </Grid>
+        <Grid item>
+          <Button style={{ backgroundColor: "#04B8E2", borderRadius: "30px" }}>
+            Identificarse
           </Button>
-        </form>
+        </Grid>
       </Grid>
     </Grid>
   );
