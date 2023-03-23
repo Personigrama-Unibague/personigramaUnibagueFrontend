@@ -6,16 +6,14 @@ import { Grid } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import { Button } from "@material-ui/core";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { fontSize } from "@mui/system";
-import { Button } from "@material-ui/core";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
@@ -23,6 +21,7 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
+import "./styles.css";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -43,6 +42,7 @@ function AdminUnidades() {
       component="main"
       style={{ justifyContent: "center", display: "flex" }}
     >
+      {/* Toolbar */}
       <Grid xs={12}>
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
@@ -55,7 +55,7 @@ function AdminUnidades() {
                   justifyContent: "center",
                   display: "flex",
                   font: "Lato",
-                  fontSize: "38px",
+                  fontSize: "15px",
                 }}
               >
                 Administar Unidades
@@ -74,135 +74,167 @@ function AdminUnidades() {
         </Box>
       </Grid>
 
+      {/* Grid Table */}
       <Grid item style={{ marginTop: "50px" }}>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }}>
+        {/* Table */}
+        <TableContainer
+          component={Paper}
+          style={{ borderRadius: "10px 10px 0px 0px" }}
+        >
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                    font: "Lato",
-                    color: "white",
-                    fontSize: "20px",
-                  }}
+                  className="tableCellTitle"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Unidad
                 </TableCell>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                    color: "white",
-                    font: "Lato",
-                    fontSize: "20px",
-                  }}
+                  className="tableCellTitle"
                   align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
+                >
+                  Numero
+                </TableCell>
+                <TableCell
+                  className="tableCellTitle"
+                  align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Posición
                 </TableCell>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                    color: "white",
-                    font: "Lato",
-                    fontSize: "20px",
-                  }}
+                  className="tableCellTitle"
                   align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Secciones
                 </TableCell>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                    color: "white",
-                    font: "Lato",
-                    fontSize: "20px",
-                  }}
+                  className="tableCellTitle"
                   align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Funcionarios
                 </TableCell>
               </TableRow>
             </TableHead>
+
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.name}>
-                  <TableCell component="th" scope="row">
+                  <TableCell className="tableCell" component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="center">
-                    {row.calories}{" "}
-                    <Button
-                      variant="outlined"
-                      startIcon={
-                        <KeyboardArrowUpOutlinedIcon
-                          style={{ color: "white" }}
-                        />
-                      }
-                      style={{
-                        backgroundColor: "#B8B9BA",
-                        height: "25px",
-                        width: "30%",
-                        borderRadius: "10px",
-                      }}
-                    ></Button>
-                    <Button
-                      variant="outlined"
-                      startIcon={
-                        <KeyboardArrowDownOutlinedIcon
-                          style={{ color: "white" }}
-                        />
-                      }
-                      style={{
-                        backgroundColor: "#B8B9BA",
-                        height: "25px",
-                        width: "30%",
-                        borderRadius: "10px",
-                      }}
-                    ></Button>
+                  <TableCell
+                    className="tableCell"
+                    component="th"
+                    scope="row"
+                    align="center"
+                  >
+                    {row.calories}
                   </TableCell>
                   <TableCell align="center">
-                    <Button
-                      variant="outlined"
-                      startIcon={
-                        <ListAltOutlinedIcon style={{ color: "white" }} />
-                      }
-                      style={{
-                        backgroundColor: "#B8B9BA",
-                        height: "25px",
-                        width: "30%",
-                        borderRadius: "10px",
-                      }}
-                    ></Button>
+                    {/* Flechas */}
+                    <Grid container direction="row" spacing={0}>
+                      {/* Icon Bajada */}
+                      <Grid item xs={6} sm={6} md={6}>
+                        <IconButton
+                          className="IconButton"
+                          variant="outlined"
+                          style={{
+                            backgroundColor: "#B8B9BA",
+
+                            borderRadius: "10px",
+                            color: "white",
+                          }}
+                        >
+                          <KeyboardArrowUpOutlinedIcon
+                            className="icon"
+                            style={{ color: "white" }}
+                          />
+                        </IconButton>
+                      </Grid>
+
+                      {/* Icon Subida */}
+                      <Grid item xs={6} sm={6} md={6}>
+                        <IconButton
+                          className="IconButton"
+                          variant="outlined"
+                          style={{
+                            backgroundColor: "#B8B9BA",
+
+                            borderRadius: "10px",
+                            color: "white",
+                          }}
+                        >
+                          <KeyboardArrowDownOutlinedIcon
+                            className="icon"
+                            style={{ color: "white" }}
+                          />
+                        </IconButton>
+                      </Grid>
+                    </Grid>
                   </TableCell>
                   <TableCell align="center">
-                    <Button
+                    <IconButton
+                      className="IconButton"
                       variant="outlined"
-                      startIcon={
-                        <AssignmentIndOutlinedIcon style={{ color: "white" }} />
-                      }
                       style={{
                         backgroundColor: "#B8B9BA",
-                        height: "25px",
-                        width: "30%",
+                        marginLeft: "10px",
+
                         borderRadius: "10px",
+                        color: "white",
                       }}
-                    ></Button>
+                    >
+                      <ListAltOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
+                  </TableCell>
+                  <TableCell align="center">
+                    <IconButton
+                      className="IconButton"
+                      variant="outlined"
+                      style={{
+                        backgroundColor: "#B8B9BA",
+                        marginLeft: "10px",
+
+                        borderRadius: "10px",
+                        color: "white",
+                      }}
+                    >
+                      <AssignmentIndOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+        {/* User Button */}
         <IconButton
+          className="userButton"
+          variant="outlined"
           style={{
             backgroundColor: "#1B5DA7",
+            marginLeft: "10px",
+            height: "50px",
+            width: "50px",
+            borderRadius: "50px",
             color: "white",
-            marginTop: "80px",
           }}
         >
           <AccountCircleOutlinedIcon fontSize="large" />
         </IconButton>
+
+        {/* Actualizar Button */}
         <Button
           variant="outlined"
           startIcon={<ChangeCircleOutlinedIcon />}
@@ -210,7 +242,8 @@ function AdminUnidades() {
             backgroundColor: "#04B8E2",
             color: "white",
             marginTop: "30px",
-            marginLeft: "240px",
+            marginLeft: "13vw",
+            borderRadius: "30px",
           }}
         >
           Actualizar

@@ -1,4 +1,98 @@
-.mainGrid{
-    justify-content: center;
-    display: flex;
+.mainGrid {
+  justify-content: center;
+  display: flex;
+}
+
+.IconButton:hover {
+  background-color: #04b8e2 !important;
+}
+
+.tableCell,
+.tableCellTitle {
+  font-weight: 500 !important;
+  text-align: center !important;
+}
+
+.css-1yhpg23-MuiTableCell-root {
+  padding: 0 !important;
+}
+
+/* MEDIA QUERYS */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .tableCell {
+    font-size: 2.3vw !important;
+  }
+
+  .tableCellTitle {
+    font-size: 2vw !important;
+  }
+
+  .IconButton {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .icon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .tableCell {
+    font-size: 1.6vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
+
+  .icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .tableCell {
+    font-size: 1.3vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
+  .icon {
+    width: 27px !important;
+    height: 27px !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .tableCell {
+    font-size: 1.2vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .tableCell {
+    font-size: 1vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
 }
