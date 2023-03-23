@@ -17,7 +17,8 @@ import Paper from "@mui/material/Paper";
 import { fontSize, style } from "@mui/system";
 import { Button } from "@material-ui/core";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
-import SaveIcon from '@mui/icons-material/Save';import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import SaveIcon from "@mui/icons-material/Save";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
 
 function createData(name, calories) {
@@ -72,8 +73,8 @@ function ConfigurarSecciones() {
       <Grid item style={{ marginTop: "50px" }}>
         <TableContainer component={Paper}>
           <Table
-            sx={{minWidth: 200 }}
-            style={{ borderStyle: "solid", borderColor: "#017A97"}}
+            sx={{ minWidth: 200 }}
+            style={{ borderStyle: "solid", borderColor: "#017A97" }}
           >
             <TableHead>
               <TableRow>
@@ -93,7 +94,11 @@ function ConfigurarSecciones() {
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.name}>
-                  <TableCell component="th" scope="row" style={{display:"flex", justifyContent:"center"}}>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
                     {row.name}
                   </TableCell>
                   <TableCell align="center">
@@ -101,11 +106,13 @@ function ConfigurarSecciones() {
                     <Button
                       variant="outlined"
                       startIcon={
-                        <BorderColorOutlinedIcon style={{ color: "white", fontSize:"large" }} />
+                        <BorderColorOutlinedIcon
+                          style={{ color: "white", fontSize: "large" }}
+                        />
                       }
                       style={{
                         backgroundColor: "#B8B9BA",
-                        marginLeft:"10px",
+                        marginLeft: "10px",
                         height: "20px",
                         width: "10px",
                         borderRadius: "10px",
@@ -117,16 +124,7 @@ function ConfigurarSecciones() {
             </TableBody>
           </Table>
         </TableContainer>
-        <IconButton
-          style={{
-            backgroundColor: "#1B5DA7",
-            color: "white",
-            marginTop: "80px",
-            marginLeft:"-50px"
-          }}
-        >
-          <AccountCircleOutlinedIcon fontSize="large" />
-        </IconButton>
+
         <Button
           variant="outlined"
           startIcon={<SaveIcon />}
@@ -134,7 +132,7 @@ function ConfigurarSecciones() {
             backgroundColor: "#04B8E2",
             color: "white",
             marginTop: "30px",
-            marginLeft: "-15px",
+            marginLeft: "30px",
           }}
         >
           Guardar

@@ -8,11 +8,13 @@ import {
 } from "@material-ui/core";
 import fondo from "../../utils/images/adminLoginBackground.jpeg";
 import navbar from "../../utils/images/navbar.jfif";
+import logoUnibague from "../../utils/images/logoUnibague.PNG";
 import React from "react";
 import "./styles.css";
 import InputAdornment from "@mui/material/InputAdornment";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
+import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { width } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +49,32 @@ function AdminLogin() {
           flexDirection: "column",
         }}
       >
+        {/*Logo Unibague*/}
+        <Grid item>
+          <img src={logoUnibague} className="logoImage"></img>
+        </Grid>
+        {/*Personigrama*/}
+        <Grid item>
+          <div className="personigrama">PERSONIGRAMA</div>
+        </Grid>
+        {/*Unibague*/}
+        <Grid item>
+          <div className="unibague">Unibagué</div>
+        </Grid>
+        {/*Gmail Logo*/}
+        <Grid item>
+          <IconButton
+            style={{
+              backgroundColor: "white",
+              color: "#193F76",
+              marginTop:"40px",
+              marginBottom:"10px"
+            }}
+          >
+            <EmailRoundedIcon />
+          </IconButton>
+        </Grid>
+
         {/* Usuario */}
         <Grid item>
           <TextField
