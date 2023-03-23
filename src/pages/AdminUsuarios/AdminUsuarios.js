@@ -16,10 +16,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { fontSize } from "@mui/system";
 import { Button } from "@material-ui/core";
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
+import "./styles.css";
 
 function createData(name, calories, fat) {
   return { name, calories, fat };
@@ -75,7 +77,7 @@ function AdminUsuarios() {
                   justifyContent: "center",
                   display: "flex",
                   font: "Lato",
-                  fontSize: "38px",
+                  fontSize: "15px",
                 }}
               >
                 Administar Usuarios
@@ -94,40 +96,30 @@ function AdminUsuarios() {
         </Box>
       </Grid>
 
+      {/* Grid Table */}
       <Grid item style={{ marginTop: "50px" }}>
+        {/* Table */}
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }}>
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                    font: "Lato",
-                    color: "white",
-                    fontSize: "20px",
-                  }}
+                  className="tableCellTitle"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Usuario Registrados
                 </TableCell>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                    color: "white",
-                    font: "Lato",
-                    fontSize: "20px",
-                  }}
+                  className="tableCellTitle"
                   align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Correo
                 </TableCell>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                    color: "white",
-                    font: "Lato",
-                    fontSize: "20px",
-                  }}
+                  className="tableCellTitle"
                   align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Opciones
                 </TableCell>
@@ -136,35 +128,41 @@ function AdminUsuarios() {
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.name}>
-                  <TableCell component="th" scope="row">
+                  <TableCell component="th" scope="row" className="tableCell">
                     {row.name}
                   </TableCell>
-                  <TableCell align="center">{row.calories} </TableCell>
+                  <TableCell align="center" className="tableCell">
+                    {row.calories}{" "}
+                  </TableCell>
                   <TableCell align="center">
-                    <Button
+                    <IconButton
+                      className="IconButton"
                       variant="outlined"
-                      startIcon={
-                        <BorderColorOutlinedIcon style={{ color: "white" }} />
-                      }
                       style={{
                         backgroundColor: "#B8B9BA",
-                        height: "25px",
-                        width:"30%",
-                        borderRadius:"10px"
+                        borderRadius: "10px",
+                        color: "white",
                       }}
-                    ></Button>
-                    <Button
+                    >
+                      <BorderColorOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
+                    <IconButton
+                      className="IconButton"
                       variant="outlined"
-                      startIcon={
-                        <DeleteOutlineOutlinedIcon style={{ color: "white" }} />
-                      }
                       style={{
                         backgroundColor: "#B8B9BA",
-                        height: "25px",
-                        width:"30%",
-                        borderRadius:"10px"
+                        borderRadius: "10px",
+                        color: "white",
                       }}
-                    ></Button>
+                    >
+                      <DeleteOutlineOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               ))}
@@ -181,13 +179,14 @@ function AdminUsuarios() {
           <AccountCircleOutlinedIcon fontSize="large" />
         </IconButton>
         <Button
+          className="agregarUsuarioButton"
           variant="outlined"
           startIcon={<PersonAddAltOutlinedIcon />}
           style={{
             backgroundColor: "#04B8E2",
             color: "white",
             marginTop: "30px",
-            marginLeft: "240px",
+            marginLeft: "10vw",
           }}
         >
           Agregar Usuario

@@ -1,0 +1,94 @@
+.tableCell,
+.tableCellTitle {
+  font-weight: 500 !important;
+  text-align: center !important;
+}
+
+.IconButton:hover {
+  background-color: #04b8e2 !important;
+}
+
+/* MEDIA QUERYS */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .tableCell {
+    font-size: 2.3vw !important;
+  }
+
+  .tableCellTitle {
+    font-size: 2.1vw !important;
+  }
+
+  .IconButton {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .icon {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .agregarUsuarioButton{
+    font-size: 10px !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .tableCell {
+    font-size: 1.6vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
+
+  .icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .tableCell {
+    font-size: 1.3vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
+  .icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .tableCell {
+    font-size: 1.2vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .tableCell {
+    font-size: 1vw !important;
+  }
+
+  .IconButton {
+    width: 27px !important;
+    height: 27px !important;
+  }
+}
