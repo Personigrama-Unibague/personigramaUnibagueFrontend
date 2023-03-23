@@ -3,32 +3,42 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function PrincipalTemporal() {
   return (
-    <div style={{ display: "block" }}>
+    <div
+      style={{
+        display: "block",
+        backgroundColor: "#193F76",
+        width: "100%",
+        height: "100%",
+        paddingTop: "30vh",
+        textAlign: "center",
+        color: "white"
+      }}
+    >
       <ul>
         <li>
           <h1>RUTAS</h1>
         </li>
         <li>
-          <Link to="homePage">HomePage</Link>
+          <Link style={{color: "white"}} to="homePage">HomePage</Link>
         </li>
         <li>
-          <Link to="personigrama">Personigrama</Link>
+          <Link style={{color: "white"}} to="personigrama">Personigrama</Link>
         </li>
 
         <li style={{ paddingTop: "10px" }}>
           <h3>Admin Section</h3>
         </li>
         <li>
-          <Link to="adminLogin">AdminLogin</Link>
+          <Link style={{color: "white"}} to="adminLogin">AdminLogin</Link>
         </li>
         <li>
-          <Link to="adminUnidades">AdminUnidades</Link>
+          <Link style={{color: "white"}} to="adminUnidades">AdminUnidades</Link>
         </li>
         <li>
-          <Link to="adminUsuarios">AdminUsuarios</Link>
+          <Link style={{color: "white"}} to="adminUsuarios">AdminUsuarios</Link>
         </li>
         <li>
-          <Link to="confiSecciones">ConfigurarSecciones</Link>
+          <Link style={{color: "white"}} to="confiSecciones">ConfigurarSecciones</Link>
         </li>
       </ul>
     </div>
