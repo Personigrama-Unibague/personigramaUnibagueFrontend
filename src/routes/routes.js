@@ -2,19 +2,23 @@ import React from 'react';
 import HomePage from '../pages/HomePage';
 import AdminLogin from '../pages/AdminLogin/AdminLogin';
 import Personigrama from '../pages/Personigrama/Personigrama';
+import PrincipalTemporal from '../pages/PrincipalTemporal';
+import AdminUnidades from '../pages/AdminUnidades/AdminUnidades';
+import AdminUsuarios from '../pages/AdminUsuarios/AdminUsuarios';
+import ConfigurarSecciones from '../pages/ConfigurarSecciones/ConfigurarSecciones';
 
 
 const routes = [
   {
     path: '/',
-    element: <HomePage/>,
+    element: <PrincipalTemporal/>,
     children: [
       //{ path: 'Login', element: <Prueba /> },
     ]
   },
   {
-    path: 'adminLogin',
-    element: <AdminLogin/>,
+    path: 'homePage',
+    element: <HomePage/>,
     children: [
       //{ path: 'Login', element: <Prueba /> },
     ]
@@ -42,7 +46,7 @@ const routes = [
   },
   {
     path: 'adminUsuarios',
-    element: <AdminUsuaraios/>,
+    element: <AdminUsuarios/>,
     children: [
       //{ path: 'Login', element: <Prueba /> },
     ]
@@ -53,7 +57,14 @@ const routes = [
     children: [
       //{ path: 'Login', element: <Prueba /> },
     ]
-  }
+  },
+  /* {
+    path: '*',
+    element: <NotFound/>,
+    children: [
+    ]
+  }, */
+  
 ];
 
 export default routes;
