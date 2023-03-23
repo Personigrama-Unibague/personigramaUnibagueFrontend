@@ -11,6 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PersonigramaCard from "../../components/PersonigramaCard/PersonigramaCard";
 import Personal from "../../personal.json";
+import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
 import "./Personigrama.css";
@@ -91,11 +92,15 @@ export default function Personigrama() {
           </Search>
         </Toolbar>
       </AppBar>
-      
-      <div className="PersonigramaCards">
-        {Personal.map((data) => (
-          <PersonigramaCard personal={data} />
-        ))}
+
+      <div className="personigramaCards">
+        <Grid container spacing={3} justifyContent="center">
+          {Personal.map((data) => (
+            <Grid item>
+              <PersonigramaCard personal={data} />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </Box>
   );

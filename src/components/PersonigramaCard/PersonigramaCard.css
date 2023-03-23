@@ -3,6 +3,8 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1000ms;
+  width: 220px;
+  height: 332px;
 }
 
 .card:hover {
