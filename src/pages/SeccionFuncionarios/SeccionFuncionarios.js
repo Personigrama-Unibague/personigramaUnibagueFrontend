@@ -18,8 +18,8 @@ import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import SaveIcon from "@mui/icons-material/Save";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
-import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function createData(name, calories) {
   return { name, calories };
@@ -32,7 +32,7 @@ const rows = [
   createData(4, "C"),
 ];
 
-function ConfigurarSecciones() {
+function SeccionFuncionarios() {
   return (
     <Grid
       container
@@ -54,7 +54,7 @@ function ConfigurarSecciones() {
                   fontSize: "38px",
                 }}
               >
-                Configuración Secciones
+                Sección Funcionarios
               </Typography>
               <InputOutlinedIcon
                 size="large"
@@ -68,39 +68,6 @@ function ConfigurarSecciones() {
             </Toolbar>
           </AppBar>
         </Box>
-      </Grid>
-      <Grid style={{ marginRight: "50px" }}>
-        <Grid item style={{ marginTop: "95px" }}>
-          <IconButton
-            style={{
-              backgroundColor: "#1B5DA7",
-              color: "white",
-            }}
-          >
-            <AddIcon fontSize="large" />
-          </IconButton>
-        </Grid>
-        <Grid item style={{ marginTop: "10px" }}>
-          <IconButton
-            style={{
-              backgroundColor: "#1B5DA7",
-              color: "white",
-            }}
-          >
-            <DeleteIcon fontSize="large" />
-          </IconButton>
-        </Grid>
-
-        <Grid item style={{ marginTop: "200px" }}>
-          <IconButton
-            style={{
-              backgroundColor: "#1B5DA7",
-              color: "white",
-            }}
-          >
-            <AccountCircleOutlinedIcon fontSize="large" />
-          </IconButton>
-        </Grid>
       </Grid>
 
       <Grid item style={{ marginTop: "50px" }}>
@@ -151,22 +118,59 @@ function ConfigurarSecciones() {
                         style={{ color: "white" }}
                       />
                     </IconButton>
+                    <IconButton
+                      className="IconButton"
+                      variant="outlined"
+                      style={{
+                        backgroundColor: "#B8B9BA",
+                        borderRadius: "10px",
+                        color: "white",
+                        marginLeft: "5px",
+                      }}
+                    >
+                      <DeleteOutlineOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+        <IconButton
+          style={{
+            backgroundColor: "#1B5DA7",
+            color: "white",
+            marginTop: "90px",
+          }}
+        >
+          <AccountCircleOutlinedIcon fontSize="large" />
+        </IconButton>
+        <Button
+          variant="outlined"
+          startIcon={<PersonAddAltIcon />}
+          style={{
+            backgroundColor: "#04B8E2",
+            color: "white",
+            marginTop: "30px",
+            marginLeft: "5px",
+            borderRadius: "50px",
+          }}
+        >
+          Agregar funcionario
+        </Button>
 
         <Button
           variant="outlined"
           startIcon={<SaveIcon />}
           style={{
-            backgroundColor: "#04B8E2",
+            backgroundColor: "#1B5DA7",
             color: "white",
             marginTop: "30px",
-            marginLeft: "30px",
-            borderRadius:"50px"
+            marginLeft: "10px",
+            borderRadius: "50px",
           }}
         >
           Guardar
@@ -176,4 +180,4 @@ function ConfigurarSecciones() {
   );
 }
 
-export default ConfigurarSecciones;
+export default SeccionFuncionarios;

@@ -6,6 +6,7 @@ import PrincipalTemporal from '../pages/PrincipalTemporal';
 import AdminUnidades from '../pages/AdminUnidades/AdminUnidades';
 import AdminUsuarios from '../pages/AdminUsuarios/AdminUsuarios';
 import ConfigurarSecciones from '../pages/ConfigurarSecciones/ConfigurarSecciones';
+import SeccionFuncionarios from '../pages/SeccionFuncionarios/SeccionFuncionarios';
 import NotFound from '../pages/NotFound/NotFound';
 
 
@@ -55,6 +56,13 @@ const routes = [
   {
     path: 'confiSecciones',
     element: <ConfigurarSecciones/>,
+    children: [
+      //{ path: 'Login', element: <Prueba /> },
+    ]
+  },,
+  {
+    path: 'seccionFuncionarios',
+    element: <SeccionFuncionarios/>,
     children: [
       //{ path: 'Login', element: <Prueba /> },
     ]

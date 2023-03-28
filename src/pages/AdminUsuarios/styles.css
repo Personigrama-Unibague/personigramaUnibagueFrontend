@@ -7,6 +7,19 @@
 .IconButton:hover {
   background-color: #04b8e2 !important;
 }
+.modalTitle {
+  background-color: #017a97;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+}
+.typpgraphyTitle {
+  font-style: Lato;
+  font-weight: 700;
+  size: 30px;
+  line-height: 29.8px;
+  color: #ffffff;
+}
 
 /* MEDIA QUERYS */
 
@@ -30,7 +43,7 @@
     height: 15px !important;
   }
 
-  .agregarUsuarioButton{
+  .agregarUsuarioButton {
     font-size: 10px !important;
   }
 }
@@ -50,7 +63,6 @@
     width: 20px !important;
     height: 20px !important;
   }
-
 }
 
 /* Medium devices (landscape tablets, 768px and up) */

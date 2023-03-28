@@ -14,14 +14,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { fontSize } from "@mui/system";
 import { Button } from "@material-ui/core";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
+import Modal from "@mui/material/Modal";
+import EmailIcon from "@mui/icons-material/Email";
+import TextField from "material-ui/TextField";
 import "./styles.css";
+import { Dialog, ListItem } from "material-ui";
+import List from '@mui/material/List';
+import { DialogTitle } from "material-ui";
 
 function createData(name, calories, fat) {
   return { name, calories, fat };
@@ -58,7 +63,12 @@ const rows = [
   ),
 ];
 
+
 function AdminUsuarios() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Grid
       container
@@ -181,16 +191,70 @@ function AdminUsuarios() {
         <Button
           className="agregarUsuarioButton"
           variant="outlined"
+          onClick={handleOpen}
           startIcon={<PersonAddAltOutlinedIcon />}
           style={{
             backgroundColor: "#04B8E2",
             color: "white",
             marginTop: "30px",
             marginLeft: "10vw",
+            borderRadius: "50px",
           }}
         >
           Agregar Usuario
         </Button>
+        {/*Modal Agregar usuario */}
+        <Dialog open={open} onClose={handleClose}>
+          <List sx={{ pt: 0 }}>
+            <div className="modalTitle">
+              <div className="typpgraphyTitle">
+                Agregar Usuario
+              </div>
+            </div>
+            <ListItem>
+              <TextField
+                className="textField"
+                placeholder="Correo"
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "30px",
+                  width: "20px",
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <IconButton
+                      color="white"
+                      sx={{ p: "10px" }}
+                      style={{
+                        borderRadius: "30px 0px 0px 30px",
+                        backgroundColor: "#04B8E2",
+                      }}
+                      position="start"
+                    >
+                      <EmailIcon style={{ color: "white" }} />
+                    </IconButton>
+                  ),
+                }}
+              />
+            </ListItem>
+            <ListItem style={{display:"flex", justifyContent:"center"}}>
+              <Button
+                className="agregarUsuarioButton"
+                variant="outlined"
+                onClick={handleOpen}
+                style={{
+                  backgroundColor: "#04B8E2",
+                  color: "white",
+                  marginTop: "30px",
+                  borderRadius: "50px",
+
+                }}
+              >
+                Agregar
+              </Button>
+            </ListItem>
+          </List>
+        </Dialog>
       </Grid>
     </Grid>
   );

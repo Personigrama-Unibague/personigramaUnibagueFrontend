@@ -40,6 +40,9 @@ export default function PrincipalTemporal() {
         <li>
           <Link style={{color: "white"}} to="confiSecciones">ConfigurarSecciones</Link>
         </li>
+        <li>
+          <Link style={{color: "white"}} to="seccionFuncionarios">Sección funcionarios</Link>
+        </li>
       </ul>
     </div>
   );
