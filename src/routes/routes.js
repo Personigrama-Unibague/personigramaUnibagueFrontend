@@ -8,6 +8,7 @@ import AdminUsuarios from '../pages/AdminUsuarios/AdminUsuarios';
 import ConfigurarSecciones from '../pages/ConfigurarSecciones/ConfigurarSecciones';
 import SeccionFuncionarios from '../pages/SeccionFuncionarios/SeccionFuncionarios';
 import NotFound from '../pages/NotFound/NotFound';
+import PruebasJson from '../pages/PruebasJson';
 
 
 const routes = [
@@ -68,11 +69,18 @@ const routes = [
     ]
   },
   {
+    path: 'pruebasjson',
+    element: <PruebasJson/>,
+    children: [
+    ]
+  },
+  {
     path: '*',
     element: <NotFound/>,
     children: [
     ]
   },
+  
   
 ];
 
