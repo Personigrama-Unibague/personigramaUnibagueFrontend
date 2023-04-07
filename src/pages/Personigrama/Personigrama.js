@@ -12,7 +12,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PersonigramaCard from "../../components/PersonigramaCard/PersonigramaCard";
 import Personal from "../../personal.json";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
+import BannerPersonal from "../../utils/images/BannerPersonal.png";
 
 import "./Personigrama.css";
 
@@ -93,10 +93,20 @@ export default function Personigrama() {
         </Toolbar>
       </AppBar>
 
+      {/* Cards */}
       <div className="personigramaCards">
-        <Grid container spacing={3} justifyContent="center">
+        <Grid container spacing={3} className="gridContainer">
+          {/* Banner */}
+          <Grid item xs={12} md={9} className="imageContainer">
+            <img src={BannerPersonal} className="bannerPersonal" />
+            <div className="nombreBanner">
+              <p className="personigrama">PERSONIGRAMA</p>
+              <p className="unidad">UNIDAD</p>
+            </div>
+          </Grid>
+          {/* Cards */}
           {Personal.map((data) => (
-            <Grid item>
+            <Grid item className="personaCard">
               <PersonigramaCard personal={data} />
             </Grid>
           ))}

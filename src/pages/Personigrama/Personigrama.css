@@ -7,5 +7,79 @@
 }
 
 .personigramaCards {
-  padding-top: 30px;
+  padding: 25px 30px 25px 30px;
+}
+
+.bannerPersonal {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.imageContainer {
+  position: relative; 
+}
+
+.nombreBanner {
+  position: absolute; /* posición absolute con respecto al padre */
+  top: 42%;
+  left: 25%;
+  text-align: center !important;
+  color: white !important;
+}
+
+.personigrama{
+  font-size: 3vw;
+}
+
+.unidad{
+  font-size: 4vw;
+  font-weight: 600;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .gridContainer {
+    justify-content: center !important;
+  }
+
+  .personigrama{
+    font-size: 3.5vw;
+  }
+  
+  .unidad{
+    font-size: 4.5vw;
+    font-weight: 600;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .gridContainer {
+    justify-content: center !important;
+  }
+
+  .personigrama{
+    font-size: 3.5vw;
+  }
+  
+  .unidad{
+    font-size: 4.5vw;
+    font-weight: 600;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .gridContainer {
+    justify-content: flex-start !important;
+  }
+
+  .personigrama{
+    font-size: 3vw;
+  }
+  
+  .unidad{
+    font-size: 4vw;
+    font-weight: 600;
+  }
 }
