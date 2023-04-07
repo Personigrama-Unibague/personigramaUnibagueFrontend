@@ -13,14 +13,28 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useDrag, useDrop } from "react-dnd";
 import organization from "../org.json";
-import organizationJson from "../organization.json";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
+import organigrama from "../organigrama.json";
+
 
 import {
   createMuiTheme,
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
+
+/* Json Jerarquico */
+function createTree(organigrama, id) {
+  var node = {};
+  organigrama.filter((obj) => obj.id === id).forEach((obj) => (node = obj));
+  var childrenIds = organigrama
+    .filter((obj) => obj.parent_id === id)
+    .map((obj) => obj.id);
+  node.children = childrenIds.map((childId) =>
+    createTree(organigrama, childId)
+  );
+  return node;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
