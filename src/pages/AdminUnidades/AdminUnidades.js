@@ -219,20 +219,6 @@ function AdminUnidades() {
           </Table>
         </TableContainer>
         {/* User Button */}
-        <IconButton
-          className="userButton"
-          variant="outlined"
-          style={{
-            backgroundColor: "#1B5DA7",
-            marginLeft: "10px",
-            height: "50px",
-            width: "50px",
-            borderRadius: "50px",
-            color: "white",
-          }}
-        >
-          <AccountCircleOutlinedIcon fontSize="large" />
-        </IconButton>
 
         {/* Actualizar Button */}
         <Button

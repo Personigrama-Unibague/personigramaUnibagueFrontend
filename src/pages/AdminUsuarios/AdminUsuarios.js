@@ -20,13 +20,11 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
-import Modal from "@mui/material/Modal";
 import EmailIcon from "@mui/icons-material/Email";
 import TextField from "material-ui/TextField";
 import "./styles.css";
 import { Dialog, ListItem } from "material-ui";
-import List from '@mui/material/List';
-import { DialogTitle } from "material-ui";
+import List from "@mui/material/List";
 
 function createData(name, calories, fat) {
   return { name, calories, fat };
@@ -62,7 +60,6 @@ const rows = [
     4.3
   ),
 ];
-
 
 function AdminUsuarios() {
   const [open, setOpen] = React.useState(false);
@@ -179,15 +176,6 @@ function AdminUsuarios() {
             </TableBody>
           </Table>
         </TableContainer>
-        <IconButton
-          style={{
-            backgroundColor: "#1B5DA7",
-            color: "white",
-            marginTop: "80px",
-          }}
-        >
-          <AccountCircleOutlinedIcon fontSize="large" />
-        </IconButton>
         <Button
           className="agregarUsuarioButton"
           variant="outlined"
@@ -207,18 +195,17 @@ function AdminUsuarios() {
         <Dialog open={open} onClose={handleClose}>
           <List sx={{ pt: 0 }}>
             <div className="modalTitle">
-              <div className="typpgraphyTitle">
-                Agregar Usuario
-              </div>
+              <div className="typpgraphyTitle">Agregar Usuario</div>
             </div>
-            <ListItem>
+            <ListItem style={{ paddingTop: "30px", width: "450px" }}>
               <TextField
                 className="textField"
-                placeholder="Correo"
+                placeholder="correo"
+                focused
                 style={{
                   backgroundColor: "#FFFFFF",
                   borderRadius: "30px",
-                  width: "20px",
+                  borderColor: "#04B8E2",
                 }}
                 InputProps={{
                   startAdornment: (
@@ -237,7 +224,7 @@ function AdminUsuarios() {
                 }}
               />
             </ListItem>
-            <ListItem style={{display:"flex", justifyContent:"center"}}>
+            <ListItem style={{ display: "flex", justifyContent: "center" }}>
               <Button
                 className="agregarUsuarioButton"
                 variant="outlined"
@@ -247,7 +234,6 @@ function AdminUsuarios() {
                   color: "white",
                   marginTop: "30px",
                   borderRadius: "50px",
-
                 }}
               >
                 Agregar

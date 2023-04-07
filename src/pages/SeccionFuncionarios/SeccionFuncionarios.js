@@ -139,15 +139,7 @@ function SeccionFuncionarios() {
             </TableBody>
           </Table>
         </TableContainer>
-        <IconButton
-          style={{
-            backgroundColor: "#1B5DA7",
-            color: "white",
-            marginTop: "90px",
-          }}
-        >
-          <AccountCircleOutlinedIcon fontSize="large" />
-        </IconButton>
+
         <Button
           variant="outlined"
           startIcon={<PersonAddAltIcon />}

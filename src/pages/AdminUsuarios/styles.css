@@ -3,7 +3,13 @@
   font-weight: 500 !important;
   text-align: center !important;
 }
+.MuiInput-underline:before {
+  border-bottom: 0px !important;
+}
 
+.MuiInput-underline:after {
+  border-bottom: 0px !important;
+}
 .IconButton:hover {
   background-color: #04b8e2 !important;
 }

@@ -69,8 +69,8 @@ function ConfigurarSecciones() {
           </AppBar>
         </Box>
       </Grid>
-      <Grid style={{ marginRight: "50px" }}>
-        <Grid item style={{ marginTop: "95px" }}>
+      <Grid>
+        <Grid item style={{ marginTop: "95px", display:"flex", justifyContent:"left" }}>
           <IconButton
             style={{
               backgroundColor: "#1B5DA7",
@@ -79,7 +79,9 @@ function ConfigurarSecciones() {
           >
             <AddIcon fontSize="large" />
           </IconButton>
+          <a>Agregar Seccion</a>
         </Grid>
+
         <Grid item style={{ marginTop: "10px" }}>
           <IconButton
             style={{
@@ -89,17 +91,7 @@ function ConfigurarSecciones() {
           >
             <DeleteIcon fontSize="large" />
           </IconButton>
-        </Grid>
-
-        <Grid item style={{ marginTop: "200px" }}>
-          <IconButton
-            style={{
-              backgroundColor: "#1B5DA7",
-              color: "white",
-            }}
-          >
-            <AccountCircleOutlinedIcon fontSize="large" />
-          </IconButton>
+          <a>Eliminar Seccion</a>
         </Grid>
       </Grid>
 
@@ -166,7 +158,7 @@ function ConfigurarSecciones() {
             color: "white",
             marginTop: "30px",
             marginLeft: "30px",
-            borderRadius:"50px"
+            borderRadius: "50px",
           }}
         >
           Guardar
