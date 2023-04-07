@@ -3,13 +3,19 @@
   font-weight: 500 !important;
   text-align: center !important;
 }
-.MuiInput-underline:before {
-  border-bottom: 0px !important;
+
+.MuiInput-underline-73:before{
+  height: 0px !important;
 }
 
-.MuiInput-underline:after {
-  border-bottom: 0px !important;
+.MuiInput-underline-73:after{
+  height: 0px !important;
 }
+
+.textField{
+  border: 2px solid #04b8e2 !important;
+}
+
 .IconButton:hover {
   background-color: #04b8e2 !important;
 }
