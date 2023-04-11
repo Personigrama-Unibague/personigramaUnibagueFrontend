@@ -70,7 +70,7 @@ function ConfigurarSecciones() {
         </Box>
       </Grid>
       <Grid>
-        <Grid item style={{ marginTop: "95px", display:"flex", justifyContent:"left" }}>
+        <Grid item style={{ marginTop: "95px", marginRight:"100px"}}>
           <IconButton
             style={{
               backgroundColor: "#1B5DA7",

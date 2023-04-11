@@ -16,10 +16,17 @@ import Paper from "@mui/material/Paper";
 import { Button } from "@material-ui/core";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import SaveIcon from "@mui/icons-material/Save";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { Dialog, ListItem } from "material-ui";
+import List from "@mui/material/List";
+import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
+import TextField from "material-ui/TextField";
+import "./styles.css";
+
+
+
 
 function createData(name, calories) {
   return { name, calories };
@@ -33,6 +40,10 @@ const rows = [
 ];
 
 function SeccionFuncionarios() {
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <Grid
       container
@@ -142,6 +153,7 @@ function SeccionFuncionarios() {
 
         <Button
           variant="outlined"
+          onClick={handleOpen}
           startIcon={<PersonAddAltIcon />}
           style={{
             backgroundColor: "#04B8E2",
@@ -153,6 +165,56 @@ function SeccionFuncionarios() {
         >
           Agregar funcionario
         </Button>
+        {/*Modal Agregar funcionario */}
+        <Dialog open={open} onClose={handleClose}>
+          <List sx={{ pt: 0 }}>
+            <div className="modalTitle">
+              <div className="typpgraphyTitle">Agregar Funcionario</div>
+            </div>
+            <ListItem style={{ paddingTop: "30px", width: "450px" }}>
+              <TextField
+                className="textField"
+                placeholder="Funcionario"
+                focused
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "30px",
+                  borderColor: "#04B8E2",
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <IconButton
+                      color="white"
+                      sx={{ p: "10px" }}
+                      style={{
+                        borderRadius: "30px 0px 0px 30px",
+                        backgroundColor: "#04B8E2",
+                      }}
+                      position="start"
+                    >
+                      <AssignmentIndOutlinedIcon style={{ color: "white" }} />
+                    </IconButton>
+                  ),
+                }}
+              />
+            </ListItem>
+            <ListItem style={{ display: "flex", justifyContent: "center" }}>
+              <Button
+                className="agregarUsuarioButton"
+                variant="outlined"
+                onClick={handleOpen}
+                style={{
+                  backgroundColor: "#04B8E2",
+                  color: "white",
+                  marginTop: "30px",
+                  borderRadius: "50px",
+                }}
+              >
+                Agregar
+              </Button>
+            </ListItem>
+          </List>
+        </Dialog>
 
         <Button
           variant="outlined"
