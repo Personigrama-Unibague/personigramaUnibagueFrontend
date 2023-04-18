@@ -9,6 +9,7 @@ import ConfigurarSecciones from '../pages/ConfigurarSecciones/ConfigurarSeccione
 import SeccionFuncionarios from '../pages/SeccionFuncionarios/SeccionFuncionarios';
 import NotFound from '../pages/NotFound/NotFound';
 import PruebasJson from '../pages/PruebasJson';
+import PruebaLogin from '../pages/PruebaLogIn/PruebaLogIn'
 
 
 const routes = [
@@ -71,6 +72,12 @@ const routes = [
   {
     path: 'pruebasjson',
     element: <PruebasJson/>,
+    children: [
+    ]
+  },
+  {
+    path: 'pruebaLogin',
+    element: <PruebaLogin/>,
     children: [
     ]
   },

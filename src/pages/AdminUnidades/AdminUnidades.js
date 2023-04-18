@@ -19,7 +19,7 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import IconButton from "material-ui/IconButton";
 import "./styles.css";
 
@@ -181,6 +181,8 @@ function AdminUnidades() {
                     <IconButton
                       className="IconButton"
                       variant="outlined"
+                      component={Link}
+                      to="/confiSecciones"
                       style={{
                         backgroundColor: "#B8B9BA",
                         marginLeft: "10px",
@@ -199,6 +201,8 @@ function AdminUnidades() {
                     <IconButton
                       className="IconButton"
                       variant="outlined"
+                      component={Link}
+                      to="/seccionFuncionarios"
                       style={{
                         backgroundColor: "#B8B9BA",
                         marginLeft: "10px",

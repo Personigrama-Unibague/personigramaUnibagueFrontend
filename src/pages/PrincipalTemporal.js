@@ -43,7 +43,10 @@ export default function PrincipalTemporal() {
         <li>
           <Link style={{color: "white"}} to="seccionFuncionarios">Sección funcionarios</Link>
         </li>
+        <li>
+          <Link style={{color: "white"}} to="pruebaLogin">LogIn con google</Link>
+        </li>
       </ul>
-    </div>
+    </div> 
   );
 }
