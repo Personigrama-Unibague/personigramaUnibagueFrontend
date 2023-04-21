@@ -57,7 +57,7 @@ const renderForeignObjectNode = ({
       >
         <div className={classes.name}>{nodeDatum.name}</div>
         {/* {nodeDatum.attributes.nombre} */}
-        <div>Nombre: VA ACA</div>
+        <div>Nombre:</div>
         <div>{nodeDatum.nombre}</div>
         <IconButton className={classes.edit} aria-label="edit">
           <AttachMoney style={{ color: "#459C7F" }} />
@@ -94,7 +94,8 @@ export default function PruebasJson() {
   };
 
   let json = createTree(organigramas, null);
-  console.log(json);
+  let jsonFianl = JSON.stringify(json);
+  console.log(jsonFianl);
 
   return (
     <div style={containerStyles}>
