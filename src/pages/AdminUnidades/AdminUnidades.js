@@ -89,17 +89,12 @@ function AdminUnidades() {
             <TableHead>
               <TableRow>
                 <TableCell
-                  style={{
-                    backgroundColor: "#017A97",
-                  }}
-                />
+                  className="tableCellTitle"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
+                ></TableCell>
                 <TableCell
                   className="tableCellTitle"
-                  style={{
-                    backgroundColor: "#017A97",
-                    color: "white",
-                    width: "650px",
-                  }}
+                  style={{ backgroundColor: "#017A97", color: "white" }}
                 >
                   Unidad
                 </TableCell>
@@ -108,7 +103,28 @@ function AdminUnidades() {
                   align="center"
                   style={{ backgroundColor: "#017A97", color: "white" }}
                 >
+                  Numero
+                </TableCell>
+                <TableCell
+                  className="tableCellTitle"
+                  align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
+                >
                   Posición
+                </TableCell>
+                <TableCell
+                  className="tableCellTitle"
+                  align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
+                >
+                  Secciones
+                </TableCell>
+                <TableCell
+                  className="tableCellTitle"
+                  align="center"
+                  style={{ backgroundColor: "#017A97", color: "white" }}
+                >
+                  Funcionarios
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -132,6 +148,88 @@ function AdminUnidades() {
                     </TableCell>
                     <TableCell>{row.nombre}</TableCell>
                     <TableCell>{row.id}</TableCell>
+                    <TableCell align="center">
+                      {/* Flechas */}
+                      <Grid container direction="row" spacing={0}>
+                        {/* Icon Bajada */}
+                        <Grid item xs={6} sm={6} md={6}>
+                          <IconButton
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+
+                              borderRadius: "10px",
+                              color: "white",
+                            }}
+                          >
+                            <KeyboardArrowUpOutlinedIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </Grid>
+
+                        {/* Icon Subida */}
+                        <Grid item xs={6} sm={6} md={6}>
+                          <IconButton
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+
+                              borderRadius: "10px",
+                              color: "white",
+                            }}
+                          >
+                            <KeyboardArrowDownOutlinedIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </Grid>
+                      </Grid>
+                    </TableCell>
+                    <TableCell align="center">
+                      <IconButton
+                        className="IconButton"
+                        variant="outlined"
+                        component={Link}
+                        to="/confiSecciones"
+                        style={{
+                          backgroundColor: "#B8B9BA",
+                          marginLeft: "10px",
+
+                          borderRadius: "10px",
+                          color: "white",
+                        }}
+                      >
+                        <ListAltOutlinedIcon
+                          className="icon"
+                          style={{ color: "white" }}
+                        />
+                      </IconButton>
+                    </TableCell>
+                    <TableCell align="center">
+                      <IconButton
+                        className="IconButton"
+                        variant="outlined"
+                        component={Link}
+                        to="/seccionFuncionarios"
+                        style={{
+                          backgroundColor: "#B8B9BA",
+                          marginLeft: "10px",
+
+                          borderRadius: "10px",
+                          color: "white",
+                        }}
+                      >
+                        <AssignmentIndOutlinedIcon
+                          className="icon"
+                          style={{ color: "white" }}
+                        />
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                   {row.nombre && (
                     <TableRow>
@@ -191,6 +289,88 @@ function AdminUnidades() {
                                         ))}
                                       </Table>
                                     </Collapse>
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    {/* Flechas */}
+                                    <Grid container direction="row" spacing={0}>
+                                      {/* Icon Bajada */}
+                                      <Grid item xs={6} sm={6} md={6}>
+                                        <IconButton
+                                          className="IconButton"
+                                          variant="outlined"
+                                          style={{
+                                            backgroundColor: "#B8B9BA",
+
+                                            borderRadius: "10px",
+                                            color: "white",
+                                          }}
+                                        >
+                                          <KeyboardArrowUpOutlinedIcon
+                                            className="icon"
+                                            style={{ color: "white" }}
+                                          />
+                                        </IconButton>
+                                      </Grid>
+
+                                      {/* Icon Subida */}
+                                      <Grid item xs={6} sm={6} md={6}>
+                                        <IconButton
+                                          className="IconButton"
+                                          variant="outlined"
+                                          style={{
+                                            backgroundColor: "#B8B9BA",
+
+                                            borderRadius: "10px",
+                                            color: "white",
+                                          }}
+                                        >
+                                          <KeyboardArrowDownOutlinedIcon
+                                            className="icon"
+                                            style={{ color: "white" }}
+                                          />
+                                        </IconButton>
+                                      </Grid>
+                                    </Grid>
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    <IconButton
+                                      className="IconButton"
+                                      variant="outlined"
+                                      component={Link}
+                                      to="/confiSecciones"
+                                      style={{
+                                        backgroundColor: "#B8B9BA",
+                                        marginLeft: "10px",
+
+                                        borderRadius: "10px",
+                                        color: "white",
+                                      }}
+                                    >
+                                      <ListAltOutlinedIcon
+                                        className="icon"
+                                        style={{ color: "white" }}
+                                      />
+                                    </IconButton>
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    <IconButton
+                                      className="IconButton"
+                                      variant="outlined"
+                                      component={Link}
+                                      to="/seccionFuncionarios"
+                                      style={{
+                                        backgroundColor: "#B8B9BA",
+                                        marginLeft: "10px",
+
+                                        borderRadius: "10px",
+                                        color: "white",
+                                      }}
+                                    >
+                                      <AssignmentIndOutlinedIcon
+                                        className="icon"
+                                        style={{ color: "white" }}
+                                      />
+                                    </IconButton>
                                   </TableCell>
                                 </TableRow>
                               ))}
