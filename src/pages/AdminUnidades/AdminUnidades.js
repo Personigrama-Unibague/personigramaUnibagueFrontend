@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,6 +13,7 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
+import { getUnidades } from "../../api/unidades";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./styles.css";
 import organigramas from "../../organigramaFormat.json";
@@ -39,6 +40,15 @@ function AdminUnidades() {
       setOpenRows([...openRows, id]);
     }
   };
+
+  const [unidades, setUnidades] = useState([]);
+  useEffect(() => {
+    const fetchUnidades = async () => {
+      const fetchedUnidades = await getUnidades();
+      setUnidades(fetchedUnidades);
+    };
+    fetchUnidades();
+  }, []);
 
   return (
     <Grid
@@ -421,6 +431,11 @@ function AdminUnidades() {
         >
           Actualizar
         </Button>
+        <ul>
+          {unidades.map((unidad) => (
+            <li key={unidad.id}>{unidad.nombre}</li>
+          ))}
+        </ul>
       </Grid>
     </Grid>
   );
