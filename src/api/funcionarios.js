@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getFuncionarios = async () => {
+export const getFuncionarios = async () => {
     try {
       const response = await axios.get('http://localhost:9090/api/v1/personal/getPersonal');
       return response.data;
