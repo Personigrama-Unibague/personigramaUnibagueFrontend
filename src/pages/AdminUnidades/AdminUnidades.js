@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useLayoutEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -30,69 +30,72 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import { render } from "@testing-library/react";
 import axios from "axios";
 
-export default class AdminUnidades extends Component {
-  state = {
-    unidades: [],
-  };
+export default function AdminUnidades() {
+  const [unidades, setUnidades] = useState([]);
 
-  async componentDidMount() {
-    const fetchedUnidades = await getUnidades();
-    this.setState({ unidades: fetchedUnidades.data });
-    console.log(this.state.unidades);
-  }
-  render() {
-    const [openRows, setOpenRows] = useState([]);
-
-    //Función para manejar el colapso de filas
-    const handleOpenRow = (id) => {
-      if (openRows.includes(id)) {
-        setOpenRows(openRows.filter((rowId) => rowId !== id));
-      } else {
-        setOpenRows([...openRows, id]);
+  useLayoutEffect(() => {
+    (async () => {
+      try {
+        const und = await getUnidades();
+        setUnidades(und.children);
+      } catch (err) {
+        console.log("Error API");
       }
-    };
+    })();
+  }, []);
 
-    const [unidades, setUnidades] = useState([]);
 
-    return (
-      <Grid
-        container
-        component="main"
-        style={{ justifyContent: "center", display: "flex" }}
-      >
-        {/* Toolbar */}
-        <Grid xs={12}>
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-              <Toolbar style={{ backgroundColor: "#193F76" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1 }}
-                  style={{
-                    justifyContent: "center",
-                    display: "flex",
-                    font: "Lato",
-                    fontSize: "15px",
-                  }}
-                >
-                  Administar Unidades
-                </Typography>
-                <InputOutlinedIcon
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 3 }}
-                >
-                  <MenuIcon />
-                </InputOutlinedIcon>
-              </Toolbar>
-            </AppBar>
-          </Box>
-        </Grid>
+  //Función para manejar el colapso de filas
 
-        {/* Grid Table */}
+  const [openRows, setOpenRows] = useState([]);
+
+  const handleOpenRow = (id) => {
+    if (openRows.includes(id)) {
+      setOpenRows(openRows.filter((rowId) => rowId !== id));
+    } else {
+      setOpenRows([...openRows, id]);
+    }
+  };
+  return (
+    <Grid
+      container
+      component="main"
+      style={{ justifyContent: "center", display: "flex" }}
+    >
+      {/* Toolbar */}
+      <Grid item xs={12}>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar style={{ backgroundColor: "#193F76" }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+                style={{
+                  justifyContent: "center",
+                  display: "flex",
+                  font: "Lato",
+                  fontSize: "15px",
+                }}
+              >
+                Administar Unidades
+              </Typography>
+              <InputOutlinedIcon
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 3 }}
+              >
+                <MenuIcon />
+              </InputOutlinedIcon>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </Grid>
+
+
+      {unidades ? (
         <Grid item style={{ marginTop: "50px" }}>
           {/* Table */}
           <TableContainer
@@ -143,7 +146,7 @@ export default class AdminUnidades extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {unidades.children?.map((row) => (
+                {unidades?.map((row) => (
                   <React.Fragment key={row.id}>
                     <TableRow>
                       <TableCell>
@@ -408,25 +411,25 @@ export default class AdminUnidades extends Component {
             </Table>
           </TableContainer>
           {/*  <div>
+    <ul>
+      {unidades.children.map((child, index) => (
+        <li key={index}>
+          <h4>{child.nombre}</h4>
+          <p>ID: {child.id}</p>
+          {child.children && (
             <ul>
-              {unidades.children.map((child, index) => (
+              {child.children.map((grandchild, index) => (
                 <li key={index}>
-                  <h4>{child.nombre}</h4>
-                  <p>ID: {child.id}</p>
-                  {child.children && (
-                    <ul>
-                      {child.children.map((grandchild, index) => (
-                        <li key={index}>
-                          <h5>{grandchild.nombre}</h5>
-                          <p>ID: {grandchild.id}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <h5>{grandchild.nombre}</h5>
+                  <p>ID: {grandchild.id}</p>
                 </li>
               ))}
             </ul>
-          </div> */}
+          )}
+        </li>
+      ))}
+    </ul>
+  </div> */}
           {/* User Button */}
 
           {/* Actualizar Button */}
@@ -443,9 +446,10 @@ export default class AdminUnidades extends Component {
           >
             Actualizar
           </Button>
-          <p>{unidades}</p>
         </Grid>
-      </Grid>
-    );
-  }
+      ) : (
+        <h1>Cargando...</h1>
+      )}
+    </Grid>
+  );
 }

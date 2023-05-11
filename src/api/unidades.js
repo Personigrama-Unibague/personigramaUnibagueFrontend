@@ -1,5 +1,8 @@
 import axios from "axios";
 
+//Servicio encargado de realizacion peticiones HTTP para la obtencion de las areas de la universidad
+
+//Metodo recursivo para la jerarquizacion de las areas de la universidad
 function createTree(organigrama, id) {
   var node = {};
   organigrama.filter((obj) => obj.id === id).forEach((obj) => (node = obj));
@@ -11,6 +14,7 @@ function createTree(organigrama, id) {
   );
   return node;
 }
+
 export const getUnidades = async () => {
   try {
     const response = await axios.get(
@@ -19,10 +23,7 @@ export const getUnidades = async () => {
 
     var organigrama = response.data;
     let json = createTree(organigrama, null);
-    let jsonFinal = JSON.stringify(json);
-    console.log(jsonFinal);
-
-    return jsonFinal;
+    return json;
   } catch (error) {
     console.error(error);
     return [];
