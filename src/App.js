@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core';
 import GlobalStyles from './components/GlobalStyles';
@@ -6,14 +6,13 @@ import theme from './theme';
 import routes from './routes/routes';
 
 const App = () => {
-  
-  const routing = useRoutes(routes);
+  const routing = useRoutes(Array.isArray(routes) ? routes : []);
 
   return (
     <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        {routing}
-      </ThemeProvider>
+      <GlobalStyles />
+      {routing}
+    </ThemeProvider>
   );
 }
 
