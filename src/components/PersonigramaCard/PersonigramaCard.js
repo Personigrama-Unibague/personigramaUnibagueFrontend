@@ -37,7 +37,7 @@ export default function PersonigramaCard(props) {
         <div>
           <CardMedia
             className="cardMedia"
-            image={props.personal.Foto}
+            image={props.personal.foto}
             title="green iguana"
           />
           <CardContent>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component, useState, useEffect, useLayoutEffect } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,6 +12,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PersonigramaCard from "../../components/PersonigramaCard/PersonigramaCard";
 import Personal from "../../personal.json";
 import Grid from "@mui/material/Grid";
+import { getFuncionarios, getFuncionariosByUnidad } from "../../api/funcionarios";
 import BannerPersonal from "../../utils/images/BannerPersonal.png";
 
 import "./Personigrama.css";
@@ -59,6 +60,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Personigrama() {
+
+  const [funcionarios, setFuncionarios] = useState([]);
+
+  useLayoutEffect(() => {
+    (async () => {
+      try {
+        const func = await getFuncionarios();
+        const prueba = await getFuncionariosByUnidad("1");
+        //console.log(prueba);
+        setFuncionarios(func);
+      } catch (err) {
+        console.log("Error API");
+      }
+    })();
+  }, []);
+
+
   return (
     /* Navbar */
     <Box sx={{ flexGrow: 1 }}>
@@ -105,7 +123,7 @@ export default function Personigrama() {
             </div>
           </Grid>
           {/* Cards */}
-          {Personal.map((data) => (
+          {funcionarios.map((data) => (
             <Grid item className="personaCard">
               <PersonigramaCard personal={data} />
             </Grid>
