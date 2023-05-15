@@ -19,7 +19,7 @@ export const getFuncionariosByUnidad = async (id) => {
     const response = await axios.get(
       `http://localhost:9090/api/v1/personal/getPersonalByUnidad/${id}`
     );
-    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
     return [];

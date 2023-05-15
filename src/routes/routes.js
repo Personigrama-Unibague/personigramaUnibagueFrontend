@@ -15,7 +15,7 @@ import PruebaLogin from "../pages/PruebaLogIn/PruebaLogIn";
 const routes = [
   { path: "/", element: <PrincipalTemporal /> },
   { path: "/homePage", element: <HomePage /> },
-  { path: "/personigrama", element: <Personigrama /> },
+  { path: "/personigrama/:unidad", element: <Personigrama /> },
   { path: "/adminLogin", element: <AdminLogin /> },
   { path: "/adminUnidades", element: <AdminUnidades /> },
   { path: "/adminUsuarios", element: <AdminUsuarios /> },

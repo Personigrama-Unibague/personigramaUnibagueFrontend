@@ -3,16 +3,21 @@ import organigramas from "../organigrama.json";
 import Tree from "react-d3-tree";
 import { Button, IconButton } from "@material-ui/core";
 import { Edit, AttachMoney, Accessible } from "@material-ui/icons";
-
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { useCenteredTree } from "./helpers";
 import NodeLabel from "./helpers";
+import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import { Link } from "react-router-dom";
 
 const containerStyles = {
   width: "100vw",
   height: "100vh",
   background: "#eee",
+};
+const props = {
+  prop1: "3.1.1",
 };
 
 const useStyles = makeStyles(
@@ -59,9 +64,14 @@ const renderForeignObjectNode = ({
         {/* {nodeDatum.attributes.nombre} */}
         <div>Nombre:</div>
         <div>{nodeDatum.nombre}</div>
-        <IconButton className={classes.edit} aria-label="edit">
-          <AttachMoney style={{ color: "#459C7F" }} />
-          <Accessible style={{ color: "#459C7F" }} />
+        <Link to={`/personigrama/${nodeDatum.id}`}>
+          <IconButton className={classes.edit} aria-label="edit">
+            <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+          </IconButton>
+        </Link>
+
+        <IconButton>
+          <ArrowForwardIosRoundedIcon style={{ color: "#FFFFFF" }} />
         </IconButton>
       </Button>
     </foreignObject>
