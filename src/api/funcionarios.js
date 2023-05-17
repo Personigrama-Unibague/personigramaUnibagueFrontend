@@ -25,3 +25,14 @@ export const getFuncionariosByUnidad = async (id) => {
     return [];
   }
 };
+
+export const getAgregarPersona = async (persona) => {
+  axios
+    .post("http://localhost:9090/api/v1/personal/getAgregarPersona", {
+      personal: persona,
+    })
+    .then((response) => {})
+    .catch((error) => {
+      console.error(error);
+    });
+};
