@@ -15,12 +15,12 @@ import PruebaLogin from "../pages/PruebaLogIn/PruebaLogIn";
 const routes = [
   { path: "/", element: <PrincipalTemporal /> },
   { path: "/homePage", element: <HomePage /> },
-  { path: "/personigrama/:unidad", element: <Personigrama /> },
+  { path: "/personigrama/:unidad/:nombre", element: <Personigrama /> },
   { path: "/adminLogin", element: <AdminLogin /> },
   { path: "/adminUnidades", element: <AdminUnidades /> },
   { path: "/adminUsuarios", element: <AdminUsuarios /> },
   { path: "/confiSecciones", element: <ConfigurarSecciones /> },
-  { path: "/seccionFuncionarios", element: <SeccionFuncionarios /> },
+  { path: "/seccionFuncionarios/:unidad/:nombre", element: <SeccionFuncionarios /> },
   { path: "/pruebasjson", element: <PruebasJson /> },
   { path: "/pruebaLogin", element: <PruebaLogin /> },
   { path: "*", element: <NotFound /> }

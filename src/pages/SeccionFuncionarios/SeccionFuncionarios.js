@@ -1,6 +1,5 @@
-import * as React from "react";
+import React, { Component, useState, useEffect, useLayoutEffect } from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Grid } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
@@ -24,28 +23,46 @@ import List from "@mui/material/List";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import TextField from "material-ui/TextField";
 import "./styles.css";
-import { getFuncionarios } from "../../api/unidades";
+import {
+  getFuncionarios,
+  getFuncionariosByUnidad,
+} from "../../api/funcionarios";
+import { useParams } from "react-router-dom";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-
-
-
-
-function createData(name, calories) {
-  return { name, calories };
-}
-
-const rows = [
-  createData(1, "-"),
-  createData(2, "A"),
-  createData(3, "B"),
-  createData(4, "C"),
-];
-
-function SeccionFuncionarios() {
-
+function SeccionFuncionarios({ options, onOptionSelect }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [funcionarios, setFuncionarios] = useState([]);
+  const [funcionariosCompletos, setFuncionariosCompletos] = useState([]);
+  const [funcionario, setFuncionario] = React.useState("");
+
+  const handleChange = (event) => {
+    setFuncionario(event.target.value);
+  };
+
+  let params = useParams();
+
+  useLayoutEffect(() => {
+    (async () => {
+      try {
+        const func = await getFuncionarios();
+        const prueba = await getFuncionariosByUnidad(params.unidad);
+        setFuncionarios(prueba);
+        setFuncionariosCompletos(func);
+        console.log(funcionarios);
+      } catch (err) {
+        console.log("Error API");
+      }
+    })();
+  }, []);
+
   return (
     <Grid
       container
@@ -100,22 +117,22 @@ function SeccionFuncionarios() {
                   }}
                   colspan="2"
                 >
-                  Centro de idiomas
+                  {params.nombre}
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
+              {funcionarios.map((row) => (
+                <TableRow key={row.nombre}>
                   <TableCell
                     component="th"
                     scope="row"
                     style={{ display: "flex", justifyContent: "center" }}
                   >
-                    {row.name}
+                    {params.unidad}
                   </TableCell>
                   <TableCell align="center">
-                    {row.calories}
+                    {row.nombre}
                     <IconButton
                       className="IconButton"
                       variant="outlined"
@@ -174,7 +191,12 @@ function SeccionFuncionarios() {
               <div className="typpgraphyTitle">Agregar Funcionario</div>
             </div>
             <ListItem style={{ paddingTop: "30px", width: "450px" }}>
-              <TextField
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={funcionario}
+                label="Age"
+                onChange={handleChange}
                 className="textField"
                 placeholder="Funcionario"
                 focused
@@ -198,8 +220,15 @@ function SeccionFuncionarios() {
                     </IconButton>
                   ),
                 }}
-              />
+              >
+                {funcionariosCompletos.map((option) => (
+                  <MenuItem key={option.nombre} value={option.nombre}>
+                    {option.nombre}
+                  </MenuItem>
+                ))}
+              </Select>
             </ListItem>
+            <ListItem style={{ paddingTop: "30px", width: "450px" }}></ListItem>
             <ListItem style={{ display: "flex", justifyContent: "center" }}>
               <Button
                 className="agregarUsuarioButton"

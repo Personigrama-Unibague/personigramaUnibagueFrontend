@@ -232,7 +232,7 @@ export default function AdminUnidades() {
                           className="IconButton"
                           variant="outlined"
                           component={Link}
-                          to="/seccionFuncionarios"
+                          to={`/seccionFuncionarios/${row.id}/${row.nombre}`}
                           style={{
                             backgroundColor: "#B8B9BA",
                             marginLeft: "10px",
@@ -382,7 +382,7 @@ export default function AdminUnidades() {
                                         className="IconButton"
                                         variant="outlined"
                                         component={Link}
-                                        to="/seccionFuncionarios"
+                                        to={`/seccionFuncionarios/${child.id}/${child.nombre}`}
                                         style={{
                                           backgroundColor: "#B8B9BA",
                                           marginLeft: "10px",

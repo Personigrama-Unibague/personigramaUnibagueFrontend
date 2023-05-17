@@ -64,7 +64,7 @@ const renderForeignObjectNode = ({
         {/* {nodeDatum.attributes.nombre} */}
         <div>Nombre:</div>
         <div>{nodeDatum.nombre}</div>
-        <Link to={`/personigrama/${nodeDatum.id}`}>
+        <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
           <IconButton className={classes.edit} aria-label="edit">
             <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
           </IconButton>
