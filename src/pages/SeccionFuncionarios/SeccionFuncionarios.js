@@ -26,15 +26,14 @@ import "./styles.css";
 import {
   getFuncionarios,
   getFuncionariosByUnidad,
+  getAgregarPersona
 } from "../../api/funcionarios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function SeccionFuncionarios({ options, onOptionSelect }) {
+function SeccionFuncionarios() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -43,11 +42,19 @@ function SeccionFuncionarios({ options, onOptionSelect }) {
   const [funcionariosCompletos, setFuncionariosCompletos] = useState([]);
   const [funcionario, setFuncionario] = React.useState("");
 
+  
+
   const handleChange = (event) => {
     setFuncionario(event.target.value);
+    console.log(event.target.value)
   };
 
   let params = useParams();
+
+ /*  agregarFuncionario =  () => {
+    const agregar = await getAgregarPersona(funcionario);
+   
+  }; */
 
   useLayoutEffect(() => {
     (async () => {
@@ -69,7 +76,7 @@ function SeccionFuncionarios({ options, onOptionSelect }) {
       component="main"
       style={{ justifyContent: "center", display: "flex" }}
     >
-      <Grid xs={12}>
+      <Grid item xs={12}>
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar style={{ backgroundColor: "#193F76" }}>
@@ -115,7 +122,7 @@ function SeccionFuncionarios({ options, onOptionSelect }) {
                     color: "white",
                     fontSize: "20px",
                   }}
-                  colspan="2"
+                  colSpan="2"
                 >
                   {params.nombre}
                 </TableCell>
@@ -195,7 +202,7 @@ function SeccionFuncionarios({ options, onOptionSelect }) {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={funcionario}
-                label="Age"
+                label="Funcionarios"
                 onChange={handleChange}
                 className="textField"
                 placeholder="Funcionario"
@@ -222,7 +229,7 @@ function SeccionFuncionarios({ options, onOptionSelect }) {
                 }}
               >
                 {funcionariosCompletos.map((option) => (
-                  <MenuItem key={option.nombre} value={option.nombre}>
+                  <MenuItem key={option.nombre} value={option.telefono}>
                     {option.nombre}
                   </MenuItem>
                 ))}
@@ -260,6 +267,7 @@ function SeccionFuncionarios({ options, onOptionSelect }) {
         >
           Guardar
         </Button>
+        <p>Funcionario Seleccionado: {funcionario}</p>
       </Grid>
     </Grid>
   );
