@@ -28,6 +28,7 @@ import {
   getFuncionariosByUnidad,
   getAgregarPersona,
   findPersonaById,
+  deletePersonaById,
 } from "../../api/funcionarios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -48,16 +49,16 @@ function SeccionFuncionarios() {
     setFuncionario(event.target.value);
     const user = await findPersonaById(event.target.value);
     getAgregarPersona(user, unidad);
-    const timeout = setTimeout(window.location.reload(), 10000);
+    setTimeout(window.location.reload(), 10000);
   };
 
   let params = useParams();
 
-  /*  agregarFuncionario =  () => {
-    const agregar = await getAgregarPersona(funcionario);
-   
-  }; */
-
+  const deletePersona = async (event) => {
+    deletePersonaById(event)
+    setTimeout(window.location.reload(), 10000);
+  };
+ 
   useLayoutEffect(() => {
     (async () => {
       try {
@@ -153,6 +154,7 @@ function SeccionFuncionarios() {
                         color: "white",
                         marginLeft: "5px",
                       }}
+                      onClick={() => deletePersona(row.cedula)}
                     >
                       <DeleteOutlineOutlinedIcon
                         className="icon"

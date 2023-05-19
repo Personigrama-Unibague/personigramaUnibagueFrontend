@@ -50,3 +50,15 @@ export const getAgregarPersona = async (persona, unidad) => {
       console.error(error);
     });
 };
+
+export const deletePersonaById = async (id) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:9090/api/v1/personal/deletePersonaById/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
