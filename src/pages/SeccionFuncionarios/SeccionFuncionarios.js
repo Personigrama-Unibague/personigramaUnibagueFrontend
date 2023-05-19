@@ -26,7 +26,8 @@ import "./styles.css";
 import {
   getFuncionarios,
   getFuncionariosByUnidad,
-  getAgregarPersona
+  getAgregarPersona,
+  findPersonaById,
 } from "../../api/funcionarios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -41,17 +42,18 @@ function SeccionFuncionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
   const [funcionariosCompletos, setFuncionariosCompletos] = useState([]);
   const [funcionario, setFuncionario] = React.useState("");
+  const [unidad, setUnidad] = React.useState("");
 
-  
-
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     setFuncionario(event.target.value);
-    console.log(event.target.value)
+    const user = await findPersonaById(event.target.value);
+    getAgregarPersona(user, unidad);
+    const timeout = setTimeout(window.location.reload(), 10000);
   };
 
   let params = useParams();
 
- /*  agregarFuncionario =  () => {
+  /*  agregarFuncionario =  () => {
     const agregar = await getAgregarPersona(funcionario);
    
   }; */
@@ -63,6 +65,7 @@ function SeccionFuncionarios() {
         const prueba = await getFuncionariosByUnidad(params.unidad);
         setFuncionarios(prueba);
         setFuncionariosCompletos(func);
+        setUnidad(params.unidad);
         console.log(funcionarios);
       } catch (err) {
         console.log("Error API");
@@ -121,8 +124,9 @@ function SeccionFuncionarios() {
                     font: "Lato",
                     color: "white",
                     fontSize: "20px",
+                    textAlign: "center"
                   }}
-                  colSpan="2"
+                  colSpan="3"
                 >
                   {params.nombre}
                 </TableCell>
@@ -138,23 +142,8 @@ function SeccionFuncionarios() {
                   >
                     {params.unidad}
                   </TableCell>
+                  <TableCell align="center">{row.nombre}</TableCell>
                   <TableCell align="center">
-                    {row.nombre}
-                    <IconButton
-                      className="IconButton"
-                      variant="outlined"
-                      style={{
-                        backgroundColor: "#B8B9BA",
-                        borderRadius: "10px",
-                        color: "white",
-                        marginLeft: "5px",
-                      }}
-                    >
-                      <BorderColorOutlinedIcon
-                        className="icon"
-                        style={{ color: "white" }}
-                      />
-                    </IconButton>
                     <IconButton
                       className="IconButton"
                       variant="outlined"
@@ -212,62 +201,16 @@ function SeccionFuncionarios() {
                   borderRadius: "30px",
                   borderColor: "#04B8E2",
                 }}
-                InputProps={{
-                  startAdornment: (
-                    <IconButton
-                      color="white"
-                      sx={{ p: "10px" }}
-                      style={{
-                        borderRadius: "30px 0px 0px 30px",
-                        backgroundColor: "#04B8E2",
-                      }}
-                      position="start"
-                    >
-                      <AssignmentIndOutlinedIcon style={{ color: "white" }} />
-                    </IconButton>
-                  ),
-                }}
               >
                 {funcionariosCompletos.map((option) => (
-                  <MenuItem key={option.nombre} value={option.telefono}>
+                  <MenuItem key={option.nombre} value={option.cedula}>
                     {option.nombre}
                   </MenuItem>
                 ))}
               </Select>
             </ListItem>
-            <ListItem style={{ paddingTop: "30px", width: "450px" }}></ListItem>
-            <ListItem style={{ display: "flex", justifyContent: "center" }}>
-              <Button
-                className="agregarUsuarioButton"
-                variant="outlined"
-                onClick={handleOpen}
-                style={{
-                  backgroundColor: "#04B8E2",
-                  color: "white",
-                  marginTop: "30px",
-                  borderRadius: "50px",
-                }}
-              >
-                Agregar
-              </Button>
-            </ListItem>
           </List>
         </Dialog>
-
-        <Button
-          variant="outlined"
-          startIcon={<SaveIcon />}
-          style={{
-            backgroundColor: "#1B5DA7",
-            color: "white",
-            marginTop: "30px",
-            marginLeft: "10px",
-            borderRadius: "50px",
-          }}
-        >
-          Guardar
-        </Button>
-        <p>Funcionario Seleccionado: {funcionario}</p>
       </Grid>
     </Grid>
   );

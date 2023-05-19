@@ -17,7 +17,7 @@ export const getFuncionarios = async () => {
 export const getFuncionariosByUnidad = async (id) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/personal/getPersonalByUnidad/${id}`
+      `http://localhost:9090/api/v1/personal/findPersonalByUnidad/${id}`
     );
     return response.data;
   } catch (error) {
@@ -26,11 +26,25 @@ export const getFuncionariosByUnidad = async (id) => {
   }
 };
 
-export const getAgregarPersona = async (persona) => {
+export const findPersonaById = async (id) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:9090/api/v1/personal/findPersonaById/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+export const getAgregarPersona = async (persona, unidad) => {
+
+  const modelo = {...persona, unidad: unidad}
+
+  console.log(modelo);
   axios
-    .post("http://localhost:9090/api/v1/personal/getAgregarPersona", {
-      personal: persona,
-    })
+    .post("http://localhost:9090/api/v1/personal/agregarPersona", modelo)
     .then((response) => {})
     .catch((error) => {
       console.error(error);
