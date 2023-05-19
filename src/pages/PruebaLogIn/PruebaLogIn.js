@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Google from "../google";
+import { useGoogleLogin } from '@react-oauth/google';
+
 
 
 function PruebaLogIn() {

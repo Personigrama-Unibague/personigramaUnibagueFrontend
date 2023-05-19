@@ -15,7 +15,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import { width } from "@mui/system";
+import Google from "../google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +40,8 @@ function AdminLogin() {
       <Grid container component="main" className={classes.root}>
         <Grid item sm={6} md={6}></Grid>
         <Grid
-          rowSpacing={3}
+          item
+          rowspacing={3}
           md={6}
           sm={6}
           xs={12}
@@ -73,7 +74,10 @@ function AdminLogin() {
                 marginBottom: "10px",
               }}
             >
-              <EmailRoundedIcon/>
+              <button>
+                <Google />
+              </button>
+              {/* <EmailRoundedIcon />  */}
             </IconButton>
           </Grid>
 
@@ -89,7 +93,7 @@ function AdminLogin() {
               InputProps={{
                 startAdornment: (
                   <IconButton
-                    color="white"
+                    color="default"
                     sx={{ p: "10px" }}
                     style={{
                       borderRadius: "30px 0px 0px 30px",
@@ -97,7 +101,7 @@ function AdminLogin() {
                     }}
                     position="start"
                   >
-                    <Person2OutlinedIcon style={{ color: "white" }} />
+                    <Person2OutlinedIcon style={{ color: "default" }} />
                   </IconButton>
                 ),
               }}
@@ -118,7 +122,7 @@ function AdminLogin() {
               InputProps={{
                 startAdornment: (
                   <IconButton
-                    color="white"
+                    color="default"
                     sx={{ p: "10px" }}
                     style={{
                       borderRadius: "30px 0px 0px 30px",
@@ -126,7 +130,7 @@ function AdminLogin() {
                     }}
                     position="start"
                   >
-                    <HttpsOutlinedIcon style={{ color: "white" }} />
+                    <HttpsOutlinedIcon style={{ color: "default" }} />
                   </IconButton>
                 ),
               }}
