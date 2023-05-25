@@ -74,11 +74,8 @@ export default function Personigrama() {
   useLayoutEffect(() => {
     (async () => {
       try {
-        const func = await getFuncionarios();
         const prueba = await getFuncionariosByUnidad(params.unidad);
         setFuncionarios(prueba);
-        console.log("funcionarios:");
-        console.log(prueba);
       } catch (err) {
         console.log("Error API");
       }

@@ -24,11 +24,11 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 import TextField from "material-ui/TextField";
 import "./styles.css";
 import {
-  getFuncionarios,
   getFuncionariosByUnidad,
   getAgregarPersona,
   findPersonaById,
   deletePersonaById,
+  getPersonasDistinct,
 } from "../../api/funcionarios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -48,6 +48,7 @@ function SeccionFuncionarios() {
   const handleChange = async (event) => {
     setFuncionario(event.target.value);
     const user = await findPersonaById(event.target.value);
+    console.log(user);
     getAgregarPersona(user, unidad);
     setTimeout(window.location.reload(), 10000);
   };
@@ -55,19 +56,20 @@ function SeccionFuncionarios() {
   let params = useParams();
 
   const deletePersona = async (event) => {
-    deletePersonaById(event)
+    deletePersonaById(event, unidad)
     setTimeout(window.location.reload(), 10000);
   };
  
   useLayoutEffect(() => {
     (async () => {
       try {
-        const func = await getFuncionarios();
+        setUnidad(params.unidad);
+        const func = await getPersonasDistinct(params.unidad);
+        console.log(func);
         const prueba = await getFuncionariosByUnidad(params.unidad);
         setFuncionarios(prueba);
         setFuncionariosCompletos(func);
-        setUnidad(params.unidad);
-        console.log(funcionarios);
+        
       } catch (err) {
         console.log("Error API");
       }
@@ -205,7 +207,7 @@ function SeccionFuncionarios() {
                 }}
               >
                 {funcionariosCompletos.map((option) => (
-                  <MenuItem key={option.nombre} value={option.cedula}>
+                  <MenuItem key={option.id} value={option.cedula}>
                     {option.nombre}
                   </MenuItem>
                 ))}
