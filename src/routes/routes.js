@@ -19,7 +19,7 @@ const routes = [
   { path: "/adminLogin", element: <AdminLogin /> },
   { path: "/adminUnidades", element: <AdminUnidades /> },
   { path: "/adminUsuarios", element: <AdminUsuarios /> },
-  { path: "/confiSecciones", element: <ConfigurarSecciones /> },
+  { path: "/confiSecciones/:unidad/:nombre", element: <ConfigurarSecciones /> },
   { path: "/seccionFuncionarios/:unidad/:nombre", element: <SeccionFuncionarios /> },
   { path: "/pruebasjson", element: <PruebasJson /> },
   { path: "/pruebaLogin", element: <PruebaLogin /> },

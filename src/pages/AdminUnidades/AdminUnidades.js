@@ -212,7 +212,7 @@ export default function AdminUnidades() {
                           className="IconButton"
                           variant="outlined"
                           component={Link}
-                          to="/confiSecciones"
+                          to={`/confiSecciones/${row.id}/${row.nombre}`}
                           style={{
                             backgroundColor: "#B8B9BA",
                             marginLeft: "10px",
@@ -362,7 +362,7 @@ export default function AdminUnidades() {
                                         className="IconButton"
                                         variant="outlined"
                                         component={Link}
-                                        to="/confiSecciones"
+                                        to={`/confiSecciones/${row.id}/${row.nombre}`}
                                         style={{
                                           backgroundColor: "#B8B9BA",
                                           marginLeft: "10px",

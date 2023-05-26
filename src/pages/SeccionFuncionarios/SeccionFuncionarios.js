@@ -36,6 +36,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
 function SeccionFuncionarios() {
+
+  let params = useParams();
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,8 +55,6 @@ function SeccionFuncionarios() {
     getAgregarPersona(user, unidad);
     setTimeout(window.location.reload(), 10000);
   };
-
-  let params = useParams();
 
   const deletePersona = async (event) => {
     deletePersonaById(event, unidad)

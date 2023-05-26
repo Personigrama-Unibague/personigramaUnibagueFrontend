@@ -1,8 +1,8 @@
-import * as React from "react";
+import React, { Component, useState, useEffect, useLayoutEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import { Grid } from "@material-ui/core";
+import { Dialog, Grid, Select, TextField } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -20,19 +20,55 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import IconButton from "material-ui/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useParams } from "react-router-dom";
+import { getAllRolesByUnidad } from "../../api/roles";
+import { List, ListItem } from "material-ui";
 
-function createData(name, calories) {
-  return { name, calories };
-}
+export default function ConfigurarSecciones() {
+  let params = useParams();
 
-const rows = [
-  createData(1, "-"),
-  createData(2, "A"),
-  createData(3, "B"),
-  createData(4, "C"),
-];
+  const [roles, setRoles] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const [nextPriority, setNextPriority] = useState([]);
 
-function ConfigurarSecciones() {
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  useLayoutEffect(() => {
+    (async () => {
+      try {
+        const getRolesByUnidad = await getAllRolesByUnidad(params.unidad);
+        setRoles(getRolesByUnidad);
+        setNextPriority(getRolesByUnidad.length + 1);
+      } catch (err) {
+        console.log("Error API");
+      }
+    })();
+  }, []);
+
+  const agregarSeccion = (id) => {
+    console.log("hola");
+  };
+
+  const handleChange = async (event) => {
+    //setFuncionario(event.target.value);
+    //const user = await findPersonaById(event.target.value);
+    //console.log(user);
+    //getAgregarPersona(user, unidad);
+    //setTimeout(window.location.reload(), 10000);
+  };
+
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleButtonClicked = () => {
+    console.log("Valor del input deshabilitado: 4");
+    console.log("Valor del input editable:", inputValue);
+  };
+
   return (
     <Grid
       container
@@ -70,8 +106,9 @@ function ConfigurarSecciones() {
         </Box>
       </Grid>
       <Grid>
-        <Grid item style={{ marginTop: "95px", marginRight:"100px"}}>
+        <Grid item style={{ marginTop: "95px", marginRight: "100px" }}>
           <IconButton
+            onClick={handleOpen}
             style={{
               backgroundColor: "#1B5DA7",
               color: "white",
@@ -112,22 +149,22 @@ function ConfigurarSecciones() {
                   }}
                   colspan="2"
                 >
-                  Centro de idiomas
+                  {params.nombre}
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
+              {roles?.map((rol) => (
+                <TableRow key={rol.id}>
                   <TableCell
                     component="th"
-                    scope="row"
+                    scope="rol"
                     style={{ display: "flex", justifyContent: "center" }}
                   >
-                    {row.name}
+                    {rol.nombre}
                   </TableCell>
                   <TableCell align="center">
-                    {row.calories}
+                    {rol.id_jerar}
                     <IconButton
                       className="IconButton"
                       variant="outlined"
@@ -163,9 +200,59 @@ function ConfigurarSecciones() {
         >
           Guardar
         </Button>
+
+        {/* agregar Seccion */}
+        <Dialog open={open} onClose={handleClose}>
+          <List sx={{ pt: 0 }}>
+            <div className="modalTitle">
+              <div className="typpgraphyTitle">Agregar Seccion</div>
+            </div>
+            <ListItem style={{ paddingTop: "30px" }}>
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  md={2}
+                  style={{
+                    borderColor: "#04B8E2",
+                  }}
+                >
+                  <TextField
+                    disabled
+                    label="Prioridad"
+                    value={nextPriority}
+                    style={{ width: "200px" }}
+                    fullWidth
+                  />
+                </Grid>
+
+                <Grid item md={10}>
+                  <TextField
+                    className="textField"
+                    label="Nombre de la unidad"
+                    placeholder="Unidad"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    focused
+                    style={{
+                      borderRadius: "5px",
+                    }}
+                    fullWidth
+                  />
+                </Grid>
+              </Grid>
+            </ListItem>
+
+            {/* Boton */}
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleButtonClicked}
+            >
+              Obtener información
+            </Button>
+          </List>
+        </Dialog>
       </Grid>
     </Grid>
   );
 }
-
-export default ConfigurarSecciones;
