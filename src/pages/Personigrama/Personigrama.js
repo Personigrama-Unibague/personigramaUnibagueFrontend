@@ -19,8 +19,8 @@ import {
 import BannerPersonal from "../../utils/images/BannerPersonal.png";
 import { useLocation, useParams } from "react-router-dom";
 
-
 import "./Personigrama.css";
+import { getAllRolesByUnidad } from "../../api/roles";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -66,23 +66,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Personigrama() {
   const [funcionarios, setFuncionarios] = useState([]);
-  
-
-  let params = useParams(); 
-  
+  const [roles, setRoles] = useState([]);
+  let params = useParams();
 
   useLayoutEffect(() => {
     (async () => {
       try {
         const prueba = await getFuncionariosByUnidad(params.unidad);
         setFuncionarios(prueba);
+        const rol = await getAllRolesByUnidad(params.unidad);
+        setRoles(rol);
       } catch (err) {
         console.log("Error API");
       }
     })();
   }, []);
-
-  
 
   return (
     /* Navbar */
@@ -121,7 +119,6 @@ export default function Personigrama() {
       {/* Cards */}
       <div className="personigramaCards">
         <Grid container spacing={3} className="gridContainer">
-          {/* Banner */}
           <Grid item xs={12} md={9} className="imageContainer">
             <img src={BannerPersonal} className="bannerPersonal" />
             <div className="nombreBanner">
@@ -129,13 +126,41 @@ export default function Personigrama() {
               <p className="unidad">{params.nombre}</p>
             </div>
           </Grid>
-          {/* Cards */}
-          {funcionarios?.map((data) => (
-            <Grid item className="personaCard">
-              <PersonigramaCard personal={data} />
-            </Grid>
-          ))}
+
+          <Grid item xs={12} md={9}>
+            <p>HOLA</p>
+          </Grid>
         </Grid>
+
+        {/* Banner */}
+
+        {roles?.map((data) => (
+          <div key={data.id}>
+            <Grid item xs={12} md={12} className="imageContainer">
+              <img src={BannerPersonal} className="bannerPersonal" />
+              <div className="nombreBanner">
+                <p className="personigrama">PERSONIGRAMA</p>
+                <p className="unidad">{data.nombre}</p>
+              </div>
+            </Grid>
+
+            <div className="personigramaCards">
+              <Grid container spacing={3} className="gridContainer">
+                {funcionarios?.map((func) => {
+                  if (func.id_jerar == data.id_jerar) {
+                    return (
+                      <Grid item className="personaCard" key={func.id}>
+                        <PersonigramaCard personal={func} />
+                      </Grid>
+                    );
+                  }
+                })}
+              </Grid>
+            </div>
+          </div>
+        ))}
+
+        {/* Cards */}
       </div>
     </Box>
   );

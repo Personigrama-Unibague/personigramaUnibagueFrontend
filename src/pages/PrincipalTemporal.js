@@ -22,7 +22,7 @@ export default function PrincipalTemporal() {
           <Link style={{color: "white"}} to="homePage">HomePage</Link>
         </li>
         <li>
-          <Link style={{color: "white"}} to="personigrama">Personigrama</Link>
+          <Link style={{color: "white"}} to="pruebasjson">Personigrama</Link>
         </li>
 
         <li style={{ paddingTop: "10px" }}>
