@@ -147,357 +147,357 @@ export default function ConfigurarSecciones() {
   const handleButtonClicked = () => {
     saveRol(nextPriority, inputValue, params.unidad);
     setTimeout(window.location.reload(), 10000);
+  };
 
-    return (
-      <Grid
-        container
-        component="main"
-        style={{ justifyContent: "center", display: "flex" }}
-      >
-        <Grid md={12}>
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-              <Toolbar style={{ backgroundColor: "#193F76" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1 }}
+  return (
+    <Grid
+      container
+      component="main"
+      style={{ justifyContent: "center", display: "flex" }}
+    >
+      <Grid md={12}>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar style={{ backgroundColor: "#193F76" }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+                style={{
+                  justifyContent: "center",
+                  display: "flex",
+                  font: "Lato",
+                  fontSize: "38px",
+                  textAlign: "center",
+                }}
+              >
+                Configuración Secciones
+              </Typography>
+              <InputOutlinedIcon
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 3 }}
+              >
+                <MenuIcon />
+              </InputOutlinedIcon>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </Grid>
+      <Grid item style={{ marginTop: "50px" }}>
+        <TableContainer component={Paper}>
+          <Table
+            sx={{ minWidth: 200 }}
+            style={{ borderStyle: "solid", borderColor: "#017A97" }}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell
                   style={{
-                    justifyContent: "center",
-                    display: "flex",
+                    backgroundColor: "#017A97",
                     font: "Lato",
-                    fontSize: "38px",
+                    color: "white",
+                    fontSize: "20px",
                     textAlign: "center",
                   }}
+                  colSpan="6"
                 >
-                  Configuración Secciones
-                </Typography>
-                <InputOutlinedIcon
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 3 }}
-                >
-                  <MenuIcon />
-                </InputOutlinedIcon>
-              </Toolbar>
-            </AppBar>
-          </Box>
-        </Grid>
-        <Grid item style={{ marginTop: "50px" }}>
-          <TableContainer component={Paper}>
-            <Table
-              sx={{ minWidth: 200 }}
-              style={{ borderStyle: "solid", borderColor: "#017A97" }}
-            >
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    style={{
-                      backgroundColor: "#017A97",
-                      font: "Lato",
-                      color: "white",
-                      fontSize: "20px",
-                      textAlign: "center",
-                    }}
-                    colSpan="6"
-                  >
-                    {params.nombre}
+                  {params.nombre}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {roles?.map((rol) => (
+                <TableRow key={rol.id}>
+                  {/* Id_jerar */}
+                  <TableCell>{rol.id_jerar}</TableCell>
+
+                  {/* Nombre */}
+                  <TableCell>{rol.nombre}</TableCell>
+
+                  {/* Boton editar */}
+                  <TableCell component="th" scope="rol">
+                    <IconButton
+                      onClick={() => openUpdateDialog(rol)}
+                      className="IconButton"
+                      variant="outlined"
+                      style={{
+                        backgroundColor: "#B8B9BA",
+                        borderRadius: "10px",
+                        color: "white",
+                        marginLeft: "5px",
+                      }}
+                    >
+                      <BorderColorOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
+                  </TableCell>
+
+                  {/* Boton eliminar */}
+                  <TableCell component="th" scope="rol">
+                    <IconButton
+                      className="IconButton"
+                      variant="outlined"
+                      style={{
+                        backgroundColor: "#B8B9BA",
+                        borderRadius: "10px",
+                        color: "white",
+                        marginLeft: "5px",
+                      }}
+                      onClick={() => deleteRol(rol.id)}
+                    >
+                      <DeleteOutlineOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
+                  </TableCell>
+
+                  {/* Boton Agregar Personas */}
+                  <TableCell component="th" scope="rol">
+                    <IconButton
+                      className="IconButton"
+                      variant="outlined"
+                      style={{
+                        backgroundColor: "#B8B9BA",
+                        borderRadius: "10px",
+                        color: "white",
+                        marginLeft: "5px",
+                      }}
+                      onClick={() => openPersonDialog(rol.id_jerar)}
+                    >
+                      <PersonAddIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
+                  </TableCell>
+
+                  {/* Boton Mostrar Personas */}
+                  <TableCell component="th" scope="rol">
+                    <IconButton
+                      className="IconButton"
+                      variant="outlined"
+                      style={{
+                        backgroundColor: "#B8B9BA",
+                        borderRadius: "10px",
+                        color: "white",
+                        marginLeft: "5px",
+                      }}
+                      onClick={() => openTablePersonDialog(rol.id_jerar)}
+                    >
+                      <MenuIcon className="icon" style={{ color: "white" }} />
+                    </IconButton>
                   </TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {roles?.map((rol) => (
-                  <TableRow key={rol.id}>
-                    {/* Id_jerar */}
-                    <TableCell>{rol.id_jerar}</TableCell>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
-                    {/* Nombre */}
-                    <TableCell>{rol.nombre}</TableCell>
+        <Button
+          onClick={handleOpen}
+          variant="outlined"
+          startIcon={<SaveIcon />}
+          style={{
+            backgroundColor: "#04B8E2",
+            color: "white",
+            marginTop: "30px",
+            marginLeft: "50px",
+            borderRadius: "50px",
+          }}
+        >
+          Agregar
+        </Button>
 
-                    {/* Boton editar */}
-                    <TableCell component="th" scope="rol">
-                      <IconButton
-                        onClick={() => openUpdateDialog(rol)}
-                        className="IconButton"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: "#B8B9BA",
-                          borderRadius: "10px",
-                          color: "white",
-                          marginLeft: "5px",
-                        }}
-                      >
-                        <BorderColorOutlinedIcon
-                          className="icon"
-                          style={{ color: "white" }}
-                        />
-                      </IconButton>
-                    </TableCell>
+        {/* Dialog agregar Seccion */}
+        <Dialog open={open} onClose={handleClose}>
+          <div className="modalTitle">
+            <div className="typpgraphyTitle">Agregar Seccion</div>
+          </div>
 
-                    {/* Boton eliminar */}
-                    <TableCell component="th" scope="rol">
-                      <IconButton
-                        className="IconButton"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: "#B8B9BA",
-                          borderRadius: "10px",
-                          color: "white",
-                          marginLeft: "5px",
-                        }}
-                        onClick={() => deleteRol(rol.id)}
-                      >
-                        <DeleteOutlineOutlinedIcon
-                          className="icon"
-                          style={{ color: "white" }}
-                        />
-                      </IconButton>
-                    </TableCell>
+          <Grid container className="gridContainerDialog">
+            <Grid
+              item
+              md={2}
+              style={{
+                borderColor: "#04B8E2",
+              }}
+            >
+              <TextField
+                disabled
+                label="Prioridad"
+                value={nextPriority}
+                style={{ width: "200px" }}
+                fullWidth
+              />
+            </Grid>
 
-                    {/* Boton Agregar Personas */}
-                    <TableCell component="th" scope="rol">
-                      <IconButton
-                        className="IconButton"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: "#B8B9BA",
-                          borderRadius: "10px",
-                          color: "white",
-                          marginLeft: "5px",
-                        }}
-                        onClick={() => openPersonDialog(rol.id_jerar)}
-                      >
-                        <PersonAddIcon
-                          className="icon"
-                          style={{ color: "white" }}
-                        />
-                      </IconButton>
-                    </TableCell>
-
-                    {/* Boton Mostrar Personas */}
-                    <TableCell component="th" scope="rol">
-                      <IconButton
-                        className="IconButton"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: "#B8B9BA",
-                          borderRadius: "10px",
-                          color: "white",
-                          marginLeft: "5px",
-                        }}
-                        onClick={() => openTablePersonDialog(rol.id_jerar)}
-                      >
-                        <MenuIcon className="icon" style={{ color: "white" }} />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-
-          <Button
-            onClick={handleOpen}
-            variant="outlined"
-            startIcon={<SaveIcon />}
-            style={{
-              backgroundColor: "#04B8E2",
-              color: "white",
-              marginTop: "30px",
-              marginLeft: "50px",
-              borderRadius: "50px",
-            }}
-          >
-            Agregar
-          </Button>
-
-          {/* Dialog agregar Seccion */}
-          <Dialog open={open} onClose={handleClose}>
-            <div className="modalTitle">
-              <div className="typpgraphyTitle">Agregar Seccion</div>
-            </div>
-
-            <Grid container className="gridContainerDialog">
-              <Grid
-                item
-                md={2}
+            <Grid item md={10}>
+              <TextField
+                className="textField"
+                label="Nombre de la unidad"
+                placeholder="Unidad"
+                value={inputValue}
+                onChange={handleInputChange}
+                focused
                 style={{
+                  borderRadius: "5px",
+                }}
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+
+          {/* Boton */}
+          <div className="buttonDialogContainer">
+            <Button
+              variant="contained"
+              onClick={handleButtonClicked}
+              className="buttonDialog"
+            >
+              Agregar
+            </Button>
+          </div>
+        </Dialog>
+
+        {/* Dialog actualizar nombre seccion */}
+        <Dialog open={openUpdate} onClose={handleCloseUpdate}>
+          <div className="modalTitle">
+            <div className="typpgraphyTitle">Actualizar Seccion</div>
+          </div>
+
+          <Grid container className="gridContainerDialog">
+            <Grid item md={10}>
+              <TextField
+                className="textField"
+                label="Nuevo Nombre"
+                placeholder={nameParametersDialog}
+                value={newRolName}
+                onChange={onChangeUpdateRol}
+                focused
+                style={{
+                  borderRadius: "5px",
+                }}
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+
+          {/* Boton */}
+          <div className="buttonDialogContainer">
+            <Button
+              variant="contained"
+              onClick={updateRol}
+              className="buttonDialog"
+            >
+              Agregar
+            </Button>
+          </div>
+        </Dialog>
+
+        {/* Dialog para agregar personas a la seccion */}
+        <Dialog open={openPerson} onClose={handleCloseAddPerson}>
+          <List sx={{ pt: 0 }}>
+            <div className="modalTitle">
+              <div className="typpgraphyTitle">Agregar Funcionario</div>
+            </div>
+            <ListItem style={{ paddingTop: "30px", width: "450px" }}>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={addPerson}
+                label="Funcionarios"
+                onChange={handleChangeAddPerson}
+                className="textField"
+                placeholder="Funcionario"
+                focused
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "30px",
                   borderColor: "#04B8E2",
                 }}
               >
-                <TextField
-                  disabled
-                  label="Prioridad"
-                  value={nextPriority}
-                  style={{ width: "200px" }}
-                  fullWidth
-                />
-              </Grid>
+                {funcionarioJerar.map((option) => (
+                  <MenuItem key={option.id} value={option.cedula}>
+                    {option.nombre}
+                  </MenuItem>
+                ))}
+              </Select>
+            </ListItem>
+          </List>
+        </Dialog>
 
-              <Grid item md={10}>
-                <TextField
-                  className="textField"
-                  label="Nombre de la unidad"
-                  placeholder="Unidad"
-                  value={inputValue}
-                  onChange={handleInputChange}
-                  focused
-                  style={{
-                    borderRadius: "5px",
-                  }}
-                  fullWidth
-                />
-              </Grid>
-            </Grid>
-
-            {/* Boton */}
-            <div className="buttonDialogContainer">
-              <Button
-                variant="contained"
-                onClick={handleButtonClicked}
-                className="buttonDialog"
-              >
-                Agregar
-              </Button>
-            </div>
-          </Dialog>
-
-          {/* Dialog actualizar nombre seccion */}
-          <Dialog open={openUpdate} onClose={handleCloseUpdate}>
-            <div className="modalTitle">
-              <div className="typpgraphyTitle">Actualizar Seccion</div>
-            </div>
-
-            <Grid container className="gridContainerDialog">
-              <Grid item md={10}>
-                <TextField
-                  className="textField"
-                  label="Nuevo Nombre"
-                  placeholder={nameParametersDialog}
-                  value={newRolName}
-                  onChange={onChangeUpdateRol}
-                  focused
-                  style={{
-                    borderRadius: "5px",
-                  }}
-                  fullWidth
-                />
-              </Grid>
-            </Grid>
-
-            {/* Boton */}
-            <div className="buttonDialogContainer">
-              <Button
-                variant="contained"
-                onClick={updateRol}
-                className="buttonDialog"
-              >
-                Agregar
-              </Button>
-            </div>
-          </Dialog>
-
-          {/* Dialog para agregar personas a la seccion */}
-          <Dialog open={openPerson} onClose={handleCloseAddPerson}>
-            <List sx={{ pt: 0 }}>
-              <div className="modalTitle">
-                <div className="typpgraphyTitle">Agregar Funcionario</div>
-              </div>
-              <ListItem style={{ paddingTop: "30px", width: "450px" }}>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={addPerson}
-                  label="Funcionarios"
-                  onChange={handleChangeAddPerson}
-                  className="textField"
-                  placeholder="Funcionario"
-                  focused
-                  style={{
-                    backgroundColor: "#FFFFFF",
-                    borderRadius: "30px",
-                    borderColor: "#04B8E2",
-                  }}
+        {/* Dialog para agregar personas a la seccion */}
+        <Dialog open={openTablePerson} onClose={handleCloseTablePerson}>
+          <List sx={{ pt: 0 }}>
+            <ListItem style={{ paddingTop: "30px", width: "450px" }}>
+              <TableContainer component={Paper}>
+                <Table
+                  sx={{ minWidth: 200 }}
+                  style={{ borderStyle: "solid", borderColor: "#017A97" }}
                 >
-                  {funcionarioJerar.map((option) => (
-                    <MenuItem key={option.id} value={option.cedula}>
-                      {option.nombre}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </ListItem>
-            </List>
-          </Dialog>
-
-          {/* Dialog para agregar personas a la seccion */}
-          <Dialog open={openTablePerson} onClose={handleCloseTablePerson}>
-            <List sx={{ pt: 0 }}>
-              <ListItem style={{ paddingTop: "30px", width: "450px" }}>
-                <TableContainer component={Paper}>
-                  <Table
-                    sx={{ minWidth: 200 }}
-                    style={{ borderStyle: "solid", borderColor: "#017A97" }}
-                  >
-                    <TableHead>
-                      <TableRow>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell
+                        style={{
+                          backgroundColor: "#017A97",
+                          font: "Lato",
+                          color: "white",
+                          fontSize: "20px",
+                          textAlign: "center",
+                        }}
+                        colSpan="3"
+                      >
+                        USUARIOS
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {table.map((row) => (
+                      <TableRow key={row.nombre}>
                         <TableCell
+                          component="th"
+                          scope="row"
                           style={{
-                            backgroundColor: "#017A97",
-                            font: "Lato",
-                            color: "white",
-                            fontSize: "20px",
-                            textAlign: "center",
+                            display: "flex",
+                            justifyContent: "center",
                           }}
-                          colSpan="3"
                         >
-                          USUARIOS
+                          {row.nombre}
+                        </TableCell>
+
+                        <TableCell align="center">
+                          <IconButton
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                            }}
+                            /* onClick={() => deletePersona(row.cedula)} */
+                          >
+                            <DeleteOutlineOutlinedIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
                         </TableCell>
                       </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {table.map((row) => (
-                        <TableRow key={row.nombre}>
-                          <TableCell
-                            component="th"
-                            scope="row"
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {row.nombre}
-                          </TableCell>
-
-                          <TableCell align="center">
-                            <IconButton
-                              className="IconButton"
-                              variant="outlined"
-                              style={{
-                                backgroundColor: "#B8B9BA",
-                                borderRadius: "10px",
-                                color: "white",
-                                marginLeft: "5px",
-                              }}
-                              /* onClick={() => deletePersona(row.cedula)} */
-                            >
-                              <DeleteOutlineOutlinedIcon
-                                className="icon"
-                                style={{ color: "white" }}
-                              />
-                            </IconButton>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </ListItem>
-            </List>
-          </Dialog>
-        </Grid>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </ListItem>
+          </List>
+        </Dialog>
       </Grid>
-    );
-  };
+    </Grid>
+  );
 }
