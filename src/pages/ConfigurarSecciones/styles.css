@@ -1,0 +1,14 @@
+.buttonDialogContainer {
+  display: grid;
+  place-content: center;
+  padding-bottom: 20px;
+}
+
+.buttonDialog {
+  background-color: #193f76 !important;
+  color: white !important;
+}
+
+.gridContainerDialog {
+  padding: 20px;
+}

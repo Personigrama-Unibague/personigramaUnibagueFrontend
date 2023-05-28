@@ -21,18 +21,33 @@ import IconButton from "material-ui/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useParams } from "react-router-dom";
-import { getAllRolesByUnidad } from "../../api/roles";
+import {
+  deleteRolById,
+  getAllRolesByUnidad,
+  saveRol,
+  updateNameById,
+} from "../../api/roles";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+
 import { List, ListItem } from "material-ui";
+import "./styles.css";
 
 export default function ConfigurarSecciones() {
   let params = useParams();
 
   const [roles, setRoles] = useState([]);
   const [open, setOpen] = React.useState(false);
+  const [openUpdate, setOpenUpdate] = React.useState(false);
   const [nextPriority, setNextPriority] = useState([]);
+  const [nameParametersDialog, setNameParametersDialog] = React.useState();
+  const [idParametersDialog, setIdParametersDialog] = React.useState();
+  const [newRolName, setNewRolName] = React.useState();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpenUpdate = () => setOpenUpdate(true);
+  const handleCloseUpdate = () => setOpenUpdate(false);
+  const [inputValue, setInputValue] = useState("");
 
   useLayoutEffect(() => {
     (async () => {
@@ -40,33 +55,40 @@ export default function ConfigurarSecciones() {
         const getRolesByUnidad = await getAllRolesByUnidad(params.unidad);
         setRoles(getRolesByUnidad);
         setNextPriority(getRolesByUnidad.length + 1);
+        console.log(getRolesByUnidad);
       } catch (err) {
         console.log("Error API");
       }
     })();
   }, []);
 
-  const agregarSeccion = (id) => {
-    console.log("hola");
+  const openUpdateDialog = (rol) => {
+    setOpenUpdate(true);
+    setNameParametersDialog(rol.nombre);
+    setIdParametersDialog(rol.id);
   };
 
-  const handleChange = async (event) => {
-    //setFuncionario(event.target.value);
-    //const user = await findPersonaById(event.target.value);
-    //console.log(user);
-    //getAgregarPersona(user, unidad);
-    //setTimeout(window.location.reload(), 10000);
+  const onChangeUpdateRol = (event) => {
+    setNewRolName(event.target.value);
   };
 
-  const [inputValue, setInputValue] = useState("");
+  const updateRol = () => {
+    updateNameById(idParametersDialog, newRolName);
+    setTimeout(window.location.reload(), 10000);
+  };
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleButtonClicked = () => {
-    console.log("Valor del input deshabilitado: 4");
-    console.log("Valor del input editable:", inputValue);
+    saveRol(nextPriority, inputValue, params.unidad);
+    setTimeout(window.location.reload(), 10000);
+  };
+
+  const deleteRol = (id) => {
+    deleteRolById(id);
+    setTimeout(window.location.reload(), 10000);
   };
 
   return (
@@ -88,6 +110,7 @@ export default function ConfigurarSecciones() {
                   display: "flex",
                   font: "Lato",
                   fontSize: "38px",
+                  textAlign: "center",
                 }}
               >
                 Configuración Secciones
@@ -105,33 +128,6 @@ export default function ConfigurarSecciones() {
           </AppBar>
         </Box>
       </Grid>
-      <Grid>
-        <Grid item style={{ marginTop: "95px", marginRight: "100px" }}>
-          <IconButton
-            onClick={handleOpen}
-            style={{
-              backgroundColor: "#1B5DA7",
-              color: "white",
-            }}
-          >
-            <AddIcon fontSize="large" />
-          </IconButton>
-          <a>Agregar Seccion</a>
-        </Grid>
-
-        <Grid item style={{ marginTop: "10px" }}>
-          <IconButton
-            style={{
-              backgroundColor: "#1B5DA7",
-              color: "white",
-            }}
-          >
-            <DeleteIcon fontSize="large" />
-          </IconButton>
-          <a>Eliminar Seccion</a>
-        </Grid>
-      </Grid>
-
       <Grid item style={{ marginTop: "50px" }}>
         <TableContainer component={Paper}>
           <Table
@@ -146,8 +142,9 @@ export default function ConfigurarSecciones() {
                     font: "Lato",
                     color: "white",
                     fontSize: "20px",
+                    textAlign: "center",
                   }}
-                  colspan="2"
+                  colSpan="4"
                 >
                   {params.nombre}
                 </TableCell>
@@ -156,16 +153,16 @@ export default function ConfigurarSecciones() {
             <TableBody>
               {roles?.map((rol) => (
                 <TableRow key={rol.id}>
-                  <TableCell
-                    component="th"
-                    scope="rol"
-                    style={{ display: "flex", justifyContent: "center" }}
-                  >
-                    {rol.nombre}
-                  </TableCell>
-                  <TableCell align="center">
-                    {rol.id_jerar}
+                  {/* Id_jerar */}
+                  <TableCell>{rol.id_jerar}</TableCell>
+
+                  {/* Nombre */}
+                  <TableCell>{rol.nombre}</TableCell>
+
+                  {/* Boton editar */}
+                  <TableCell component="th" scope="rol">
                     <IconButton
+                      onClick={() => openUpdateDialog(rol)}
                       className="IconButton"
                       variant="outlined"
                       style={{
@@ -181,6 +178,26 @@ export default function ConfigurarSecciones() {
                       />
                     </IconButton>
                   </TableCell>
+
+                  {/* Boton eliminar */}
+                  <TableCell component="th" scope="rol">
+                    <IconButton
+                      className="IconButton"
+                      variant="outlined"
+                      style={{
+                        backgroundColor: "#B8B9BA",
+                        borderRadius: "10px",
+                        color: "white",
+                        marginLeft: "5px",
+                      }}
+                      onClick={() => deleteRol(rol.id)}
+                    >
+                      <DeleteOutlineOutlinedIcon
+                        className="icon"
+                        style={{ color: "white" }}
+                      />
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -188,69 +205,105 @@ export default function ConfigurarSecciones() {
         </TableContainer>
 
         <Button
+          onClick={handleOpen}
           variant="outlined"
           startIcon={<SaveIcon />}
           style={{
             backgroundColor: "#04B8E2",
             color: "white",
             marginTop: "30px",
-            marginLeft: "30px",
+            marginLeft: "50px",
             borderRadius: "50px",
           }}
         >
-          Guardar
+          Agregar
         </Button>
 
-        {/* agregar Seccion */}
+        {/* Dialog agregar Seccion */}
         <Dialog open={open} onClose={handleClose}>
-          <List sx={{ pt: 0 }}>
-            <div className="modalTitle">
-              <div className="typpgraphyTitle">Agregar Seccion</div>
-            </div>
-            <ListItem style={{ paddingTop: "30px" }}>
-              <Grid container spacing={2}>
-                <Grid
-                  item
-                  md={2}
-                  style={{
-                    borderColor: "#04B8E2",
-                  }}
-                >
-                  <TextField
-                    disabled
-                    label="Prioridad"
-                    value={nextPriority}
-                    style={{ width: "200px" }}
-                    fullWidth
-                  />
-                </Grid>
+          <div className="modalTitle">
+            <div className="typpgraphyTitle">Agregar Seccion</div>
+          </div>
 
-                <Grid item md={10}>
-                  <TextField
-                    className="textField"
-                    label="Nombre de la unidad"
-                    placeholder="Unidad"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    focused
-                    style={{
-                      borderRadius: "5px",
-                    }}
-                    fullWidth
-                  />
-                </Grid>
-              </Grid>
-            </ListItem>
+          <Grid container className="gridContainerDialog">
+            <Grid
+              item
+              md={2}
+              xs={2}
+              style={{
+                borderColor: "#04B8E2",
+              }}
+            >
+              <TextField
+                disabled
+                label="Prioridad"
+                value={nextPriority}
+                style={{ width: "200px" }}
+                fullWidth
+              />
+            </Grid>
 
-            {/* Boton */}
+            <Grid item xs={10} md={10}>
+              <TextField
+                className="textField"
+                label="Nombre de la unidad"
+                placeholder="Unidad"
+                value={inputValue}
+                onChange={handleInputChange}
+                focused
+                style={{
+                  borderRadius: "5px",
+                }}
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+
+          {/* Boton */}
+          <div className="buttonDialogContainer">
             <Button
               variant="contained"
-              color="primary"
               onClick={handleButtonClicked}
+              className="buttonDialog"
             >
-              Obtener información
+              Agregar
             </Button>
-          </List>
+          </div>
+        </Dialog>
+
+        {/* Dialog actualizar nombre seccion */}
+        <Dialog open={openUpdate} onClose={handleCloseUpdate}>
+          <div className="modalTitle">
+            <div className="typpgraphyTitle">Actualizar Seccion</div>
+          </div>
+
+          <Grid container className="gridContainerDialog">
+            <Grid item xs={10} md={10}>
+              <TextField
+                className="textField"
+                label="Nuevo Nombre"
+                placeholder={nameParametersDialog}
+                value={newRolName}
+                onChange={onChangeUpdateRol}
+                focused
+                style={{
+                  borderRadius: "5px",
+                }}
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+
+          {/* Boton */}
+          <div className="buttonDialogContainer">
+            <Button
+              variant="contained"
+              onClick={updateRol}
+              className="buttonDialog"
+            >
+              Agregar
+            </Button>
+          </div>
         </Dialog>
       </Grid>
     </Grid>
