@@ -12,6 +12,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
+import CloseIcon from "@mui/icons-material/Close";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@material-ui/core";
@@ -190,16 +191,41 @@ function AdminUsuarios() {
         >
           Agregar Usuario
         </Button>
+
         {/*Modal Agregar usuario */}
         <Dialog open={open} onClose={handleClose}>
           <List sx={{ pt: 0 }}>
-            <div className="modalTitle">
-              <div className="typpgraphyTitle">Agregar Usuario</div>
-            </div>
-            <ListItem style={{ paddingTop: "30px", width: "450px" }}>
+            <Toolbar className="modalTitle">
+              <Typography
+                className="typpgraphyTitle"
+                variant="h5"
+                style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
+              >
+                Agregar Usuario
+              </Typography>
+              <IconButton
+                edge="end"
+                className="IconButton"
+                variant="outlined"
+                style={{
+                  color: "white",
+                }}
+                onClick={() => handleClose()}
+              >
+                <CloseIcon className="icon" style={{ color: "white" }} />
+              </IconButton>
+            </Toolbar>
+
+            <ListItem>
+              <Typography variant="subtitle1" style={{ paddingLeft: "20px" }}>
+                Usuario
+              </Typography>
+            </ListItem>
+
+            <ListItem style={{ paddingTop: "5px", width: "450px" }}>
               <TextField
                 className="textField"
-                placeholder="correo"
+                placeholder="Usuario"
                 focused
                 style={{
                   backgroundColor: "#FFFFFF",
@@ -223,6 +249,41 @@ function AdminUsuarios() {
                 }}
               />
             </ListItem>
+
+            <ListItem>
+              <Typography variant="subtitle1" style={{ paddingLeft: "20px" }}>
+                Contraseña
+              </Typography>
+            </ListItem>
+
+            <ListItem style={{ paddingTop: "5px", width: "450px" }}>
+              <TextField
+                className="textField"
+                placeholder="Contraseña"
+                focused
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "30px",
+                  borderColor: "#04B8E2",
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <IconButton
+                      color="white"
+                      sx={{ p: "10px" }}
+                      style={{
+                        borderRadius: "30px 0px 0px 30px",
+                        backgroundColor: "#04B8E2",
+                      }}
+                      position="start"
+                    >
+                      <EmailIcon style={{ color: "white" }} />
+                    </IconButton>
+                  ),
+                }}
+              />
+            </ListItem>
+            
             <ListItem style={{ display: "flex", justifyContent: "center" }}>
               <Button
                 className="agregarUsuarioButton"

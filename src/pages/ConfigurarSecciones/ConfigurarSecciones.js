@@ -16,6 +16,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@material-ui/core";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import SaveIcon from "@mui/icons-material/Save";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
@@ -225,70 +226,126 @@ export default function ConfigurarSecciones() {
                   <TableRow key={rol.id}>
                     {/* Id_jerar */}
                     <TableCell>{rol.id_jerar}</TableCell>
-
                     {/* Nombre */}
                     <TableCell>{rol.nombre}</TableCell>
 
-                    {/* Boton editar */}
-                    <TableCell component="th" scope="rol">
-                      <IconButton
-                        onClick={() => openUpdateDialog(rol)}
-                        className="IconButton"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: "#B8B9BA",
-                          borderRadius: "10px",
-                          color: "white",
-                          marginLeft: "5px",
-                        }}
-                      >
-                        <BorderColorOutlinedIcon
-                          className="icon"
-                          style={{ color: "white" }}
-                        />
-                      </IconButton>
-                    </TableCell>
+                    {rol.unidad != "0" && rol.id_jerar != 0 ? (
+                      <>
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            onClick={() => openUpdateDialog(rol)}
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            <BorderColorOutlinedIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
 
-                    {/* Boton eliminar */}
-                    <TableCell component="th" scope="rol">
-                      <IconButton
-                        className="IconButton"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: "#B8B9BA",
-                          borderRadius: "10px",
-                          color: "white",
-                          marginLeft: "5px",
-                        }}
-                        onClick={() => deleteRol(rol.id, rol.id_jerar)}
-                      >
-                        <DeleteOutlineOutlinedIcon
-                          className="icon"
-                          style={{ color: "white" }}
-                        />
-                      </IconButton>
-                    </TableCell>
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                            }}
+                            onClick={() => deleteRol(rol.id, rol.id_jerar)}
+                          >
+                            <DeleteOutlineOutlinedIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
 
-                    {/* Boton Agregar Personas */}
-                    <TableCell component="th" scope="rol">
-                      <IconButton
-                        className="IconButton"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: "#B8B9BA",
-                          borderRadius: "10px",
-                          color: "white",
-                          marginLeft: "5px",
-                        }}
-                        onClick={() => openPersonDialog(rol.id_jerar)}
-                      >
-                        <PersonAddIcon
-                          className="icon"
-                          style={{ color: "white" }}
-                        />
-                      </IconButton>
-                    </TableCell>
-
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                            }}
+                            onClick={() => openPersonDialog(rol.id_jerar)}
+                          >
+                            <PersonAddIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+                      </>
+                    ) : (
+                      <>
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            disabled="true"
+                            className="IconButton"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                              textAlign: "center",
+                            }}
+                          >
+                            <HorizontalRuleIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            disabled="true"
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            <HorizontalRuleIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            disabled="true"
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            <HorizontalRuleIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+                      </>
+                    )}
                     {/* Boton Mostrar Personas */}
                     <TableCell component="th" scope="rol">
                       <IconButton
