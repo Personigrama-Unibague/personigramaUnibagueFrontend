@@ -17,6 +17,8 @@ import {
   getFuncionariosByUnidad,
 } from "../../api/funcionarios";
 import BannerPersonal from "../../utils/images/BannerPersonal.png";
+import BannerPersonalSecundario from "../../utils/images/BannerPersonalSecundario.png";
+
 import { useLocation, useParams } from "react-router-dom";
 
 import "./Personigrama.css";
@@ -119,16 +121,12 @@ export default function Personigrama() {
       {/* Cards */}
       <div className="personigramaCards">
         <Grid container spacing={3} className="gridContainer">
-          <Grid item xs={12} md={9} className="imageContainer">
+          <Grid item xs={12} md={12} className="imageContainer">
             <img src={BannerPersonal} className="bannerPersonal" />
-            <div className="nombreBanner">
+            <div className="nombreBannerPrincipal">
               <p className="personigrama">PERSONIGRAMA</p>
               <p className="unidad">{params.nombre}</p>
             </div>
-          </Grid>
-
-          <Grid item xs={12} md={9}>
-            <p>HOLA</p>
           </Grid>
         </Grid>
 
@@ -137,7 +135,7 @@ export default function Personigrama() {
         {roles?.map((data) => (
           <div key={data.id}>
             <Grid item xs={12} md={12} className="imageContainer">
-              <img src={BannerPersonal} className="bannerPersonal" />
+              <img src={BannerPersonalSecundario} className="bannerPersonal" />
               <div className="nombreBanner">
                 <p className="personigrama">SECCIÓN</p>
                 <p className="unidad">{data.nombre}</p>

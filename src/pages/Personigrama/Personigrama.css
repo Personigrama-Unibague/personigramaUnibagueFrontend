@@ -12,11 +12,20 @@
 
 .bannerPersonal {
   width: 100% !important;
-  height: 100% !important;
+  height: 70% !important;
+  object-fit: cover !important;
 }
 
 .imageContainer {
-  position: relative; 
+  position: relative;
+}
+
+.nombreBannerPrincipal {
+  position: absolute; /* posición absolute con respecto al padre */
+  top: 30%;
+  left: 25%;
+  text-align: center !important;
+  color: white !important;
 }
 
 .nombreBanner {
@@ -27,11 +36,11 @@
   color: white !important;
 }
 
-.personigrama{
+.personigrama {
   font-size: 3vw;
 }
 
-.unidad{
+.unidad {
   font-size: 4vw;
   font-weight: 600;
 }
@@ -42,11 +51,11 @@
     justify-content: center !important;
   }
 
-  .personigrama{
+  .personigrama {
     font-size: 3.5vw;
   }
-  
-  .unidad{
+
+  .unidad {
     font-size: 4.5vw;
     font-weight: 600;
   }
@@ -58,11 +67,11 @@
     justify-content: center !important;
   }
 
-  .personigrama{
+  .personigrama {
     font-size: 3.5vw;
   }
-  
-  .unidad{
+
+  .unidad {
     font-size: 4.5vw;
     font-weight: 600;
   }
@@ -74,11 +83,11 @@
     justify-content: flex-start !important;
   }
 
-  .personigrama{
+  .personigrama {
     font-size: 3vw;
   }
-  
-  .unidad{
+
+  .unidad {
     font-size: 4vw;
     font-weight: 600;
   }
