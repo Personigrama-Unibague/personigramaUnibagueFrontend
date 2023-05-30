@@ -20,6 +20,7 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { Dialog, ListItem } from "material-ui";
 import List from "@mui/material/List";
+import CloseIcon from "@mui/icons-material/Close";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import TextField from "material-ui/TextField";
 import "./styles.css";
@@ -36,7 +37,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
 function SeccionFuncionarios() {
-
   let params = useParams();
 
   const [open, setOpen] = React.useState(false);
@@ -57,10 +57,10 @@ function SeccionFuncionarios() {
   };
 
   const deletePersona = async (event) => {
-    deletePersonaById(event, unidad)
+    deletePersonaById(event, unidad);
     setTimeout(window.location.reload(), 10000);
   };
- 
+
   useLayoutEffect(() => {
     (async () => {
       try {
@@ -70,7 +70,6 @@ function SeccionFuncionarios() {
         const prueba = await getFuncionariosByUnidad(params.unidad);
         setFuncionarios(prueba);
         setFuncionariosCompletos(func);
-        
       } catch (err) {
         console.log("Error API");
       }
@@ -128,7 +127,7 @@ function SeccionFuncionarios() {
                     font: "Lato",
                     color: "white",
                     fontSize: "20px",
-                    textAlign: "center"
+                    textAlign: "center",
                   }}
                   colSpan="3"
                 >
@@ -181,16 +180,38 @@ function SeccionFuncionarios() {
             marginTop: "30px",
             marginLeft: "5px",
             borderRadius: "50px",
+            marginBottom: "40px",
           }}
         >
           Agregar funcionario
         </Button>
-        {/*Modal Agregar funcionario */}
+
+        {/* DIALOG */}
+
+        {/*DIALOG Agregar funcionario */}
         <Dialog open={open} onClose={handleClose}>
           <List sx={{ pt: 0 }}>
-            <div className="modalTitle">
-              <div className="typpgraphyTitle">Agregar Funcionario</div>
-            </div>
+            <Toolbar className="modalTitle">
+              <Typography
+                className="typpgraphyTitle"
+                variant="h5"
+                style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
+              >
+                Agregar Funcionario
+              </Typography>
+              <IconButton
+                edge="end"
+                className="IconButton"
+                variant="outlined"
+                style={{
+                  color: "white",
+                }}
+                onClick={() => handleClose()}
+              >
+                <CloseIcon className="icon" style={{ color: "white" }} />
+              </IconButton>
+            </Toolbar>
+
             <ListItem style={{ paddingTop: "30px", width: "450px" }}>
               <Select
                 labelId="demo-simple-select-label"

@@ -122,13 +122,13 @@ export default function AdminUnidades() {
                   >
                     Numero
                   </TableCell>
-                  <TableCell
+                  {/* <TableCell
                     className="tableCellTitle"
                     align="center"
                     style={{ backgroundColor: "#017A97", color: "white" }}
                   >
                     Posición
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell
                     className="tableCellTitle"
                     align="center"
@@ -165,10 +165,8 @@ export default function AdminUnidades() {
                       </TableCell>
                       <TableCell>{row.nombre}</TableCell>
                       <TableCell>{row.id}</TableCell>
-                      <TableCell align="center">
-                        {/* Flechas */}
+                      {/* <TableCell align="center">
                         <Grid container direction="row" spacing={0}>
-                          {/* Icon Bajada */}
                           <Grid item xs={6} sm={6} md={6}>
                             <IconButton
                               className="IconButton"
@@ -187,7 +185,6 @@ export default function AdminUnidades() {
                             </IconButton>
                           </Grid>
 
-                          {/* Icon Subida */}
                           <Grid item xs={6} sm={6} md={6}>
                             <IconButton
                               className="IconButton"
@@ -206,7 +203,7 @@ export default function AdminUnidades() {
                             </IconButton>
                           </Grid>
                         </Grid>
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell align="center">
                         <IconButton
                           className="IconButton"
@@ -311,14 +308,12 @@ export default function AdminUnidades() {
                                         </Table>
                                       </Collapse>
                                     </TableCell>
-                                    <TableCell align="center">
-                                      {/* Flechas */}
+                                    {/* <TableCell align="center">
                                       <Grid
                                         container
                                         direction="row"
                                         spacing={0}
                                       >
-                                        {/* Icon Bajada */}
                                         <Grid item xs={6} sm={6} md={6}>
                                           <IconButton
                                             className="IconButton"
@@ -337,7 +332,6 @@ export default function AdminUnidades() {
                                           </IconButton>
                                         </Grid>
 
-                                        {/* Icon Subida */}
                                         <Grid item xs={6} sm={6} md={6}>
                                           <IconButton
                                             className="IconButton"
@@ -356,7 +350,7 @@ export default function AdminUnidades() {
                                           </IconButton>
                                         </Grid>
                                       </Grid>
-                                    </TableCell>
+                                    </TableCell> */}
                                     <TableCell align="center">
                                       <IconButton
                                         className="IconButton"
