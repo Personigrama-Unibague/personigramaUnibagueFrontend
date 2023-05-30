@@ -76,9 +76,28 @@ export const deletePersonaById = async (id, unidad) => {
 
 export const updateIdJerarByCedulaUnd = async (id, cedula, unidad) => {
   try {
-    console.log("hol");
     await axios.get(
       `http://localhost:9090/api/v1/personal/updateIdJerarByCedulaUnd/${id}/${cedula}/${unidad}`
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updateIdJerarDefault = async (cedula, unidad) => {
+  try {
+    await axios.get(
+      `http://localhost:9090/api/v1/personal/updateIdJerarByCedulaUnd/${cedula}/${unidad}`
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updateIdJerarDefaultALlSection = async (id_jerar, unidad) => {
+  try {
+    await axios.get(
+      `http://localhost:9090/api/v1/personal/updateIdJerarDefaultAllSection/${id_jerar}/${unidad}`
     );
   } catch (error) {
     console.error(error);
