@@ -123,7 +123,7 @@ export default function Personigrama() {
         <Grid container spacing={3} className="gridContainer">
           <Grid item xs={12} md={12} className="imageContainer">
             <img src={BannerPersonal} className="bannerPersonal" />
-            <div className="nombreBannerPrincipal">
+            <div className="nombreBanner">
               <p className="personigrama">PERSONIGRAMA</p>
               <p className="unidad">{params.nombre}</p>
             </div>
@@ -131,31 +131,37 @@ export default function Personigrama() {
         </Grid>
 
         {/* Banner */}
-
         {roles?.map((data) => (
-          <div key={data.id}>
-            <Grid item xs={12} md={12} className="imageContainer">
-              <img src={BannerPersonalSecundario} className="bannerPersonal" />
-              <div className="nombreBanner">
-                <p className="personigrama">SECCIÓN</p>
-                <p className="unidad">{data.nombre}</p>
-              </div>
-            </Grid>
-
-            <div className="personigramaCards">
-              <Grid container spacing={3} className="gridContainer">
-                {funcionarios?.map((func) => {
-                  if (func.id_jerar == data.id_jerar) {
-                    return (
-                      <Grid item className="personaCard" key={func.id}>
-                        <PersonigramaCard personal={func} />
-                      </Grid>
-                    );
-                  }
-                })}
+          <>
+            {data.id_jerar != 0 ? <div key={data.id}>
+              <Grid container className="gridContainer">
+                <Grid item xs={12} md={12} className="imageContainer">
+                  <img
+                    src={BannerPersonalSecundario}
+                    className="bannerPersonal"
+                  />
+                  <div className="nombreBanner">
+                    <p className="personigrama">SECCIÓN</p>
+                    <p className="unidad">{data.nombre}</p>
+                  </div>
+                </Grid>
               </Grid>
-            </div>
-          </div>
+
+              <div className="personigramaCards">
+                <Grid container spacing={3} className="gridContainer">
+                  {funcionarios?.map((func) => {
+                    if (func.id_jerar == data.id_jerar) {
+                      return (
+                        <Grid item className="personaCard" key={func.id}>
+                          <PersonigramaCard personal={func} />
+                        </Grid>
+                      );
+                    }
+                  })}
+                </Grid>
+              </div>
+            </div> : <></>}
+          </>
         ))}
 
         {/* Default */}
