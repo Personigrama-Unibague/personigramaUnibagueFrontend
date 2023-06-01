@@ -83,7 +83,7 @@ export default function ConfigurarSecciones() {
         const getRolesByUnidad = await getAllRolesByUnidad(params.unidad);
         const func = await getFuncionariosByUnidad(params.unidad);
         setRoles(getRolesByUnidad);
-        setNextPriority(getRolesByUnidad.length + 1);
+        setNextPriority(getRolesByUnidad.length);
         setFuncionarios(func);
       } catch (err) {
         console.log("Error API");
@@ -139,7 +139,7 @@ export default function ConfigurarSecciones() {
   /* Borrar Rol */
   const deleteRol = (id, id_jerar) => {
     updateIdJerarDefaultALlSection(params.unidad, id_jerar);
-    deleteRolById(id);
+    deleteRolById(id, params.unidad);
     setTimeout(window.location.reload(), 10000);
   };
 

@@ -25,10 +25,10 @@ export const saveRol = async (id_jerar, nombre, unidad) => {
   }
 };
 
-export const deleteRolById = async (id) => {
+export const deleteRolById = async (id, unidad) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/deleteRolById/${id}`
+      `http://localhost:9090/api/v1/roles/deleteRolById/${id}/${unidad}`
     );
     return response.data;
   } catch (error) {
