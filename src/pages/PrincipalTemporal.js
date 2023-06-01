@@ -11,7 +11,7 @@ export default function PrincipalTemporal() {
         height: "100%",
         paddingTop: "30vh",
         textAlign: "center",
-        color: "white"
+        color: "white",
       }}
     >
       <ul>
@@ -19,34 +19,30 @@ export default function PrincipalTemporal() {
           <h1>RUTAS</h1>
         </li>
         <li>
-          <Link style={{color: "white"}} to="homePage">HomePage</Link>
-        </li>
-        <li>
-          <Link style={{color: "white"}} to="pruebasjson">Personigrama</Link>
+          <Link style={{ color: "white" }} to="organigrama">
+            HomePage
+          </Link>
         </li>
 
         <li style={{ paddingTop: "10px" }}>
           <h3>Admin Section</h3>
         </li>
         <li>
-          <Link style={{color: "white"}} to="adminLogin">AdminLogin</Link>
+          <Link style={{ color: "white" }} to="adminLogin">
+            AdminLogin
+          </Link>
         </li>
         <li>
-          <Link style={{color: "white"}} to="adminUnidades">AdminUnidades</Link>
+          <Link style={{ color: "white" }} to="adminUnidades">
+            AdminUnidades
+          </Link>
         </li>
         <li>
-          <Link style={{color: "white"}} to="adminUsuarios">AdminUsuarios</Link>
-        </li>
-        <li>
-          <Link style={{color: "white"}} to="confiSecciones">ConfigurarSecciones</Link>
-        </li>
-        <li>
-          <Link style={{color: "white"}} to="seccionFuncionarios">Sección funcionarios</Link>
-        </li>
-        <li>
-          <Link style={{color: "white"}} to="pruebaLogin">LogIn con google</Link>
+          <Link style={{ color: "white" }} to="adminUsuarios">
+            AdminUsuarios
+          </Link>
         </li>
       </ul>
-    </div> 
+    </div>
   );
 }

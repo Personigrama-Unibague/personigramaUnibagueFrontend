@@ -9,14 +9,14 @@ import {
 import fondo from "../../utils/images/adminLoginBackground.jpeg";
 import navbar from "../../utils/images/navbar.jfif";
 import logoUnibague from "../../utils/images/logoUnibague.PNG";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
-import InputAdornment from "@mui/material/InputAdornment";
+import { useNavigate } from "react-router-dom";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import Google from "../google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { getPersonal } from "../../api/loginAdmin";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +34,47 @@ const useStyles = makeStyles((theme) => ({
 
 function AdminLogin() {
   const classes = useStyles();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+  if (JSON.parse(localStorage.getItem("loggedIn"))) {
+    localStorage.setItem("loggedIn", true);
+  } else {
+    localStorage.setItem("loggedIn", loggedIn.toString());
+  }
 
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/adminUnidades");
+  };
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await getPersonal(username, password);
+      if (response === true) {
+        setTimeout(setLoggedIn(true), 60000);
+
+        localStorage.setItem("loggedIn", true);
+        setTimeout(handleRedirect(), 9000);
+      } else {
+        window.alert("Usuario o contraseña incorrectos");
+        setTimeout(window.location.reload(), 10000);
+      }
+    } catch (err) {
+      console.log("Error API");
+    }
+  };
   return (
     <GoogleOAuthProvider clientId="577630477033-tlna5td2dva4mf43g2ciarsfcvr79pcr.apps.googleusercontent.com">
       <Grid container component="main" className={classes.root}>
@@ -74,10 +114,10 @@ function AdminLogin() {
                 marginBottom: "10px",
               }}
             >
-              <button>
+              {/* <button>
                 <Google />
-              </button>
-              {/* <EmailRoundedIcon />  */}
+              </button> */}
+              <EmailRoundedIcon />
             </IconButton>
           </Grid>
 
@@ -86,6 +126,8 @@ function AdminLogin() {
             <TextField
               className="textField"
               placeholder="Usuario"
+              value={username}
+              onChange={handleUsernameChange}
               style={{
                 backgroundColor: "#FFFFFF",
                 borderRadius: "30px",
@@ -115,6 +157,8 @@ function AdminLogin() {
             <TextField
               className="textField"
               placeholder="Contraseña"
+              value={password}
+              onChange={handlePasswordChange}
               style={{
                 backgroundColor: "#FFFFFF",
                 borderRadius: "30px",
@@ -142,6 +186,7 @@ function AdminLogin() {
           {/* Button */}
           <Grid item>
             <Button
+              onClick={handleSubmit}
               style={{
                 backgroundColor: "#04B8E2",
                 borderRadius: "30px",

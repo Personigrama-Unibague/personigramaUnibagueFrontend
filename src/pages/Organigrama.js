@@ -91,7 +91,7 @@ function createTree(organigrama, id) {
   return node;
 }
 
-export default function PruebasJson() {
+export default function Organigrama() {
   const classes = useStyles();
   const [translate, containerRef] = useCenteredTree();
   const nodeSize = { x: 300, y: 250 };
