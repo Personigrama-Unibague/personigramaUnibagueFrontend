@@ -133,34 +133,38 @@ export default function Personigrama() {
         {/* Banner */}
         {roles?.map((data) => (
           <>
-            {data.id_jerar != 0 ? <div key={data.id}>
-              <Grid container className="gridContainer">
-                <Grid item xs={12} md={12} className="imageContainer">
-                  <img
-                    src={BannerPersonalSecundario}
-                    className="bannerPersonal"
-                  />
-                  <div className="nombreBanner">
-                    <p className="personigrama">SECCIÓN</p>
-                    <p className="unidad">{data.nombre}</p>
-                  </div>
+            {data.id_jerar != 0 ? (
+              <div key={data.id}>
+                <Grid container className="gridContainer">
+                  <Grid item xs={12} md={12} className="imageContainer">
+                    <img
+                      src={BannerPersonalSecundario}
+                      className="bannerPersonal"
+                    />
+                    <div className="nombreBanner">
+                      <p className="personigrama">SECCIÓN</p>
+                      <p className="unidad">{data.nombre}</p>
+                    </div>
+                  </Grid>
                 </Grid>
-              </Grid>
 
-              <div className="personigramaCards">
-                <Grid container spacing={3} className="gridContainer">
-                  {funcionarios?.map((func) => {
-                    if (func.id_jerar == data.id_jerar) {
-                      return (
-                        <Grid item className="personaCard" key={func.id}>
-                          <PersonigramaCard personal={func} />
-                        </Grid>
-                      );
-                    }
-                  })}
-                </Grid>
+                <div className="personigramaCards">
+                  <Grid container spacing={3} className="gridContainer">
+                    {funcionarios?.map((func) => {
+                      if (func.id_jerar == data.id_jerar) {
+                        return (
+                          <Grid item className="personaCard" key={func.id}>
+                            <PersonigramaCard personal={func} />
+                          </Grid>
+                        );
+                      }
+                    })}
+                  </Grid>
+                </div>
               </div>
-            </div> : <></>}
+            ) : (
+              <></>
+            )}
           </>
         ))}
 
