@@ -13,7 +13,7 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
-import { getUnidades } from "../../api/unidades";
+import { getUnities } from "../../api/unidades";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./styles.css";
 import {
@@ -36,14 +36,13 @@ export default function AdminUnidades() {
   useLayoutEffect(() => {
     (async () => {
       try {
-        const und = await getUnidades();
+        const und = await getUnities();
         setUnidades(und.children);
       } catch (err) {
         console.log("Error API");
       }
     })();
   }, []);
-
 
   //Función para manejar el colapso de filas
 
@@ -93,7 +92,6 @@ export default function AdminUnidades() {
           </AppBar>
         </Box>
       </Grid>
-
 
       {unidades ? (
         <Grid item style={{ marginTop: "50px" }}>
@@ -248,150 +246,194 @@ export default function AdminUnidades() {
                     {row.nombre && (
                       <TableRow>
                         <TableCell
-                          style={{ paddingBottom: 0, paddingTop: 0 }}
-                          colSpan={3}
+                          style={{
+                            paddingBottom: 0,
+                            paddingTop: 0,
+                            paddingLeft: 0,
+                          }}
+                          colSpan={5}
                         >
                           <Collapse
                             in={openRows.includes(row.id)}
                             timeout="auto"
                             unmountOnExit
                           >
-                            <Table size="small">
+                            <Table>
                               <TableBody>
                                 {row.children.map((child) => (
-                                  <TableRow key={child.id}>
-                                    <TableCell>
-                                      {child.children && (
+                                  <React.Fragment key={child.id}>
+                                    <TableRow key={child.id}>
+                                      <TableCell>
+                                        {child.children && (
+                                          <IconButton
+                                            size="small"
+                                            onClick={() =>
+                                              handleOpenRow(child.id)
+                                            }
+                                          >
+                                            {openRows.includes(child.id) ? (
+                                              <KeyboardArrowUp />
+                                            ) : (
+                                              <KeyboardArrowDown />
+                                            )}
+                                          </IconButton>
+                                        )}
+                                      </TableCell>
+                                      <TableCell>{child.nombre}</TableCell>
+                                      <TableCell>{child.id}</TableCell>
+                                      <TableCell align="center">
                                         <IconButton
-                                          size="small"
-                                          onClick={() =>
-                                            handleOpenRow(child.id)
-                                          }
+                                          className="IconButton"
+                                          variant="outlined"
+                                          component={Link}
+                                          to={`/confiSecciones/${child.id}/${child.nombre}`}
+                                          style={{
+                                            backgroundColor: "#B8B9BA",
+                                            marginLeft: "10px",
+
+                                            borderRadius: "10px",
+                                            color: "white",
+                                          }}
                                         >
-                                          {openRows.includes(child.id) ? (
-                                            <KeyboardArrowUp />
-                                          ) : (
-                                            <KeyboardArrowDown />
-                                          )}
+                                          <ListAltOutlinedIcon
+                                            className="icon"
+                                            style={{ color: "white" }}
+                                          />
                                         </IconButton>
-                                      )}
-                                    </TableCell>
-                                    <TableCell>{child.nombre}</TableCell>
-                                    <TableCell>{child.id}</TableCell>
+                                      </TableCell>
+                                      <TableCell align="center">
+                                        <IconButton
+                                          className="IconButton"
+                                          variant="outlined"
+                                          component={Link}
+                                          to={`/seccionFuncionarios/${child.id}/${child.nombre}`}
+                                          style={{
+                                            backgroundColor: "#B8B9BA",
+                                            marginLeft: "10px",
 
-                                    <TableCell
-                                      style={{
-                                        paddingBottom: 0,
-                                        paddingTop: 0,
-                                      }}
-                                      colSpan={3}
-                                    >
-                                      <Collapse
-                                        in={openRows.includes(child.id)}
-                                        timeout="auto"
-                                        unmountOnExit
-                                      >
-                                        <Table size="small">
-                                          {child.children.map(
-                                            (grandChildren) => (
-                                              <TableRow key={grandChildren.id}>
-                                                <TableCell />
-                                                <TableCell>
-                                                  {grandChildren.nombre}
-                                                </TableCell>
-                                                <TableCell>
-                                                  {grandChildren.id}
-                                                </TableCell>
-                                              </TableRow>
-                                            )
-                                          )}
-                                        </Table>
-                                      </Collapse>
-                                    </TableCell>
-                                    {/* <TableCell align="center">
-                                      <Grid
-                                        container
-                                        direction="row"
-                                        spacing={0}
-                                      >
-                                        <Grid item xs={6} sm={6} md={6}>
-                                          <IconButton
-                                            className="IconButton"
-                                            variant="outlined"
-                                            style={{
-                                              backgroundColor: "#B8B9BA",
-
-                                              borderRadius: "10px",
-                                              color: "white",
-                                            }}
+                                            borderRadius: "10px",
+                                            color: "white",
+                                          }}
+                                        >
+                                          <AssignmentIndOutlinedIcon
+                                            className="icon"
+                                            style={{ color: "white" }}
+                                          />
+                                        </IconButton>
+                                      </TableCell>
+                                    </TableRow>
+                                    {child.nombre && (
+                                      <TableRow>
+                                        <TableCell
+                                          style={{
+                                            paddingBottom: 0,
+                                            paddingTop: 0,
+                                            paddingLeft: 0,
+                                          }}
+                                          colSpan={5}
+                                        >
+                                          <Collapse
+                                            in={openRows.includes(child.id)}
+                                            timeout="auto"
+                                            unmountOnExit
                                           >
-                                            <KeyboardArrowUpOutlinedIcon
-                                              className="icon"
-                                              style={{ color: "white" }}
-                                            />
-                                          </IconButton>
-                                        </Grid>
+                                            <Table size="medium">
+                                              <TableBody>
+                                                {child.children.map(
+                                                  (grandChildren) => (
+                                                    <React.Fragment
+                                                      key={grandChildren.id}
+                                                    >
+                                                      <TableRow
+                                                        key={grandChildren.id}
+                                                      >
+                                                        <TableCell>
+                                                          {child.grandChildren && (
+                                                            <IconButton
+                                                              size="small"
+                                                              onClick={() =>
+                                                                handleOpenRow(
+                                                                  grandChildren.id
+                                                                )
+                                                              }
+                                                            >
+                                                              {openRows.includes(
+                                                                grandChildren.id
+                                                              ) ? (
+                                                                <KeyboardArrowUp />
+                                                              ) : (
+                                                                <KeyboardArrowDown />
+                                                              )}
+                                                            </IconButton>
+                                                          )}
+                                                        </TableCell>
+                                                        <TableCell>
+                                                          {grandChildren.nombre}
+                                                        </TableCell>
+                                                        <TableCell>
+                                                          {grandChildren.id}
+                                                        </TableCell>
+                                                        <TableCell align="center">
+                                                          <IconButton
+                                                            className="IconButton"
+                                                            variant="outlined"
+                                                            component={Link}
+                                                            to={`/confiSecciones/${grandChildren.id}/${grandChildren.nombre}`}
+                                                            style={{
+                                                              backgroundColor:
+                                                                "#B8B9BA",
+                                                              marginLeft:
+                                                                "10px",
 
-                                        <Grid item xs={6} sm={6} md={6}>
-                                          <IconButton
-                                            className="IconButton"
-                                            variant="outlined"
-                                            style={{
-                                              backgroundColor: "#B8B9BA",
+                                                              borderRadius:
+                                                                "10px",
+                                                              color: "white",
+                                                            }}
+                                                          >
+                                                            <ListAltOutlinedIcon
+                                                              className="icon"
+                                                              style={{
+                                                                color: "white",
+                                                              }}
+                                                            />
+                                                          </IconButton>
+                                                        </TableCell>
+                                                        <TableCell align="center">
+                                                          <IconButton
+                                                            className="IconButton"
+                                                            variant="outlined"
+                                                            component={Link}
+                                                            to={`/seccionFuncionarios/${grandChildren.id}/${grandChildren.nombre}`}
+                                                            style={{
+                                                              backgroundColor:
+                                                                "#B8B9BA",
+                                                              marginLeft:
+                                                                "10px",
 
-                                              borderRadius: "10px",
-                                              color: "white",
-                                            }}
-                                          >
-                                            <KeyboardArrowDownOutlinedIcon
-                                              className="icon"
-                                              style={{ color: "white" }}
-                                            />
-                                          </IconButton>
-                                        </Grid>
-                                      </Grid>
-                                    </TableCell> */}
-                                    <TableCell align="center">
-                                      <IconButton
-                                        className="IconButton"
-                                        variant="outlined"
-                                        component={Link}
-                                        to={`/confiSecciones/${row.id}/${row.nombre}`}
-                                        style={{
-                                          backgroundColor: "#B8B9BA",
-                                          marginLeft: "10px",
-
-                                          borderRadius: "10px",
-                                          color: "white",
-                                        }}
-                                      >
-                                        <ListAltOutlinedIcon
-                                          className="icon"
-                                          style={{ color: "white" }}
-                                        />
-                                      </IconButton>
-                                    </TableCell>
-                                    <TableCell align="center">
-                                      <IconButton
-                                        className="IconButton"
-                                        variant="outlined"
-                                        component={Link}
-                                        to={`/seccionFuncionarios/${child.id}/${child.nombre}`}
-                                        style={{
-                                          backgroundColor: "#B8B9BA",
-                                          marginLeft: "10px",
-
-                                          borderRadius: "10px",
-                                          color: "white",
-                                        }}
-                                      >
-                                        <AssignmentIndOutlinedIcon
-                                          className="icon"
-                                          style={{ color: "white" }}
-                                        />
-                                      </IconButton>
-                                    </TableCell>
-                                  </TableRow>
+                                                              borderRadius:
+                                                                "10px",
+                                                              color: "white",
+                                                            }}
+                                                          >
+                                                            <AssignmentIndOutlinedIcon
+                                                              className="icon"
+                                                              style={{
+                                                                color: "white",
+                                                              }}
+                                                            />
+                                                          </IconButton>
+                                                        </TableCell>
+                                                      </TableRow>
+                                                    </React.Fragment>
+                                                  )
+                                                )}
+                                              </TableBody>
+                                            </Table>
+                                          </Collapse>
+                                        </TableCell>
+                                      </TableRow>
+                                    )}
+                                  </React.Fragment>
                                 ))}
                               </TableBody>
                             </Table>

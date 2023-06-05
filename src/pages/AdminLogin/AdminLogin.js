@@ -16,7 +16,7 @@ import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { getPersonal } from "../../api/loginAdmin";
+import { authUser } from "../../api/loginAdmin";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,7 +61,7 @@ function AdminLogin() {
     event.preventDefault();
 
     try {
-      const response = await getPersonal(username, password);
+      const response = await authUser(username, password);
       if (response === true) {
         setTimeout(setLoggedIn(true), 60000);
 

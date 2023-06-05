@@ -14,7 +14,7 @@ import Personal from "../../personal.json";
 import Grid from "@mui/material/Grid";
 import {
   getFuncionarios,
-  getFuncionariosByUnidad,
+  getEmployeeByUnity,
 } from "../../api/funcionarios";
 import BannerPersonal from "../../utils/images/BannerPersonal.png";
 import BannerPersonalSecundario from "../../utils/images/BannerPersonalSecundario.png";
@@ -22,7 +22,7 @@ import BannerPersonalSecundario from "../../utils/images/BannerPersonalSecundari
 import { useLocation, useParams } from "react-router-dom";
 
 import "./Personigrama.css";
-import { getAllRolesByUnidad } from "../../api/roles";
+import { getAllRolesByUnity } from "../../api/roles";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -74,9 +74,9 @@ export default function Personigrama() {
   useLayoutEffect(() => {
     (async () => {
       try {
-        const prueba = await getFuncionariosByUnidad(params.unidad);
+        const prueba = await getEmployeeByUnity(params.unidad);
         setFuncionarios(prueba);
-        const rol = await getAllRolesByUnidad(params.unidad);
+        const rol = await getAllRolesByUnity(params.unidad);
         setRoles(rol);
       } catch (err) {
         console.log("Error API");

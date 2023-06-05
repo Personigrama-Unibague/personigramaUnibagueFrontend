@@ -25,11 +25,11 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 import TextField from "material-ui/TextField";
 import "./styles.css";
 import {
-  getFuncionariosByUnidad,
-  getAgregarPersona,
-  findPersonaById,
-  deletePersonaById,
-  getPersonasDistinct,
+  getEmployeeByUnity,
+  getSavePersona,
+  findPersonById,
+  deletePersonById,
+  getPeopleDistinct,
 } from "../../api/funcionarios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -50,14 +50,14 @@ function SeccionFuncionarios() {
 
   const handleChange = async (event) => {
     setFuncionario(event.target.value);
-    const user = await findPersonaById(event.target.value);
+    const user = await findPersonById(event.target.value);
     console.log(user);
-    getAgregarPersona(user, unidad);
+    getSavePersona(user, unidad);
     setTimeout(window.location.reload(), 10000);
   };
 
   const deletePersona = async (event) => {
-    deletePersonaById(event, unidad);
+    deletePersonById(event, unidad);
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -65,9 +65,9 @@ function SeccionFuncionarios() {
     (async () => {
       try {
         setUnidad(params.unidad);
-        const func = await getPersonasDistinct(params.unidad);
+        const func = await getPeopleDistinct(params.unidad);
         console.log(func);
-        const prueba = await getFuncionariosByUnidad(params.unidad);
+        const prueba = await getEmployeeByUnity(params.unidad);
         setFuncionarios(prueba);
         setFuncionariosCompletos(func);
       } catch (err) {

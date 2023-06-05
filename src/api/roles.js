@@ -1,9 +1,17 @@
 import axios from "axios";
 
-export const getAllRolesByUnidad = async (unidad) => {
+//Servicio encargado de realizacion peticiones HTTP para administrar los roles
+
+/**
+ * Método que realiza la petición HTTP para traer los roles por unidad
+ * @param {unity} user unidad a la que pertenecen los roles
+ * @Return Lista de roles
+ * @throws Exception
+ */
+export const getAllRolesByUnity = async (unity) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/getAllRolesByUnidad/${unidad}`
+      `http://localhost:9090/api/v1/roles/getAllRolesByUnidad/${unity}`
     );
     const list = response.data.sort((a, b) => a.id_jerar - b.id_jerar);
     return list;
@@ -13,10 +21,18 @@ export const getAllRolesByUnidad = async (unidad) => {
   }
 };
 
-export const saveRol = async (id_jerar, nombre, unidad) => {
+/**
+ * Método que realiza la petición HTTP guardar un nuevo rol en una unidad
+ * @param {id_jerar} id_jerar de los roles
+ * @param {name} name nombre del rol
+ * @param {unity} unity unidad a la que pertenecen el
+ * @Return HTTP response
+ * @throws Exception
+ */
+export const saveRol = async (id_jerar, name, unity) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/saveRol/${id_jerar}/${nombre}/${unidad}`
+      `http://localhost:9090/api/v1/roles/saveRol/${id_jerar}/${name}/${unity}`
     );
     return response.data;
   } catch (error) {
@@ -25,10 +41,18 @@ export const saveRol = async (id_jerar, nombre, unidad) => {
   }
 };
 
-export const deleteRolById = async (id, unidad) => {
+/**
+ * Método que realiza la petición HTTP eliminar un  rol de una unidad
+ * @param {id} id del rol a eliminar
+ * @param {unity} unity unidad a la que pertenecen el
+ * @Return HTTP response
+ * @throws Exception
+ */
+
+export const deleteRolById = async (id, unity) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/deleteRolById/${id}/${unidad}`
+      `http://localhost:9090/api/v1/roles/deleteRolById/${id}/${unity}`
     );
     return response.data;
   } catch (error) {
@@ -37,10 +61,17 @@ export const deleteRolById = async (id, unidad) => {
   }
 };
 
-export const updateNameById = async (id, nombre) => {
+/**
+ * Método que realiza la petición HTTP para actualizar el nombre de un rol
+ * @param {id} id del rol a actualizar
+ * @param {name} name nombre nuevo del rol
+ * @Return HTTP response
+ * @throws Exception
+ */
+export const updateNameById = async (id, name) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/updateNameById/${id}/${nombre}`
+      `http://localhost:9090/api/v1/roles/updateNameById/${id}/${name}`
     );
     return response.data;
   } catch (error) {

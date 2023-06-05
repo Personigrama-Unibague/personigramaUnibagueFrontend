@@ -1,28 +1,37 @@
 import axios from "axios";
 
-//Servicio encargado de realizacion peticiones HTTP para la obtencion de las areas de la universidad
+//Servicio encargado de realizacion peticiones HTTP para la obtencion de las unidades de la universidad
 
-//Metodo recursivo para la jerarquizacion de las areas de la universidad
-function createTree(organigrama, id) {
+/**
+   * Método recursivo para la jerarquización de unidades de la Universidad
+   * @param {organigram} organigram JSON del organigrama de la Universidad 
+   * @param {id} id id de cada unidad
+   * @Return True o False
+   */
+function createTree(organigram, id) {
   var node = {};
-  organigrama.filter((obj) => obj.id === id).forEach((obj) => (node = obj));
-  var childrenIds = organigrama
+  organigram.filter((obj) => obj.id === id).forEach((obj) => (node = obj));
+  var childrenIds = organigram
     .filter((obj) => obj.parent_id === id)
     .map((obj) => obj.id);
   node.children = childrenIds.map((childId) =>
-    createTree(organigrama, childId)
+    createTree(organigram, childId)
   );
   return node;
 }
 
-export const getUnidades = async () => {
+/**
+   * Método que realiza la petición HTTP para traer  todas las unidades
+   * @Return Lista de unidades
+   */
+export const getUnities = async () => {
   try {
     const response = await axios.get(
       "http://localhost:9090/api/v1/unidades/getUnidades"
     );
 
-    var organigrama = response.data;
-    let json = createTree(organigrama, null);
+    var organigram = response.data;
+    let json = createTree(organigram, null);
     return json;
   } catch (error) {
     console.error(error);
@@ -30,7 +39,12 @@ export const getUnidades = async () => {
   }
 };
 
-export const getUnidadNameById = async (id) => {
+/**
+   * Método que realiza la petición HTTP para obtener el nombre de una unidad
+   * @param {id} id id de la unidad
+   * @Return Nombre de la unidad
+   */
+export const getUnityNameById = async (id) => {
   try {
     const response = await axios.get(
       `http://localhost:9090/api/v1/unidades/getUnidadNameById/${id}`

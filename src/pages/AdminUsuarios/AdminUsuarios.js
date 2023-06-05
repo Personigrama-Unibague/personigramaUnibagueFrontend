@@ -26,7 +26,7 @@ import TextField from "material-ui/TextField";
 import "./styles.css";
 import { Dialog, ListItem } from "material-ui";
 import List from "@mui/material/List";
-import { getDeleteUser, getPersonal, getSaveNewUser } from "../../api/usuarios";
+import { getDeleteUser, getAllUsers, getSaveNewUser } from "../../api/usuarios";
 
 function AdminUsuarios() {
   const [open, setOpen] = React.useState(false);
@@ -41,7 +41,7 @@ function AdminUsuarios() {
   useLayoutEffect(() => {
     (async () => {
       try {
-        const list = await getPersonal();
+        const list = await getAllUsers();
         setUserList(list);
       } catch (err) {
         console.log("Error API");
@@ -74,7 +74,7 @@ function AdminUsuarios() {
         style={{ justifyContent: "center", display: "flex" }}
         justify="center"
       >
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
               <Toolbar style={{ backgroundColor: "#193F76" }}>

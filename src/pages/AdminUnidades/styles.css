@@ -2,6 +2,9 @@
   justify-content: center;
   display: flex;
 }
+.cellWidth{
+  width: 100%
+}
 
 .IconButton:hover {
   background-color: #04b8e2 !important;

@@ -26,7 +26,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useParams } from "react-router-dom";
 import {
   deleteRolById,
-  getAllRolesByUnidad,
+  getAllRolesByUnity,
   saveRol,
   updateNameById,
 } from "../../api/roles";
@@ -35,7 +35,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import { List, ListItem } from "material-ui";
 import "./styles.css";
 import {
-  getFuncionariosByUnidad,
+  getEmployeeByUnity,
   getPersonasDistinct,
   updateIdJerarByCedulaUnd,
   updateIdJerarDefault,
@@ -80,8 +80,8 @@ export default function ConfigurarSecciones() {
   useLayoutEffect(() => {
     (async () => {
       try {
-        const getRolesByUnidad = await getAllRolesByUnidad(params.unidad);
-        const func = await getFuncionariosByUnidad(params.unidad);
+        const getRolesByUnidad = await getAllRolesByUnity(params.unidad);
+        const func = await getEmployeeByUnity(params.unidad);
         setRoles(getRolesByUnidad);
         setNextPriority(getRolesByUnidad.length);
         setFuncionarios(func);
