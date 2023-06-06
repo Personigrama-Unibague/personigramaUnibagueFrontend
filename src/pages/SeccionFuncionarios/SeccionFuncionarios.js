@@ -35,6 +35,9 @@ import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import LogOut from "../../components/LogOut/LogOut";
+import AdminUsername from "../../components/AdminUsername/AdminUsername";
+
 
 function SeccionFuncionarios() {
   let params = useParams();
@@ -99,6 +102,8 @@ function SeccionFuncionarios() {
               >
                 Sección Funcionarios
               </Typography>
+              <AdminUsername/>
+              <LogOut />
               <InputOutlinedIcon
                 size="large"
                 edge="start"

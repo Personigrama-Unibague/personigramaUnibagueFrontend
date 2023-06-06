@@ -27,6 +27,8 @@ import "./styles.css";
 import { Dialog, ListItem } from "material-ui";
 import List from "@mui/material/List";
 import { getDeleteUser, getAllUsers, getSaveNewUser } from "../../api/usuarios";
+import LogOut from "../../components/LogOut/LogOut";
+import AdminUsername from "../../components/AdminUsername/AdminUsername";
 
 function AdminUsuarios() {
   const [open, setOpen] = React.useState(false);
@@ -66,6 +68,15 @@ function AdminUsuarios() {
     getDeleteUser(id);
     setTimeout(window.location.reload(), 10000);
   };
+
+  const DeleteUserConfirmation = (id, user) => {
+    const confirmed = window.confirm(
+      "¿Estás seguro de que desea eliminar el usuario: " + user + "?"
+    );
+    if (confirmed) {
+      deleteUser(id);
+    }
+  };
   return (
     <>
       <Grid
@@ -86,11 +97,13 @@ function AdminUsuarios() {
                     justifyContent: "center",
                     display: "flex",
                     font: "Lato",
-                    fontSize: "15px",
+                    fontSize: "38px",
                   }}
                 >
-                  Administar Usuarios
+                  Administrar Unidades
                 </Typography>
+                <AdminUsername />
+                <LogOut />
                 <InputOutlinedIcon
                   size="large"
                   edge="start"
@@ -143,7 +156,9 @@ function AdminUsuarios() {
                       <IconButton
                         className="IconButton"
                         variant="outlined"
-                        onClick={() => deleteUser(user.id)}
+                        onClick={() =>
+                          DeleteUserConfirmation(user.id, user.usuario)
+                        }
                         style={{
                           backgroundColor: "#B8B9BA",
                           borderRadius: "10px",

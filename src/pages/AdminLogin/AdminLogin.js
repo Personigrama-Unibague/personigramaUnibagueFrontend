@@ -66,6 +66,7 @@ function AdminLogin() {
         setTimeout(setLoggedIn(true), 60000);
 
         localStorage.setItem("loggedIn", true);
+        localStorage.setItem("username", username);
         setTimeout(handleRedirect(), 9000);
       } else {
         window.alert("Usuario o contraseña incorrectos");

@@ -41,6 +41,8 @@ import {
   updateIdJerarDefault,
   updateIdJerarDefaultALlSection,
 } from "../../api/funcionarios";
+import LogOut from "../../components/LogOut/LogOut";
+import AdminUsername from "../../components/AdminUsername/AdminUsername";
 
 export default function ConfigurarSecciones() {
   let params = useParams();
@@ -76,6 +78,16 @@ export default function ConfigurarSecciones() {
   const handleCloseAddPerson = () => setOpenPerson(false);
   const handleOpenTablePerson = () => setOpenTablePerson(true);
   const handleCloseTablePerson = () => setOpenTablePerson(false);
+
+  /*Método para confirmar la eliminación de un rol */
+  const DeleteUserConfirmation = (id, id_jerar, nombre) => {
+    const confirmed = window.confirm(
+      "¿Estás seguro de que desea eliminar la sección: " + nombre + "?"
+    );
+    if (confirmed) {
+      deleteRol(id, id_jerar);
+    }
+  };
 
   useLayoutEffect(() => {
     (async () => {
@@ -168,7 +180,7 @@ export default function ConfigurarSecciones() {
         style={{ justifyContent: "center", display: "flex" }}
         justify="center"
       >
-        <Grid md={12}>
+        <Grid item md={12}>
           <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
               <Toolbar style={{ backgroundColor: "#193F76" }}>
@@ -186,6 +198,8 @@ export default function ConfigurarSecciones() {
                 >
                   Configuración Secciones
                 </Typography>
+                <AdminUsername />
+                <LogOut />
                 <InputOutlinedIcon
                   size="large"
                   edge="start"
@@ -260,7 +274,13 @@ export default function ConfigurarSecciones() {
                               color: "white",
                               marginLeft: "5px",
                             }}
-                            onClick={() => deleteRol(rol.id, rol.id_jerar)}
+                            onClick={() =>
+                              DeleteUserConfirmation(
+                                rol.id,
+                                rol.id_jerar,
+                                rol.nombre
+                              )
+                            }
                           >
                             <DeleteOutlineOutlinedIcon
                               className="icon"
@@ -292,7 +312,7 @@ export default function ConfigurarSecciones() {
                       <>
                         <TableCell component="th" scope="rol">
                           <IconButton
-                            disabled="true"
+                            disabled={true}
                             className="IconButton"
                             style={{
                               backgroundColor: "#B8B9BA",
@@ -310,7 +330,7 @@ export default function ConfigurarSecciones() {
                         </TableCell>
                         <TableCell component="th" scope="rol">
                           <IconButton
-                            disabled="true"
+                            disabled={true}
                             className="IconButton"
                             variant="outlined"
                             style={{
@@ -328,7 +348,7 @@ export default function ConfigurarSecciones() {
                         </TableCell>
                         <TableCell component="th" scope="rol">
                           <IconButton
-                            disabled="true"
+                            disabled={true}
                             className="IconButton"
                             variant="outlined"
                             style={{
