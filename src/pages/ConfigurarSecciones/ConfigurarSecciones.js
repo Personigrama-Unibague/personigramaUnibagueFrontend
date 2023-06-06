@@ -79,15 +79,7 @@ export default function ConfigurarSecciones() {
   const handleOpenTablePerson = () => setOpenTablePerson(true);
   const handleCloseTablePerson = () => setOpenTablePerson(false);
 
-  /*Método para confirmar la eliminación de un rol */
-  const DeleteUserConfirmation = (id, id_jerar, nombre) => {
-    const confirmed = window.confirm(
-      "¿Estás seguro de que desea eliminar la sección: " + nombre + "?"
-    );
-    if (confirmed) {
-      deleteRol(id, id_jerar);
-    }
-  };
+  
 
   useLayoutEffect(() => {
     (async () => {
@@ -170,6 +162,25 @@ export default function ConfigurarSecciones() {
   const deleteFuncionarioSeccion = (cedula) => {
     updateIdJerarDefault(cedula, params.unidad);
     setTimeout(window.location.reload(), 10000);
+  };
+
+  /*Método para confirmar la eliminación de un rol */
+  const DeleteRolConfirmation = (id, id_jerar, nombre) => {
+    const confirmed = window.confirm(
+      "¿Estás seguro de que desea eliminar la sección: " + nombre + "?"
+    );
+    if (confirmed) {
+      deleteRol(id, id_jerar);
+    }
+  };
+  /*Método para confirmar la eliminación de un rol */
+  const DeleteUserConfirmation = (id, nombre) => {
+    const confirmed = window.confirm(
+      "¿Estás seguro de que desea eliminar el funcionario : " + nombre + " de esta sección?"
+    );
+    if (confirmed) {
+      deleteFuncionarioSeccion(id);
+    }
   };
 
   return (
@@ -275,7 +286,7 @@ export default function ConfigurarSecciones() {
                               marginLeft: "5px",
                             }}
                             onClick={() =>
-                              DeleteUserConfirmation(
+                              DeleteRolConfirmation(
                                 rol.id,
                                 rol.id_jerar,
                                 rol.nombre
@@ -635,7 +646,7 @@ export default function ConfigurarSecciones() {
                               color: "white",
                               marginLeft: "5px",
                             }}
-                            onClick={() => deleteFuncionarioSeccion(row.cedula)}
+                            onClick={() => DeleteUserConfirmation(row.cedula, row.nombre)}
                           >
                             <DeleteOutlineOutlinedIcon
                               className="icon"

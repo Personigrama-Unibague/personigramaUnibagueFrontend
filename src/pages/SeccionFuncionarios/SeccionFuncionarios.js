@@ -63,6 +63,14 @@ function SeccionFuncionarios() {
     deletePersonById(event, unidad);
     setTimeout(window.location.reload(), 10000);
   };
+  const DeletePersonConfirmation = (event, name) => {
+    const confirmed = window.confirm(
+      "¿Estás seguro de que desea eliminar la persona: " + name + " de " + params.nombre + "?"
+    );
+    if (confirmed) {
+      deletePersona(event);
+    }
+  };
 
   useLayoutEffect(() => {
     (async () => {
@@ -161,7 +169,7 @@ function SeccionFuncionarios() {
                         color: "white",
                         marginLeft: "5px",
                       }}
-                      onClick={() => deletePersona(row.cedula)}
+                      onClick={() => DeletePersonConfirmation(row.cedula, row.nombre)}
                     >
                       <DeleteOutlineOutlinedIcon
                         className="icon"
