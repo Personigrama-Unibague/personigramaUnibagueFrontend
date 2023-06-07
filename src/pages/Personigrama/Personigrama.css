@@ -12,7 +12,7 @@
 
 .bannerPersonal {
   width: 100% !important;
-  height: 40vh !important;
+  height: 100% !important;
   object-fit: cover !important;
   padding: 0;
   margin: 0;
@@ -20,24 +20,15 @@
 
 .bannerPersonalSecundario {
   width: 100% !important;
-  height: 40vh !important;
+  height: 20vw !important;
   object-fit: cover !important;
 }
-
 
 .imageContainer {
   position: relative;
 }
 
 .nombreBannerPrincipal {
-  position: absolute; /* posición absolute con respecto al padre */
-  top: 30%;
-  left: 25%;
-  text-align: center !important;
-  color: white !important;
-}
-
-.nombreBanner {
   position: absolute; /* posición absolute con respecto al padre */
   top: 38%;
   left: 25%;
@@ -68,6 +59,14 @@
     font-size: 4.5vw;
     font-weight: 600;
   }
+
+  .nombreBanner {
+    position: absolute; /* posición absolute con respecto al padre */
+    top: 18%;
+    left: 25%;
+    text-align: center !important;
+    color: white !important;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -84,6 +83,14 @@
     font-size: 4.5vw;
     font-weight: 600;
   }
+
+  .nombreBanner {
+    position: absolute; /* posición absolute con respecto al padre */
+    top: 25%;
+    left: 25%;
+    text-align: center !important;
+    color: white !important;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -99,5 +106,13 @@
   .unidad {
     font-size: 4vw;
     font-weight: 600;
+  }
+
+  .nombreBanner {
+    position: absolute; /* posición absolute con respecto al padre */
+    top: 35%;
+    left: 25%;
+    text-align: center !important;
+    color: white !important;
   }
 }

@@ -12,10 +12,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PersonigramaCard from "../../components/PersonigramaCard/PersonigramaCard";
 import Personal from "../../personal.json";
 import Grid from "@mui/material/Grid";
-import {
-  getFuncionarios,
-  getEmployeeByUnity,
-} from "../../api/funcionarios";
+import { getFuncionarios, getEmployeeByUnity } from "../../api/funcionarios";
 import BannerPersonal from "../../utils/images/BannerPersonal.png";
 import BannerPersonalSecundario from "../../utils/images/BannerPersonalSecundario.png";
 
@@ -118,28 +115,39 @@ export default function Personigrama() {
         </Toolbar>
       </AppBar>
 
-      {/* Cards */}
+      {/* Primario */}
       <div className="personigramaCards">
-        <Grid container spacing={3} className="gridContainer">
-          <Grid item xs={12} md={12} className="imageContainer">
+        <Grid container spacing={2} className="gridContainer" sx={{ pb: 2 }}>
+          <Grid item className="imageContainer">
             <img src={BannerPersonal} className="bannerPersonal" />
-            <div className="nombreBanner">
+            <div className="nombreBannerPrincipal">
               <p className="personigrama">PERSONIGRAMA</p>
               <p className="unidad">{params.nombre}</p>
             </div>
+          </Grid>
+          <Grid item className="imageContainer">
+            {funcionarios?.map((func) => {
+              if (func.id_jerar == 1) {
+                return (
+                  <Grid item className="personaCard" key={func.id}>
+                    <PersonigramaCard personal={func} />
+                  </Grid>
+                );
+              }
+            })}
           </Grid>
         </Grid>
 
         {/* Banner */}
         {roles?.map((data) => (
           <>
-            {data.id_jerar != 0 ? (
+            {data.id_jerar != 0 && data.id_jerar != 1 ? (
               <div key={data.id}>
                 <Grid container className="gridContainer">
                   <Grid item xs={12} md={12} className="imageContainer">
                     <img
                       src={BannerPersonalSecundario}
-                      className="bannerPersonal"
+                      className="bannerPersonalSecundario"
                     />
                     <div className="nombreBanner">
                       <p className="personigrama">SECCIÓN</p>
@@ -171,7 +179,7 @@ export default function Personigrama() {
         {/* Default */}
 
         <Grid item xs={12} md={12} className="imageContainer">
-          <img src={BannerPersonal} className="bannerPersonal" />
+          <img src={BannerPersonal} className="bannerPersonalSecundario" />
           <div className="nombreBanner">
             <p className="personigrama">NUESTROS</p>
             <p className="unidad">INTEGRANTES</p>

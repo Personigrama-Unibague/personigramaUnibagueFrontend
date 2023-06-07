@@ -79,8 +79,6 @@ export default function ConfigurarSecciones() {
   const handleOpenTablePerson = () => setOpenTablePerson(true);
   const handleCloseTablePerson = () => setOpenTablePerson(false);
 
-  
-
   useLayoutEffect(() => {
     (async () => {
       try {
@@ -105,18 +103,32 @@ export default function ConfigurarSecciones() {
   };
 
   /* Dialog Tabla de Personas por rol */
-  const openTablePersonDialog = (id) => {
+  const openTablePersonDialog = (id, name) => {
     const list = funcionarios.filter((persona) => persona.id_jerar == id);
     setTable(list);
     setOpenTablePerson(true);
   };
 
   /* Dialog Agregar Persona */
-  const openPersonDialog = (id) => {
-    const list = funcionarios.filter((persona) => persona.id_jerar == 0);
-    setFuncionarioJerar(list);
-    setOpenPerson(true);
-    setIdJerarAdd(id);
+  const openPersonDialog = (id, nombre) => {
+    var list = [];
+    if (nombre == "Primario") {
+      const prim = funcionarios.filter((persona) => persona.id_jerar == 1);
+      console.log(prim);
+      if (prim.length === 0) {
+        list = funcionarios.filter((persona) => persona.id_jerar == 0);
+        setFuncionarioJerar(list);
+        setOpenPerson(true);
+        setIdJerarAdd(id);
+      } else {
+        alert("Solo puede existir un lider de area");
+      }
+    } else {
+      list = funcionarios.filter((persona) => persona.id_jerar == 0);
+      setFuncionarioJerar(list);
+      setOpenPerson(true);
+      setIdJerarAdd(id);
+    }
   };
 
   /* CHANGE */
@@ -176,7 +188,9 @@ export default function ConfigurarSecciones() {
   /*Método para confirmar la eliminación de un rol */
   const DeleteUserConfirmation = (id, nombre) => {
     const confirmed = window.confirm(
-      "¿Estás seguro de que desea eliminar el funcionario : " + nombre + " de esta sección?"
+      "¿Estás seguro de que desea eliminar el funcionario : " +
+        nombre +
+        " de esta sección?"
     );
     if (confirmed) {
       deleteFuncionarioSeccion(id);
@@ -254,6 +268,7 @@ export default function ConfigurarSecciones() {
                     {/* Nombre */}
                     <TableCell>{rol.nombre}</TableCell>
 
+                    {/* Demas unidades */}
                     {rol.unidad != "0" && rol.id_jerar != 0 ? (
                       <>
                         <TableCell component="th" scope="rol">
@@ -310,7 +325,72 @@ export default function ConfigurarSecciones() {
                               color: "white",
                               marginLeft: "5px",
                             }}
-                            onClick={() => openPersonDialog(rol.id_jerar)}
+                            onClick={() =>
+                              openPersonDialog(rol.id_jerar, rol.nombre)
+                            }
+                          >
+                            <PersonAddIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+                      </>
+                    ) : rol.unidad == "0" &&
+                      rol.id_jerar == 1 &&
+                      rol.nombre == "Primario" ? (
+                      <>
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            disabled={true}
+                            className="IconButton"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                              textAlign: "center",
+                            }}
+                          >
+                            <HorizontalRuleIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            disabled={true}
+                            className="IconButton"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                              textAlign: "center",
+                            }}
+                          >
+                            <HorizontalRuleIcon
+                              className="icon"
+                              style={{ color: "white" }}
+                            />
+                          </IconButton>
+                        </TableCell>
+
+                        <TableCell component="th" scope="rol">
+                          <IconButton
+                            className="IconButton"
+                            variant="outlined"
+                            style={{
+                              backgroundColor: "#B8B9BA",
+                              borderRadius: "10px",
+                              color: "white",
+                              marginLeft: "5px",
+                            }}
+                            onClick={() =>
+                              openPersonDialog(rol.id_jerar, rol.nombre)
+                            }
                           >
                             <PersonAddIcon
                               className="icon"
@@ -320,6 +400,7 @@ export default function ConfigurarSecciones() {
                         </TableCell>
                       </>
                     ) : (
+                      /* Nuestros Integrantes */
                       <>
                         <TableCell component="th" scope="rol">
                           <IconButton
@@ -388,7 +469,9 @@ export default function ConfigurarSecciones() {
                           color: "white",
                           marginLeft: "5px",
                         }}
-                        onClick={() => openTablePersonDialog(rol.id_jerar)}
+                        onClick={() =>
+                          openTablePersonDialog(rol.id_jerar, rol.nombre)
+                        }
                       >
                         <MenuIcon className="icon" style={{ color: "white" }} />
                       </IconButton>
@@ -646,7 +729,9 @@ export default function ConfigurarSecciones() {
                               color: "white",
                               marginLeft: "5px",
                             }}
-                            onClick={() => DeleteUserConfirmation(row.cedula, row.nombre)}
+                            onClick={() =>
+                              DeleteUserConfirmation(row.cedula, row.nombre)
+                            }
                           >
                             <DeleteOutlineOutlinedIcon
                               className="icon"
