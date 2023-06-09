@@ -79,3 +79,23 @@ export const updateNameById = async (id, name) => {
     return [];
   }
 };
+
+/**
+ * Método que realiza la petición HTTP para actualizar el id_jerar de un rol
+ * @param {id_antiguo} id_antiguo id_jerar actual del rol
+ * @param {id_nuevo} id_nuevo id_jerar nuevo del rol
+ * @param {unidad} unidaa unidad a la que pertenece el rol
+ * @Return HTTP response
+ * @throws Exception
+ */
+export const updateIdJerarRol = async (id_antiguo, id_nuevo, unidad) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:9090/api/v1/roles/updateIdJerarRol/${id_antiguo}/${id_nuevo}/${unidad}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};

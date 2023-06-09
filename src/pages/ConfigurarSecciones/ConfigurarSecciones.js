@@ -28,6 +28,7 @@ import {
   deleteRolById,
   getAllRolesByUnity,
   saveRol,
+  updateIdJerarRol,
   updateNameById,
 } from "../../api/roles";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -57,6 +58,10 @@ export default function ConfigurarSecciones() {
 
   const [nextPriority, setNextPriority] = useState([]);
   const [nameParametersDialog, setNameParametersDialog] = React.useState();
+  const [
+    idJerarParametersDialog,
+    setIdJerarParametersDialog,
+  ] = React.useState();
 
   /* General Hooks */
   const [idParametersDialog, setIdParametersDialog] = React.useState();
@@ -144,12 +149,53 @@ export default function ConfigurarSecciones() {
     setNewRolName(event.target.value);
   };
 
+  /* Change para actualizar el el id_jerar del rol */
+  const onChangeUpdatIdJerareRol = (event) => {
+    const value = event.target.value;
+    if (value != "0" || value != "1") {
+      setIdJerarParametersDialog(event.target.value);
+    }
+  };
+
+  const filterInputValue = () => {
+    if (idJerarParametersDialog == "0") {
+      alert(
+        "No puede asignar el id 0 ya que este se encuentra asignado a roles predeterminados"
+      );
+      return "";
+    } else if (idJerarParametersDialog == "1") {
+      alert(
+        "No puede asignar el id 1 ya que este se encuentra asignado a roles predeterminados"
+      );
+      return "";
+    }
+    return idJerarParametersDialog;
+  };
+
   /* METODOS */
 
   /* Actualizar nombre del rol */
   const updateRol = () => {
-    updateNameById(idParametersDialog, newRolName);
-    setTimeout(window.location.reload(), 10000);
+    console.log(idParametersDialog);
+    console.log(newRolName);
+    console.log(idJerarParametersDialog);
+
+    const rol = roles.filter((rol) => rol.id == idParametersDialog);
+
+    if (newRolName == undefined || newRolName == "") {
+      updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
+      setTimeout(window.location.reload(), 10000);
+    } else if (
+      idJerarParametersDialog == undefined ||
+      idJerarParametersDialog == ""
+    ) {
+      updateNameById(idParametersDialog, newRolName);
+      setTimeout(window.location.reload(), 10000);
+    } else {
+      updateNameById(idParametersDialog, newRolName);
+      updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
+      setTimeout(window.location.reload(), 10000);
+    }
   };
 
   /* Borrar Rol */
@@ -487,6 +533,7 @@ export default function ConfigurarSecciones() {
 
         {/* Dialog agregar Seccion */}
         <Dialog open={open} onClose={handleClose}>
+          {/* Titulo */}
           <Toolbar className="modalTitle">
             <Typography
               className="typpgraphyTitle"
@@ -509,6 +556,7 @@ export default function ConfigurarSecciones() {
           </Toolbar>
 
           <Grid container className="gridContainerDialog">
+            {/* Id_jerar */}
             <Grid
               item
               md={2}
@@ -524,7 +572,7 @@ export default function ConfigurarSecciones() {
                 fullWidth
               />
             </Grid>
-
+            {/* Nombre */}
             <Grid item md={10}>
               <TextField
                 className="textField"
@@ -577,6 +625,25 @@ export default function ConfigurarSecciones() {
           </Toolbar>
 
           <Grid container className="gridContainerDialog">
+            {/* Id_jerar */}
+            <Grid
+              item
+              md={2}
+              style={{
+                borderColor: "#04B8E2",
+              }}
+            >
+              <TextField
+                label="Prioridad"
+                focused
+                placeholder={nextPriority}
+                value={filterInputValue()}
+                onChange={onChangeUpdatIdJerareRol}
+                style={{ width: "200px" }}
+                fullWidth
+              />
+            </Grid>
+            {/* Nombre */}
             <Grid item md={10}>
               <TextField
                 className="textField"
