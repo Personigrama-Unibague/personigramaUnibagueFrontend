@@ -118,14 +118,14 @@ export default function Personigrama() {
       {/* Primario */}
       <div className="personigramaCards">
         <Grid container spacing={2} className="gridContainer" sx={{ pb: 2 }}>
-          <Grid item className="imageContainer">
+          <Grid item md={9} className="imageContainer">
             <img src={BannerPersonal} className="bannerPersonal" />
             <div className="nombreBannerPrincipal">
               <p className="personigrama">PERSONIGRAMA</p>
               <p className="unidad">{params.nombre}</p>
             </div>
           </Grid>
-          <Grid item className="imageContainer">
+          <Grid item md={3} className="imageContainer">
             {funcionarios?.map((func) => {
               if (func.id_jerar == 1) {
                 return (

@@ -2,13 +2,14 @@ import React from "react";
 import organigramas from "../organigrama.json";
 import Tree from "react-d3-tree";
 import { Button, IconButton } from "@material-ui/core";
-import { Edit, AttachMoney, Accessible } from "@material-ui/icons";
+import KeyboardDoubleArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowLeftOutlined";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { useCenteredTree } from "./helpers";
 import NodeLabel from "./helpers";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import { Link } from "react-router-dom";
 
 const containerStyles = {
@@ -24,8 +25,9 @@ const useStyles = makeStyles(
   createStyles({
     button: {
       position: "",
-      width: "250px",
-      height: "80px",
+      width: "300px",
+      height: "70px",
+      borderRadius: "30px",
       background: "#193F76",
       color: "white",
     },
@@ -42,6 +44,15 @@ const useStyles = makeStyles(
       position: "",
       bottom: "5px",
       right: "10px",
+      color: "white",
+    },
+    childId: {
+      background: "#02AFD8",
+      position: "",
+      width: "300px",
+      height: "70px",
+      borderRadius: "30px",
+      color: "white",
     },
   })
 );
@@ -56,27 +67,36 @@ const renderForeignObjectNode = ({
     {/* `foreignObject` requires width & height to be explicitly set. */}
     <foreignObject {...foreignObjectProps}>
       <Button
-        className={classes.button}
+        className={`${nodeDatum.parent_id === null ? classes.button : classes.childId}`}
         variant="contained"
-        onClick={toggleNode}
       >
-        <div className={classes.name}>{nodeDatum.name}</div>
-        {/* {nodeDatum.attributes.nombre} */}
-        <div>Nombre:</div>
-        <div>{nodeDatum.nombre}</div>
+        {nodeDatum.nombre !== undefined && (
+          <div className={classes.name}>{nodeDatum.name}</div>
+        )}
+        {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+        <IconButton>
+          <ArrowBackIosOutlinedIcon
+            style={{ color: "#FFFFFF" }}
+            onClick={toggleNode}
+          />
+        </IconButton>
         <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
           <IconButton className={classes.edit} aria-label="edit">
             <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
           </IconButton>
         </Link>
-
         <IconButton>
-          <ArrowForwardIosRoundedIcon style={{ color: "#FFFFFF" }} />
+          <ArrowForwardIosRoundedIcon
+            style={{ color: "#FFFFFF" }}
+            onClick={toggleNode}
+          />
         </IconButton>
       </Button>
     </foreignObject>
   </>
 );
+
+
 
 /* Json Jerarquico */
 function createTree(organigrama, id) {
@@ -94,13 +114,13 @@ function createTree(organigrama, id) {
 export default function Organigrama() {
   const classes = useStyles();
   const [translate, containerRef] = useCenteredTree();
-  const nodeSize = { x: 300, y: 250 };
+  const nodeSize = { x: 500, y: 250 };
   const separation = { siblings: 1, nonSiblings: 2 };
   const foreignObjectProps = {
     width: nodeSize.x,
     height: nodeSize.y,
-    x: -125,
-    y: -80,
+    x: -100,
+    y: -40,
   };
 
   let json = createTree(organigramas, null);
@@ -115,7 +135,7 @@ export default function Organigrama() {
         separation={separation}
         transitionDuration="1000"
         pathFunc="step"
-        rootNodeClassName="node__root"
+        NodeClassName="node__root"
         branchNodeClassName="node__branch"
         leafNodeClassName="node__leaf"
         renderCustomNodeElement={(rd3tProps) =>
