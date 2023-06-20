@@ -3,27 +3,37 @@ import axios from "axios";
 //Servicio encargado de realizacion peticiones HTTP para la obtencion de las unidades de la universidad
 
 /**
-   * Método recursivo para la jerarquización de unidades de la Universidad
-   * @param {organigram} organigram JSON del organigrama de la Universidad 
-   * @param {id} id id de cada unidad
-   * @Return True o False
-   */
-function createTree(organigram, id) {
-  var node = {};
-  organigram.filter((obj) => obj.id === id).forEach((obj) => (node = obj));
-  var childrenIds = organigram
-    .filter((obj) => obj.parent_id === id)
-    .map((obj) => obj.id);
-  node.children = childrenIds.map((childId) =>
-    createTree(organigram, childId)
-  );
-  return node;
+ * Método recursivo para la jerarquización de unidades de la Universidad
+ * @param {organigram} organigram JSON del organigrama de la Universidad
+ * @param {id} id id de cada unidad
+ * @Return True o False
+ */
+
+function createTree(organigram) {
+  var tree = [];
+  var map = {};
+
+  organigram.forEach((node) => {
+    map[node.id] = { ...node, children: [] };
+  });
+
+  organigram.forEach((node) => {
+    if (node.parent_id && map[node.parent_id]) {
+      map[node.parent_id].children.push(map[node.id]);
+    } else {
+      tree.push(map[node.id]);
+    }
+  });
+
+  return {
+    children: tree,
+  };
 }
 
 /**
-   * Método que realiza la petición HTTP para traer  todas las unidades
-   * @Return Lista de unidades
-   */
+ * Método que realiza la petición HTTP para traer  todas las unidades
+ * @Return Lista de unidades
+ */
 export const getUnities = async () => {
   try {
     const response = await axios.get(
@@ -40,10 +50,10 @@ export const getUnities = async () => {
 };
 
 /**
-   * Método que realiza la petición HTTP para obtener el nombre de una unidad
-   * @param {id} id id de la unidad
-   * @Return Nombre de la unidad
-   */
+ * Método que realiza la petición HTTP para obtener el nombre de una unidad
+ * @param {id} id id de la unidad
+ * @Return Nombre de la unidad
+ */
 export const getUnityNameById = async (id) => {
   try {
     const response = await axios.get(
@@ -57,7 +67,6 @@ export const getUnityNameById = async (id) => {
     return [];
   }
 };
-
 
 /* const getUnidadesByUnidad = async () => {
   try {

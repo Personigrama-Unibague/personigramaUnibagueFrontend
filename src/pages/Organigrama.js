@@ -1,6 +1,8 @@
-import React from "react";
-import organigramas from "../organigrama.json";
+import React, { useEffect } from "react";
+import organigramas from "../organigramaFormat.json";
 import Tree from "react-d3-tree";
+import CircularProgress from "@mui/material/CircularProgress";
+
 import { Button, IconButton } from "@material-ui/core";
 import KeyboardDoubleArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowLeftOutlined";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -11,14 +13,14 @@ import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import { Link } from "react-router-dom";
+import { getUnities } from "../api/unidades";
+import { useLayoutEffect } from "react";
+import { useState } from "react";
 
 const containerStyles = {
   width: "100vw",
   height: "100vh",
   background: "#eee",
-};
-const props = {
-  prop1: "3.1.1",
 };
 
 const useStyles = makeStyles(
@@ -67,7 +69,9 @@ const renderForeignObjectNode = ({
     {/* `foreignObject` requires width & height to be explicitly set. */}
     <foreignObject {...foreignObjectProps}>
       <Button
-        className={`${nodeDatum.parent_id === null ? classes.button : classes.childId}`}
+        className={`${
+          nodeDatum.parent_id === null ? classes.button : classes.childId
+        }`}
         variant="contained"
       >
         {nodeDatum.nombre !== undefined && (
@@ -96,24 +100,12 @@ const renderForeignObjectNode = ({
   </>
 );
 
-
-
-/* Json Jerarquico */
-function createTree(organigrama, id) {
-  var node = {};
-  organigrama.filter((obj) => obj.id === id).forEach((obj) => (node = obj));
-  var childrenIds = organigrama
-    .filter((obj) => obj.parent_id === id)
-    .map((obj) => obj.id);
-  node.children = childrenIds.map((childId) =>
-    createTree(organigrama, childId)
-  );
-  return node;
-}
-
 export default function Organigrama() {
   const classes = useStyles();
   const [translate, containerRef] = useCenteredTree();
+  const [unidades, setUnidades] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
+
   const nodeSize = { x: 500, y: 250 };
   const separation = { siblings: 1, nonSiblings: 2 };
   const foreignObjectProps = {
@@ -123,26 +115,52 @@ export default function Organigrama() {
     y: -40,
   };
 
-  let json = createTree(organigramas, null);
-  let jsonFianl = JSON.stringify(json);
-  console.log(jsonFianl);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const und = await getUnities();
+        setUnidades(und);
+      } catch (err) {
+        console.log("Error API");
+      } finally {
+        setIsLoading(false); // Actualizar el estado isLoading después de obtener los datos
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    console.log(unidades);
+  }, [unidades]);
 
   return (
     <div style={containerStyles}>
-      <Tree
-        data={json}
-        nodeSize={nodeSize}
-        separation={separation}
-        transitionDuration="1000"
-        pathFunc="step"
-        NodeClassName="node__root"
-        branchNodeClassName="node__branch"
-        leafNodeClassName="node__leaf"
-        renderCustomNodeElement={(rd3tProps) =>
-          renderForeignObjectNode({ ...rd3tProps, foreignObjectProps, classes })
-        }
-        orientation="horizontal"
-      />
+      {isLoading ? ( // Verificar si los datos están cargando
+        <div>
+          <h2>Cargando unidades...</h2>
+          <CircularProgress />
+        </div>
+      ) : (
+        <Tree
+          data={unidades}
+          nodeSize={nodeSize}
+          separation={separation}
+          transitionDuration="1000"
+          pathFunc="step"
+          NodeClassName="node__root"
+          branchNodeClassName="node__branch"
+          leafNodeClassName="node__leaf"
+          renderCustomNodeElement={(rd3tProps) =>
+            renderForeignObjectNode({
+              ...rd3tProps,
+              foreignObjectProps,
+              classes,
+            })
+          }
+          orientation="horizontal"
+        />
+      )}
     </div>
   );
 }
