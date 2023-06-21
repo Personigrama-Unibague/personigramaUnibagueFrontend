@@ -480,19 +480,6 @@ export default function AdminUnidades() {
             {/* User Button */}
 
             {/* Actualizar Button */}
-            <Button
-              variant="outlined"
-              startIcon={<ChangeCircleOutlinedIcon />}
-              style={{
-                backgroundColor: "#04B8E2",
-                color: "white",
-                marginTop: "30px",
-                marginLeft: "13vw",
-                borderRadius: "30px",
-              }}
-            >
-              Actualizar
-            </Button>
           </Grid>
         ) : (
           <h1>Cargando...</h1>

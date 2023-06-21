@@ -100,7 +100,7 @@ function AdminUsuarios() {
                     fontSize: "38px",
                   }}
                 >
-                  Administrar Unidades
+                  Administrar Usuarios
                 </Typography>
                 <AdminUsername />
                 <LogOut />
