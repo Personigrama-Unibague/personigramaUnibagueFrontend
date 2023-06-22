@@ -184,6 +184,7 @@ export default function ConfigurarSecciones() {
 
     if (newRolName == undefined || newRolName == "") {
       updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
+      
       setTimeout(window.location.reload(), 10000);
     } else if (
       idJerarParametersDialog == undefined ||
