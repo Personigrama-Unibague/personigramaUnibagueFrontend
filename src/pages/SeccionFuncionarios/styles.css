@@ -1,9 +1,114 @@
-.MuiInput-underline-73:before{
-    height: 0px !important;
-    border-bottom: 0px !important;
+.MuiInput-underline-73:before {
+  height: 0px !important;
+  border-bottom: 0px !important;
+}
+
+.MuiInput-underline-73:after {
+  height: 0px !important;
+  border-bottom: 0px !important;
+}
+
+.css-18vff4n-MuiTable-root {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  width: 380px !important;
+  min-width: 200px !important;
+}
+.styleTitle {
+  justify-content: center !important;
+  display: flex !important;
+  font: Lato !important;
+  font-size: 38px !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .css-18vff4n-MuiTable-root {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 350px !important;
+    min-width: 200px !important;
   }
-  
-  .MuiInput-underline-73:after{
-    height: 0px !important;
-    border-bottom: 0px !important;
+  .styleTitle {
+    justify-content: center !important;
+    display: flex !important;
+    font: Lato !important;
+    font-size: 15px !important;
   }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .css-18vff4n-MuiTable-root {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 350px !important;
+    min-width: 200px !important;
+  }
+  .styleTitle {
+    justify-content: center !important;
+    display: flex !important;
+    font: Lato !important;
+    font-size: 25px !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .css-18vff4n-MuiTable-root {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 350px !important;
+    min-width: 200px !important;
+  }
+  .styleTitle {
+    justify-content: center !important;
+    display: flex !important;
+    font: Lato !important;
+    font-size: 30px !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .css-18vff4n-MuiTable-root {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 380px !important;
+    min-width: 200px !important;
+  }
+  .styleTitle {
+    justify-content: center !important;
+    display: flex !important;
+    font: Lato !important;
+    font-size: 38px !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .css-18vff4n-MuiTable-root {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 380px !important;
+    min-width: 200px !important;
+  }
+  .styleTitle {
+    justify-content: center !important;
+    display: flex !important;
+    font: Lato !important;
+    font-size: 38px !important;
+  }
+}

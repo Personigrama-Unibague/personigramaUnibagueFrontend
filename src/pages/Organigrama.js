@@ -159,6 +159,7 @@ export default function Organigrama() {
             })
           }
           orientation="horizontal"
+          initialDepth={1}
         />
       )}
     </div>

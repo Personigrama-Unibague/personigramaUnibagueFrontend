@@ -2,8 +2,8 @@
   justify-content: center;
   display: flex;
 }
-.cellWidth{
-  width: 100%
+.cellWidth {
+  width: 100%;
 }
 
 .IconButton:hover {
@@ -24,6 +24,10 @@
 
 .css-1yhpg23-MuiTableCell-root {
   padding: 0 !important;
+}
+.css-hyum1k-MuiToolbar-root {
+  min-height: 64px;
+  padding-left: 365px !important;
 }
 
 /* MEDIA QUERYS */
@@ -92,6 +96,12 @@
     width: 27px !important;
     height: 27px !important;
   }
+  .element.style {
+    justify-content: center;
+    display: flex;
+    font-size: 15px;
+    padding-left: 700px !important;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -103,5 +113,11 @@
   .IconButton {
     width: 27px !important;
     height: 27px !important;
+  }
+  .element.style {
+    justify-content: center;
+    display: flex;
+    font-size: 15px;
+    padding-left: 700px !important;
   }
 }

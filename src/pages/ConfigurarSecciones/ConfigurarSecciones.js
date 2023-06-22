@@ -262,13 +262,7 @@ export default function ConfigurarSecciones() {
                   variant="h6"
                   component="div"
                   sx={{ flexGrow: 1 }}
-                  style={{
-                    justifyContent: "center",
-                    display: "flex",
-                    font: "Lato",
-                    fontSize: "38px",
-                    textAlign: "center",
-                  }}
+                  className="styleTitle"
                 >
                   Configuración Secciones
                 </Typography>

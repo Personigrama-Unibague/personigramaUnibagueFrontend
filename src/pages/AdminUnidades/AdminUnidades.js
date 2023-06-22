@@ -67,40 +67,34 @@ export default function AdminUnidades() {
       >
         {/* Toolbar */}
         <Grid item xs={12}>
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-              <Toolbar style={{ backgroundColor: "#193F76" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1 }}
-                  style={{
-                    justifyContent: "center",
-                    display: "flex",
-                    font: "Lato",
-                    fontSize: "15px",
-                  }}
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar style={{ backgroundColor: "#193F76" }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+                className="styleTitle"
+              >
+                Administrar Unidades
+              </Typography>
+              <AdminUsername />
+              <LogOut />
+              <Link to="/adminUnidades" style={{ color: "white" }}>
+                <InputOutlinedIcon
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 3 }}
                 >
-                  Administar Unidades
-                </Typography>
-                <AdminUsername />
-                <LogOut />
-
-                <Link to="/" style={{ color: "white" }}>
-                  <InputOutlinedIcon
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 3 }}
-                  >
-                    <MenuIcon />
-                  </InputOutlinedIcon>
-                </Link>
-              </Toolbar>
-            </AppBar>
-          </Box>
-        </Grid>
+                  <MenuIcon />
+                </InputOutlinedIcon>
+              </Link>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </Grid>
 
         {unidades ? (
           <Grid item style={{ marginTop: "50px" }}>

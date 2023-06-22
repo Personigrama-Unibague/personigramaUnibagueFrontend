@@ -106,12 +106,7 @@ function SeccionFuncionarios() {
                 variant="h6"
                 component="div"
                 sx={{ flexGrow: 1 }}
-                style={{
-                  justifyContent: "center",
-                  display: "flex",
-                  font: "Lato",
-                  fontSize: "38px",
-                }}
+                className="styleTitle"
               >
                 Sección Funcionarios
               </Typography>
@@ -200,7 +195,7 @@ function SeccionFuncionarios() {
             backgroundColor: "#04B8E2",
             color: "white",
             marginTop: "30px",
-            marginLeft: "5px",
+            marginLeft: "70px",
             borderRadius: "50px",
             marginBottom: "40px",
           }}
