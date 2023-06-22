@@ -13,17 +13,17 @@ import PruebasJson from "../pages/PruebasJson";
 import PruebaLogin from "../pages/PruebaLogIn/PruebaLogIn";
 
 const routes = [
-  { path: "/", element: <PrincipalTemporal /> },
-  { path: "/homePage", element: <HomePage /> },
-  { path: "/personigrama/:unidad/:nombre", element: <Personigrama /> },
-  { path: "/adminLogin", element: <AdminLogin /> },
-  { path: "/adminUnidades", element: <AdminUnidades /> },
-  { path: "/adminUsuarios", element: <AdminUsuarios /> },
-  { path: "/confiSecciones/:unidad/:nombre", element: <ConfigurarSecciones /> },
-  { path: "/seccionFuncionarios/:unidad/:nombre", element: <SeccionFuncionarios /> },
-  { path: "/pruebasjson", element: <PruebasJson /> },
-  { path: "/pruebaLogin", element: <PruebaLogin /> },
-  { path: "*", element: <NotFound /> }
+  { Path: "/", element: <PrincipalTemporal /> },
+  { Path: "/homePage", element: <HomePage /> },
+  { Path: "/personigrama/:unidad/:nombre", element: <Personigrama /> },
+  { Path: "/adminLogin", element: <AdminLogin /> },
+  { Path: "/adminUnidades", element: <AdminUnidades /> },
+  { Path: "/adminUsuarios", element: <AdminUsuarios /> },
+  { Path: "/confiSecciones/:unidad/:nombre", element: <ConfigurarSecciones /> },
+  { Path: "/seccionFuncionarios/:unidad/:nombre", element: <SeccionFuncionarios /> },
+  { Path: "/pruebasjson", element: <PruebasJson /> },
+  { Path: "/pruebaLogin", element: <PruebaLogin /> },
+  { Path: "*", element: <NotFound /> }
 ];
 
 export default routes;

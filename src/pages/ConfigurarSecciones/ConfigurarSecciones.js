@@ -32,6 +32,8 @@ import {
   updateNameById,
 } from "../../api/roles";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { Link } from "react-router-dom";
+
 
 import { List, ListItem } from "material-ui";
 import "./styles.css";
@@ -272,15 +274,17 @@ export default function ConfigurarSecciones() {
                 </Typography>
                 <AdminUsername />
                 <LogOut />
-                <InputOutlinedIcon
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 3 }}
-                >
-                  <MenuIcon />
-                </InputOutlinedIcon>
+                <Link to="/adminUnidades" style={{ color: "white" }}>
+                  <InputOutlinedIcon
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 3 }}
+                  >
+                    <MenuIcon />
+                  </InputOutlinedIcon>
+                </Link>
               </Toolbar>
             </AppBar>
           </Box>

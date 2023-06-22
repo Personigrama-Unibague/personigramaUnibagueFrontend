@@ -29,6 +29,7 @@ import List from "@mui/material/List";
 import { getDeleteUser, getAllUsers, getSaveNewUser } from "../../api/usuarios";
 import LogOut from "../../components/LogOut/LogOut";
 import AdminUsername from "../../components/AdminUsername/AdminUsername";
+import { Link } from "react-router-dom";
 
 function AdminUsuarios() {
   const [open, setOpen] = React.useState(false);
@@ -104,15 +105,17 @@ function AdminUsuarios() {
                 </Typography>
                 <AdminUsername />
                 <LogOut />
-                <InputOutlinedIcon
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 3 }}
-                >
-                  <MenuIcon />
-                </InputOutlinedIcon>
+                <Link to="/" style={{color:"white"}}>
+                  <InputOutlinedIcon
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 3 }}
+                  >
+                    <MenuIcon />
+                  </InputOutlinedIcon>
+                </Link>
               </Toolbar>
             </AppBar>
           </Box>

@@ -86,15 +86,17 @@ export default function AdminUnidades() {
                 <AdminUsername />
                 <LogOut />
 
-                <InputOutlinedIcon
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 3 }}
-                >
-                  <MenuIcon />
-                </InputOutlinedIcon>
+                <Link to="/" style={{ color: "white" }}>
+                  <InputOutlinedIcon
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 3 }}
+                  >
+                    <MenuIcon />
+                  </InputOutlinedIcon>
+                </Link>
               </Toolbar>
             </AppBar>
           </Box>

@@ -17,7 +17,7 @@ export default function PersonigramaCard(props) {
           <Typography className="profileCharge">{props.personal.cargo}</Typography>
 
           <Typography className="profileSubtitle">Correo</Typography>
-          <Typography className="profileSubInfo">
+          <Typography className="profileSubInfoCorreo">
           {props.personal.correo}
           </Typography>
 

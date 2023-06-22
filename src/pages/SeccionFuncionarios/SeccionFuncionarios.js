@@ -37,6 +37,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import LogOut from "../../components/LogOut/LogOut";
 import AdminUsername from "../../components/AdminUsername/AdminUsername";
+import { Link } from "react-router-dom";
 
 
 function SeccionFuncionarios() {
@@ -65,7 +66,11 @@ function SeccionFuncionarios() {
   };
   const DeletePersonConfirmation = (event, name) => {
     const confirmed = window.confirm(
-      "¿Estás seguro de que desea eliminar la persona: " + name + " de " + params.nombre + "?"
+      "¿Estás seguro de que desea eliminar la persona: " +
+        name +
+        " de " +
+        params.nombre +
+        "?"
     );
     if (confirmed) {
       deletePersona(event);
@@ -110,17 +115,19 @@ function SeccionFuncionarios() {
               >
                 Sección Funcionarios
               </Typography>
-              <AdminUsername/>
+              <AdminUsername />
               <LogOut />
-              <InputOutlinedIcon
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 3 }}
-              >
-                <MenuIcon />
-              </InputOutlinedIcon>
+              <Link to="/adminUnidades" style={{ color: "white" }}>
+                <InputOutlinedIcon
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 3 }}
+                >
+                  <MenuIcon />
+                </InputOutlinedIcon>
+              </Link>
             </Toolbar>
           </AppBar>
         </Box>
@@ -169,7 +176,9 @@ function SeccionFuncionarios() {
                         color: "white",
                         marginLeft: "5px",
                       }}
-                      onClick={() => DeletePersonConfirmation(row.cedula, row.nombre)}
+                      onClick={() =>
+                        DeletePersonConfirmation(row.cedula, row.nombre)
+                      }
                     >
                       <DeleteOutlineOutlinedIcon
                         className="icon"

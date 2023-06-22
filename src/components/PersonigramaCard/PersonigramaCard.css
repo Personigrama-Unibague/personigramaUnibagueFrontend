@@ -3,7 +3,7 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1000ms;
-  width: 220px;
+  width: 235px;
   height: 360px;
 }
 
@@ -60,7 +60,11 @@
   color: #7f8081;
   padding-top: 40px;
 }
-
+.profileSubInfoCorreo {
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  color: #04b8e2;
+}
 .profileSubInfo {
   font-weight: 600 !important;
   font-size: 12px !important;
