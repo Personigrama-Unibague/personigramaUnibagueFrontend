@@ -34,7 +34,6 @@ import {
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { Link } from "react-router-dom";
 
-
 import { List, ListItem } from "material-ui";
 import "./styles.css";
 import {
@@ -186,7 +185,7 @@ export default function ConfigurarSecciones() {
 
     if (newRolName == undefined || newRolName == "") {
       updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
-      
+
       setTimeout(window.location.reload(), 10000);
     } else if (
       idJerarParametersDialog == undefined ||
@@ -784,27 +783,30 @@ export default function ConfigurarSecciones() {
                         >
                           {row.nombre}
                         </TableCell>
-
-                        <TableCell align="center">
-                          <IconButton
-                            className="IconButton"
-                            variant="outlined"
-                            style={{
-                              backgroundColor: "#B8B9BA",
-                              borderRadius: "10px",
-                              color: "white",
-                              marginLeft: "5px",
-                            }}
-                            onClick={() =>
-                              DeleteUserConfirmation(row.cedula, row.nombre)
-                            }
-                          >
-                            <DeleteOutlineOutlinedIcon
-                              className="icon"
-                              style={{ color: "white" }}
-                            />
-                          </IconButton>
-                        </TableCell>
+                        {row.id_jerar != 0 ? (
+                          <TableCell align="center">
+                            <IconButton
+                              className="IconButton"
+                              variant="outlined"
+                              style={{
+                                backgroundColor: "#B8B9BA",
+                                borderRadius: "10px",
+                                color: "white",
+                                marginLeft: "5px",
+                              }}
+                              onClick={() =>
+                                DeleteUserConfirmation(row.cedula, row.nombre)
+                              }
+                            >
+                              <DeleteOutlineOutlinedIcon
+                                className="icon"
+                                style={{ color: "white" }}
+                              />
+                            </IconButton>
+                          </TableCell>
+                        ) : (
+                          <></>
+                        )}
                       </TableRow>
                     ))}
                   </TableBody>
