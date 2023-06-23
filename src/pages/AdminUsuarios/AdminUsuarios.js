@@ -71,11 +71,15 @@ function AdminUsuarios() {
   };
 
   const DeleteUserConfirmation = (id, user) => {
-    const confirmed = window.confirm(
-      "¿Estás seguro de que desea eliminar el usuario: " + user + "?"
-    );
-    if (confirmed) {
-      deleteUser(id);
+    if (user == "admin") {
+      window.alert("No se puede eliminar el usuario admin");
+    } else {
+      const confirmed = window.confirm(
+        "¿Estás seguro de que desea eliminar el usuario: " + user + "?"
+      );
+      if (confirmed) {
+        deleteUser(id);
+      }
     }
   };
   return (
@@ -105,7 +109,7 @@ function AdminUsuarios() {
                 </Typography>
                 <AdminUsername />
                 <LogOut />
-                <Link to="/" style={{color:"white"}}>
+                <Link to="/" style={{ color: "white" }}>
                   <InputOutlinedIcon
                     size="large"
                     edge="start"

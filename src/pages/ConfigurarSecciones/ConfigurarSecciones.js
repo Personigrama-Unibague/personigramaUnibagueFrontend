@@ -607,7 +607,7 @@ export default function ConfigurarSecciones() {
               variant="h5"
               style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
             >
-              Agregar Sección
+              Actualizar Sección
             </Typography>
             <IconButton
               edge="end"

@@ -169,7 +169,7 @@ function SeccionFuncionarios() {
                         backgroundColor: "#B8B9BA",
                         borderRadius: "10px",
                         color: "white",
-                        marginLeft: "5px",
+                        marginRight: "10px",
                       }}
                       onClick={() =>
                         DeletePersonConfirmation(row.cedula, row.nombre)

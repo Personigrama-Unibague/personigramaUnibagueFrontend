@@ -123,7 +123,7 @@ export default function Organigrama() {
       } catch (err) {
         console.log("Error API");
       } finally {
-        setIsLoading(false); // Actualizar el estado isLoading después de obtener los datos
+        setIsLoading(false);
       }
     };
 
@@ -137,9 +137,18 @@ export default function Organigrama() {
   return (
     <div style={containerStyles}>
       {isLoading ? ( // Verificar si los datos están cargando
-        <div>
-          <h2>Cargando unidades...</h2>
-          <CircularProgress />
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <p style={{ color: "#193F76", fontFamily: "Lato", fontSize: "50px" }}>
+            Cargando unidades...
+          </p>
+          <CircularProgress size="90px" />
         </div>
       ) : (
         <Tree
