@@ -57,6 +57,7 @@ function SeccionFuncionarios() {
     const user = await findPersonById(event.target.value);
     console.log(user);
     getSavePersona(user, unidad);
+    window.alert(`El funcionario ${user.nombre}, fue agregado correcramente`);
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -74,6 +75,7 @@ function SeccionFuncionarios() {
     );
     if (confirmed) {
       deletePersona(event);
+      window.alert("El funcionario " + name + ", fue eliminado correctamente");
     }
   };
 

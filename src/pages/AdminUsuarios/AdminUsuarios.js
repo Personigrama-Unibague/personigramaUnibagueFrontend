@@ -62,6 +62,7 @@ function AdminUsuarios() {
 
   const saveUser = () => {
     getSaveNewUser(user, password);
+    window.alert("El usuario " + user + ", fue agregado correctamente");
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -79,6 +80,7 @@ function AdminUsuarios() {
       );
       if (confirmed) {
         deleteUser(id);
+        window.alert("El usuario " + user + ", fue eliminado correctamente");
       }
     }
   };
