@@ -60,6 +60,11 @@ export default function ConfigurarSecciones() {
   const [nextPriority, setNextPriority] = useState([]);
   const [nameParametersDialog, setNameParametersDialog] = React.useState();
   const [
+    idJerarRolDialogParametersDialog,
+    setIdJerarRolDialogParametersDialog,
+  ] = React.useState();
+
+  const [
     idJerarParametersDialog,
     setIdJerarParametersDialog,
   ] = React.useState();
@@ -91,7 +96,6 @@ export default function ConfigurarSecciones() {
         const getRolesByUnidad = await getAllRolesByUnity(params.unidad);
         const func = await getEmployeeByUnity(params.unidad);
         setRoles(getRolesByUnidad);
-        setNextPriority(getRolesByUnidad.length);
         setFuncionarios(func);
       } catch (err) {
         console.log("Error API");
@@ -106,6 +110,7 @@ export default function ConfigurarSecciones() {
     setOpenUpdate(true);
     setNameParametersDialog(rol.nombre);
     setIdParametersDialog(rol.id);
+    setIdJerarRolDialogParametersDialog(rol.id_jerar);
   };
 
   /* Dialog Tabla de Personas por rol */
@@ -159,6 +164,13 @@ export default function ConfigurarSecciones() {
   };
 
   const filterInputValue = () => {
+    const rol = roles.filter(
+      (rol) =>
+        rol.id_jerar == idJerarParametersDialog &&
+        rol.id_jerar != 0 &&
+        rol.id_jerar != 1
+    );
+
     if (idJerarParametersDialog == "0") {
       alert(
         "No puede asignar el id 0 ya que este se encuentra asignado a roles predeterminados"
@@ -169,7 +181,19 @@ export default function ConfigurarSecciones() {
         "No puede asignar el id 1 ya que este se encuentra asignado a roles predeterminados"
       );
       return "";
+    } else if (rol.length > 0) {
+      alert(
+        "No puede asignar el id " +
+          idJerarParametersDialog +
+          "(" +
+          rol[0].nombre +
+          ")" +
+          " ya que este ya existe"
+      );
+      setIdJerarParametersDialog();
+      return "";
     }
+
     return idJerarParametersDialog;
   };
 
@@ -185,7 +209,6 @@ export default function ConfigurarSecciones() {
 
     if (newRolName == undefined || newRolName == "") {
       updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
-
       setTimeout(window.location.reload(), 10000);
     } else if (
       idJerarParametersDialog == undefined ||
@@ -214,7 +237,7 @@ export default function ConfigurarSecciones() {
 
   /* Crear Rol */
   const handleButtonClicked = () => {
-    saveRol(nextPriority, inputValue, params.unidad);
+    saveRol(inputValue, params.unidad);
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -564,8 +587,7 @@ export default function ConfigurarSecciones() {
             >
               <TextField
                 disabled
-                label="Prioridad"
-                value={nextPriority}
+                label="Nuevo Rol"
                 style={{ width: "200px" }}
                 fullWidth
               />
@@ -599,7 +621,7 @@ export default function ConfigurarSecciones() {
           </div>
         </Dialog>
 
-        {/* Dialog actualizar nombre seccion */}
+        {/* Dialog actualizar nombre y Id_jerar seccion */}
         <Dialog open={openUpdate} onClose={handleCloseUpdate}>
           <Toolbar className="modalTitle">
             <Typography
@@ -634,7 +656,7 @@ export default function ConfigurarSecciones() {
               <TextField
                 label="Prioridad"
                 focused
-                placeholder={nextPriority}
+                placeholder={idJerarRolDialogParametersDialog}
                 value={filterInputValue()}
                 onChange={onChangeUpdatIdJerareRol}
                 style={{ width: "200px" }}

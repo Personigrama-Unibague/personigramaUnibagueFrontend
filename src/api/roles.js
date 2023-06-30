@@ -29,10 +29,10 @@ export const getAllRolesByUnity = async (unity) => {
  * @Return HTTP response
  * @throws Exception
  */
-export const saveRol = async (id_jerar, name, unity) => {
+export const saveRol = async (name, unity) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/saveRol/${id_jerar}/${name}/${unity}`
+      `http://localhost:9090/api/v1/roles/saveRol/${name}/${unity}`
     );
     return response.data;
   } catch (error) {
