@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../config/config";
 
 //Servicio encargado de realizacion peticiones HTTP para administrar los roles
 
@@ -11,7 +12,7 @@ import axios from "axios";
 export const getAllRolesByUnity = async (unity) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/getAllRolesByUnidad/${unity}`
+      `${API_URL}/api/v1/roles/getAllRolesByUnidad/${unity}`
     );
     const list = response.data.sort((a, b) => a.id_jerar - b.id_jerar);
     return list;
@@ -32,7 +33,7 @@ export const getAllRolesByUnity = async (unity) => {
 export const saveRol = async (name, unity) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/saveRol/${name}/${unity}`
+      `${API_URL}/api/v1/roles/saveRol/${name}/${unity}`
     );
     return response.data;
   } catch (error) {
@@ -52,7 +53,7 @@ export const saveRol = async (name, unity) => {
 export const deleteRolById = async (id, unity) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/deleteRolById/${id}/${unity}`
+      `${API_URL}/api/v1/roles/deleteRolById/${id}/${unity}`
     );
     return response.data;
   } catch (error) {
@@ -71,7 +72,7 @@ export const deleteRolById = async (id, unity) => {
 export const updateNameById = async (id, name) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/updateNameById/${id}/${name}`
+      `${API_URL}/api/v1/roles/updateNameById/${id}/${name}`
     );
     return response.data;
   } catch (error) {
@@ -91,7 +92,7 @@ export const updateNameById = async (id, name) => {
 export const updateIdJerarRol = async (id_antiguo, id_nuevo, unidad) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/roles/updateIdJerarRol/${id_antiguo}/${id_nuevo}/${unidad}`
+      `${API_URL}/api/v1/roles/updateIdJerarRol/${id_antiguo}/${id_nuevo}/${unidad}`
     );
     return response.data;
   } catch (error) {

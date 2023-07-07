@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../config/config";
 
 //Servicio encargado de realizacion peticiones HTTP para la obtencion de las unidades de la universidad
 
@@ -36,9 +37,7 @@ function createTree(organigram) {
  */
 export const getUnities = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:9090/api/v1/unidades/getUnidades"
-    );
+    const response = await axios.get(`${API_URL}/api/v1/unidades/getUnidades`);
 
     var organigram = response.data;
     let json = createTree(organigram, null);
@@ -57,7 +56,7 @@ export const getUnities = async () => {
 export const getUnityNameById = async (id) => {
   try {
     const response = await axios.get(
-      `http://localhost:9090/api/v1/unidades/getUnidadNameById/${id}`
+      `${API_URL}/api/v1/unidades/getUnidadNameById/${id}`
     );
 
     var name = response.data;
@@ -67,14 +66,3 @@ export const getUnityNameById = async (id) => {
     return [];
   }
 };
-
-/* const getUnidadesByUnidad = async () => {
-  try {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/users/${unidad}"
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return [];
-  } */
