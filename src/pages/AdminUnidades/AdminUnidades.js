@@ -15,7 +15,7 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
 import { getUnities } from "../../api/unidades";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./styles.css";
+import "./stylesAdminUni.css";
 import {
   Table,
   TableBody,
@@ -62,39 +62,39 @@ export default function AdminUnidades() {
       <Grid
         container
         component="main"
-        style={{ justifyContent: "center", display: "flex" }}
+        style={{ justifyContent: "center", display: "flex"}}
         justify="center"
       >
         {/* Toolbar */}
-        <Grid item xs={12}>
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar style={{ backgroundColor: "#193F76" }}>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1 }}
-                className="styleTitle"
-              >
-                Administrar Unidades
-              </Typography>
-              <AdminUsername />
-              <LogOut />
-              <Link to="/adminUnidades" style={{ color: "white" }}>
-                <InputOutlinedIcon
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 3 }}
+        <Grid item md={12}>
+          <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static" className="appBarAdminUni">
+              <Toolbar style={{ backgroundColor: "#193F76" }}>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ flexGrow: 1 }}
+                  className="styleTitleAdmin"
                 >
-                  <MenuIcon />
-                </InputOutlinedIcon>
-              </Link>
-            </Toolbar>
-          </AppBar>
-        </Box>
-      </Grid>
+                  Administrar Unidades
+                </Typography>
+                <AdminUsername />
+                <LogOut />
+                <Link to="/" style={{ color: "white" }}>
+                  <InputOutlinedIcon
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 3 }}
+                  >
+                    <MenuIcon />
+                  </InputOutlinedIcon>
+                </Link>
+              </Toolbar>
+            </AppBar>
+          </Box>
+        </Grid>
 
         {unidades ? (
           <Grid item style={{ marginTop: "50px" }}>
@@ -103,21 +103,21 @@ export default function AdminUnidades() {
               component={Paper}
               style={{ borderRadius: "10px 10px 0px 0px" }}
             >
-              <Table>
-                <TableHead>
+              <Table className="marginTableAdmin">
+                <TableHead >
                   <TableRow>
                     <TableCell
-                      className="tableCellTitle"
+                      className="tableCellTitleAdmin"
                       style={{ backgroundColor: "#017A97", color: "white" }}
                     ></TableCell>
                     <TableCell
-                      className="tableCellTitle"
+                      className="tableCellTitleAdmin"
                       style={{ backgroundColor: "#017A97", color: "white" }}
                     >
                       Unidad
                     </TableCell>
                     <TableCell
-                      className="tableCellTitle"
+                      className="tableCellTitleAdmin"
                       align="center"
                       style={{ backgroundColor: "#017A97", color: "white" }}
                     >
@@ -131,14 +131,14 @@ export default function AdminUnidades() {
                     Posición
                   </TableCell> */}
                     <TableCell
-                      className="tableCellTitle"
+                      className="tableCellTitleAdmin"
                       align="center"
                       style={{ backgroundColor: "#017A97", color: "white" }}
                     >
                       Secciones
                     </TableCell>
                     <TableCell
-                      className="tableCellTitle"
+                      className="tableCellTitleAdmin"
                       align="center"
                       style={{ backgroundColor: "#017A97", color: "white" }}
                     >
@@ -164,7 +164,9 @@ export default function AdminUnidades() {
                             </IconButton>
                           )}
                         </TableCell>
-                        <TableCell>{row.nombre}</TableCell>
+                        <TableCell style={{ width: "30px", padding: "5px" }}>
+                          {row.nombre}
+                        </TableCell>
                         <TableCell>{row.id}</TableCell>
                         {/* <TableCell align="center">
                         <Grid container direction="row" spacing={0}>
@@ -253,6 +255,7 @@ export default function AdminUnidades() {
                               paddingBottom: 0,
                               paddingTop: 0,
                               paddingLeft: 0,
+                              paddingRight: 0,
                             }}
                             colSpan={5}
                           >
@@ -282,7 +285,14 @@ export default function AdminUnidades() {
                                             </IconButton>
                                           )}
                                         </TableCell>
-                                        <TableCell>{child.nombre}</TableCell>
+                                        <TableCell
+                                          style={{
+                                            width: "30px",
+                                            marginLeft: "-50px",
+                                          }}
+                                        >
+                                          {child.nombre}
+                                        </TableCell>
                                         <TableCell>{child.id}</TableCell>
                                         <TableCell align="center">
                                           <IconButton
@@ -370,7 +380,12 @@ export default function AdminUnidades() {
                                                               </IconButton>
                                                             )}
                                                           </TableCell>
-                                                          <TableCell>
+                                                          <TableCell
+                                                            style={{
+                                                              width: "30px",
+                                                              padding: "5px",
+                                                            }}
+                                                          >
                                                             {
                                                               grandChildren.nombre
                                                             }

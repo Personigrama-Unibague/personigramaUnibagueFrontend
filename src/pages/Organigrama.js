@@ -145,10 +145,12 @@ export default function Organigrama() {
             transform: "translate(-50%, -50%)",
           }}
         >
-          <p style={{ color: "#193F76", fontFamily: "Lato", fontSize: "50px" }}>
+          <p style={{ color: "#193F76", fontSize: "50px" }}>
             Cargando unidades...
           </p>
-          <CircularProgress size="90px" />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress size="90px" />
+          </div>
         </div>
       ) : (
         <Tree

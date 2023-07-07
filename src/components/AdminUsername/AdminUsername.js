@@ -12,7 +12,6 @@ function AdminUsername() {
         style={{
           justifyContent: "center",
           display: "flex",
-          font: "Lato",
           fontSize: "15px",
         }}
       >

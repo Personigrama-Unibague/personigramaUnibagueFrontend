@@ -35,7 +35,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import { Link } from "react-router-dom";
 
 import { List, ListItem } from "material-ui";
-import "./styles.css";
+import "./stylesConfSec.css";
 import {
   getEmployeeByUnity,
   getPersonasDistinct,
@@ -147,6 +147,7 @@ export default function ConfigurarSecciones() {
   /* Change par aagregar persona */
   const handleChangeAddPerson = async (event) => {
     updateIdJerarByCedulaUnd(idJerarAdd, event.target.value, params.unidad);
+    window.alert("El funcionario fue agrgado exitosamente");
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -209,16 +210,19 @@ export default function ConfigurarSecciones() {
 
     if (newRolName == undefined || newRolName == "") {
       updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
+      window.alert("Sección actualizada correctamente");
       setTimeout(window.location.reload(), 10000);
     } else if (
       idJerarParametersDialog == undefined ||
       idJerarParametersDialog == ""
     ) {
       updateNameById(idParametersDialog, newRolName);
+      window.alert("Sección actualizada correctamente");
       setTimeout(window.location.reload(), 10000);
     } else {
       updateNameById(idParametersDialog, newRolName);
       updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
+      window.alert("Sección actualizada correctamente");
       setTimeout(window.location.reload(), 10000);
     }
   };
@@ -227,6 +231,7 @@ export default function ConfigurarSecciones() {
   const deleteRol = (id, id_jerar) => {
     updateIdJerarDefaultALlSection(params.unidad, id_jerar);
     deleteRolById(id, params.unidad);
+    window.alert("La sección fue eliminada exitosamente");
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -238,12 +243,15 @@ export default function ConfigurarSecciones() {
   /* Crear Rol */
   const handleButtonClicked = () => {
     saveRol(inputValue, params.unidad);
+    saveRol(nextPriority, inputValue, params.unidad);
+    window.alert("La sección fue creada exitosamente");
     setTimeout(window.location.reload(), 10000);
   };
 
   /* Default Id_jerar de personas por rol */
   const deleteFuncionarioSeccion = (cedula) => {
     updateIdJerarDefault(cedula, params.unidad);
+    window.alert("El funcionario fue eliminado exitosamente");
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -256,7 +264,7 @@ export default function ConfigurarSecciones() {
       deleteRol(id, id_jerar);
     }
   };
-  /*Método para confirmar la eliminación de un rol */
+  /*Método para confirmar la eliminación de un funcionario */
   const DeleteUserConfirmation = (id, nombre) => {
     const confirmed = window.confirm(
       "¿Estás seguro de que desea eliminar el funcionario : " +
@@ -284,7 +292,7 @@ export default function ConfigurarSecciones() {
                   variant="h6"
                   component="div"
                   sx={{ flexGrow: 1 }}
-                  className="styleTitle"
+                  className="styleTitleSecc"
                 >
                   Configuración Secciones
                 </Typography>
@@ -310,13 +318,13 @@ export default function ConfigurarSecciones() {
             <Table
               sx={{ minWidth: 200 }}
               style={{ borderStyle: "solid", borderColor: "#017A97" }}
+              className="tablaSecciones"
             >
               <TableHead>
                 <TableRow>
                   <TableCell
                     style={{
                       backgroundColor: "#017A97",
-                      font: "Lato",
                       color: "white",
                       fontSize: "20px",
                       textAlign: "center",
@@ -555,9 +563,9 @@ export default function ConfigurarSecciones() {
         {/* Dialog agregar Seccion */}
         <Dialog open={open} onClose={handleClose}>
           {/* Titulo */}
-          <Toolbar className="modalTitle">
+          <Toolbar className="modalTitleSecciones">
             <Typography
-              className="typpgraphyTitle"
+              className="typpgraphyTitleSeccion"
               variant="h5"
               style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
             >
@@ -587,7 +595,8 @@ export default function ConfigurarSecciones() {
             >
               <TextField
                 disabled
-                label="Nuevo Rol"
+                label="Prioridad"
+                value={nextPriority}
                 style={{ width: "200px" }}
                 fullWidth
               />
@@ -596,8 +605,8 @@ export default function ConfigurarSecciones() {
             <Grid item md={10}>
               <TextField
                 className="textField"
-                label="Nombre de la unidad"
-                placeholder="Unidad"
+                label="Nombre de la Sección"
+                placeholder="Sección"
                 value={inputValue}
                 onChange={handleInputChange}
                 focused
@@ -623,9 +632,9 @@ export default function ConfigurarSecciones() {
 
         {/* Dialog actualizar nombre y Id_jerar seccion */}
         <Dialog open={openUpdate} onClose={handleCloseUpdate}>
-          <Toolbar className="modalTitle">
+          <Toolbar className="modalTitleSecciones">
             <Typography
-              className="typpgraphyTitle"
+              className="typpgraphyTitleSeccion"
               variant="h5"
               style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
             >
@@ -687,16 +696,16 @@ export default function ConfigurarSecciones() {
               onClick={updateRol}
               className="buttonDialog"
             >
-              Agregar
+              Actualizar
             </Button>
           </div>
         </Dialog>
 
         {/* Dialog para agregar personas a la seccion */}
         <Dialog open={openPerson} onClose={handleCloseAddPerson}>
-          <Toolbar className="modalTitle">
+          <Toolbar className="modalTitleSecciones">
             <Typography
-              className="typpgraphyTitle"
+              className="typpgraphyTitleSeccion"
               variant="h5"
               style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
             >
@@ -715,7 +724,7 @@ export default function ConfigurarSecciones() {
             </IconButton>
           </Toolbar>
           <List sx={{ pt: 0 }}>
-            <ListItem style={{ paddingTop: "30px", width: "450px" }}>
+            <ListItem className="lisItem">
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -744,18 +753,19 @@ export default function ConfigurarSecciones() {
         {/* Dialog para Mostrar las personas de la seccion */}
         <Dialog open={openTablePerson} onClose={handleCloseTablePerson}>
           <List sx={{ pt: 0 }}>
-            <ListItem style={{ paddingTop: "10px", width: "450px" }}>
+            <ListItem className="lisItem">
               <TableContainer component={Paper}>
                 <Table
                   sx={{ minWidth: 200 }}
                   style={{ borderStyle: "solid", borderColor: "#017A97" }}
+                  className="tablaVerFuncionarios"
                 >
                   <TableHead>
                     <TableRow>
                       <TableCell
                         style={{
                           backgroundColor: "#017A97",
-                          font: "Lato",
+
                           color: "white",
                           fontSize: "20px",
                           textAlign: "center",
@@ -764,7 +774,7 @@ export default function ConfigurarSecciones() {
                       >
                         <Toolbar className="modalTitle">
                           <Typography
-                            className="typpgraphyTitle"
+                            className="typpgraphyTitleSeccion"
                             variant="h6"
                             style={{
                               flexGrow: 1,
@@ -780,6 +790,7 @@ export default function ConfigurarSecciones() {
                             variant="outlined"
                             style={{
                               color: "white",
+                              marginLeft:"1px"
                             }}
                             onClick={() => handleCloseTablePerson()}
                           >
@@ -800,7 +811,7 @@ export default function ConfigurarSecciones() {
                           scope="row"
                           style={{
                             display: "flex",
-                            justifyContent: "center",
+                            justifyContent: "flex-start",
                           }}
                         >
                           {row.nombre}

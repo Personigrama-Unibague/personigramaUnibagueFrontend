@@ -45,26 +45,28 @@ export default function Personigrama() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ backgroundColor: "#193F76" }}>
         <Toolbar>
-          <Link to="/organigrama" style={{ color: "white" }}>
+          <Link to="/organigrama">
             <IconButton
               size="large"
               edge="start"
               color="inherit"
               aria-label="open drawer"
+              className="exit"
               sx={{ mr: 2 }}
             >
               <ArrowBackIcon />
             </IconButton>
           </Link>
-
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Atras
-          </Typography>
+          <div className="Atras">
+            <Typography
+              variant="h5"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              Atras
+            </Typography>
+          </div>
         </Toolbar>
       </AppBar>
 

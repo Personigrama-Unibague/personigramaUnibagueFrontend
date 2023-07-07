@@ -23,7 +23,7 @@ import IconButton from "material-ui/IconButton";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import TextField from "material-ui/TextField";
-import "./styles.css";
+import "./stylesAdminUsu.css";
 import { Dialog, ListItem } from "material-ui";
 import List from "@mui/material/List";
 import { getDeleteUser, getAllUsers, getSaveNewUser } from "../../api/usuarios";
@@ -100,12 +100,7 @@ function AdminUsuarios() {
                   variant="h6"
                   component="div"
                   sx={{ flexGrow: 1 }}
-                  style={{
-                    justifyContent: "center",
-                    display: "flex",
-                    font: "Lato",
-                    fontSize: "38px",
-                  }}
+                  className="styleTitleUsarios"
                 >
                   Administrar Usuarios
                 </Typography>
@@ -152,12 +147,12 @@ function AdminUsuarios() {
               </TableHead>
               <TableBody>
                 {userList.map((user) => (
-                  <TableRow key={user.id} className="tableCell">
+                  <TableRow key={user.id}>
                     <TableCell
                       align="center"
                       component="th"
                       scope="row"
-                      className="tableCell"
+                      className="tableCellTitle"
                     >
                       {user.usuario}
                     </TableCell>
@@ -189,9 +184,9 @@ function AdminUsuarios() {
           {/*Modal Agregar usuario */}
           <Dialog open={open} onClose={handleClose}>
             <List sx={{ pt: 0 }}>
-              <Toolbar className="modalTitle">
+              <Toolbar className="modalTitleUsuarios">
                 <Typography
-                  className="typpgraphyTitle"
+                  className="typpgraphyTitleUsuarios"
                   variant="h5"
                   style={{
                     flexGrow: 1,

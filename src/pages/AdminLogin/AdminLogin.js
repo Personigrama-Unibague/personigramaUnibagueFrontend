@@ -10,7 +10,7 @@ import fondo from "../../utils/images/adminLoginBackground.jpeg";
 import navbar from "../../utils/images/navbar.jfif";
 import logoUnibague from "../../utils/images/logoUnibague.PNG";
 import React, { useState, useEffect } from "react";
-import "./styles.css";
+import "./stylesLogin.css";
 import { useNavigate } from "react-router-dom";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";

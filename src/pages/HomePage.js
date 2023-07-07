@@ -213,7 +213,7 @@ const theme = createMuiTheme({
   palette: {
     background: "#ECECF4",
   },
-  fontFamily: "Roboto, sans-serif",
+  
 });
 
 export default function App(props) {

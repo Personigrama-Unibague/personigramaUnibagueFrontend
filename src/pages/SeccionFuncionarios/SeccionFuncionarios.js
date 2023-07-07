@@ -1,4 +1,10 @@
-import React, { Component, useState, useEffect, useLayoutEffect } from "react";
+import React, {
+  Component,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { Grid } from "@material-ui/core";
@@ -22,8 +28,9 @@ import { Dialog, ListItem } from "material-ui";
 import List from "@mui/material/List";
 import CloseIcon from "@mui/icons-material/Close";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
-import TextField from "material-ui/TextField";
-import "./styles.css";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import "./stylesFuncionarios.css";
 import {
   getEmployeeByUnity,
   getSavePersona,
@@ -39,7 +46,6 @@ import LogOut from "../../components/LogOut/LogOut";
 import AdminUsername from "../../components/AdminUsername/AdminUsername";
 import { Link } from "react-router-dom";
 
-
 function SeccionFuncionarios() {
   let params = useParams();
 
@@ -50,13 +56,13 @@ function SeccionFuncionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
   const [funcionariosCompletos, setFuncionariosCompletos] = useState([]);
   const [funcionario, setFuncionario] = React.useState("");
-  const [unidad, setUnidad] = React.useState("");
 
-  const handleChange = async (event) => {
-    setFuncionario(event.target.value);
-    const user = await findPersonById(event.target.value);
-    getSavePersona(user, unidad);
-    window.alert(`El funcionario ${user.nombre}, fue agregado correcramente`);
+  const [unidad, setUnidad] = React.useState("");
+  const handleChange = async (event, newValue) => {
+    getSavePersona(newValue, unidad);
+    window.alert(
+      `El funcionario ${newValue.nombre}, fue agregado correcramente`
+    );
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -77,6 +83,14 @@ function SeccionFuncionarios() {
       window.alert("El funcionario " + name + ", fue eliminado correctamente");
     }
   };
+  const textFieldRef = useRef(null);
+  const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    if (textFieldRef.current) {
+      textFieldRef.current.focus();
+    }
+  }, []);
 
   useLayoutEffect(() => {
     (async () => {
@@ -107,7 +121,7 @@ function SeccionFuncionarios() {
                 variant="h6"
                 component="div"
                 sx={{ flexGrow: 1 }}
-                className="styleTitle"
+                className="styleTitleFuncio"
               >
                 Sección Funcionarios
               </Typography>
@@ -134,13 +148,13 @@ function SeccionFuncionarios() {
           <Table
             sx={{ minWidth: 200 }}
             style={{ borderStyle: "solid", borderColor: "#017A97" }}
+            className="tablaFuncionarios"
           >
             <TableHead>
               <TableRow>
                 <TableCell
                   style={{
                     backgroundColor: "#017A97",
-                    font: "Lato",
                     color: "white",
                     fontSize: "20px",
                     textAlign: "center",
@@ -209,9 +223,9 @@ function SeccionFuncionarios() {
         {/*DIALOG Agregar funcionario */}
         <Dialog open={open} onClose={handleClose}>
           <List sx={{ pt: 0 }}>
-            <Toolbar className="modalTitle">
+            <Toolbar className="modalTitleFuncionarios ">
               <Typography
-                className="typpgraphyTitle"
+                className="typpgraphyTitleFuncionario"
                 variant="h5"
                 style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
               >
@@ -231,27 +245,28 @@ function SeccionFuncionarios() {
             </Toolbar>
 
             <ListItem style={{ paddingTop: "30px", width: "450px" }}>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={funcionario}
-                label="Funcionarios"
+              <Autocomplete
+                id="autocomplete"
+                options={funcionariosCompletos}
+                getOptionLabel={(option) => option.nombre || ""}
+                value={inputValue}
                 onChange={handleChange}
-                className="textField"
-                placeholder="Funcionario"
-                focused
-                style={{
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "30px",
-                  borderColor: "#04B8E2",
-                }}
-              >
-                {funcionariosCompletos.map((option) => (
-                  <MenuItem key={option.id} value={option.cedula}>
-                    {option.nombre}
-                  </MenuItem>
-                ))}
-              </Select>
+                renderInput={(params) => (
+                  <TextField
+                    ref={textFieldRef}
+                    label="Funcionarios"
+                    placeholder="Funcionario"
+                    variant="outlined"
+                    className="textField"
+                    style={{
+                      backgroundColor: "#FFFFFF",
+                      borderRadius: "30px",
+                      borderColor: "#04B8E2",
+                    }}
+                    {...params}
+                  />
+                )}
+              />
             </ListItem>
           </List>
         </Dialog>

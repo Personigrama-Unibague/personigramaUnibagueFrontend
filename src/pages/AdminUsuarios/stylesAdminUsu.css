@@ -5,47 +5,43 @@
   padding: 20px !important;
 }
 
-.MuiInput-underline-73:before{
+.MuiInput-underline-73:before {
   height: 0px !important;
   border-bottom: 0px !important;
 }
 
-.MuiInput-underline-73:after{
+.MuiInput-underline-73:after {
   height: 0px !important;
   border-bottom: 0px !important;
 }
 
-.textField{
+.textField {
   border: 2px solid #04b8e2 !important;
 }
 
 .IconButton:hover {
   background-color: #04b8e2 !important;
 }
-.modalTitle {
+.modalTitleUsuarios {
   background-color: #017a97;
   display: flex;
   justify-content: center;
-  height: 30px;
 }
-.typpgraphyTitle {
-  font-style: Lato;
+.typpgraphyTitleUsuarios {
   font-weight: 700;
   size: 30px;
   line-height: 29.8px;
   color: #ffffff;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 /* MEDIA QUERYS */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .tableCell {
-    font-size: 2.3vw !important;
-  }
-
   .tableCellTitle {
-    font-size: 2.1vw !important;
+    font-size: 3.5vw !important;
   }
 
   .IconButton {
@@ -61,14 +57,25 @@
   .agregarUsuarioButton {
     font-size: 10px !important;
   }
+  .typpgraphyTitle {
+    font-weight: 700;
+    size: 15px;
+    line-height: 29.8px;
+    color: #ffffff;
+    display: flex !important;
+    justify-content: center !important;
+    margin-left: -55px !important;
+  }
+  .styleTitleUsuarios {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 20px !important;
+    padding-left: 20vw !important;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .tableCell {
-    font-size: 1.6vw !important;
-  }
-
   .IconButton {
     width: 27px !important;
     height: 27px !important;
@@ -78,14 +85,20 @@
     width: 20px !important;
     height: 20px !important;
   }
+  .styleTitleUsuarios {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 28px !important;
+    padding-left: 25vw !important;
+    padding-right: 20vw !important;
+  }
+  .tableCellTitle {
+    font-size: 3vw !important;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .tableCell {
-    font-size: 1.3vw !important;
-  }
-
   .IconButton {
     width: 27px !important;
     height: 27px !important;
@@ -94,28 +107,47 @@
     width: 22px !important;
     height: 22px !important;
   }
+  .styleTitleUsarios {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 25px !important;
+    padding-left: 40vw !important;
+    padding-right: 20vw !important;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .tableCell {
-    font-size: 1.2vw !important;
-  }
-
   .IconButton {
     width: 27px !important;
     height: 27px !important;
+  }
+  .styleTitleUsarios {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 25px !important;
+    padding-left: 35vw !important;
+    padding-right: 20vw !important;
+  }
+  .tableCellTitle {
+    font-size: 1.3vw !important;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .tableCell {
-    font-size: 1vw !important;
-  }
-
   .IconButton {
     width: 27px !important;
     height: 27px !important;
+  }
+  .styleTitleUsarios {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 38px !important;
+    padding-left: 35vw !important;
+    padding-right: 30vw !important;
+  }
+  .tableCellTitle {
+    font-size: 1vw !important;
   }
 }

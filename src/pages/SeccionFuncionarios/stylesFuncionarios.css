@@ -2,48 +2,50 @@
   height: 0px !important;
   border-bottom: 0px !important;
 }
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  display: none !important;
+}
 
 .MuiInput-underline-73:after {
   height: 0px !important;
   border-bottom: 0px !important;
 }
-
-.css-18vff4n-MuiTable-root {
-  display: table !important;
-  width: 100% !important;
-  border-collapse: collapse !important;
-  border-spacing: 0 !important;
-  width: 380px !important;
-  min-width: 200px !important;
-}
-.styleTitle {
-  justify-content: center !important;
+.typpgraphyTitleFuncionario {
+  font-weight: 700;
+  size: 30px;
+  line-height: 29.8px;
+  color: #ffffff;
   display: flex !important;
-  font: Lato !important;
-  font-size: 38px !important;
+  justify-content: center !important;
+}
+.modalTitleFuncionarios {
+  background-color: #017a97;
+  display: flex;
+  justify-content: center;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .css-18vff4n-MuiTable-root {
+  .styleTitleFuncio {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 20px !important;
+    padding-left: 15vw !important;
+    padding-right: 20vw !important;
+  }
+  .tablaFuncionarios {
     display: table !important;
     width: 100% !important;
     border-collapse: collapse !important;
     border-spacing: 0 !important;
     width: 350px !important;
     min-width: 200px !important;
-  }
-  .styleTitle {
-    justify-content: center !important;
-    display: flex !important;
-    font: Lato !important;
-    font-size: 15px !important;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .css-18vff4n-MuiTable-root {
+  .tablaFuncionarios {
     display: table !important;
     width: 100% !important;
     border-collapse: collapse !important;
@@ -51,17 +53,18 @@
     width: 350px !important;
     min-width: 200px !important;
   }
-  .styleTitle {
+  .styleTitleFuncio {
     justify-content: center !important;
     display: flex !important;
-    font: Lato !important;
-    font-size: 25px !important;
+    font-size: 28px !important;
+    padding-left: 25vw !important;
+    padding-right: 20vw !important;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .css-18vff4n-MuiTable-root {
+  .tablaFuncionarios {
     display: table !important;
     width: 100% !important;
     border-collapse: collapse !important;
@@ -69,35 +72,37 @@
     width: 350px !important;
     min-width: 200px !important;
   }
-  .styleTitle {
+  .styleTitleFuncio {
     justify-content: center !important;
     display: flex !important;
-    font: Lato !important;
-    font-size: 30px !important;
+    font-size: 25px !important;
+    padding-left: 40vw !important;
+    padding-right: 20vw !important;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .css-18vff4n-MuiTable-root {
+  .tablaFuncionarios {
     display: table !important;
     width: 100% !important;
     border-collapse: collapse !important;
     border-spacing: 0 !important;
-    width: 380px !important;
+    width: 10vw !important;
     min-width: 200px !important;
   }
-  .styleTitle {
+  .styleTitleFuncio {
     justify-content: center !important;
     display: flex !important;
-    font: Lato !important;
-    font-size: 38px !important;
+    font-size: 25px !important;
+    padding-left: 30vw !important;
+    padding-right: 20vw !important;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .css-18vff4n-MuiTable-root {
+  .tablaFuncionarios {
     display: table !important;
     width: 100% !important;
     border-collapse: collapse !important;
@@ -105,10 +110,11 @@
     width: 380px !important;
     min-width: 200px !important;
   }
-  .styleTitle {
+  .styleTitleFuncio {
     justify-content: center !important;
     display: flex !important;
-    font: Lato !important;
     font-size: 38px !important;
+    padding-left: 34vw !important;
+    padding-right: 30vw !important;
   }
 }

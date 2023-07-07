@@ -17,29 +17,22 @@
   border-bottom: 0px !important;
 }
 .tableCell,
-.tableCellTitle {
-  font-weight: 500 !important;
-  text-align: left !important;
-}
-
 .css-1yhpg23-MuiTableCell-root {
   padding: 0 !important;
 }
-.css-hyum1k-MuiToolbar-root {
-  min-height: 64px;
-  padding-left: 365px !important;
+.appBarAdminUni {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 /* MEDIA QUERYS */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .tableCell {
-    font-size: 2.3vw !important;
-  }
-
-  .tableCellTitle {
-    font-size: 2vw !important;
+ 
+  .tableCellTitleAdmin {
+    font-size: 3.5vw !important;
+    font-weight: 150px !important;
   }
 
   .IconButton {
@@ -51,6 +44,23 @@
     width: 18px !important;
     height: 18px !important;
   }
+  .appBarAdminUni {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+  }
+  .styleTitleAdmin {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 20px !important;
+    padding-left: 20vw !important;
+    padding-right: 25vw !important;
+  }
+  .tableCellTitleAdmin {
+    font-size: 2.5vw !important;
+    font-weight: 100px !important;
+  }
+  
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -68,6 +78,23 @@
     width: 20px !important;
     height: 20px !important;
   }
+  .appBarAdminUni {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+  }
+  .appBarAdminUni {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+  }
+  .styleTitleAdmin {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 28px !important;
+    padding-left: 25vw !important;
+    padding-right: 20vw !important;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -83,6 +110,18 @@
   .icon {
     width: 27px !important;
     height: 27px !important;
+  }
+  .appBarAdminUni {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+  }
+  .styleTitleAdmin {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 25px !important;
+    padding-left: 40vw !important;
+    padding-right: 20vw !important;
   }
 }
 
@@ -102,6 +141,18 @@
     font-size: 15px;
     padding-left: 700px !important;
   }
+  .appBarAdminUni {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+  }
+  .styleTitleAdmin {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 25px !important;
+    padding-left: 35vw !important;
+    padding-right: 20vw !important;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -109,15 +160,20 @@
   .tableCell {
     font-size: 1vw !important;
   }
+  .styleTitleAdmin {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 38px!important;
+    padding-left: 40vw !important;
+    padding-right: 30vw !important;
+  }
+  .tableCellTitleAdmin {
+    font-size: 1vw !important;
+    font-weight: 150px !important;
+  }
 
   .IconButton {
     width: 27px !important;
     height: 27px !important;
-  }
-  .element.style {
-    justify-content: center;
-    display: flex;
-    font-size: 15px;
-    padding-left: 700px !important;
   }
 }

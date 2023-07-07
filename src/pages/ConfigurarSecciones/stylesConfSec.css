@@ -1,0 +1,132 @@
+.buttonDialogContainer {
+  display: grid;
+  place-content: center;
+  padding-bottom: 20px;
+}
+
+.buttonDialog {
+  background-color: #193f76 !important;
+  color: white !important;
+}
+
+.gridContainerDialog {
+  padding: 20px;
+}
+.lisItem {
+  padding-top: 10px;
+  width: 429px;
+}
+.modalTitleSecciones {
+  background-color: #017a97;
+  display: flex;
+  justify-content: center;
+}
+.typpgraphyTitleSeccion {
+  font-weight: 700;
+  size: 30px;
+  line-height: 29.8px;
+  color: #ffffff;
+  display: flex !important;
+  justify-content: center !important;
+}
+.tableContainer {
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .styleTitleSecc {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 20px !important;
+    padding-left: 20vw !important;
+    padding-right: 20vw !important;
+  }
+
+  .lisItem {
+    padding-top: 10px;
+    width: 429px;
+  }
+  .tablaSecciones {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 350px !important;
+    min-width: 200px !important;
+  }
+
+  .typpgraphyTitleSeccion {
+    font-weight: 700;
+    size: 30px;
+    line-height: 29.8px;
+    color: #ffffff;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .styleTitleSecc {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 28px !important;
+    padding-left: 25vw !important;
+    padding-right: 20vw !important;
+  }
+
+  .lisItem {
+    padding-top: 10px;
+    width: 250px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .styleTitleSecc {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 25px !important;
+    padding-left: 40vw !important;
+    padding-right: 20vw !important;
+  }
+  .dialog {
+    width: 450px !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .styleTitleSecc {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 25px !important;
+    padding-left: 35vw !important;
+    padding-right: 20vw !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .styleTitleSecc {
+    justify-content: center !important;
+    display: flex !important;
+    font-size: 38px !important;
+    padding-left: 35vw !important;
+    padding-right: 30vw !important;
+  }
+
+  .textField {
+    width: 20vw !important;
+  }
+  .lisItem {
+    padding-top: 10px;
+    width: 429px;
+  }
+
+  .tablaVerFuncionarios {
+    width: 16vw !important;
+  }
+}
