@@ -255,7 +255,6 @@ function SeccionFuncionarios() {
                 renderInput={(params) => (
                   <TextField
                     ref={textFieldRef}
-                    label="Funcionarios"
                     placeholder="Funcionario"
                     variant="outlined"
                     className="textField"
