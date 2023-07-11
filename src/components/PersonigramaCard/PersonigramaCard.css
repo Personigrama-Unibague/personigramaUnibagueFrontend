@@ -3,10 +3,9 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1000ms;
-  width: 235px;
+  width: 235px !important;
   height: 360px;
 }
-
 .card:hover {
   transform: rotateY(180deg);
 }
@@ -108,4 +107,39 @@
   font-size: 20px !important;
   line-height: 24px !important;
   letter-spacing: 0.02em !important;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 225px !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .card {
+    width: 205px !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .card {
+    width: 210px !important;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .card {
+    width: 220px !important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .card {
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1000ms;
+    width: 235px !important;
+    height: 360px;
+  }
 }

@@ -1,9 +1,5 @@
-.search {
-  position: "relative";
-  border-radius: "30px";
-  background-color: #0f1f39;
-  margin-left: 0;
-  width: "100%";
+.exit {
+  color: white !important;
 }
 
 .personigramaCards {
@@ -37,20 +33,11 @@
 }
 
 .personigrama {
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 .unidad {
   font-size: 4vw;
-  font-weight: 600;
-}
-.exit {
-  margin-left: -300px !important;
-  color: white !important;
-}
-.Atras {
-  margin-left: 1px !important;
-  padding-left: 1px !important;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -60,16 +47,11 @@
   }
 
   .personigrama {
-    font-size: 3.5vw;
-
-    margin-left: -50px !important;
+    font-size: 3vw;
   }
 
   .unidad {
-    font-size: 4vw;
-    font-weight: 400;
-
-    margin-left: -60px !important;
+    font-size: 3.5vw;
   }
 
   .nombreBanner {
@@ -79,17 +61,10 @@
     text-align: center !important;
     color: white !important;
   }
-  .exit {
-    margin-left: -90px !important;
-    color: white !important;
-  }
+
   .css-dudo9s-MuiTypography-root {
     display: block;
     margin-left: -300px !important;
-  }
-  .Atras {
-    margin-left: 1px !important;
-    padding-left: 1px !important;
   }
 }
 
@@ -100,12 +75,13 @@
   }
 
   .personigrama {
-    font-size: 4vw;
+    font-size: 3.5vw;
+    margin-right: 15vw !important;
   }
 
   .unidad {
-    font-size: 5vw;
-    font-weight: 600;
+    font-size: 4vw;
+    margin-right: 9vw !important;
   }
 
   .nombreBanner {
@@ -114,10 +90,6 @@
     left: 25%;
     text-align: center !important;
     color: white !important;
-  }
-  .Atras {
-    margin-left: -200px !important;
-    padding-left: 20px !important;
   }
 }
 
@@ -129,15 +101,10 @@
 
   .personigrama {
     font-size: 3vw;
-
-    margin-left: -90px !important;
   }
 
   .unidad {
     font-size: 3.5vw;
-    font-weight: 600;
-
-    margin-left: -100px !important;
   }
 
   .nombreBanner {
@@ -155,36 +122,27 @@
     margin-left: -250px !important;
     padding-left: 0px !important;
   }
-  .Atras {
-    margin-left: -100px !important;
-    padding-left: 40px !important;
-  }
 }
 @media only screen and (min-width: 992px) {
   .css-dudo9s-MuiTypography-root {
     display: block;
     margin-left: -300px !important;
   }
-  .Atras {
-    margin-left: -200px !important;
-    padding-left: 50px !important;
-  }
 }
 @media only screen and (min-width: 1200px) {
-  .Atras {
-    margin-left: -300px !important;
-    padding-left: 70px !important;
-  }
   .personigrama {
     font-size: 2.5vw;
-
-    font-weight: 100;
-    margin-left: -110px !important;
+    margin-right: 15vw !important;
   }
   .unidad {
     font-size: 3vw;
-    font-weight: 500;
-
-    margin-left: -100px !important;
+    margin-right: 12vw !important;
+  }
+  .bannerPersonal {
+    width: 100% !important;
+    height: 365px !important;
+    object-fit: cover !important;
+    padding: 0;
+    margin: 0;
   }
 }
