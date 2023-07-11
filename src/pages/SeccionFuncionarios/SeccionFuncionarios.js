@@ -52,18 +52,21 @@ function SeccionFuncionarios() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const [funcionarios, setFuncionarios] = useState([]);
   const [funcionariosCompletos, setFuncionariosCompletos] = useState([]);
   const [funcionario, setFuncionario] = React.useState("");
-
   const [unidad, setUnidad] = React.useState("");
+  const textFieldRef = useRef(null);
+  const [inputValue, setInputValue] = useState("");
+
   const handleChange = async (event, newValue) => {
-    getSavePersona(newValue, unidad);
-    window.alert(
-      `El funcionario ${newValue.nombre}, fue agregado correcramente`
-    );
-    setTimeout(window.location.reload(), 10000);
+    if (newValue) {
+      getSavePersona(newValue, unidad);
+      window.alert(
+        `El funcionario ${newValue.nombre}, fue agregado correcramente`
+      );
+      setTimeout(window.location.reload(), 10000);
+    }
   };
 
   const deletePersona = async (event) => {
@@ -83,8 +86,6 @@ function SeccionFuncionarios() {
       window.alert("El funcionario " + name + ", fue eliminado correctamente");
     }
   };
-  const textFieldRef = useRef(null);
-  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     if (textFieldRef.current) {
