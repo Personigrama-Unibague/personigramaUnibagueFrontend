@@ -61,9 +61,14 @@ function AdminUsuarios() {
   };
 
   const saveUser = () => {
-    getSaveNewUser(user, password);
-    window.alert("El usuario " + user + ", fue agregado correctamente");
-    setTimeout(window.location.reload(), 10000);
+    if (user == "admin" || user == "Admin" || user == "ADMIN") {
+      window.alert("No puede agregar un usuario de tipo admin");
+      setTimeout(window.location.reload(), 10000);
+    } else {
+      getSaveNewUser(user, password);
+      window.alert("El usuario " + user + ", fue agregado correctamente");
+      setTimeout(window.location.reload(), 10000);
+    }
   };
 
   const deleteUser = (id) => {
