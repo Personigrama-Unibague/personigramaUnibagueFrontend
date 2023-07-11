@@ -66,11 +66,12 @@
     justify-content: center !important;
     margin-left: -55px !important;
   }
-  .styleTitleUsuarios {
+  .styleTitleUsarios {
     justify-content: center !important;
     display: flex !important;
     font-size: 20px !important;
     padding-left: 20vw !important;
+    padding-right: 15vw !important;
   }
 }
 
@@ -85,11 +86,11 @@
     width: 20px !important;
     height: 20px !important;
   }
-  .styleTitleUsuarios {
+  .styleTitleUsarios {
     justify-content: center !important;
     display: flex !important;
-    font-size: 28px !important;
-    padding-left: 25vw !important;
+    font-size: 22px !important;
+    padding-left: 20vw !important;
     padding-right: 20vw !important;
   }
   .tableCellTitle {
@@ -111,8 +112,11 @@
     justify-content: center !important;
     display: flex !important;
     font-size: 25px !important;
-    padding-left: 40vw !important;
+    padding-left: 25vw !important;
     padding-right: 20vw !important;
+  }
+  .tableCellTitle {
+    font-size: 1.7vw !important;
   }
 }
 
@@ -130,22 +134,19 @@
     padding-right: 20vw !important;
   }
   .tableCellTitle {
-    font-size: 1.3vw !important;
+    font-size: 1.4vw !important;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .IconButton {
-    width: 27px !important;
-    height: 27px !important;
+    display: flex;
   }
   .styleTitleUsarios {
-    justify-content: center !important;
-    display: flex !important;
-    font-size: 38px !important;
-    padding-left: 35vw !important;
-    padding-right: 30vw !important;
+    font-size: 35px !important;
+    flex-grow: 1 !important;
+    text-align: center;
   }
   .tableCellTitle {
     font-size: 1vw !important;

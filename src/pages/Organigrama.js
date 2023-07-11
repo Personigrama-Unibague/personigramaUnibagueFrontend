@@ -35,26 +35,32 @@ const useStyles = makeStyles(
     },
     name: {
       fontSize: "16px",
+      paddingRight: "5px !important"
     },
     edit: {
       position: "",
       top: "0px",
-      right: "0px",
+      right: "0px !important",
+      padding: "4px !important",
       color: "#4BA083",
     },
     attributes: {
       position: "",
       bottom: "5px",
-      right: "10px",
+      right: "0px !important",
       color: "white",
     },
     childId: {
       background: "#02AFD8",
       position: "",
-      width: "300px",
-      height: "70px",
+      width: "400px",
+      height: "110px",
       borderRadius: "30px",
       color: "white",
+      fontSize: "15px",
+    },
+    ArrowButton: {
+      padding: "8px !important",
     },
   })
 );
@@ -78,7 +84,7 @@ const renderForeignObjectNode = ({
           <div className={classes.name}>{nodeDatum.name}</div>
         )}
         {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-        <IconButton>
+        <IconButton className={classes.ArrowButton}>
           <ArrowBackIosOutlinedIcon
             style={{ color: "#FFFFFF" }}
             onClick={toggleNode}
@@ -89,7 +95,7 @@ const renderForeignObjectNode = ({
             <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
           </IconButton>
         </Link>
-        <IconButton>
+        <IconButton className={classes.ArrowButton}>
           <ArrowForwardIosRoundedIcon
             style={{ color: "#FFFFFF" }}
             onClick={toggleNode}

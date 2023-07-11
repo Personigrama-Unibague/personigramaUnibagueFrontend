@@ -99,7 +99,7 @@ function AdminUsuarios() {
       >
         <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" className="appBarUsuarios">
               <Toolbar style={{ backgroundColor: "#193F76" }}>
                 <Typography
                   variant="h6"
@@ -128,7 +128,14 @@ function AdminUsuarios() {
         </Grid>
 
         {/* Grid Table */}
-        <Grid item style={{ marginTop: "50px" }}>
+        <Grid
+          item
+          style={{
+            marginTop: "50px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           {/* Table */}
           <TableContainer component={Paper}>
             <Table>
