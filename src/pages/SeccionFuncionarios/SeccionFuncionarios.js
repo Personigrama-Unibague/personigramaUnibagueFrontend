@@ -115,7 +115,7 @@ function SeccionFuncionarios() {
     >
       <Grid item xs={12}>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
+          <AppBar position="static" className="appBarFuncionarios">
             <Toolbar style={{ backgroundColor: "#193F76" }}>
               <Typography
                 variant="h6"

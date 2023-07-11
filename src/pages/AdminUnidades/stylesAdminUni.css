@@ -23,13 +23,14 @@
 .appBarAdminUni {
   margin: 0px !important;
   padding: 0px !important;
+  display: flex;
+  justify-content: center;
 }
 
 /* MEDIA QUERYS */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
- 
   .tableCellTitleAdmin {
     font-size: 3.5vw !important;
     font-weight: 150px !important;
@@ -60,7 +61,6 @@
     font-size: 2.5vw !important;
     font-weight: 100px !important;
   }
-  
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -91,9 +91,9 @@
   .styleTitleAdmin {
     justify-content: center !important;
     display: flex !important;
-    font-size: 28px !important;
-    padding-left: 25vw !important;
-    padding-right: 20vw !important;
+    font-size: 20px !important;
+    padding-left: 37vw !important;
+    padding-right: 15vw !important;
   }
 }
 
@@ -105,7 +105,7 @@
 
   .IconButton {
     width: 27px !important;
-    height: 27px !important;
+    height: 20px !important;
   }
   .icon {
     width: 27px !important;
@@ -119,8 +119,8 @@
   .styleTitleAdmin {
     justify-content: center !important;
     display: flex !important;
-    font-size: 25px !important;
-    padding-left: 40vw !important;
+    font-size: 23px !important;
+    padding-left: 35vw !important;
     padding-right: 20vw !important;
   }
 }
@@ -149,9 +149,9 @@
   .styleTitleAdmin {
     justify-content: center !important;
     display: flex !important;
-    font-size: 25px !important;
-    padding-left: 35vw !important;
-    padding-right: 20vw !important;
+    font-size: 30px !important;
+    padding-left: 30vw !important;
+    padding-right: 22vw !important;
   }
 }
 
@@ -161,11 +161,9 @@
     font-size: 1vw !important;
   }
   .styleTitleAdmin {
-    justify-content: center !important;
-    display: flex !important;
-    font-size: 37px!important;
-    padding-left: 40vw !important;
-    padding-right: 30vw !important;
+    font-size: 37px !important;
+    flex-grow: 1 !important;
+    text-align: center;
   }
   .tableCellTitleAdmin {
     font-size: 1vw !important;
@@ -173,7 +171,6 @@
   }
 
   .IconButton {
-    width: 27px !important;
-    height: 27px !important;
+    display: flex;
   }
 }

@@ -59,7 +59,7 @@
 
   .typpgraphyTitleSeccion {
     font-weight: 700;
-    size: 30px;
+    size: 25px;
     line-height: 29.8px;
     color: #ffffff;
     display: flex !important;
@@ -72,7 +72,7 @@
   .styleTitleSecc {
     justify-content: center !important;
     display: flex !important;
-    font-size: 28px !important;
+    font-size: 25px !important;
     padding-left: 25vw !important;
     padding-right: 20vw !important;
   }
@@ -86,11 +86,10 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .styleTitleSecc {
-    justify-content: center !important;
     display: flex !important;
-    font-size: 25px !important;
-    padding-left: 40vw !important;
-    padding-right: 20vw !important;
+    justify-content: center !important;
+    font-size: 22px !important;
+    padding-right: 25vw !important;
   }
   .dialog {
     width: 450px !important;
@@ -113,9 +112,9 @@
   .styleTitleSecc {
     justify-content: center !important;
     display: flex !important;
-    font-size: 38px !important;
-    padding-left: 35vw !important;
-    padding-right: 30vw !important;
+    font-size: 35px !important;
+    padding-left: 30vw !important;
+    padding-right: 20vw !important;
   }
 
   .textField {

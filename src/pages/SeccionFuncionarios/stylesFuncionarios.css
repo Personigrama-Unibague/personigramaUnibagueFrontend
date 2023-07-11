@@ -23,6 +23,11 @@
   display: flex;
   justify-content: center;
 }
+.appBarFuncionarios {
+  margin: 0px !important;
+  padding: 0px !important;
+  display: flex;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -56,9 +61,9 @@
   .styleTitleFuncio {
     justify-content: center !important;
     display: flex !important;
-    font-size: 28px !important;
-    padding-left: 25vw !important;
-    padding-right: 20vw !important;
+    font-size: 25px !important;
+    padding-left: 15vw !important;
+    padding-right: 15vw !important;
   }
 }
 
@@ -76,7 +81,7 @@
     justify-content: center !important;
     display: flex !important;
     font-size: 25px !important;
-    padding-left: 40vw !important;
+    padding-left: 20vw !important;
     padding-right: 20vw !important;
   }
 }
@@ -88,7 +93,7 @@
     width: 100% !important;
     border-collapse: collapse !important;
     border-spacing: 0 !important;
-    width: 10vw !important;
+    width: 380px !important;
     min-width: 200px !important;
   }
   .styleTitleFuncio {
@@ -111,10 +116,8 @@
     min-width: 200px !important;
   }
   .styleTitleFuncio {
-    justify-content: center !important;
-    display: flex !important;
-    font-size: 38px !important;
-    padding-left: 34vw !important;
-    padding-right: 30vw !important;
+    font-size: 37px !important;
+    flex-grow: 1 !important;
+    text-align: center;
   }
 }
