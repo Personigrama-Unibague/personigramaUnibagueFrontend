@@ -9,6 +9,16 @@ const GuardedRoute = ({
   protected: isProtected,
   ...props
 }) => {
+  const loginTime = localStorage.getItem("loginTime");
+  const twentyFourHours = 24 * 60 * 60 * 1000;
+  const currentTime = new Date().getTime();
+
+  if (currentTime - loginTime >= twentyFourHours) {
+    localStorage.setItem("loggedIn", false);
+    localStorage.setItem("username", "");
+    localStorage.setItem("loginTime", "");
+  }
+
   const isAuthenticated = localStorage.getItem("loggedIn");
   const parsedValue = isAuthenticated ? JSON.parse(isAuthenticated) : false;
 
@@ -25,7 +35,6 @@ const GuardedRoute = ({
       </Routes>
     );
   }
-
   // Si el usuario está autenticado, redirige a la ruta especificada
 };
 
