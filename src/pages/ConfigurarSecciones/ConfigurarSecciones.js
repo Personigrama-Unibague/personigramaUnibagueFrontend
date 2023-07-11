@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect, useLayoutEffect } from "react";
 import AppBar from "@mui/material/AppBar";
+import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Dialog, Grid, MenuItem, Select, TextField } from "@material-ui/core";
@@ -56,6 +57,7 @@ export default function ConfigurarSecciones() {
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const [openPerson, setOpenPerson] = React.useState(false);
   const [openTablePerson, setOpenTablePerson] = React.useState(false);
+  const [selectedPerson, setSelectedPerson] = React.useState(null);
 
   const [nextPriority, setNextPriority] = useState([]);
   const [nameParametersDialog, setNameParametersDialog] = React.useState();
@@ -145,10 +147,12 @@ export default function ConfigurarSecciones() {
   /* CHANGE */
 
   /* Change par aagregar persona */
-  const handleChangeAddPerson = async (event) => {
-    updateIdJerarByCedulaUnd(idJerarAdd, event.target.value, params.unidad);
-    window.alert("El funcionario fue agrgado exitosamente");
-    setTimeout(window.location.reload(), 10000);
+  const handleChangeAddPerson = async (event, value) => {
+    if (value) {
+      updateIdJerarByCedulaUnd(idJerarAdd, value.cedula, params.unidad);
+      window.alert("El funcionario fue agregado exitosamente");
+      setTimeout(window.location.reload(), 10000);
+    }
   };
 
   /* Change para actualizar el nombre del rol */
@@ -725,7 +729,7 @@ export default function ConfigurarSecciones() {
           </Toolbar>
           <List sx={{ pt: 0 }}>
             <ListItem className="lisItem">
-              <Select
+              {/* <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={addPerson}
@@ -745,7 +749,28 @@ export default function ConfigurarSecciones() {
                     {option.nombre}
                   </MenuItem>
                 ))}
-              </Select>
+              </Select> */}
+
+              <Autocomplete
+                id="demo-simple-select"
+                value={selectedPerson}
+                onChange={handleChangeAddPerson}
+                options={funcionarioJerar}
+                getOptionLabel={(option) => option.nombre}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    className="textField"
+                    placeholder="Funcionario"
+                    focused
+                    style={{
+                      backgroundColor: "#FFFFFF",
+                      borderRadius: "30px",
+                      borderColor: "#04B8E2",
+                    }}
+                  />
+                )}
+              />
             </ListItem>
           </List>
         </Dialog>
@@ -790,7 +815,7 @@ export default function ConfigurarSecciones() {
                             variant="outlined"
                             style={{
                               color: "white",
-                              marginLeft:"1px"
+                              marginLeft: "1px",
                             }}
                             onClick={() => handleCloseTablePerson()}
                           >
