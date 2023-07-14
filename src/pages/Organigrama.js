@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { getUnities } from "../api/unidades";
 import { useLayoutEffect } from "react";
 import { useState } from "react";
+import FloatingButton from "../components/FloatingButton/FloatingButton";
 
 const containerStyles = {
   width: "100vw",
@@ -35,7 +36,7 @@ const useStyles = makeStyles(
     },
     name: {
       fontSize: "16px",
-      paddingRight: "5px !important"
+      paddingRight: "5px !important",
     },
     edit: {
       position: "",
@@ -159,25 +160,28 @@ export default function Organigrama() {
           </div>
         </div>
       ) : (
-        <Tree
-          data={unidades}
-          nodeSize={nodeSize}
-          separation={separation}
-          transitionDuration="1000"
-          pathFunc="step"
-          NodeClassName="node__root"
-          branchNodeClassName="node__branch"
-          leafNodeClassName="node__leaf"
-          renderCustomNodeElement={(rd3tProps) =>
-            renderForeignObjectNode({
-              ...rd3tProps,
-              foreignObjectProps,
-              classes,
-            })
-          }
-          orientation="horizontal"
-          initialDepth={1}
-        />
+        <>
+          <FloatingButton />
+          <Tree
+            data={unidades}
+            nodeSize={nodeSize}
+            separation={separation}
+            transitionDuration="1000"
+            pathFunc="step"
+            NodeClassName="node__root"
+            branchNodeClassName="node__branch"
+            leafNodeClassName="node__leaf"
+            renderCustomNodeElement={(rd3tProps) =>
+              renderForeignObjectNode({
+                ...rd3tProps,
+                foreignObjectProps,
+                classes,
+              })
+            }
+            orientation="horizontal"
+            initialDepth={1}
+          />
+        </>
       )}
     </div>
   );
