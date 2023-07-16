@@ -46,6 +46,7 @@ import {
 } from "../../api/funcionarios";
 import LogOut from "../../components/LogOut/LogOut";
 import AdminUsername from "../../components/AdminUsername/AdminUsername";
+import Navbar from "../../components/NavBar/Navbar";
 
 export default function ConfigurarSecciones() {
   let params = useParams();
@@ -288,33 +289,10 @@ export default function ConfigurarSecciones() {
         style={{ justifyContent: "center", display: "flex" }}
         justify="center"
       >
+        {/* Toolbar */}
         <Grid item md={12}>
           <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-              <Toolbar style={{ backgroundColor: "#193F76" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1 }}
-                  className="styleTitleSecc"
-                >
-                  Configuración Secciones
-                </Typography>
-                <AdminUsername />
-                <LogOut />
-                <Link to="/adminUnidades" style={{ color: "white" }}>
-                  <InputOutlinedIcon
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 3 }}
-                  >
-                    <MenuIcon />
-                  </InputOutlinedIcon>
-                </Link>
-              </Toolbar>
-            </AppBar>
+            <Navbar title="Configurar Secciones" />
           </Box>
         </Grid>
         <Grid item style={{ marginTop: "50px" }}>

@@ -45,6 +45,7 @@ import Select from "@mui/material/Select";
 import LogOut from "../../components/LogOut/LogOut";
 import AdminUsername from "../../components/AdminUsername/AdminUsername";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/NavBar/Navbar";
 
 function SeccionFuncionarios() {
   let params = useParams();
@@ -114,33 +115,10 @@ function SeccionFuncionarios() {
       component="main"
       style={{ justifyContent: "center", display: "flex" }}
     >
-      <Grid item xs={12}>
+      {/* Toolbar */}
+      <Grid item md={12}>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static" className="appBarFuncionarios">
-            <Toolbar style={{ backgroundColor: "#193F76" }}>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1 }}
-                className="styleTitleFuncio"
-              >
-                Sección Funcionarios
-              </Typography>
-              <AdminUsername />
-              <LogOut />
-              <Link to="/adminUnidades" style={{ color: "white" }}>
-                <InputOutlinedIcon
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 3 }}
-                >
-                  <MenuIcon />
-                </InputOutlinedIcon>
-              </Link>
-            </Toolbar>
-          </AppBar>
+          <Navbar title="Administrar Funcionarios" />
         </Box>
       </Grid>
 
