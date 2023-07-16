@@ -30,7 +30,7 @@ export default function Personigrama() {
         const rol = await getAllRolesByUnity(params.unidad);
         setRoles(rol);
       } catch (err) {
-        console.log("Error API");
+        window.alert("Error API");
       }
     })();
   }, []);

@@ -21,7 +21,7 @@ export default function AdminUnidades() {
         const und = await getUnities();
         setUnidades(und.children);
       } catch (err) {
-        console.log("Error API");
+        window.alert("Error API");
       }
     })();
   }, []);

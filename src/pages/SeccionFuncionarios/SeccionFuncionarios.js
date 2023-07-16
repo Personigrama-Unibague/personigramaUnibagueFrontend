@@ -85,12 +85,11 @@ function SeccionFuncionarios() {
       try {
         setUnidad(params.unidad);
         const func = await getPeopleDistinct(params.unidad);
-        console.log(func);
         const prueba = await getEmployeeByUnity(params.unidad);
         setFuncionarios(prueba);
         setFuncionariosCompletos(func);
       } catch (err) {
-        console.log("Error API");
+        window.alert("Error API");
       }
     })();
   }, []);

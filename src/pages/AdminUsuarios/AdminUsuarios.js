@@ -40,7 +40,7 @@ function AdminUsuarios() {
         const list = await getAllUsers();
         setUserList(list);
       } catch (err) {
-        console.log("Error API");
+        window.alert("Error API");
       }
     })();
   }, []);

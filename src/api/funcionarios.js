@@ -82,7 +82,7 @@ export const getSavePersona = async (person, unity) => {
   axios
     .post(`${API_URL}/api/v1/personal/savePersona`, model)
     .then((response) => {
-      console.log(response);
+      
     })
     .catch((error) => {
       console.error(error);

@@ -123,7 +123,7 @@ export default function Organigrama() {
         const und = await getUnities();
         setUnidades(und);
       } catch (err) {
-        console.log("Error API");
+        window.alert("Error API");
       } finally {
         setIsLoading(false);
       }
@@ -132,9 +132,7 @@ export default function Organigrama() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log(unidades);
-  }, [unidades]);
+  useEffect(() => {}, [unidades]);
 
   return (
     <div style={containerStyles}>

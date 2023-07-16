@@ -32,9 +32,10 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import { List, ListItem } from "material-ui";
 import "./stylesConfSec.css";
 import {
-  getEmployeeByUnity, updateIdJerarByCedulaUnd,
+  getEmployeeByUnity,
+  updateIdJerarByCedulaUnd,
   updateIdJerarDefault,
-  updateIdJerarDefaultALlSection
+  updateIdJerarDefaultALlSection,
 } from "../../api/funcionarios";
 import Navbar from "../../components/NavBar/Navbar";
 
@@ -91,7 +92,7 @@ export default function ConfigurarSecciones() {
         setRoles(getRolesByUnidad);
         setFuncionarios(func);
       } catch (err) {
-        console.log("Error API");
+        window.alert("Error API");
       }
     })();
   }, []);
@@ -118,7 +119,6 @@ export default function ConfigurarSecciones() {
     var list = [];
     if (nombre == "Primario") {
       const prim = funcionarios.filter((persona) => persona.id_jerar == 1);
-      console.log(prim);
       if (prim.length === 0) {
         list = funcionarios.filter((persona) => persona.id_jerar == 0);
         setFuncionarioJerar(list);
@@ -197,10 +197,6 @@ export default function ConfigurarSecciones() {
 
   /* Actualizar nombre del rol */
   const updateRol = () => {
-    console.log(idParametersDialog);
-    console.log(newRolName);
-    console.log(idJerarParametersDialog);
-
     const rol = roles.filter((rol) => rol.id == idParametersDialog);
 
     if (newRolName == undefined || newRolName == "") {

@@ -72,7 +72,7 @@ function AdminLogin() {
         setTimeout(window.location.reload(), 10000);
       }
     } catch (err) {
-      console.log("Error API");
+      window.alert("Error API");
     }
   };
   return (

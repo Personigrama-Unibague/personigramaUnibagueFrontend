@@ -7,13 +7,9 @@ const google = () => {
   return (
     <GoogleLogin
       onSuccess={(credentialResponse) => {
-        console.log(credentialResponse);
         var decoded = jwt_decode(credentialResponse.credential);
-        console.log(decoded)
       }}
-      onError={() => {
-        console.log("Login Failed");
-      }}
+      onError={() => {}}
     />
   );
 };
