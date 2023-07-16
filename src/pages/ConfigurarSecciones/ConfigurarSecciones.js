@@ -712,7 +712,7 @@ export default function ConfigurarSecciones() {
             <ListItem className="lisItem">
               <TableContainer component={Paper}>
                 <Table
-                  sx={{ minWidth: 200 }}
+                  sx={{ minWidth: 250 }}
                   style={{ borderStyle: "solid", borderColor: "#017A97" }}
                   className="tablaVerFuncionarios"
                 >
