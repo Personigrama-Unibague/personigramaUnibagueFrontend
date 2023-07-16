@@ -8,11 +8,11 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
-    bottom: 16,
-    left: 16,
-    backgroundColor: "rgb(9, 113, 184, 0.7)",
-    borderRadius: "10px",
-    border: "2px solid rgb(27, 93, 167, 0.6)",
+    bottom: 10,
+    left: 10,
+    backgroundColor: "white",
+    borderRadius: "15px",
+    border: "2px solid rgb(27, 93, 167)",
   },
   container: {
     display: "flex",
@@ -23,7 +23,13 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(0, 1),
-    borderRadius: "10px",
+    borderRadius: "15px",
+    height: "30px",
+    padding: "0",
+    minWidth: "50px",
+  },
+  icon: {
+    
   },
 }));
 
@@ -34,10 +40,14 @@ function FloatingButton() {
     <div className={classes.root}>
       <Box className={classes.container}>
         <Button variant="contained" color="primary" className={classes.button}>
-          <KeyboardDoubleArrowLeftIcon />
+          <KeyboardDoubleArrowLeftIcon className={classes.icon} />
         </Button>
-        <Button variant="contained" color="primary" className={classes.button}>
-          <KeyboardDoubleArrowRightIcon />
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+        >
+          <KeyboardDoubleArrowRightIcon className={classes.icon} />
         </Button>
       </Box>
     </div>
