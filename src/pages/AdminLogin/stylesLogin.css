@@ -16,10 +16,10 @@
   padding-bottom: 15px;
   height: 100px;
 }
-.personigrama {
+.personigramaLogin {
   color: #ffff;
   font-weight: 400;
-  size: 20px;
+  font-size: 25px;
   line-height: 30px;
   letter-spacing: 0.21cm;
   display: flex;
@@ -75,35 +75,36 @@
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .textField {
+  .textFieldLogIn {
     width: 70vw !important;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .textField {
+  .textFieldLogIn {
     width: 45vw !important;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .textField {
+  .textFieldLogIn {
     width: 45vw !important;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .textField {
+  .textFieldLogIn {
     width: 35vw !important;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .textField {
-    width: 35vw !important;
+  .textFieldLogIn {
+    width: 30vw !important;
+    background-color: #ffff;
   }
 }

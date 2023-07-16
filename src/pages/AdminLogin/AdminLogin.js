@@ -100,7 +100,7 @@ function AdminLogin() {
           </Grid>
           {/*Personigrama*/}
           <Grid item>
-            <div className="personigrama">PERSONIGRAMA</div>
+            <div className="personigramaLogin">PERSONIGRAMA</div>
           </Grid>
           {/*Unibague*/}
           <Grid item>
@@ -126,7 +126,7 @@ function AdminLogin() {
           {/* Usuario */}
           <Grid item>
             <TextField
-              className="textField"
+              className="textFieldLogIn"
               placeholder="Usuario"
               value={username}
               onChange={handleUsernameChange}
@@ -145,7 +145,7 @@ function AdminLogin() {
                     }}
                     position="start"
                   >
-                    <Person2OutlinedIcon style={{ color: "default" }} />
+                    <Person2OutlinedIcon style={{color: "white"}} />
                   </IconButton>
                 ),
               }}
@@ -157,7 +157,7 @@ function AdminLogin() {
           {/* Contraseña */}
           <Grid item>
             <TextField
-              className="textField"
+              className="textFieldLogIn"
               placeholder="Contraseña"
               value={password}
               onChange={handlePasswordChange}
@@ -176,7 +176,7 @@ function AdminLogin() {
                     }}
                     position="start"
                   >
-                    <HttpsOutlinedIcon style={{ color: "default" }} />
+                    <HttpsOutlinedIcon style={{ color: "white" }} />
                   </IconButton>
                 ),
               }}
