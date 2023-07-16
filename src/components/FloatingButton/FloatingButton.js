@@ -27,9 +27,13 @@ const useStyles = makeStyles((theme) => ({
     height: "30px",
     padding: "0",
     minWidth: "50px",
+    backgroundColor: "#02AFD8",
+    "&:hover": {
+      backgroundColor: "rgb(27, 93, 167)",
+    },
   },
   icon: {
-    
+    color: "white"
   },
 }));
 
@@ -39,14 +43,10 @@ function FloatingButton() {
   return (
     <div className={classes.root}>
       <Box className={classes.container}>
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button variant="contained" className={classes.button}>
           <KeyboardDoubleArrowLeftIcon className={classes.icon} />
         </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
+        <Button variant="contained" className={classes.button}>
           <KeyboardDoubleArrowRightIcon className={classes.icon} />
         </Button>
       </Box>
