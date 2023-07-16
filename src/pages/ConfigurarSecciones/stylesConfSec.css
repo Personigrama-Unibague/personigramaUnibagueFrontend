@@ -34,7 +34,8 @@
   justify-content: flex-start !important;
 }
 
-Autocomplete, TextField {
+Autocomplete,
+TextField {
   width: 200px !important;
 }
 
@@ -69,6 +70,12 @@ Autocomplete, TextField {
     display: flex !important;
     justify-content: center !important;
   }
+  .textField {
+    width: 55vw !important;
+  }
+  .autocomplete {
+    width: 55vw !important;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -85,6 +92,15 @@ Autocomplete, TextField {
     padding-top: 10px;
     width: 250px;
   }
+  .textField {
+    width: 35vw !important;
+  }
+  .autocomplete {
+    width: 35vw !important;
+  }
+  .gridContainerDialog {
+    width: 400px !important;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -98,6 +114,15 @@ Autocomplete, TextField {
   .dialog {
     width: 450px !important;
   }
+  .textField {
+    width: 30vw !important;
+  }
+  .autocomplete {
+    width: 30vw !important;
+  }
+  .gridContainerDialog {
+    width: 450px !important;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -108,6 +133,15 @@ Autocomplete, TextField {
     font-size: 25px !important;
     padding-left: 35vw !important;
     padding-right: 20vw !important;
+  }
+  .textField {
+    width: 25vw !important;
+  }
+  .autocomplete {
+    width: 25vw !important;
+  }
+  .gridContainerDialog {
+    width: 520px !important;
   }
 }
 
@@ -124,6 +158,9 @@ Autocomplete, TextField {
   .textField {
     width: 20vw !important;
   }
+  .autocomplete {
+    width: 20vw !important;
+  }
   .lisItem {
     padding-top: 10px;
     width: 429px;
@@ -131,5 +168,8 @@ Autocomplete, TextField {
 
   .tablaVerFuncionarios {
     width: 16vw !important;
+  }
+  .gridContainerDialog {
+    width: 550px !important;
   }
 }

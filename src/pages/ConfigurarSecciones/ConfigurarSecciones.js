@@ -579,7 +579,6 @@ export default function ConfigurarSecciones() {
                 disabled
                 label="Prioridad"
                 value={nextPriority}
-                style={{ width: "200px" }}
                 fullWidth
               />
             </Grid>
@@ -732,6 +731,7 @@ export default function ConfigurarSecciones() {
               <Autocomplete
                 id="demo-simple-select"
                 value={selectedPerson}
+                className="autocomplete"
                 onChange={handleChangeAddPerson}
                 options={funcionarioJerar}
                 getOptionLabel={(option) => option.nombre}
