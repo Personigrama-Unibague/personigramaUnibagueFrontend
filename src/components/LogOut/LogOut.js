@@ -1,6 +1,7 @@
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
+import * as React from "react";
 
 function LogOut() {
   const logOut = () => {
