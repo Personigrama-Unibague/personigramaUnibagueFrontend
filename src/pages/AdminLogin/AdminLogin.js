@@ -2,14 +2,12 @@ import {
   Button,
   Grid,
   makeStyles,
-  TextField,
-  AppBar,
-  IconButton,
+  TextField, IconButton
 } from "@material-ui/core";
 import fondo from "../../utils/images/adminLoginBackground.jpeg";
 import navbar from "../../utils/images/navbar.jfif";
 import logoUnibague from "../../utils/images/logoUnibague.PNG";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./stylesLogin.css";
 import { useNavigate } from "react-router-dom";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";

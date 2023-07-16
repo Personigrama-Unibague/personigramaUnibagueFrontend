@@ -11,10 +11,9 @@ import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrop } from "react-dnd";
 import organization from "../org.json";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
-import organigrama from "../organigrama.json";
 
 
 import {

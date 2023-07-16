@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Button,
-  Box,
-} from "@material-ui/core";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import { AppBar, Toolbar, Typography, IconButton, Box } from "@material-ui/core";
 import Sidebar from "../../components/SideBar/SideBar";
 import AdminUsername from "../AdminUsername/AdminUsername";
 import LogOut from "../LogOut/LogOut";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
-import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,15 +1,11 @@
-import React, { Component, useState, useEffect, useLayoutEffect } from "react";
-import AppBar from "@mui/material/AppBar";
+import React, { useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Grid } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
-import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
-import MenuIcon from "@mui/icons-material/Menu";
-import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import HttpsIcon from "@mui/icons-material/Https";
 import TableHead from "@mui/material/TableHead";
@@ -17,7 +13,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@material-ui/core";
-import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import IconButton from "material-ui/IconButton";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
@@ -27,9 +22,6 @@ import "./stylesAdminUsu.css";
 import { Dialog, ListItem } from "material-ui";
 import List from "@mui/material/List";
 import { getDeleteUser, getAllUsers, getSaveNewUser } from "../../api/usuarios";
-import LogOut from "../../components/LogOut/LogOut";
-import AdminUsername from "../../components/AdminUsername/AdminUsername";
-import { Link } from "react-router-dom";
 import Navbar from "../../components/NavBar/Navbar";
 
 function AdminUsuarios() {

@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Button, Container, Typography } from "@mui/material";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import "./stylesNotFound.css";
 
 function NotFound() {

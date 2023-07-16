@@ -1,50 +1,36 @@
 import React, {
-  Component,
   useState,
   useEffect,
   useLayoutEffect,
-  useRef,
+  useRef
 } from "react";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { Grid } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
-import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
-import MenuIcon from "@mui/icons-material/Menu";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@material-ui/core";
-import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
-import SaveIcon from "@mui/icons-material/Save";
 import IconButton from "material-ui/IconButton";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { Dialog, ListItem } from "material-ui";
 import List from "@mui/material/List";
 import CloseIcon from "@mui/icons-material/Close";
-import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import "./stylesFuncionarios.css";
 import {
   getEmployeeByUnity,
-  getSavePersona,
-  findPersonById,
-  deletePersonById,
-  getPeopleDistinct,
+  getSavePersona, deletePersonById,
+  getPeopleDistinct
 } from "../../api/funcionarios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import LogOut from "../../components/LogOut/LogOut";
-import AdminUsername from "../../components/AdminUsername/AdminUsername";
-import { Link } from "react-router-dom";
 import Navbar from "../../components/NavBar/Navbar";
 
 function SeccionFuncionarios() {

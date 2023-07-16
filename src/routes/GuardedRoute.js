@@ -1,5 +1,4 @@
 import React from "react";
-import AdminUnidades from "../pages/AdminUnidades/AdminUnidades";
 
 import { Route, Navigate, Routes } from "react-router-dom";
 

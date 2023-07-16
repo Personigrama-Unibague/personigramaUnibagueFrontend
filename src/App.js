@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { useRoutes } from "react-router-dom";
+import React from "react";
 import { ThemeProvider } from "@material-ui/core";
 import GlobalStyles from "./components/GlobalStyles";
 import theme from "./theme";

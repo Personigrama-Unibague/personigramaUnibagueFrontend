@@ -1,6 +1,4 @@
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
-import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 

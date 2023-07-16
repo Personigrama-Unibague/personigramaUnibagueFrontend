@@ -1,23 +1,18 @@
-import React, { Component, useState, useEffect, useLayoutEffect } from "react";
-import { styled, alpha } from "@mui/material/styles";
+import React, { useState, useLayoutEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PersonigramaCard from "../../components/PersonigramaCard/PersonigramaCard";
-import Personal from "../../personal.json";
 import Grid from "@mui/material/Grid";
-import { getFuncionarios, getEmployeeByUnity } from "../../api/funcionarios";
+import { getEmployeeByUnity } from "../../api/funcionarios";
 import BannerPersonal from "../../utils/images/BannerPersonal.png";
 import BannerPersonalSecundario from "../../utils/images/BannerPersonalSecundario.png";
 import { Link } from "react-router-dom";
 
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./Personigrama.css";
 import { getAllRolesByUnity } from "../../api/roles";

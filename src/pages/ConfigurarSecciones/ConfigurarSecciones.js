@@ -1,16 +1,14 @@
-import React, { Component, useState, useEffect, useLayoutEffect } from "react";
-import AppBar from "@mui/material/AppBar";
+import React, { useState, useLayoutEffect } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import { Dialog, Grid, MenuItem, Select, TextField } from "@material-ui/core";
+import { Dialog, Grid, TextField } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
-import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -19,11 +17,8 @@ import { Button } from "@material-ui/core";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import SaveIcon from "@mui/icons-material/Save";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useParams } from "react-router-dom";
 import {
   deleteRolById,
@@ -33,19 +28,14 @@ import {
   updateNameById,
 } from "../../api/roles";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import { Link } from "react-router-dom";
 
 import { List, ListItem } from "material-ui";
 import "./stylesConfSec.css";
 import {
-  getEmployeeByUnity,
-  getPersonasDistinct,
-  updateIdJerarByCedulaUnd,
+  getEmployeeByUnity, updateIdJerarByCedulaUnd,
   updateIdJerarDefault,
-  updateIdJerarDefaultALlSection,
+  updateIdJerarDefaultALlSection
 } from "../../api/funcionarios";
-import LogOut from "../../components/LogOut/LogOut";
-import AdminUsername from "../../components/AdminUsername/AdminUsername";
 import Navbar from "../../components/NavBar/Navbar";
 
 export default function ConfigurarSecciones() {

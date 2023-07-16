@@ -1,7 +1,6 @@
 import React from "react";
 
 import { GoogleLogin } from "@react-oauth/google";
-import { useGoogleOneTapLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
 const google = () => {

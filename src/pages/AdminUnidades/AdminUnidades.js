@@ -1,36 +1,15 @@
-import React, { Component, useState, useEffect, useLayoutEffect } from "react";
-import AppBar from "@mui/material/AppBar";
+import React, { useState, useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import { Grid } from "@material-ui/core";
-import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
-import MenuIcon from "@mui/icons-material/Menu";
-import { Button } from "@material-ui/core";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
-import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
-import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
 import { getUnities } from "../../api/unidades";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./stylesAdminUni.css";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  IconButton,
-  Collapse,
-  Typography,
-} from "@material-ui/core";
+import { Table, TableBody, TableCell, TableHead, TableRow, IconButton, Collapse } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
-import { render } from "@testing-library/react";
-import axios from "axios";
-import LogOut from "../../components/LogOut/LogOut";
-import AdminUsername from "../../components/AdminUsername/AdminUsername";
 import Navbar from "../../components/NavBar/Navbar";
 
 export default function AdminUnidades() {

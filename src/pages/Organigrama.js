@@ -1,20 +1,15 @@
 import React, { useEffect } from "react";
-import organigramas from "../organigramaFormat.json";
 import Tree from "react-d3-tree";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { Button, IconButton } from "@material-ui/core";
-import KeyboardDoubleArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowLeftOutlined";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { useCenteredTree } from "./helpers";
-import NodeLabel from "./helpers";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import { Link } from "react-router-dom";
 import { getUnities } from "../api/unidades";
-import { useLayoutEffect } from "react";
 import { useState } from "react";
 import FloatingButton from "../components/FloatingButton/FloatingButton";
 
