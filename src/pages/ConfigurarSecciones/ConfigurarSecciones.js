@@ -566,38 +566,20 @@ export default function ConfigurarSecciones() {
             </IconButton>
           </Toolbar>
 
-          <Grid container className="gridContainerDialog">
-            {/* Id_jerar */}
-            <Grid
-              item
-              md={2}
+          <Box style={{ padding: "15px" }}>
+            <TextField
+              className="textField"
+              label="Nombre de la Sección"
+              placeholder="Sección"
+              value={inputValue}
+              onChange={handleInputChange}
+              focused
               style={{
-                borderColor: "#04B8E2",
+                borderRadius: "5px",
               }}
-            >
-              <TextField
-                disabled
-                label="Prioridad"
-                value={nextPriority}
-                fullWidth
-              />
-            </Grid>
-            {/* Nombre */}
-            <Grid item md={10}>
-              <TextField
-                className="textField"
-                label="Nombre de la Sección"
-                placeholder="Sección"
-                value={inputValue}
-                onChange={handleInputChange}
-                focused
-                style={{
-                  borderRadius: "5px",
-                }}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
+              fullWidth
+            />
+          </Box>
 
           {/* Boton */}
           <div className="buttonDialogContainer">
@@ -634,43 +616,36 @@ export default function ConfigurarSecciones() {
             </IconButton>
           </Toolbar>
 
-          <Grid container className="gridContainerDialog">
-            {/* Id_jerar */}
-            <Grid
-              item
-              md={2}
-              style={{
-                borderColor: "#04B8E2",
-              }}
-            >
-              <TextField
-                label="Prioridad"
-                focused
-                placeholder={idJerarRolDialogParametersDialog}
-                value={filterInputValue()}
-                onChange={onChangeUpdatIdJerareRol}
-                style={{ width: "200px" }}
-                fullWidth
-              />
+          <Grid container spacing={2} className="gridContainerDialog">
+            <Grid item xs={6}>
+              <Box display="flex" alignItems="center">
+                <TextField
+                  className="textFieldUpdate"
+                  label="Prioridad"
+                  focused
+                  placeholder={idJerarRolDialogParametersDialog}
+                  value={filterInputValue()}
+                  onChange={onChangeUpdatIdJerareRol}
+                  fullWidth
+                />
+              </Box>
             </Grid>
-            {/* Nombre */}
-            <Grid item md={10}>
-              <TextField
-                className="textField"
-                label="Nuevo Nombre"
-                placeholder={nameParametersDialog}
-                value={newRolName}
-                onChange={onChangeUpdateRol}
-                focused
-                style={{
-                  borderRadius: "5px",
-                }}
-                fullWidth
-              />
+
+            <Grid item xs={6}>
+              <Box display="flex" alignItems="center">
+                <TextField
+                  className="textFieldUpdate"
+                  label="Nuevo Nombre"
+                  placeholder={nameParametersDialog}
+                  value={newRolName}
+                  onChange={onChangeUpdateRol}
+                  focused
+                  fullWidth
+                />
+              </Box>
             </Grid>
           </Grid>
 
-          {/* Boton */}
           <div className="buttonDialogContainer">
             <Button
               variant="contained"
@@ -706,28 +681,6 @@ export default function ConfigurarSecciones() {
           </Toolbar>
           <List sx={{ pt: 0 }}>
             <ListItem className="lisItem">
-              {/* <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={addPerson}
-                label="Funcionarios"
-                onChange={handleChangeAddPerson}
-                className="textField"
-                placeholder="Funcionario"
-                focused
-                style={{
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "30px",
-                  borderColor: "#04B8E2",
-                }}
-              >
-                {funcionarioJerar.map((option) => (
-                  <MenuItem key={option.id} value={option.cedula}>
-                    {option.nombre}
-                  </MenuItem>
-                ))}
-              </Select> */}
-
               <Autocomplete
                 id="demo-simple-select"
                 value={selectedPerson}
