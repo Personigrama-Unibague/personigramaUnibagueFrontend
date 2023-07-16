@@ -34,17 +34,17 @@ const Sidebar = ({ open }) => {
       <div className={classes.toolbar} />
       <List>
         <ListItem button>
-          <Link style={{ color: "black" }} to="/organigrama">
+          <Link style={{ color: "#193F76" }} to="/organigrama">
             Organigrama
           </Link>
         </ListItem>
         <ListItem button>
-          <Link style={{ color: "black" }} to="/adminUnidades">
+          <Link style={{ color: "#193F76" }} to="/adminUnidades">
             Administrar Unidades
           </Link>
         </ListItem>
         <ListItem button>
-          <Link style={{ color: "black" }} to="/adminUsuarios">
+          <Link style={{ color: "#193F76" }} to="/adminUsuarios">
             Administrar Usuarios
           </Link>
         </ListItem>
