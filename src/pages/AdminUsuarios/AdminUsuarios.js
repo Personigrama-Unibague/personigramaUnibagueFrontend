@@ -171,7 +171,7 @@ function AdminUsuarios() {
           </TableContainer>
 
           {/*Modal Agregar usuario */}
-          <Dialog open={open} onClose={handleClose}>
+          <Dialog open={open} onClose={handleClose} className="modalUsuario">
             <List sx={{ pt: 0 }}>
               <Toolbar className="modalTitleUsuarios">
                 <Typography
@@ -204,7 +204,7 @@ function AdminUsuarios() {
                 </Typography>
               </ListItem>
 
-              <ListItem style={{ paddingTop: "5px", width: "450px" }}>
+              <ListItem style={{ paddingTop: "5px"}}>
                 <TextField
                   className="textField"
                   placeholder="Usuario"
@@ -239,7 +239,7 @@ function AdminUsuarios() {
                 </Typography>
               </ListItem>
 
-              <ListItem style={{ paddingTop: "5px", width: "450px" }}>
+              <ListItem style={{ paddingTop: "5px" }}>
                 <TextField
                   className="textField"
                   placeholder="Contraseña"
