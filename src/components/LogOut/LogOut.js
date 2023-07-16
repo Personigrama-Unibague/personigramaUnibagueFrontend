@@ -1,9 +1,10 @@
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import IconButton from "material-ui/IconButton";
 import React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 
 function LogOut() {
-
   const logOut = () => {
     localStorage.setItem("loggedIn", false);
     localStorage.setItem("username", "");
@@ -14,22 +15,30 @@ function LogOut() {
       "¿Estás seguro de que deseas cerrar sesión: " + username + "?"
     );
     if (confirmed) {
-        logOut();
+      logOut();
     }
   };
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username");
   return (
-    <div>
+    <div style={{ paddingLeft: "10px" }}>
       <IconButton
         variant="outlined"
         onClick={() => logOutConfirmation()}
         style={{
-          marginRight:"10px",
+          marginRight: "10px",
           borderRadius: "10px",
           color: "white",
         }}
       >
-        <AccountCircleOutlinedIcon style={{ color: "white" }} />
+        <InputOutlinedIcon
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          sx={{ mr: 3 }}
+        >
+          <MenuIcon />
+        </InputOutlinedIcon>
       </IconButton>
     </div>
   );

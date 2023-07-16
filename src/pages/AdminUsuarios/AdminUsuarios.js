@@ -30,6 +30,7 @@ import { getDeleteUser, getAllUsers, getSaveNewUser } from "../../api/usuarios";
 import LogOut from "../../components/LogOut/LogOut";
 import AdminUsername from "../../components/AdminUsername/AdminUsername";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/NavBar/Navbar";
 
 function AdminUsuarios() {
   const [open, setOpen] = React.useState(false);
@@ -99,31 +100,7 @@ function AdminUsuarios() {
       >
         <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" className="appBarUsuarios">
-              <Toolbar style={{ backgroundColor: "#193F76" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1 }}
-                  className="styleTitleUsarios"
-                >
-                  Administrar Usuarios
-                </Typography>
-                <AdminUsername />
-                <LogOut />
-                <Link to="/" style={{ color: "white" }}>
-                  <InputOutlinedIcon
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 3 }}
-                  >
-                    <MenuIcon />
-                  </InputOutlinedIcon>
-                </Link>
-              </Toolbar>
-            </AppBar>
+            <Navbar title="Administrar Usuarios" />
           </Box>
         </Grid>
 

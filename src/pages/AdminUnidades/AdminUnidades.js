@@ -31,6 +31,7 @@ import { render } from "@testing-library/react";
 import axios from "axios";
 import LogOut from "../../components/LogOut/LogOut";
 import AdminUsername from "../../components/AdminUsername/AdminUsername";
+import Navbar from "../../components/NavBar/Navbar";
 
 export default function AdminUnidades() {
   const [unidades, setUnidades] = useState([]);
@@ -62,37 +63,13 @@ export default function AdminUnidades() {
       <Grid
         container
         component="main"
-        style={{ justifyContent: "center", display: "flex"}}
+        style={{ justifyContent: "center", display: "flex" }}
         justify="center"
       >
         {/* Toolbar */}
         <Grid item md={12}>
           <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" className="appBarAdminUni">
-              <Toolbar style={{ backgroundColor: "#193F76" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1 }}
-                  className="styleTitleAdmin"
-                >
-                  Administrar Unidades
-                </Typography>
-                <AdminUsername />
-                <LogOut />
-                <Link to="/" style={{ color: "white" }}>
-                  <InputOutlinedIcon
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 3 }}
-                  >
-                    <MenuIcon />
-                  </InputOutlinedIcon>
-                </Link>
-              </Toolbar>
-            </AppBar>
+            <Navbar title="Administrar Unidades" />
           </Box>
         </Grid>
 
@@ -104,7 +81,7 @@ export default function AdminUnidades() {
               style={{ borderRadius: "10px 10px 0px 0px" }}
             >
               <Table className="marginTableAdmin">
-                <TableHead >
+                <TableHead>
                   <TableRow>
                     <TableCell
                       className="tableCellTitleAdmin"
