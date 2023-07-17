@@ -107,6 +107,7 @@ export default function Organigrama() {
   const [translate, containerRef] = useCenteredTree();
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
+  const [currentDepth, setDepth] = useState(1);
 
   const nodeSize = { x: 500, y: 250 };
   const separation = { siblings: 1, nonSiblings: 2 };
@@ -159,7 +160,8 @@ export default function Organigrama() {
             data={unidades}
             nodeSize={nodeSize}
             separation={separation}
-            transitionDuration="1000"
+            depthFactor={650}
+            transitionDuration={1}
             pathFunc="step"
             NodeClassName="node__root"
             branchNodeClassName="node__branch"
@@ -172,7 +174,7 @@ export default function Organigrama() {
               })
             }
             orientation="horizontal"
-            initialDepth={1}
+            initialDepth={currentDepth}
           />
         </>
       )}
