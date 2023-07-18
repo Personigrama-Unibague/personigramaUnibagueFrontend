@@ -107,7 +107,6 @@ export default function Organigrama() {
   const [translate, containerRef] = useCenteredTree();
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
-  const [currentDepth, setDepth] = useState(1);
 
   const nodeSize = { x: 500, y: 250 };
   const separation = { siblings: 1, nonSiblings: 2 };
@@ -174,7 +173,7 @@ export default function Organigrama() {
               })
             }
             orientation="horizontal"
-            initialDepth={currentDepth}
+            initialDepth={localStorage.getItem("depth")}
           />
         </>
       )}
