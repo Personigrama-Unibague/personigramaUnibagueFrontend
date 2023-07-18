@@ -104,7 +104,7 @@ const renderForeignObjectNode = ({
 
 export default function Organigrama() {
   const classes = useStyles();
-  const [translate, containerRef] = useCenteredTree();
+  const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
 
@@ -114,7 +114,7 @@ export default function Organigrama() {
     width: nodeSize.x,
     height: nodeSize.y,
     x: -100,
-    y: -40,
+    y: -50,
   };
 
   useEffect(() => {
@@ -133,6 +133,10 @@ export default function Organigrama() {
   }, []);
 
   useEffect(() => {}, [unidades]);
+
+   useEffect(() => {
+    setTranslate({ x: 100, y: 350 }); // Ejemplo de valor para translate
+  }, [unidades]);
 
   return (
     <div style={containerStyles}>
@@ -174,6 +178,7 @@ export default function Organigrama() {
             }
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
+            translate={translate}
           />
         </>
       )}
