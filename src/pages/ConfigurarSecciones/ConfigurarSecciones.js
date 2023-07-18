@@ -805,7 +805,7 @@ export default function ConfigurarSecciones() {
             borderRadius: "50px",
           }}
         >
-          Agregar
+          Agregar Sección
         </Button>
       </div>
     </>
