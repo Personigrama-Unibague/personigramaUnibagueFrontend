@@ -698,7 +698,6 @@ export default function ConfigurarSecciones() {
             <ListItem className="lisItem">
               <TableContainer component={Paper}>
                 <Table
-                  sx={{ minWidth: 250 }}
                   style={{ borderStyle: "solid", borderColor: "#017A97" }}
                   className="tablaVerFuncionarios"
                 >
@@ -747,7 +746,10 @@ export default function ConfigurarSecciones() {
                   </TableHead>
                   <TableBody>
                     {table.map((row) => (
-                      <TableRow key={row.nombre}>
+                      <TableRow
+                        key={row.nombre}
+                        style={{ paddingRight: "30px" }}
+                      >
                         <TableCell
                           component="th"
                           scope="row"
@@ -759,26 +761,30 @@ export default function ConfigurarSecciones() {
                           {row.nombre}
                         </TableCell>
                         {row.id_jerar != 0 ? (
-                          <TableCell align="center">
-                            <IconButton
-                              className="IconButton"
-                              variant="outlined"
-                              style={{
-                                backgroundColor: "#B8B9BA",
-                                borderRadius: "10px",
-                                color: "white",
-                                marginLeft: "5px",
-                              }}
-                              onClick={() =>
-                                DeleteUserConfirmation(row.cedula, row.nombre)
-                              }
+                          <>
+                            <TableCell
+                              align="center"
+                              style={{ minWidth: "40px" }}
                             >
-                              <DeleteOutlineOutlinedIcon
-                                className="icon"
-                                style={{ color: "white" }}
-                              />
-                            </IconButton>
-                          </TableCell>
+                              <IconButton
+                                className="IconButton"
+                                variant="outlined"
+                                style={{
+                                  backgroundColor: "#B8B9BA",
+                                  borderRadius: "10px",
+                                  color: "white",
+                                }}
+                                onClick={() =>
+                                  DeleteUserConfirmation(row.cedula, row.nombre)
+                                }
+                              >
+                                <DeleteOutlineOutlinedIcon
+                                  className="icon"
+                                  style={{ color: "white" }}
+                                />
+                              </IconButton>
+                            </TableCell>
+                          </>
                         ) : (
                           <></>
                         )}

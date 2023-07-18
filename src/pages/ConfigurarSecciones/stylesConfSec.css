@@ -72,7 +72,7 @@
   }
 
   .autocomplete {
-    width: 55vw !important;
+    width: 65vw !important;
   }
 }
 
@@ -90,7 +90,7 @@
     width: 250px;
   }
   .autocomplete {
-    width: 35vw !important;
+    width: 45vw !important;
   }
   .gridContainerDialog {
     width: 400px !important;
@@ -109,7 +109,7 @@
     width: 450px !important;
   }
   .autocomplete {
-    width: 30vw !important;
+    width: 40vw !important;
   }
   .gridContainerDialog {
     width: 450px !important;
@@ -126,7 +126,7 @@
     padding-right: 20vw !important;
   }
   .autocomplete {
-    width: 25vw !important;
+    width: 35vw !important;
   }
   .gridContainerDialog {
     width: 520px !important;
@@ -143,7 +143,7 @@
     padding-right: 20vw !important;
   }
   .autocomplete {
-    width: 20vw !important;
+    width: 25vw !important;
   }
   .lisItem {
     padding-top: 10px;
@@ -151,7 +151,7 @@
   }
 
   .tablaVerFuncionarios {
-    width: 16vw !important;
+    width: 25vw !important;
   }
   .gridContainerDialog {
     width: 550px !important;
