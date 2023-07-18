@@ -2,7 +2,8 @@ import {
   Button,
   Grid,
   makeStyles,
-  TextField, IconButton
+  TextField,
+  IconButton,
 } from "@material-ui/core";
 import fondo from "../../utils/images/adminLoginBackground.jpeg";
 import navbar from "../../utils/images/navbar.jfif";
@@ -142,8 +143,9 @@ function AdminLogin() {
                       backgroundColor: "#04B8E2",
                     }}
                     position="start"
+                    disabled={true}
                   >
-                    <Person2OutlinedIcon style={{color: "white"}} />
+                    <Person2OutlinedIcon style={{ color: "white" }} />
                   </IconButton>
                 ),
               }}
@@ -173,6 +175,7 @@ function AdminLogin() {
                       backgroundColor: "#04B8E2",
                     }}
                     position="start"
+                    disabled={true}
                   >
                     <HttpsOutlinedIcon style={{ color: "white" }} />
                   </IconButton>
@@ -194,7 +197,7 @@ function AdminLogin() {
                 padding: "10px 30px",
               }}
             >
-              Identificarse
+              INGRESAR
             </Button>
           </Grid>
         </Grid>
