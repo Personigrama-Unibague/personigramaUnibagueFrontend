@@ -73,6 +73,10 @@
     padding-left: 20vw !important;
     padding-right: 15vw !important;
   }
+
+  .adminUserText {
+    font-size: 1.2rem !important;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -96,6 +100,10 @@
   .tableCellTitle {
     font-size: 3vw !important;
   }
+
+  .adminUserText {
+    font-size: 1.2rem !important;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -118,6 +126,10 @@
   .tableCellTitle {
     font-size: 1.7vw !important;
   }
+
+  .adminUserText {
+    font-size: 1.1rem !important;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -136,6 +148,10 @@
   .tableCellTitle {
     font-size: 1.4vw !important;
   }
+
+  .adminUserText {
+    font-size: 1.1rem !important;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -150,5 +166,9 @@
   }
   .tableCellTitle {
     font-size: 1vw !important;
+  }
+
+  .adminUserText {
+    font-size: 1rem !important;
   }
 }

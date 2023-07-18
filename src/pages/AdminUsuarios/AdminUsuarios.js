@@ -115,14 +115,14 @@ function AdminUsuarios() {
                     align="center"
                     style={{ backgroundColor: "#017A97", color: "white" }}
                   >
-                    Usuario
+                    <Typography className="adminUserText">Usuario</Typography>
                   </TableCell>
                   <TableCell
                     className="tableCellTitle"
                     align="center"
                     style={{ backgroundColor: "#017A97", color: "white" }}
                   >
-                    Opciones
+                    <Typography className="adminUserText">Opciones</Typography>
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -135,7 +135,9 @@ function AdminUsuarios() {
                       scope="row"
                       className="tableCellTitle"
                     >
-                      {user.usuario}
+                      <Typography className="adminUserText">
+                        {user.usuario}
+                      </Typography>
                     </TableCell>
                     <TableCell align="center">
                       <IconButton
@@ -196,7 +198,7 @@ function AdminUsuarios() {
                 </Typography>
               </ListItem>
 
-              <ListItem style={{ paddingTop: "5px"}}>
+              <ListItem style={{ paddingTop: "5px" }}>
                 <TextField
                   className="textField"
                   placeholder="Usuario"
