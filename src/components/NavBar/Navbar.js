@@ -46,7 +46,7 @@ const Navbar = ({ title }) => {
           </IconButton>
           {/* Titulo Navbar */}
           <Box flex={1} display="flex" justifyContent="center">
-            <Typography variant="h3">{title}</Typography>
+            <Typography variant="h1">{title}</Typography>
           </Box>
 
           {/* Right  */}
