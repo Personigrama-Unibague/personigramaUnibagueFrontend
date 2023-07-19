@@ -107,7 +107,10 @@ export default function Organigrama() {
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
-
+  if( parseInt(localStorage.getItem("depth")) == 0 ){
+    localStorage.setItem("depth", 1);
+    setTimeout(window.location.reload(), 10000);
+  }
   const nodeSize = { x: 500, y: 250 };
   const separation = { siblings: 1, nonSiblings: 2 };
   const foreignObjectProps = {
