@@ -1,3 +1,4 @@
-.rd3t-node {
-  stroke-width: " 0 !important";
+.rd3t-node,
+node__branch {
+  stroke-width: 1 !important;
 }
