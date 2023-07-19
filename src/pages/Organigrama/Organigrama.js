@@ -14,7 +14,6 @@ import { useState } from "react";
 import FloatingButton from "../../components/FloatingButton/FloatingButton";
 import "./styles.css";
 
-
 const containerStyles = {
   width: "100vw",
   height: "100vh",
@@ -109,7 +108,7 @@ export default function Organigrama() {
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
-  if( parseInt(localStorage.getItem("depth")) == 0 ){
+  if (parseInt(localStorage.getItem("depth")) == 0) {
     localStorage.setItem("depth", 1);
     setTimeout(window.location.reload(), 10000);
   }
@@ -139,9 +138,34 @@ export default function Organigrama() {
 
   useEffect(() => {}, [unidades]);
 
-   useEffect(() => {
+  useEffect(() => {
     setTranslate({ x: 100, y: 350 }); // Ejemplo de valor para translate
   }, [unidades]);
+
+  const calculateTotalLevels = (data) => {
+    // Si no hay datos o es un array vacío, el total de niveles es 0
+    if (!data || data.length === 0) {
+      return 0;
+    }
+
+    // Función auxiliar para recorrer los nodos y obtener su profundidad
+    const getDepth = (node) => {
+      if (!node.children || node.children.length === 0) {
+        return 1;
+      }
+      const depths = node.children.map(getDepth);
+      return 1 + Math.max(...depths);
+    };
+
+    // Obtenemos la profundidad máxima desde la raíz del árbol
+    const depthsFromRoot = data.children.map(getDepth);
+    const totalLevels = Math.max(...depthsFromRoot);
+
+    return totalLevels;
+  };
+
+  const totalNiveles = calculateTotalLevels(unidades);
+  localStorage.setItem("niveles", parseInt(totalNiveles));
 
   return (
     <div style={containerStyles}>

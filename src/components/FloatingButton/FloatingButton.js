@@ -47,7 +47,8 @@ function FloatingButton() {
   const handleIncreaseDepth = () => {
     setDepth(20);
     console.log(currentDepth);
-    localStorage.setItem("depth", 20);
+    const depth = localStorage.getItem("niveles");
+    localStorage.setItem("depth", depth);
     setTimeout(window.location.reload(), 10000);
   };
 
@@ -58,9 +59,19 @@ function FloatingButton() {
   };
 
   const addDepth = () => {
-    localStorage.setItem("depth", parseInt(localStorage.getItem("depth")) + 1);
-    console.log(currentDepth);
-    setTimeout(window.location.reload(), 10);
+    if (
+      parseInt(localStorage.getItem("depth")) + 1 >=
+      parseInt(localStorage.getItem("niveles"))
+    ) {
+      window.alert("No hay más unidades en el organigrama");
+    } else {
+      localStorage.setItem(
+        "depth",
+        parseInt(localStorage.getItem("depth")) + 1
+      );
+      console.log(currentDepth);
+      setTimeout(window.location.reload(), 10);
+    }
   };
 
   const restDepth = () => {
