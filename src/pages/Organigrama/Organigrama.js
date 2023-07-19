@@ -69,37 +69,52 @@ const renderForeignObjectNode = ({
   classes,
 }) => (
   <>
-    {/* `foreignObject` requires width & height to be explicitly set. */}
-    <foreignObject {...foreignObjectProps}>
-      <Button
-        className={`${
-          nodeDatum.parent_id === null ? classes.button : classes.childId
-        }`}
-        variant="contained"
-      >
-        {nodeDatum.nombre !== undefined && (
-          <div className={classes.name}>{nodeDatum.name}</div>
-        )}
-        {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-        <IconButton className={classes.ArrowButton}>
-          <ArrowBackIosOutlinedIcon
-            style={{ color: "#FFFFFF" }}
-            onClick={toggleNode}
-          />
-        </IconButton>
-        <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
-          <IconButton className={classes.edit} aria-label="edit">
-            <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+    {nodeDatum.id != "X" ? (
+      <foreignObject {...foreignObjectProps}>
+        <Button
+          className={`${
+            nodeDatum.parent_id === null ? classes.button : classes.childId
+          }`}
+          variant="contained"
+        >
+          {nodeDatum.nombre !== undefined && (
+            <div className={classes.name}>{nodeDatum.name}</div>
+          )}
+          {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+          <IconButton className={classes.ArrowButton}>
+            <ArrowBackIosOutlinedIcon
+              style={{ color: "#FFFFFF" }}
+              onClick={toggleNode}
+            />
           </IconButton>
-        </Link>
-        <IconButton className={classes.ArrowButton}>
-          <ArrowForwardIosRoundedIcon
-            style={{ color: "#FFFFFF" }}
-            onClick={toggleNode}
-          />
-        </IconButton>
-      </Button>
-    </foreignObject>
+          <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
+            <IconButton className={classes.edit} aria-label="edit">
+              <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+            </IconButton>
+          </Link>
+          <IconButton className={classes.ArrowButton}>
+            <ArrowForwardIosRoundedIcon
+              style={{ color: "#FFFFFF" }}
+              onClick={toggleNode}
+            />
+          </IconButton>
+        </Button>
+      </foreignObject>
+    ) : (
+      <foreignObject {...foreignObjectProps}>
+        <Button
+          className={`${
+            nodeDatum.parent_id === null ? classes.button : classes.childId
+          }`}
+          variant="contained"
+        >
+          {nodeDatum.nombre !== undefined && (
+            <div className={classes.name}>{nodeDatum.name}</div>
+          )}
+          {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+        </Button>
+      </foreignObject>
+    )}
   </>
 );
 
