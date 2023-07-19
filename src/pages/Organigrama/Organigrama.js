@@ -4,14 +4,16 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { Button, IconButton } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { useCenteredTree } from "./helpers";
+import { useCenteredTree } from "../helpers";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import { Link } from "react-router-dom";
-import { getUnities } from "../api/unidades";
+import { getUnities } from "../../api/unidades";
 import { useState } from "react";
-import FloatingButton from "../components/FloatingButton/FloatingButton";
+import FloatingButton from "../../components/FloatingButton/FloatingButton";
+import "./styles.css";
+
 
 const containerStyles = {
   width: "100vw",

@@ -9,7 +9,7 @@ import AdminUsuarios from "../pages/AdminUsuarios/AdminUsuarios";
 import ConfigurarSecciones from "../pages/ConfigurarSecciones/ConfigurarSecciones";
 import SeccionFuncionarios from "../pages/SeccionFuncionarios/SeccionFuncionarios";
 import NotFound from "../pages/NotFound/NotFound";
-import Organigrama from "../pages/Organigrama";
+import Organigrama from "../pages/Organigrama/Organigrama";
 import PruebaLogin from "../pages/PruebaLogIn/PruebaLogIn";
 import GuardedRoute from "./GuardedRoute";
 
