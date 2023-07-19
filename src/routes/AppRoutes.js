@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../pages/HomePage";
 import AdminLogin from "../pages/AdminLogin/AdminLogin";
 import Personigrama from "../pages/Personigrama/Personigrama";
 import PrincipalTemporal from "../pages/PrincipalTemporal";
@@ -15,7 +14,6 @@ import GuardedRoute from "./GuardedRoute";
 
 const routes = [
   { path: "/", element: <PrincipalTemporal /> },
-  { path: "/homePage", element: <HomePage /> },
   { path: "/personigrama/:unidad/:nombre", element: <Personigrama /> },
   { path: "/adminLogin", element: <AdminLogin /> },
   {

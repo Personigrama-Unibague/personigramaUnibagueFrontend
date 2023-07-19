@@ -8,7 +8,15 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 import { getUnities } from "../../api/unidades";
 import { Link } from "react-router-dom";
 import "./stylesAdminUni.css";
-import { Table, TableBody, TableCell, TableHead, TableRow, IconButton, Collapse } from "@material-ui/core";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  IconButton,
+  Collapse,
+} from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import Navbar from "../../components/NavBar/Navbar";
 
@@ -79,13 +87,6 @@ export default function AdminUnidades() {
                     >
                       Numero
                     </TableCell>
-                    {/* <TableCell
-                    className="tableCellTitle"
-                    align="center"
-                    style={{ backgroundColor: "#017A97", color: "white" }}
-                  >
-                    Posición
-                  </TableCell> */}
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
@@ -124,45 +125,7 @@ export default function AdminUnidades() {
                           {row.nombre}
                         </TableCell>
                         <TableCell>{row.id}</TableCell>
-                        {/* <TableCell align="center">
-                        <Grid container direction="row" spacing={0}>
-                          <Grid item xs={6} sm={6} md={6}>
-                            <IconButton
-                              className="IconButton"
-                              variant="outlined"
-                              style={{
-                                backgroundColor: "#B8B9BA",
 
-                                borderRadius: "10px",
-                                color: "white",
-                              }}
-                            >
-                              <KeyboardArrowUpOutlinedIcon
-                                className="icon"
-                                style={{ color: "white" }}
-                              />
-                            </IconButton>
-                          </Grid>
-
-                          <Grid item xs={6} sm={6} md={6}>
-                            <IconButton
-                              className="IconButton"
-                              variant="outlined"
-                              style={{
-                                backgroundColor: "#B8B9BA",
-
-                                borderRadius: "10px",
-                                color: "white",
-                              }}
-                            >
-                              <KeyboardArrowDownOutlinedIcon
-                                className="icon"
-                                style={{ color: "white" }}
-                              />
-                            </IconButton>
-                          </Grid>
-                        </Grid>
-                      </TableCell> */}
                         <TableCell align="center">
                           <IconButton
                             className="IconButton"
