@@ -154,7 +154,7 @@ export default function Organigrama() {
   useEffect(() => {}, [unidades]);
 
   useEffect(() => {
-    setTranslate({ x: 100, y: 350 }); // Ejemplo de valor para translate
+    setTranslate({ x: 100, y: 320 }); // Ejemplo de valor para translate
   }, [unidades]);
 
   const calculateTotalLevels = (data) => {
