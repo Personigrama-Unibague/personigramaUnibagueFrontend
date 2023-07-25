@@ -32,7 +32,7 @@ const Sidebar = ({ open }) => {
       <div className={classes.toolbar} />
       <List>
         <ListItem button>
-          <Link style={{ color: "#193F76" }} to="/organigrama">
+          <Link style={{ color: "#193F76" }} to="/">
             Organigrama
           </Link>
         </ListItem>

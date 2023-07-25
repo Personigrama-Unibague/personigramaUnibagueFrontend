@@ -2,18 +2,16 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AdminLogin from "../pages/AdminLogin/AdminLogin";
 import Personigrama from "../pages/Personigrama/Personigrama";
-import PrincipalTemporal from "../pages/PrincipalTemporal";
 import AdminUnidades from "../pages/AdminUnidades/AdminUnidades";
 import AdminUsuarios from "../pages/AdminUsuarios/AdminUsuarios";
 import ConfigurarSecciones from "../pages/ConfigurarSecciones/ConfigurarSecciones";
 import SeccionFuncionarios from "../pages/SeccionFuncionarios/SeccionFuncionarios";
 import NotFound from "../pages/NotFound/NotFound";
 import Organigrama from "../pages/Organigrama/Organigrama";
-import PruebaLogin from "../pages/PruebaLogIn/PruebaLogIn";
 import GuardedRoute from "./GuardedRoute";
 
 const routes = [
-  { path: "/", element: <PrincipalTemporal /> },
+  { path: "/", element: <Organigrama /> },
   { path: "/personigrama/:unidad/:nombre", element: <Personigrama /> },
   { path: "/adminLogin", element: <AdminLogin /> },
   {
@@ -56,8 +54,6 @@ const routes = [
       />
     ),
   },
-  { path: "/organigrama", element: <Organigrama /> },
-  { path: "/pruebaLogin", element: <PruebaLogin /> },
   { path: "*", element: <NotFound /> },
 ];
 

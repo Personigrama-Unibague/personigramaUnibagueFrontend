@@ -40,7 +40,7 @@ export default function Personigrama() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ backgroundColor: "#193F76" }}>
         <Toolbar>
-          <Link to="/organigrama">
+          <Link to="/">
             <IconButton
               size="large"
               edge="start"
