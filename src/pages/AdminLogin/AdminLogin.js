@@ -95,7 +95,7 @@ function AdminLogin() {
         >
           {/*Logo Unibague*/}
           <Grid item>
-            <img src={logoUnibague} className="logoImage"></img>
+            <img src={logoUnibague} className="logoImage" alt=""></img>
           </Grid>
           {/*Personigrama*/}
           <Grid item>

@@ -41,10 +41,9 @@ function SeccionFuncionarios() {
   const handleClose = () => setOpen(false);
   const [funcionarios, setFuncionarios] = useState([]);
   const [funcionariosCompletos, setFuncionariosCompletos] = useState([]);
-  const [funcionario, setFuncionario] = React.useState("");
   const [unidad, setUnidad] = React.useState("");
   const textFieldRef = useRef(null);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue] = useState("");
 
   const handleChange = async (event, newValue) => {
     if (newValue) {
@@ -92,7 +91,7 @@ function SeccionFuncionarios() {
         window.alert("Error API");
       }
     })();
-  }, []);
+  }, [params.unidad]);
 
   return (
     <Grid
@@ -215,6 +214,7 @@ function SeccionFuncionarios() {
                 getOptionLabel={(option) => option.nombre || ""}
                 value={inputValue}
                 onChange={handleChange}
+                className="autocomplete"
                 renderInput={(params) => (
                   <TextField
                     ref={textFieldRef}

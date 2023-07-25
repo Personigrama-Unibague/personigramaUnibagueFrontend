@@ -17,7 +17,7 @@ const routes = [
   { path: "/personigrama/:unidad/:nombre", element: <Personigrama /> },
   { path: "/adminLogin", element: <AdminLogin /> },
   {
-    path: "/adminUnidades",
+    path: "/adminUnidades/*",
     element: (
       <GuardedRoute
         path="/adminUnidades"
@@ -37,7 +37,7 @@ const routes = [
     ),
   },
   {
-    path: "/confiSecciones/:unidad/:nombre",
+    path: "/confiSecciones/:unidad/:nombre/*",
     element: (
       <GuardedRoute
         path="/confiSecciones/:unidad/:nombre"
@@ -47,7 +47,7 @@ const routes = [
     ),
   },
   {
-    path: "/seccionFuncionarios/:unidad/:nombre",
+    path: "/seccionFuncionarios/:unidad/:nombre/*",
     element: (
       <GuardedRoute
         path="/seccionFuncionarios/:unidad/:nombre"

@@ -95,7 +95,7 @@ export default function ConfigurarSecciones() {
         window.alert("Error API");
       }
     })();
-  }, []);
+  }, [params.unidad]);
 
   /* DIALOGS */
 
@@ -609,7 +609,7 @@ export default function ConfigurarSecciones() {
                   className="textFieldUpdate"
                   label="Prioridad"
                   focused
-                  placeholder={idJerarRolDialogParametersDialog}
+                  placeholder={toString(idJerarRolDialogParametersDialog)}
                   value={filterInputValue()}
                   onChange={onChangeUpdatIdJerareRol}
                   fullWidth

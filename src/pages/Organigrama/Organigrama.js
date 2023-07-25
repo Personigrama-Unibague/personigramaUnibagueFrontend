@@ -4,7 +4,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { Button, IconButton } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { useCenteredTree } from "../helpers";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";

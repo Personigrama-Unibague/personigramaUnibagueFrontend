@@ -33,7 +33,7 @@ export default function Personigrama() {
         window.alert("Error API");
       }
     })();
-  }, []);
+  }, [params.unidad]);
 
   return (
     /* Navbar */
@@ -69,7 +69,7 @@ export default function Personigrama() {
       <div className="personigramaCards">
         <Grid container spacing={2} className="gridContainer" sx={{ pb: 2 }}>
           <Grid item md={9} className="imageContainer">
-            <img src={BannerPersonal} className="bannerPersonal" />
+            <img src={BannerPersonal} className="bannerPersonal" alt="" />
             <div className="nombreBannerPrincipal">
               <p className="personigrama">PERSONIGRAMA</p>
               <p className="unidad">{params.nombre}</p>
@@ -83,6 +83,8 @@ export default function Personigrama() {
                     <PersonigramaCard personal={func} />
                   </Grid>
                 );
+              } else {
+                return null;
               }
             })}
           </Grid>
@@ -98,6 +100,7 @@ export default function Personigrama() {
                     <img
                       src={BannerPersonalSecundario}
                       className="bannerPersonalSecundario"
+                      alt=""
                     />
                     <div className="nombreBanner">
                       <p className="personigrama">SECCIÓN</p>
@@ -115,6 +118,8 @@ export default function Personigrama() {
                             <PersonigramaCard personal={func} />
                           </Grid>
                         );
+                      } else {
+                        return null;
                       }
                     })}
                   </Grid>
@@ -129,7 +134,11 @@ export default function Personigrama() {
         {/* Default */}
 
         <Grid item xs={12} md={12} className="imageContainer">
-          <img src={BannerPersonal} className="bannerPersonalSecundario" />
+          <img
+            src={BannerPersonal}
+            className="bannerPersonalSecundario"
+            alt=""
+          />
           <div className="nombreBanner">
             <p className="personigrama">NUESTROS</p>
             <p className="unidad">INTEGRANTES</p>
@@ -145,6 +154,8 @@ export default function Personigrama() {
                     <PersonigramaCard personal={func} />
                   </Grid>
                 );
+              } else {
+                return null;
               }
             })}
           </Grid>
