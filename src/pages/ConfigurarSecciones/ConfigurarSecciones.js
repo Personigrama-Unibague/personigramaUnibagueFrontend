@@ -109,7 +109,7 @@ export default function ConfigurarSecciones() {
 
   /* Dialog Tabla de Personas por rol */
   const openTablePersonDialog = (id, name) => {
-    const list = funcionarios.filter((persona) => persona.id_jerar == id);
+    const list = funcionarios.filter((persona) => persona.id_jerar === id);
     setTable(list);
     setOpenTablePerson(true);
   };
@@ -117,10 +117,10 @@ export default function ConfigurarSecciones() {
   /* Dialog Agregar Persona */
   const openPersonDialog = (id, nombre) => {
     var list = [];
-    if (nombre == "Primario") {
-      const prim = funcionarios.filter((persona) => persona.id_jerar == 1);
+    if (nombre === "Primario") {
+      const prim = funcionarios.filter((persona) => persona.id_jerar === 1);
       if (prim.length === 0) {
-        list = funcionarios.filter((persona) => persona.id_jerar == 0);
+        list = funcionarios.filter((persona) => persona.id_jerar === 0);
         setFuncionarioJerar(list);
         setOpenPerson(true);
         setIdJerarAdd(id);
@@ -128,7 +128,7 @@ export default function ConfigurarSecciones() {
         alert("Solo puede existir un lider de area");
       }
     } else {
-      list = funcionarios.filter((persona) => persona.id_jerar == 0);
+      list = funcionarios.filter((persona) => persona.id_jerar === 0);
       setFuncionarioJerar(list);
       setOpenPerson(true);
       setIdJerarAdd(id);
@@ -154,7 +154,7 @@ export default function ConfigurarSecciones() {
   /* Change para actualizar el el id_jerar del rol */
   const onChangeUpdatIdJerareRol = (event) => {
     const value = event.target.value;
-    if (value != "0" || value != "1") {
+    if (value !== "0" || value !== "1") {
       setIdJerarParametersDialog(event.target.value);
     }
   };
@@ -162,17 +162,17 @@ export default function ConfigurarSecciones() {
   const filterInputValue = () => {
     const rol = roles.filter(
       (rol) =>
-        rol.id_jerar == idJerarParametersDialog &&
-        rol.id_jerar != 0 &&
-        rol.id_jerar != 1
+        rol.id_jerar === idJerarParametersDialog &&
+        rol.id_jerar !== 0 &&
+        rol.id_jerar !== 1
     );
 
-    if (idJerarParametersDialog == "0") {
+    if (idJerarParametersDialog === "0") {
       alert(
         "No puede asignar el id 0 ya que este se encuentra asignado a roles predeterminados"
       );
       return "";
-    } else if (idJerarParametersDialog == "1") {
+    } else if (idJerarParametersDialog === "1") {
       alert(
         "No puede asignar el id 1 ya que este se encuentra asignado a roles predeterminados"
       );
@@ -197,15 +197,15 @@ export default function ConfigurarSecciones() {
 
   /* Actualizar nombre del rol */
   const updateRol = () => {
-    const rol = roles.filter((rol) => rol.id == idParametersDialog);
+    const rol = roles.filter((rol) => rol.id === idParametersDialog);
 
-    if (newRolName == undefined || newRolName == "") {
+    if (newRolName === undefined || newRolName === "") {
       updateIdJerarRol(rol[0].id_jerar, idJerarParametersDialog, params.unidad);
       window.alert("Sección actualizada correctamente");
       setTimeout(window.location.reload(), 10000);
     } else if (
-      idJerarParametersDialog == undefined ||
-      idJerarParametersDialog == ""
+      idJerarParametersDialog === undefined ||
+      idJerarParametersDialog === ""
     ) {
       updateNameById(idParametersDialog, newRolName);
       window.alert("Sección actualizada correctamente");
@@ -312,7 +312,7 @@ export default function ConfigurarSecciones() {
                     <TableCell>{rol.nombre}</TableCell>
 
                     {/* Demas unidades */}
-                    {rol.unidad != "0" && rol.id_jerar != 0 ? (
+                    {rol.unidad !== "0" && rol.id_jerar !== 0 ? (
                       <>
                         <TableCell component="th" scope="rol">
                           <IconButton
@@ -379,9 +379,9 @@ export default function ConfigurarSecciones() {
                           </IconButton>
                         </TableCell>
                       </>
-                    ) : rol.unidad == "0" &&
-                      rol.id_jerar == 1 &&
-                      rol.nombre == "Primario" ? (
+                    ) : rol.unidad === "0" &&
+                      rol.id_jerar === 1 &&
+                      rol.nombre === "Primario" ? (
                       <>
                         <TableCell component="th" scope="rol">
                           <IconButton
@@ -760,7 +760,7 @@ export default function ConfigurarSecciones() {
                         >
                           {row.nombre}
                         </TableCell>
-                        {row.id_jerar != 0 ? (
+                        {row.id_jerar !== 0 ? (
                           <>
                             <TableCell
                               align="center"

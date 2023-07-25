@@ -77,7 +77,7 @@ export default function Personigrama() {
           </Grid>
           <Grid item md={3} className="imageContainer">
             {funcionarios?.map((func) => {
-              if (func.id_jerar == 1) {
+              if (func.id_jerar === 1) {
                 return (
                   <Grid item className="personaCard" key={func.id}>
                     <PersonigramaCard personal={func} />
@@ -91,7 +91,7 @@ export default function Personigrama() {
         {/* Banner */}
         {roles?.map((data) => (
           <>
-            {data.id_jerar != 0 && data.id_jerar != 1 ? (
+            {data.id_jerar !== 0 && data.id_jerar !== 1 ? (
               <div key={data.id}>
                 <Grid container className="gridContainer">
                   <Grid item xs={12} md={12} className="imageContainer">
@@ -109,7 +109,7 @@ export default function Personigrama() {
                 <div className="personigramaCards">
                   <Grid container spacing={3} className="gridContainer">
                     {funcionarios?.map((func) => {
-                      if (func.id_jerar == data.id_jerar) {
+                      if (func.id_jerar === data.id_jerar) {
                         return (
                           <Grid item className="personaCard" key={func.id}>
                             <PersonigramaCard personal={func} />
@@ -139,7 +139,7 @@ export default function Personigrama() {
         <div className="personigramaCards">
           <Grid container spacing={3} className="gridContainer">
             {funcionarios?.map((func) => {
-              if (func.id_jerar == 0) {
+              if (func.id_jerar === 0) {
                 return (
                   <Grid item className="personaCard" key={func.id}>
                     <PersonigramaCard personal={func} />

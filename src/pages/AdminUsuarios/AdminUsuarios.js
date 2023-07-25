@@ -54,7 +54,7 @@ function AdminUsuarios() {
   };
 
   const saveUser = () => {
-    if (user == "admin" || user == "Admin" || user == "ADMIN") {
+    if (user === "admin" || user === "Admin" || user === "ADMIN") {
       window.alert("No puede agregar un usuario de tipo admin");
       setTimeout(window.location.reload(), 10000);
     } else {
@@ -70,7 +70,7 @@ function AdminUsuarios() {
   };
 
   const DeleteUserConfirmation = (id, user) => {
-    if (user == "admin") {
+    if (user === "admin") {
       window.alert("No se puede eliminar el usuario admin");
     } else {
       const confirmed = window.confirm(

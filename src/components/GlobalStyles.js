@@ -7,9 +7,8 @@ const useStyles = makeStyles(() =>
         boxSizing: "border-box",
         margin: 0,
         padding: 0,
-        fontFamily: "'PaloSeco', sans-serif" + " !important",
-        fontFamily: "PaloSeco" + "!important",
-        src: "url(../utils/fonts/paloseco.ttf)" + "!important",
+        fontFamily: "PaloSeco !important",
+        src: "url(../utils/fonts/paloseco.ttf) !important",
       },
       html: {
         "-webkit-font-smoothing": "antialiased",

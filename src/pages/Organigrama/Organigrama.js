@@ -69,7 +69,7 @@ const renderForeignObjectNode = ({
   classes,
 }) => (
   <>
-    {nodeDatum.id != "X" ? (
+    {nodeDatum.id !== "X" ? (
       <foreignObject {...foreignObjectProps}>
         <Button
           className={`${
@@ -123,7 +123,7 @@ export default function Organigrama() {
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
-  if (parseInt(localStorage.getItem("depth")) == 0) {
+  if (parseInt(localStorage.getItem("depth")) === 0) {
     localStorage.setItem("depth", 1);
     setTimeout(window.location.reload(), 10000);
   }
