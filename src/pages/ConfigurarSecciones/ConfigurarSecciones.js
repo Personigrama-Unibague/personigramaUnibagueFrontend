@@ -273,7 +273,7 @@ export default function ConfigurarSecciones() {
         container
         component="main"
         style={{ justifyContent: "center", display: "flex" }}
-        justify="center"
+        justifyContent="center"
       >
         {/* Toolbar */}
         <Grid item md={12}>

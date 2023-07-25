@@ -80,7 +80,7 @@ export default function Personigrama() {
               if (func.id_jerar === 1) {
                 return (
                   <Grid item className="personaCard" key={func.id}>
-                    <PersonigramaCard personal={func} />
+                    <PersonigramaCard personal={func} key={func.correo} />
                   </Grid>
                 );
               } else {
@@ -95,16 +95,21 @@ export default function Personigrama() {
           <>
             {data.id_jerar !== 0 && data.id_jerar !== 1 ? (
               <div key={data.id}>
-                <Grid container className="gridContainer">
-                  <Grid item xs={12} md={12} className="imageContainer">
+                <Grid container className="gridContainer" key={data.id}>
+                  <Grid item xs={12} md={12} className="imageContainer" key={data.id}>
                     <img
                       src={BannerPersonalSecundario}
                       className="bannerPersonalSecundario"
                       alt=""
+                      key={data.id}
                     />
-                    <div className="nombreBanner">
-                      <p className="personigrama">SECCIÓN</p>
-                      <p className="unidad">{data.nombre}</p>
+                    <div className="nombreBanner" key={data.id}>
+                      <p className="personigrama" key={data.id}>
+                        SECCIÓN
+                      </p>
+                      <p className="unidad" key={data.id}>
+                        {data.nombre}
+                      </p>
                     </div>
                   </Grid>
                 </Grid>
@@ -115,7 +120,10 @@ export default function Personigrama() {
                       if (func.id_jerar === data.id_jerar) {
                         return (
                           <Grid item className="personaCard" key={func.id}>
-                            <PersonigramaCard personal={func} />
+                            <PersonigramaCard
+                              personal={func}
+                              key={func.id}
+                            />
                           </Grid>
                         );
                       } else {
@@ -151,7 +159,7 @@ export default function Personigrama() {
               if (func.id_jerar === 0) {
                 return (
                   <Grid item className="personaCard" key={func.id}>
-                    <PersonigramaCard personal={func} />
+                    <PersonigramaCard personal={func} key={func.cedula} />
                   </Grid>
                 );
               } else {

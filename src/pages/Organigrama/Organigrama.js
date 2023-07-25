@@ -20,7 +20,7 @@ const containerStyles = {
 
 const useStyles = makeStyles(
   createStyles({
-    button: {
+    node: {
       position: "",
       width: "300px",
       height: "70px",
@@ -69,43 +69,59 @@ const renderForeignObjectNode = ({
   <>
     {nodeDatum.id !== "X" ? (
       <foreignObject {...foreignObjectProps}>
-        <Button
-          className={`${
-            nodeDatum.parent_id === null ? classes.button : classes.childId
-          }`}
-          variant="contained"
-          onClick={toggleNode}
-        >
-          {nodeDatum.nombre !== undefined && (
-            <div className={classes.name}>{nodeDatum.name}</div>
-          )}
-          {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-          <IconButton className={classes.ArrowButton}>
-            <ArrowBackIosOutlinedIcon style={{ color: "#FFFFFF" }} />
-          </IconButton>
-          <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
-            <IconButton className={classes.edit} aria-label="edit">
-              <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
-            </IconButton>
-          </Link>
-          <IconButton className={classes.ArrowButton} onClick={toggleNode}>
-            <ArrowForwardIosRoundedIcon style={{ color: "#FFFFFF" }} />
-          </IconButton>
-        </Button>
+        <div>
+          <Button
+            className={`${
+              nodeDatum.parent_id === null ? classes.node : classes.childId
+            }`}
+            variant="contained"
+            onClick={toggleNode}
+          >
+            {nodeDatum.nombre !== undefined && (
+              <div className={classes.name}>{nodeDatum.name}</div>
+            )}
+            {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+            <div>
+              <IconButton className={classes.ArrowButton}>
+                <div>
+                  <ArrowBackIosOutlinedIcon style={{ color: "#FFFFFF" }} />
+                </div>
+              </IconButton>
+            </div>
+            <div>
+              <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
+                <IconButton className={classes.edit} aria-label="edit">
+                  <div>
+                    <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+                  </div>
+                </IconButton>
+              </Link>
+            </div>
+            <div>
+              <IconButton className={classes.ArrowButton} onClick={toggleNode}>
+                <div>
+                  <ArrowForwardIosRoundedIcon style={{ color: "#FFFFFF" }} />
+                </div>
+              </IconButton>
+            </div>
+          </Button>
+        </div>
       </foreignObject>
     ) : (
       <foreignObject {...foreignObjectProps}>
-        <Button
-          className={`${
-            nodeDatum.parent_id === null ? classes.button : classes.childId
-          }`}
-          variant="contained"
-        >
-          {nodeDatum.nombre !== undefined && (
-            <div className={classes.name}>{nodeDatum.name}</div>
-          )}
-          {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-        </Button>
+        <div>
+          <Button
+            className={`${
+              nodeDatum.parent_id === null ? classes.node : classes.childId
+            }`}
+            variant="contained"
+          >
+            {nodeDatum.nombre !== undefined && (
+              <div className={classes.name}>{nodeDatum.name}</div>
+            )}
+            {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+          </Button>
+        </div>
       </foreignObject>
     )}
   </>

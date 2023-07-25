@@ -51,7 +51,7 @@ export default function AdminUnidades() {
         container
         component="main"
         style={{ justifyContent: "center", display: "flex" }}
-        justify="center"
+        justifyContent="center"
       >
         {/* Toolbar */}
         <Grid item md={12}>
