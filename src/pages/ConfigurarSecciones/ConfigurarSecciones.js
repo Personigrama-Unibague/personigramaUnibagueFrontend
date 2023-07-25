@@ -609,7 +609,7 @@ export default function ConfigurarSecciones() {
                   className="textFieldUpdate"
                   label="Prioridad"
                   focused
-                  placeholder={toString(idJerarRolDialogParametersDialog)}
+                  placeholder={String(idJerarRolDialogParametersDialog)}
                   value={filterInputValue()}
                   onChange={onChangeUpdatIdJerareRol}
                   fullWidth

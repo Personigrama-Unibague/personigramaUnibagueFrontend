@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useRef
-} from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Toolbar from "@mui/material/Toolbar";
 import { Grid } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
@@ -26,8 +21,9 @@ import TextField from "@mui/material/TextField";
 import "./stylesFuncionarios.css";
 import {
   getEmployeeByUnity,
-  getSavePersona, deletePersonById,
-  getPeopleDistinct
+  getSavePersona,
+  deletePersonById,
+  getPeopleDistinct,
 } from "../../api/funcionarios";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";

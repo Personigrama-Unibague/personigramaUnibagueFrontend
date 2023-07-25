@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Tree from "react-d3-tree";
 import CircularProgress from "@mui/material/CircularProgress";
-
 import { Button, IconButton } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
@@ -75,27 +74,22 @@ const renderForeignObjectNode = ({
             nodeDatum.parent_id === null ? classes.button : classes.childId
           }`}
           variant="contained"
+          onClick={toggleNode}
         >
           {nodeDatum.nombre !== undefined && (
             <div className={classes.name}>{nodeDatum.name}</div>
           )}
           {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
           <IconButton className={classes.ArrowButton}>
-            <ArrowBackIosOutlinedIcon
-              style={{ color: "#FFFFFF" }}
-              onClick={toggleNode}
-            />
+            <ArrowBackIosOutlinedIcon style={{ color: "#FFFFFF" }} />
           </IconButton>
           <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
             <IconButton className={classes.edit} aria-label="edit">
               <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
             </IconButton>
           </Link>
-          <IconButton className={classes.ArrowButton}>
-            <ArrowForwardIosRoundedIcon
-              style={{ color: "#FFFFFF" }}
-              onClick={toggleNode}
-            />
+          <IconButton className={classes.ArrowButton} onClick={toggleNode}>
+            <ArrowForwardIosRoundedIcon style={{ color: "#FFFFFF" }} />
           </IconButton>
         </Button>
       </foreignObject>

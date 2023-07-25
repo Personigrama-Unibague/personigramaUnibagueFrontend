@@ -149,7 +149,7 @@ function AdminUsuarios() {
                         style={{
                           backgroundColor: "#B8B9BA",
                           borderRadius: "10px",
-                          color: "white",
+                          color: "default",
                         }}
                       >
                         <DeleteOutlineOutlinedIcon
@@ -184,7 +184,7 @@ function AdminUsuarios() {
                   className="IconButton"
                   variant="outlined"
                   style={{
-                    color: "white",
+                    color: "default",
                   }}
                   onClick={() => handleClose()}
                 >
@@ -212,7 +212,7 @@ function AdminUsuarios() {
                   InputProps={{
                     startAdornment: (
                       <IconButton
-                        color="white"
+                        color="default"
                         sx={{ p: "10px" }}
                         style={{
                           borderRadius: "30px 0px 0px 30px",
@@ -247,7 +247,7 @@ function AdminUsuarios() {
                   InputProps={{
                     startAdornment: (
                       <IconButton
-                        color="white"
+                        color="default"
                         sx={{ p: "10px" }}
                         style={{
                           borderRadius: "30px 0px 0px 30px",
