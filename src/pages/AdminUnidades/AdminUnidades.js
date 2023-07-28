@@ -22,12 +22,30 @@ import Navbar from "../../components/NavBar/Navbar";
 
 export default function AdminUnidades() {
   const [unidades, setUnidades] = useState([]);
+  const sortChildrenRecursively = (node) => {
+    if (!node.children) return; // Si el nodo no tiene hijos, no es necesario ordenar
+
+    // Ordenar los children del nodo actual por su nombre
+    node.children.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    // Ordenar recursivamente los hijos de los hijos
+    node.children.forEach((child) => sortChildrenRecursively(child));
+  };
 
   useLayoutEffect(() => {
     (async () => {
       try {
         const und = await getUnities();
-        setUnidades(und.children);
+        // Clonar los datos para no modificar el estado original
+        const sortedUnidades = JSON.parse(JSON.stringify(und.children));
+
+        // Ordenar las unidades principales
+        sortedUnidades.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+        // Ordenar recursivamente los hijos de cada unidad principal
+        sortedUnidades.forEach((unidad) => sortChildrenRecursively(unidad));
+
+        setUnidades(sortedUnidades);
       } catch (err) {
         window.alert("Error API");
       }

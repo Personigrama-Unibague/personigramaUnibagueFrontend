@@ -6,6 +6,7 @@ import { makeStyles, createStyles } from "@material-ui/core/styles";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
+import Tooltip from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
 import { getUnities } from "../../api/unidades";
 import { useState } from "react";
@@ -26,10 +27,6 @@ const useStyles = makeStyles(
       height: "70px",
       borderRadius: "30px",
       background: "#193F76",
-      color: "white",
-      "&:hover": {
-        pointerEvents: "none",
-      },
     },
     name: {
       fontSize: "16px",
@@ -47,10 +44,6 @@ const useStyles = makeStyles(
       bottom: "5px",
       right: "0px !important",
       color: "white",
-      color: "white",
-      "&:hover": {
-        pointerEvents: "none",
-      },
     },
     childId: {
       background: "#02AFD8",
@@ -60,16 +53,9 @@ const useStyles = makeStyles(
       borderRadius: "30px",
       color: "white",
       fontSize: "15px",
-      "&:hover": {
-        pointerEvents: "none",
-      },
     },
     ArrowButton: {
       padding: "8px !important",
-      color: "white",
-      "&:hover": {
-        pointerEvents: "none",
-      },
     },
   })
 );
@@ -106,7 +92,9 @@ const renderForeignObjectNode = ({
               <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
                 <IconButton className={classes.edit} aria-label="edit">
                   <div>
-                    <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+                    <Tooltip title="Visualizar dependencia">
+                      <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+                    </Tooltip>
                   </div>
                 </IconButton>
               </Link>
