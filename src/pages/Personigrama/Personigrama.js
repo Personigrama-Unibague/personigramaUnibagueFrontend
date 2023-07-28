@@ -59,7 +59,7 @@ export default function Personigrama() {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              Atras
+              Atrás
             </Typography>
           </div>
         </Toolbar>

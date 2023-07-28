@@ -27,6 +27,9 @@ const useStyles = makeStyles(
       borderRadius: "30px",
       background: "#193F76",
       color: "white",
+      "&:hover": {
+        pointerEvents: "none",
+      },
     },
     name: {
       fontSize: "16px",
@@ -44,6 +47,10 @@ const useStyles = makeStyles(
       bottom: "5px",
       right: "0px !important",
       color: "white",
+      color: "white",
+      "&:hover": {
+        pointerEvents: "none",
+      },
     },
     childId: {
       background: "#02AFD8",
@@ -53,9 +60,16 @@ const useStyles = makeStyles(
       borderRadius: "30px",
       color: "white",
       fontSize: "15px",
+      "&:hover": {
+        pointerEvents: "none",
+      },
     },
     ArrowButton: {
       padding: "8px !important",
+      color: "white",
+      "&:hover": {
+        pointerEvents: "none",
+      },
     },
   })
 );
@@ -144,12 +158,22 @@ export default function Organigrama() {
     x: -100,
     y: -50,
   };
+  const sortChildrenAlphabetically = (node) => {
+    if (node.children) {
+      node.children.sort((a, b) => a.nombre.localeCompare(b.nombre));
+      node.children.forEach(sortChildrenAlphabetically);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const und = await getUnities();
-        setUnidades(und);
+        // Clona los datos para no modificar el estado original
+        const clonedData = JSON.parse(JSON.stringify(und));
+        // Ordena los hijos de la raíz alfabéticamente
+        sortChildrenAlphabetically(clonedData);
+        setUnidades(clonedData);
       } catch (err) {
         window.alert("Error API");
       } finally {
