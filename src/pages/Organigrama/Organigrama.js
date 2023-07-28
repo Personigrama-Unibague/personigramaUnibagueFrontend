@@ -49,7 +49,7 @@ const useStyles = makeStyles(
       background: "#02AFD8",
       position: "",
       width: "400px",
-      height: "110px",
+      height: "90px",
       borderRadius: "30px",
       color: "white",
       fontSize: "15px",
@@ -138,7 +138,7 @@ export default function Organigrama() {
     localStorage.setItem("depth", 1);
     setTimeout(window.location.reload(), 10000);
   }
-  const nodeSize = { x: 500, y: 250 };
+  const nodeSize = { x: 500, y: 130 };
   const separation = { siblings: 1, nonSiblings: 2 };
   const foreignObjectProps = {
     width: nodeSize.x,
