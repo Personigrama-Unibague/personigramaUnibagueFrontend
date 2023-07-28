@@ -22,11 +22,16 @@ const containerStyles = {
 const useStyles = makeStyles(
   createStyles({
     node: {
+      background: "#02AFD8",
       position: "",
-      width: "300px",
-      height: "70px",
+      width: "400px",
+      height: "90px",
       borderRadius: "30px",
-      background: "#193F76",
+      color: "white",
+      fontSize: "15px",
+      "&:hover": {
+        background: "#193F76", // Cambia el color del nodo
+      },
     },
     name: {
       fontSize: "16px",
@@ -53,6 +58,9 @@ const useStyles = makeStyles(
       borderRadius: "30px",
       color: "white",
       fontSize: "15px",
+      "&:hover": {
+        background: "#193F76", // Cambia el color del nodo
+      },
     },
     ArrowButton: {
       padding: "8px !important",
@@ -72,7 +80,7 @@ const renderForeignObjectNode = ({
         <div>
           <Button
             className={`${
-              nodeDatum.parent_id === null ? classes.node : classes.childId
+              nodeDatum.parent_id === "" ? classes.node : classes.childId
             }`}
             variant="contained"
             onClick={toggleNode}
