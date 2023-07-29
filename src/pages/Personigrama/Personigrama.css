@@ -5,13 +5,16 @@
 .personigramaCards {
   padding: 25px 30px 25px 30px;
 }
-
+.css-rru43x-MuiGrid-root > .MuiGrid-item {
+  padding-left: 0px !important;
+}
 .bannerPersonal {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   padding: 0;
   margin: 0;
+  padding-right: 15px !important;
 }
 
 .bannerPersonalSecundario {
@@ -144,5 +147,6 @@
     object-fit: cover !important;
     padding: 0;
     margin: 0;
+    padding-right: 15px !important;
   }
 }

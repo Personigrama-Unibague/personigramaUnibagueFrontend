@@ -96,18 +96,18 @@ export default function Personigrama() {
             {data.id_jerar !== 0 && data.id_jerar !== 1 ? (
               <div key={data.id}>
                 <Grid container className="gridContainer" key={data.id}>
-                  <Grid item xs={12} md={12} className="imageContainer" key={data.id}>
+                  <Grid item xs={12} md={12} className="imageContainer" key={data.id + 10}>
                     <img
                       src={BannerPersonalSecundario}
                       className="bannerPersonalSecundario"
                       alt=""
-                      key={data.id}
+                      key={data.id + 30}
                     />
-                    <div className="nombreBanner" key={data.id}>
-                      <p className="personigrama" key={data.id}>
+                    <div className="nombreBanner" key={data.id + 100}>
+                      <p className="personigrama" key={data.id + 300}>
                         SECCIÓN
                       </p>
-                      <p className="unidad" key={data.id}>
+                      <p className="unidad" key={data.id + 200}>
                         {data.nombre}
                       </p>
                     </div>
@@ -119,7 +119,7 @@ export default function Personigrama() {
                     {funcionarios?.map((func) => {
                       if (func.id_jerar === data.id_jerar) {
                         return (
-                          <Grid item className="personaCard" key={func.id}>
+                          <Grid item className="personaCard" key={func.cedula}>
                             <PersonigramaCard
                               personal={func}
                               key={func.id}
@@ -159,7 +159,7 @@ export default function Personigrama() {
               if (func.id_jerar === 0) {
                 return (
                   <Grid item className="personaCard" key={func.id}>
-                    <PersonigramaCard personal={func} key={func.cedula} />
+                    <PersonigramaCard personal={func} key={func.correo} />
                   </Grid>
                 );
               } else {
