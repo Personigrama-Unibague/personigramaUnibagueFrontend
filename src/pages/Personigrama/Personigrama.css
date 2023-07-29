@@ -30,8 +30,8 @@
 .nombreBannerPrincipal {
   position: absolute; /* posición absolute con respecto al padre */
   top: 38%;
-  left: 25%;
-  text-align: center !important;
+  left: 15%;
+  text-align: left !important;
   color: white !important;
 }
 
@@ -54,20 +54,27 @@
   }
 
   .unidad {
-    font-size: 3.5vw;
+    font-size: 4vw;
   }
 
   .nombreBanner {
     position: absolute; /* posición absolute con respecto al padre */
     top: 18%;
-    left: 25%;
-    text-align: center !important;
+    left: 11%;
+    text-align: left !important;
     color: white !important;
   }
 
   .css-dudo9s-MuiTypography-root {
     display: block;
     margin-left: -300px !important;
+  }
+  .nombreBannerPrincipal {
+    position: absolute; /* posición absolute con respecto al padre */
+    top: 38%;
+    left: 5%;
+    text-align: left !important;
+    color: white !important;
   }
 }
 
@@ -83,15 +90,15 @@
   }
 
   .unidad {
-    font-size: 4vw;
+    font-size: 4.5vw;
     margin-right: 9vw !important;
   }
 
   .nombreBanner {
     position: absolute; /* posición absolute con respecto al padre */
     top: 25%;
-    left: 25%;
-    text-align: center !important;
+    left: 11%;
+    text-align: left !important;
     color: white !important;
   }
 }
@@ -113,8 +120,8 @@
   .nombreBanner {
     position: absolute; /* posición absolute con respecto al padre */
     top: 35%;
-    left: 25%;
-    text-align: center !important;
+    left: 11%;
+    text-align: left !important;
     color: white !important;
   }
   .h6 {
@@ -133,13 +140,13 @@
   }
 }
 @media only screen and (min-width: 1200px) {
-  .personigrama {
-    font-size: 2.5vw;
-    margin-right: 15vw !important;
-  }
   .unidad {
     font-size: 3vw;
     margin-right: 12vw !important;
+  }
+  .personigrama {
+    font-size: 2.5vw;
+    margin-right: 15vw !important;
   }
   .bannerPersonal {
     width: 100% !important;
