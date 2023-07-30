@@ -88,7 +88,7 @@ function AdminUsuarios() {
         container
         component="main"
         style={{ justifyContent: "center", display: "flex" }}
-        justify="center"
+        justifyContent="center"
       >
         <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }}>
