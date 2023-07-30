@@ -94,6 +94,11 @@
     display: flex !important;
     font-size: 14px !important;
   }
+  .MuiGrid-grid-md-12 {
+    flex-grow: 0;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -120,6 +125,11 @@
     justify-content: center !important;
     display: flex !important;
     font-size: 15px !important;
+  }
+  .MuiGrid-grid-md-12 {
+    flex-grow: 0;
+    max-width: 100%;
+    flex-basis: 100%;
   }
 }
 

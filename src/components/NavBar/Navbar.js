@@ -6,6 +6,7 @@ import AdminUsername from "../AdminUsername/AdminUsername";
 import LogOut from "../LogOut/LogOut";
 import MenuIcon from "@mui/icons-material/Menu";
 import * as React from "react";
+import "./Navbar.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
