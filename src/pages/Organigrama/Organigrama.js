@@ -68,84 +68,133 @@ const useStyles = makeStyles(
   })
 );
 
-const renderForeignObjectNode = ({
-  nodeDatum,
-  toggleNode,
-  foreignObjectProps,
-  classes,
-}) => (
-  <>
-    {nodeDatum.id !== "X" ? (
-      <foreignObject {...foreignObjectProps}>
-        <div>
-          <Button
-            className={`${
-              nodeDatum.parent_id === "" ? classes.node : classes.childId
-            }`}
-            variant="contained"
-            onClick={toggleNode}
-          >
-            {nodeDatum.nombre !== undefined && (
-              <div className={classes.name}>{nodeDatum.name}</div>
-            )}
-            {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-            <div>
-              <IconButton className={classes.ArrowButton}>
-                <div>
-                  <ArrowBackIosOutlinedIcon style={{ color: "#FFFFFF" }} />
-                </div>
-              </IconButton>
-            </div>
-            <div>
-              <Link to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
-                <IconButton className={classes.edit} aria-label="edit">
-                  <div>
-                    <Tooltip title="Visualizar dependencia">
-                      <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
-                    </Tooltip>
-                  </div>
-                </IconButton>
-              </Link>
-            </div>
-            <div>
-              <IconButton className={classes.ArrowButton} onClick={toggleNode}>
-                <div>
-                  <ArrowForwardIosRoundedIcon style={{ color: "#FFFFFF" }} />
-                </div>
-              </IconButton>
-            </div>
-          </Button>
-        </div>
-      </foreignObject>
-    ) : (
-      <foreignObject {...foreignObjectProps}>
-        <div>
-          <Button
-            className={`${
-              nodeDatum.parent_id === null ? classes.node : classes.childId
-            }`}
-            variant="contained"
-          >
-            {nodeDatum.nombre !== undefined && (
-              <div className={classes.name}>{nodeDatum.name}</div>
-            )}
-            {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-          </Button>
-        </div>
-      </foreignObject>
-    )}
-  </>
-);
-
 export default function Organigrama() {
+  const renderForeignObjectNode = ({
+    nodeDatum,
+    toggleNode,
+    foreignObjectProps,
+    classes,
+  }) => {
+    const handleNodeClick = () => {
+      // Lógica para obtener la profundidad del nodo clickeado
+      const profundidad = calculateDepthById(
+        unidades.children[2],
+        nodeDatum.id
+      );
+      const prfundidadTotal = profundidad + 1;
+      localStorage.setItem("depth", prfundidadTotal);
+      console.log("Profundidad del nodo clickeado:", prfundidadTotal);
+    };
+
+    return (
+      <>
+        {nodeDatum.id !== "X" ? (
+          <foreignObject {...foreignObjectProps}>
+            <div>
+              <Button
+                className={`${
+                  nodeDatum.parent_id === "" ? classes.node : classes.childId
+                }`}
+                variant="contained"
+                onClick={() => {
+                  handleNodeClick(); // Llama al método al hacer clic en el nodo
+                  toggleNode();
+                }}
+              >
+                {nodeDatum.nombre !== undefined && (
+                  <div className={classes.name}>{nodeDatum.name}</div>
+                )}
+                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+                <div>
+                  <IconButton className={classes.ArrowButton}>
+                    <div>
+                      <ArrowBackIosOutlinedIcon style={{ color: "#FFFFFF" }} />
+                    </div>
+                  </IconButton>
+                </div>
+                <div>
+                  <Link
+                    to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
+                  >
+                    <IconButton className={classes.edit} aria-label="edit">
+                      <div>
+                        <Tooltip title="Visualizar dependencia">
+                          <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+                        </Tooltip>
+                      </div>
+                    </IconButton>
+                  </Link>
+                </div>
+                <div>
+                  <IconButton
+                    className={classes.ArrowButton}
+                    onClick={toggleNode}
+                  >
+                    <div>
+                      <ArrowForwardIosRoundedIcon
+                        style={{ color: "#FFFFFF" }}
+                      />
+                    </div>
+                  </IconButton>
+                </div>
+              </Button>
+            </div>
+          </foreignObject>
+        ) : (
+          <foreignObject {...foreignObjectProps}>
+            <div>
+              <Button
+                className={`${
+                  nodeDatum.parent_id === null ? classes.node : classes.childId
+                }`}
+                variant="contained"
+              >
+                {nodeDatum.nombre !== undefined && (
+                  <div className={classes.name}>{nodeDatum.name}</div>
+                )}
+                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+              </Button>
+            </div>
+          </foreignObject>
+        )}
+      </>
+    );
+  };
   const classes = useStyles();
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
+  const calculateDepthById = (rootNode, nodeIdToFind) => {
+    const findDepth = (node, targetId, depth) => {
+      if (node.id === targetId) {
+        return depth;
+      }
+
+      if (node.children) {
+        for (const child of node.children) {
+          const foundDepth = findDepth(child, targetId, depth + 1);
+          if (foundDepth !== -1) {
+            return foundDepth;
+          }
+        }
+      }
+
+      return -1;
+    };
+
+    if (!rootNode || !rootNode.children) {
+      console.error("El árbol no tiene un nodo raíz válido.");
+      return -1;
+    }
+
+    return findDepth(rootNode, nodeIdToFind, 0);
+  };
+
   if (parseInt(localStorage.getItem("depth")) === 0) {
     localStorage.setItem("depth", 1);
     setTimeout(window.location.reload(), 10000);
   }
+
   const nodeSize = { x: 500, y: 130 };
   const separation = { siblings: 1, nonSiblings: 2 };
   const foreignObjectProps = {
