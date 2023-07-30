@@ -15,7 +15,13 @@ import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { authUser } from "../../api/loginAdmin";
+import {
+  authUser,
+  authUserl,
+  getJWT,
+  loginAuthentication,
+} from "../../api/loginAdmin";
+import Cookies from "js-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,12 +41,6 @@ function AdminLogin() {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
-  if (JSON.parse(localStorage.getItem("loggedIn"))) {
-    localStorage.setItem("loggedIn", true);
-  } else {
-    localStorage.setItem("loggedIn", loggedIn.toString());
-  }
 
   const navigate = useNavigate();
 
@@ -60,22 +60,23 @@ function AdminLogin() {
     event.preventDefault();
 
     try {
-      const response = await authUser(username, password);
-      if (response === true) {
-        setTimeout(setLoggedIn(true), 60000);
+      const response = await loginAuthentication(username, password);
 
-        localStorage.setItem("loggedIn", true);
-        localStorage.setItem("username", username);
-        localStorage.setItem("loginTime", new Date().getTime());
+      if (response.status === 200) {
+        const jwt = response.data;
+        Cookies.set("jwt", jwt);
+        Cookies.set("username", username);
+        Cookies.set("loginTime", new Date().getTime());
         setTimeout(handleRedirect(), 9000);
       } else {
         window.alert("Usuario o contraseña incorrectos");
-        setTimeout(window.location.reload(), 10000);
+        //setTimeout(window.location.reload(), 10000);
       }
     } catch (err) {
-      window.alert("Error API");
+      window.alert("Usuario o Contraseña Incorrecto");
     }
   };
+
   return (
     <GoogleOAuthProvider clientId="577630477033-tlna5td2dva4mf43g2ciarsfcvr79pcr.apps.googleusercontent.com">
       <Grid container component="main" className={classes.root}>
@@ -180,6 +181,7 @@ function AdminLogin() {
                     <HttpsOutlinedIcon style={{ color: "white" }} />
                   </IconButton>
                 ),
+                type: "password",
               }}
             />
           </Grid>

@@ -9,14 +9,11 @@ import { API_URL } from "../config/config";
  * @param {password} password - password del usuario admin
  * @Return True o False
  */
-export const authUser = async (user, password) => {
-  try {
-    const response = await axios.get(
-      `${API_URL}/api/v1/login/loginAuthentication/${user}/${password}`
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+export const loginAuthentication = async (username, password) => {
+  const response = await axios.post(
+    `${API_URL}/api/v1/login/loginAuthentication`,
+    { user: username, password }
+  );
+  console.log(response.data);
+  return response;
 };

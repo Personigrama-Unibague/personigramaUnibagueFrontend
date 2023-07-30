@@ -2,11 +2,13 @@ import IconButton from "material-ui/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import * as React from "react";
+import Cookies from "js-cookie";
 
 function LogOut() {
   const logOut = () => {
-    localStorage.setItem("loggedIn", false);
-    localStorage.setItem("username", "");
+    Cookies.remove("username");
+    Cookies.remove("jwt");
+    Cookies.remove("loginTime");
     setTimeout(window.location.reload(), 10000);
   };
   const logOutConfirmation = () => {
@@ -17,7 +19,7 @@ function LogOut() {
       logOut();
     }
   };
-  const username = localStorage.getItem("username");
+  const username = Cookies.get("username");
   return (
     <div style={{ paddingLeft: "10px" }}>
       <IconButton
