@@ -1,7 +1,8 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
+import Cookies from "js-cookie";
 function AdminUsername() {
-  const username = localStorage.getItem("username")
+  const username = Cookies.get("username")
 
   return (
     <div>
