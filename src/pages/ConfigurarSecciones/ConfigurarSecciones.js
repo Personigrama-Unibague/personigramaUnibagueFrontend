@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import { Dialog, Grid, TextField } from "@material-ui/core";
+import { Dialog, Grid, TextField, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -13,11 +13,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button } from "@material-ui/core";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import SaveIcon from "@mui/icons-material/Save";
-import IconButton from "material-ui/IconButton";
+import IconButton from "@mui/material/IconButton";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { useParams } from "react-router-dom";
 import {
@@ -29,7 +28,7 @@ import {
 } from "../../api/roles";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
-import { List, ListItem } from "material-ui";
+import { List, ListItem } from "@mui/material";
 import "./stylesConfSec.css";
 import {
   getEmployeeByUnity,

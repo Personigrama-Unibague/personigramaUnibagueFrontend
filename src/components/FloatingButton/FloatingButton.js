@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
+import { makeStyles } from '@mui/styles';
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";

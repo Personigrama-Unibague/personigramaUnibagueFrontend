@@ -1,10 +1,10 @@
 import {
   Button,
   Grid,
-  makeStyles,
   TextField,
   IconButton,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from '@mui/styles';
 import fondo from "../../utils/images/adminLoginBackground.jpeg";
 import navbar from "../../utils/images/navbar.jfif";
 import logoUnibague from "../../utils/images/logoUnibague.PNG";
@@ -16,9 +16,6 @@ import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import {
-  authUser,
-  authUserl,
-  getJWT,
   loginAuthentication,
 } from "../../api/loginAdmin";
 import Cookies from "js-cookie";

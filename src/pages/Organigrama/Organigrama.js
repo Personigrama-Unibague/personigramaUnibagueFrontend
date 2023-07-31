@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Tree from "react-d3-tree";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Button, IconButton } from "@material-ui/core";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { Button, IconButton } from "@mui/material";
+import { makeStyles, createStyles } from '@mui/styles';
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";

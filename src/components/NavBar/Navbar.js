@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@mui/styles';
 import {
   AppBar,
   Toolbar,
   Typography,
   IconButton,
   Box,
-} from "@material-ui/core";
+} from "@mui/material";
 import Sidebar from "../../components/SideBar/SideBar";
 import AdminUsername from "../AdminUsername/AdminUsername";
 import LogOut from "../LogOut/LogOut";

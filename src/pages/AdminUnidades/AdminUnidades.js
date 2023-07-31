@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
-import { Grid } from "@material-ui/core";
+import Grid from '@mui/material/Grid';
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
@@ -16,8 +16,8 @@ import {
   TableRow,
   IconButton,
   Collapse,
-} from "@material-ui/core";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
+} from "@mui/material";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import Navbar from "../../components/NavBar/Navbar";
 
 export default function AdminUnidades() {
