@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, IconButton, Box } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Box,
+} from "@material-ui/core";
 import Sidebar from "../../components/SideBar/SideBar";
 import AdminUsername from "../AdminUsername/AdminUsername";
 import LogOut from "../LogOut/LogOut";
@@ -23,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-/
+//Navbar
 const Navbar = ({ title }) => {
   const classes = useStyles();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
