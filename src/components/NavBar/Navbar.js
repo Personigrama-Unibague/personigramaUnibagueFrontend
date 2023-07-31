@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-
+/
 const Navbar = ({ title }) => {
   const classes = useStyles();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
