@@ -672,7 +672,6 @@ export default function ConfigurarSecciones() {
           <List sx={{ pt: 0 }}>
             <ListItem className="lisItem">
               <Autocomplete
-                id="demo-simple-select"
                 value={selectedPerson}
                 className="autocomplete"
                 onChange={handleChangeAddPerson}
@@ -681,6 +680,7 @@ export default function ConfigurarSecciones() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    variant="standard"
                     className="textField"
                     placeholder="Funcionario"
                     focused
@@ -688,6 +688,9 @@ export default function ConfigurarSecciones() {
                       backgroundColor: "#FFFFFF",
                       borderRadius: "30px",
                       borderColor: "#04B8E2",
+                    }}
+                    InputProps={{
+                      disableUnderline: true, // <== added this
                     }}
                   />
                 )}
