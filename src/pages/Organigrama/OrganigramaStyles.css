@@ -1,0 +1,39 @@
+.rd3t-node,
+node__branch {
+  stroke-width: 1 !important;
+}
+.node {
+  background: #02afd8 !important;
+  position: relative !important;
+  width: 400px !important;
+  height: 90px !important;
+  border-radius: 30px !important;
+  color: white !important;
+  font-size: 15px !important;
+}
+
+.node:hover {
+  background: #193f76 !important; /* Cambia el color del nodo */
+}
+.name{
+  font-size: 16px !important;
+  padding-right: 5px !important;
+}
+.edit {
+  position: absolute;
+  top: 0;
+  right: 0 !important;
+  padding: 4px !important;
+  color: #4BA083;
+}
+
+.attributes {
+  position: absolute;
+  bottom: 5px;
+  right: 0 !important;
+  color: white;
+}
+
+.ArrowButton {
+  padding: 8px !important;
+}
