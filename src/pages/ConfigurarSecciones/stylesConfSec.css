@@ -5,6 +5,13 @@
   padding-top: 20px;
 }
 
+.buttonDialogContainerAgregar{
+  display: grid;
+  place-content: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
 .buttonDialog {
   background-color: #193f76 !important;
   color: white !important;

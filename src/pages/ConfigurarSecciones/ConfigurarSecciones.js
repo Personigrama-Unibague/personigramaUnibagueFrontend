@@ -568,7 +568,7 @@ export default function ConfigurarSecciones() {
           </Box>
 
           {/* Boton */}
-          <div className="buttonDialogContainer">
+          <div className="buttonDialogContainerAgregar">
             <Button
               variant="contained"
               onClick={handleButtonClicked}
