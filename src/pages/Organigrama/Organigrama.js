@@ -42,7 +42,8 @@ export default function Organigrama() {
           <foreignObject {...foreignObjectProps}>
             <div>
               <Button
-                className="node"
+                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
+
                 variant="contained"
                 onClick={() => {
                   handleNodeClick(); // Llama al método al hacer clic en el nodo
@@ -88,7 +89,10 @@ export default function Organigrama() {
         ) : (
           <foreignObject {...foreignObjectProps}>
             <div>
-              <Button className="node" variant="contained">
+              <Button
+                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
+                variant="contained"
+              >
                 {nodeDatum.nombre !== undefined && (
                   <div className="name">{nodeDatum.name}</div>
                 )}
