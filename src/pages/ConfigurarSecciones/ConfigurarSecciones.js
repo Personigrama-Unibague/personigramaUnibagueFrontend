@@ -2,7 +2,8 @@ import React, { useState, useLayoutEffect } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import { Dialog, Grid, TextField, Button } from "@mui/material";
+import { Dialog, Grid, Button } from "@mui/material";
+import TextField from '@mui/material/TextField';
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -179,11 +180,11 @@ export default function ConfigurarSecciones() {
     } else if (rol.length > 0) {
       alert(
         "No puede asignar el id " +
-          idJerarParametersDialog +
-          "(" +
-          rol[0].nombre +
-          ")" +
-          " ya que este ya existe"
+        idJerarParametersDialog +
+        "(" +
+        rol[0].nombre +
+        ")" +
+        " ya que este ya existe"
       );
       setIdJerarParametersDialog();
       return "";
@@ -258,8 +259,8 @@ export default function ConfigurarSecciones() {
   const DeleteUserConfirmation = (id, nombre) => {
     const confirmed = window.confirm(
       "¿Estás seguro de que desea eliminar el funcionario : " +
-        nombre +
-        " de esta sección?"
+      nombre +
+      " de esta sección?"
     );
     if (confirmed) {
       deleteFuncionarioSeccion(id);
@@ -553,17 +554,17 @@ export default function ConfigurarSecciones() {
 
           <Box style={{ padding: "15px" }}>
             <TextField
+              id="outlined-required"
               className="textField"
-              label="Nombre de la Sección"
-              placeholder="Sección"
+              variant="outlined"
+              placeholder="Nombre de la Sección"
               value={inputValue}
               onChange={handleInputChange}
               focused
               style={{
                 borderRadius: "5px",
               }}
-              fullWidth
-            />
+              fullWidth />
           </Box>
 
           {/* Boton */}
@@ -600,13 +601,20 @@ export default function ConfigurarSecciones() {
               <CloseIcon className="icon" style={{ color: "white" }} />
             </IconButton>
           </Toolbar>
-
+          
+          <Grid container spacing={2} className="gridContainerDialog">
+            <Grid item xs={6} className="titlesActualizarSeccion">
+              Prioridad
+            </Grid>
+            <Grid item xs={6} className="titlesActualizarSeccion">
+              Nuevo Nombre
+            </Grid>
+          </Grid>
           <Grid container spacing={2} className="gridContainerDialog">
             <Grid item xs={6}>
               <Box display="flex" alignItems="center">
                 <TextField
                   className="textFieldUpdate"
-                  label="Prioridad"
                   focused
                   placeholder={String(idJerarRolDialogParametersDialog)}
                   value={filterInputValue()}
@@ -620,7 +628,6 @@ export default function ConfigurarSecciones() {
               <Box display="flex" alignItems="center">
                 <TextField
                   className="textFieldUpdate"
-                  label="Nuevo Nombre"
                   placeholder={nameParametersDialog}
                   value={newRolName}
                   onChange={onChangeUpdateRol}

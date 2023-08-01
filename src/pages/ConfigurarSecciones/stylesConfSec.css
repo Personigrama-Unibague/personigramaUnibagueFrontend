@@ -2,6 +2,7 @@
   display: grid;
   place-content: center;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .buttonDialog {
@@ -9,18 +10,26 @@
   color: white !important;
 }
 
-.gridContainerDialog {
-  padding: 20px;
+.titlesActualizarSeccion {
+  color: #193f76 !important;
+  font-weight: 500;
 }
+
+.gridContainerDialog {
+  padding: 0px 20px;
+}
+
 .lisItem {
   padding-top: 10px;
   width: 429px;
 }
+
 .modalTitleSecciones {
   background-color: #04b8e2;
   display: flex;
   justify-content: center;
 }
+
 .typpgraphyTitleSeccion {
   font-weight: 700;
   size: 30px;
@@ -29,6 +38,7 @@
   display: flex !important;
   justify-content: center !important;
 }
+
 .tableContainer {
   display: flex !important;
   justify-content: flex-start !important;
@@ -85,13 +95,16 @@
     padding-left: 25vw !important;
     padding-right: 20vw !important;
   }
+
   .lisItem {
     padding-top: 10px;
     width: 250px;
   }
+
   .autocomplete {
     width: 45vw !important;
   }
+
   .gridContainerDialog {
     width: 400px !important;
   }
@@ -105,12 +118,15 @@
     font-size: 22px !important;
     padding-right: 25vw !important;
   }
+
   .dialog {
     width: 450px !important;
   }
+
   .autocomplete {
     width: 40vw !important;
   }
+
   .gridContainerDialog {
     width: 450px !important;
   }
@@ -125,9 +141,11 @@
     padding-left: 35vw !important;
     padding-right: 20vw !important;
   }
+
   .autocomplete {
     width: 35vw !important;
   }
+
   .gridContainerDialog {
     width: 520px !important;
   }
@@ -142,9 +160,11 @@
     padding-left: 30vw !important;
     padding-right: 20vw !important;
   }
+
   .autocomplete {
     width: 25vw !important;
   }
+
   .lisItem {
     padding-top: 10px;
     width: 429px;
@@ -153,6 +173,7 @@
   .tablaVerFuncionarios {
     width: 25vw !important;
   }
+
   .gridContainerDialog {
     width: 550px !important;
   }
