@@ -31,8 +31,8 @@ function AdminUsuarios() {
   const handleClose = () => setOpen(false);
 
   const [userList, setUserList] = React.useState([]);
-  const [user, setUser] = React.useState([]);
-  const [password, setPassword] = React.useState([]);
+  const [user, setUser] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   useLayoutEffect(() => {
     (async () => {
@@ -57,6 +57,9 @@ function AdminUsuarios() {
     if (user === "admin" || user === "Admin" || user === "ADMIN") {
       window.alert("No puede agregar un usuario de tipo admin");
       setTimeout(window.location.reload(), 10000);
+    }
+    else if (user === "" || password === "") {
+      window.alert("Los campos estan vacios");
     } else {
       getSaveNewUser(user, password);
       window.alert("El usuario " + user + ", fue agregado correctamente");
@@ -204,6 +207,7 @@ function AdminUsuarios() {
                   placeholder="Usuario"
                   value={user}
                   onChange={onChangeUser}
+                  required
                   style={{
                     backgroundColor: "#FFFFFF",
                     borderRadius: "30px",
@@ -212,6 +216,7 @@ function AdminUsuarios() {
                   InputProps={{
                     startAdornment: (
                       <IconButton
+                        disabled
                         color="default"
                         sx={{ p: "10px" }}
                         style={{
@@ -246,9 +251,11 @@ function AdminUsuarios() {
                     borderRadius: "30px",
                     borderColor: "#04B8E2",
                   }}
+                  required
                   InputProps={{
                     startAdornment: (
                       <IconButton
+                        disabled
                         color="default"
                         sx={{ p: "10px" }}
                         style={{
