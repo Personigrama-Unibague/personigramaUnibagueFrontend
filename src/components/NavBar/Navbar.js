@@ -29,13 +29,16 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-//Navbar
 const Navbar = ({ title }) => {
   const classes = useStyles();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleSidebarToggle = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleSidebarClose = () => {
+    setIsSidebarOpen(false);
   };
 
   return (
@@ -64,7 +67,7 @@ const Navbar = ({ title }) => {
         </Toolbar>
       </AppBar>
       {/* Sidebar */}
-      <Sidebar open={isSidebarOpen} />
+      <Sidebar open={isSidebarOpen} onClose={handleSidebarClose} />
       <main className={classes.content}>
         <div className={classes.toolbar} />
       </main>
