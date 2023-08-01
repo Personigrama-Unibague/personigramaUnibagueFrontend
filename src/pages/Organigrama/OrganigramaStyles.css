@@ -24,7 +24,7 @@ node__branch {
   font-size: 15px !important;
 }
 .nodeParent:hover {
-  background: #193f76 !important; /* Cambia el color del nodo */
+  background: #02afd8 !important; /* Cambia el color del nodo */
 }
 
 .name {
