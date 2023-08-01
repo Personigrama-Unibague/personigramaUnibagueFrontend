@@ -672,6 +672,9 @@ export default function ConfigurarSecciones() {
           <List sx={{ pt: 0 }}>
             <ListItem className="lisItem">
               <Autocomplete
+                sx={{
+                  "& fieldset": { border: 'none' },
+                }}
                 value={selectedPerson}
                 className="autocomplete"
                 onChange={handleChangeAddPerson}
