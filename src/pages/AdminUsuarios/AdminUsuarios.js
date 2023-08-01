@@ -203,6 +203,9 @@ function AdminUsuarios() {
 
               <ListItem style={{ paddingTop: "5px" }}>
                 <TextField
+                  sx={{
+                    "& fieldset": { border: 'none' },
+                  }}
                   className="textField"
                   placeholder="Usuario"
                   value={user}
@@ -242,6 +245,9 @@ function AdminUsuarios() {
 
               <ListItem style={{ paddingTop: "5px" }}>
                 <TextField
+                  sx={{
+                    "& fieldset": { border: 'none' },
+                  }}
                   className="textField"
                   placeholder="Contraseña"
                   value={password}

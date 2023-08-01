@@ -123,6 +123,9 @@ function AdminLogin() {
           {/* Usuario */}
           <Grid item>
             <TextField
+              sx={{
+                "& fieldset": { border: 'none' },
+              }}
               className="textFieldLogIn"
               placeholder="Usuario"
               value={username}
@@ -157,6 +160,9 @@ function AdminLogin() {
           {/* Contraseña */}
           <Grid item>
             <TextField
+              sx={{
+                "& fieldset": { border: 'none' },
+              }}
               className="textFieldLogIn"
               placeholder="Contraseña"
               value={password}

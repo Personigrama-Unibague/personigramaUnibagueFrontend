@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Toolbar from "@mui/material/Toolbar";
-import Grid  from "@mui/material/Grid";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -58,10 +58,10 @@ function SeccionFuncionarios() {
   const DeletePersonConfirmation = (event, name) => {
     const confirmed = window.confirm(
       "¿Estás seguro de que desea eliminar la persona: " +
-        name +
-        " de " +
-        params.nombre +
-        "?"
+      name +
+      " de " +
+      params.nombre +
+      "?"
     );
     if (confirmed) {
       deletePersona(event);
@@ -203,8 +203,11 @@ function SeccionFuncionarios() {
               </IconButton>
             </Toolbar>
 
-            <ListItem style={{paddingTop: "10px"}}>
+            <ListItem style={{ paddingTop: "10px" }}>
               <Autocomplete
+                sx={{
+                  "& fieldset": { border: 'none' },
+                }}
                 id="autocomplete"
                 options={funcionariosCompletos}
                 getOptionLabel={(option) => option.nombre || ""}

@@ -554,6 +554,9 @@ export default function ConfigurarSecciones() {
 
           <Box style={{ padding: "15px" }}>
             <TextField
+              sx={{
+                "& fieldset": { border: 'none' },
+              }}
               className="textField"
               placeholder="Nombre de la Sección"
               value={inputValue}
@@ -612,6 +615,9 @@ export default function ConfigurarSecciones() {
             <Grid item xs={6}>
               <Box display="flex" alignItems="center">
                 <TextField
+                  sx={{
+                    "& fieldset": { border: 'none' },
+                  }}
                   className="textFieldUpdate"
                   focused
                   placeholder={String(idJerarRolDialogParametersDialog)}
@@ -625,6 +631,9 @@ export default function ConfigurarSecciones() {
             <Grid item xs={6}>
               <Box display="flex" alignItems="center">
                 <TextField
+                  sx={{
+                    "& fieldset": { border: 'none' },
+                  }}
                   className="textFieldUpdate"
                   placeholder={nameParametersDialog}
                   value={newRolName}
