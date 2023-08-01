@@ -1,18 +1,17 @@
+import * as React from "react";
 import { useState } from "react";
 import { makeStyles } from '@mui/styles';
+import "./Navbar.css";
 import {
   AppBar,
   Toolbar,
-  Typography,
   IconButton,
   Box,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "../../components/SideBar/SideBar";
 import AdminUsername from "../AdminUsername/AdminUsername";
 import LogOut from "../LogOut/LogOut";
-import MenuIcon from "@mui/icons-material/Menu";
-import * as React from "react";
-import "./Navbar.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: "#193f76 !important"
   },
   title: {
     flexGrow: 1,
@@ -53,7 +53,7 @@ const Navbar = ({ title }) => {
           </IconButton>
           {/* Titulo Navbar */}
           <Box flex={1} display="flex" justifyContent="center">
-            <Typography variant="h1">{title}</Typography>
+            <p className="titleNav">{title}</p>
           </Box>
 
           {/* Right  */}

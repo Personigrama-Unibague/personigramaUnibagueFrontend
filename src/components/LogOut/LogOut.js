@@ -21,22 +21,17 @@ function LogOut() {
   };
   const username = Cookies.get("username");
   return (
-    <div style={{ paddingLeft: "10px" }}>
+    <div >
       <IconButton
         variant="outlined"
         onClick={() => logOutConfirmation()}
         style={{
-          marginRight: "10px",
           borderRadius: "10px",
           color: "white",
         }}
       >
-        <InputOutlinedIcon
-          size="large"
-          edge="start"
+        <InputOutlinedIcon          
           color="inherit"
-          aria-label="menu"
-          sx={{ mr: 3 }}
         >
           <MenuIcon />
         </InputOutlinedIcon>
