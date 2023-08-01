@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Tree from "react-d3-tree";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Button, IconButton } from "@mui/material";
-import { makeStyles, createStyles } from '@mui/styles';
+import { makeStyles, createStyles } from "@mui/styles";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { getUnities } from "../../api/unidades";
 import { useState } from "react";
 import FloatingButton from "../../components/FloatingButton/FloatingButton";
-import "./styles.css";
+import "./OrganigramaStyles.css";
 
 const containerStyles = {
   width: "100vw",
@@ -19,61 +19,11 @@ const containerStyles = {
   background: "#eee",
 };
 
-const useStyles = makeStyles(
-  createStyles({
-    node: {
-      background: "#02AFD8",
-      position: "",
-      width: "400px",
-      height: "90px",
-      borderRadius: "30px",
-      color: "white",
-      fontSize: "15px",
-      "&:hover": {
-        background: "#193F76", // Cambia el color del nodo
-      },
-    },
-    name: {
-      fontSize: "16px",
-      paddingRight: "5px !important",
-    },
-    edit: {
-      position: "",
-      top: "0px",
-      right: "0px !important",
-      padding: "4px !important",
-      color: "#4BA083",
-    },
-    attributes: {
-      position: "",
-      bottom: "5px",
-      right: "0px !important",
-      color: "white",
-    },
-    childId: {
-      background: "#02AFD8",
-      position: "",
-      width: "400px",
-      height: "90px",
-      borderRadius: "30px",
-      color: "white",
-      fontSize: "15px",
-      "&:hover": {
-        background: "#193F76", // Cambia el color del nodo
-      },
-    },
-    ArrowButton: {
-      padding: "8px !important",
-    },
-  })
-);
-
 export default function Organigrama() {
   const renderForeignObjectNode = ({
     nodeDatum,
     toggleNode,
     foreignObjectProps,
-    classes,
   }) => {
     const handleNodeClick = () => {
       // Lógica para obtener la profundidad del nodo clickeado
@@ -92,9 +42,7 @@ export default function Organigrama() {
           <foreignObject {...foreignObjectProps}>
             <div>
               <Button
-                className={`${
-                  nodeDatum.parent_id === "" ? classes.node : classes.childId
-                }`}
+                className="node"
                 variant="contained"
                 onClick={() => {
                   handleNodeClick(); // Llama al método al hacer clic en el nodo
@@ -102,11 +50,11 @@ export default function Organigrama() {
                 }}
               >
                 {nodeDatum.nombre !== undefined && (
-                  <div className={classes.name}>{nodeDatum.name}</div>
+                  <div className="name">{nodeDatum.name}</div>
                 )}
                 {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
                 <div>
-                  <IconButton className={classes.ArrowButton}>
+                  <IconButton className="ArrowButton">
                     <div>
                       <ArrowBackIosOutlinedIcon style={{ color: "#FFFFFF" }} />
                     </div>
@@ -116,7 +64,7 @@ export default function Organigrama() {
                   <Link
                     to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
                   >
-                    <IconButton className={classes.edit} aria-label="edit">
+                    <IconButton className="edit" aria-label="edit">
                       <div>
                         <Tooltip title="Visualizar dependencia">
                           <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
@@ -126,10 +74,7 @@ export default function Organigrama() {
                   </Link>
                 </div>
                 <div>
-                  <IconButton
-                    className={classes.ArrowButton}
-                    onClick={toggleNode}
-                  >
+                  <IconButton className="ArrowButton" onClick={toggleNode}>
                     <div>
                       <ArrowForwardIosRoundedIcon
                         style={{ color: "#FFFFFF" }}
@@ -143,14 +88,9 @@ export default function Organigrama() {
         ) : (
           <foreignObject {...foreignObjectProps}>
             <div>
-              <Button
-                className={`${
-                  nodeDatum.parent_id === null ? classes.node : classes.childId
-                }`}
-                variant="contained"
-              >
+              <Button className="node" variant="contained">
                 {nodeDatum.nombre !== undefined && (
-                  <div className={classes.name}>{nodeDatum.name}</div>
+                  <div className="name">{nodeDatum.name}</div>
                 )}
                 {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
               </Button>
@@ -160,7 +100,7 @@ export default function Organigrama() {
       </>
     );
   };
-  const classes = useStyles();
+
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
@@ -295,7 +235,6 @@ export default function Organigrama() {
               renderForeignObjectNode({
                 ...rd3tProps,
                 foreignObjectProps,
-                classes,
               })
             }
             orientation="horizontal"
