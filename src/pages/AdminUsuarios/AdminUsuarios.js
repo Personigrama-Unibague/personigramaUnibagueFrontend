@@ -113,14 +113,14 @@ function AdminUsuarios() {
                   <TableCell
                     className="tableCellTitle"
                     align="center"
-                    style={{ backgroundColor: "#017A97", color: "white" }}
+                    style={{ backgroundColor: "#04b8e2", color: "white" }}
                   >
                     <Typography className="adminUserText">Usuario</Typography>
                   </TableCell>
                   <TableCell
                     className="tableCellTitle"
                     align="center"
-                    style={{ backgroundColor: "#017A97", color: "white" }}
+                    style={{ backgroundColor: "#04b8e2", color: "white" }}
                   >
                     <Typography className="adminUserText">Opciones</Typography>
                   </TableCell>

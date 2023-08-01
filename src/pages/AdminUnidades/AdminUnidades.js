@@ -90,32 +90,34 @@ export default function AdminUnidades() {
                   <TableRow>
                     <TableCell
                       className="tableCellTitleAdmin"
-                      style={{ backgroundColor: "#017A97", color: "white" }}
-                    ></TableCell>
+                      align="center"
+                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
+                    >-</TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
-                      style={{ backgroundColor: "#017A97", color: "white" }}
+                      align="left"
+                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
                     >
                       Unidad
                     </TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
-                      style={{ backgroundColor: "#017A97", color: "white" }}
+                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
                     >
                       Numero
                     </TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
-                      style={{ backgroundColor: "#017A97", color: "white" }}
+                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
                     >
                       Secciones
                     </TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
-                      style={{ backgroundColor: "#017A97", color: "white" }}
+                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
                     >
                       Funcionarios
                     </TableCell>
@@ -151,10 +153,9 @@ export default function AdminUnidades() {
                             component={Link}
                             to={`/confiSecciones/${row.id}/${row.nombre}`}
                             style={{
-                              backgroundColor: "#B8B9BA",
+                              backgroundColor: "#04b8e2",
                               marginLeft: "10px",
-
-                              borderRadius: "10px",
+                              borderRadius: "5px",
                               color: "white",
                             }}
                           >
@@ -171,10 +172,9 @@ export default function AdminUnidades() {
                             component={Link}
                             to={`/seccionFuncionarios/${row.id}/${row.nombre}`}
                             style={{
-                              backgroundColor: "#B8B9BA",
+                              backgroundColor: "#04b8e2",
                               marginLeft: "10px",
-
-                              borderRadius: "10px",
+                              borderRadius: "5px",
                               color: "white",
                             }}
                           >
@@ -238,7 +238,7 @@ export default function AdminUnidades() {
                                             component={Link}
                                             to={`/confiSecciones/${child.id}/${child.nombre}`}
                                             style={{
-                                              backgroundColor: "#B8B9BA",
+                                              backgroundColor: "#04b8e2",
                                               marginLeft: "10px",
 
                                               borderRadius: "10px",
@@ -258,10 +258,9 @@ export default function AdminUnidades() {
                                             component={Link}
                                             to={`/seccionFuncionarios/${child.id}/${child.nombre}`}
                                             style={{
-                                              backgroundColor: "#B8B9BA",
+                                              backgroundColor: "#04b8e2",
                                               marginLeft: "10px",
-
-                                              borderRadius: "10px",
+                                              borderRadius: "5px",
                                               color: "white",
                                             }}
                                           >
@@ -405,29 +404,6 @@ export default function AdminUnidades() {
                 </TableBody>
               </Table>
             </TableContainer>
-            {/*  <div>
-    <ul>
-      {unidades.children.map((child, index) => (
-        <li key={index}>
-          <h4>{child.nombre}</h4>
-          <p>ID: {child.id}</p>
-          {child.children && (
-            <ul>
-              {child.children.map((grandchild, index) => (
-                <li key={index}>
-                  <h5>{grandchild.nombre}</h5>
-                  <p>ID: {grandchild.id}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
-    </ul>
-  </div> */}
-            {/* User Button */}
-
-            {/* Actualizar Button */}
           </Grid>
         ) : (
           <h1>Cargando...</h1>

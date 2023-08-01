@@ -284,14 +284,14 @@ export default function ConfigurarSecciones() {
           <TableContainer component={Paper}>
             <Table
               sx={{ minWidth: 200 }}
-              style={{ borderStyle: "solid", borderColor: "#017A97" }}
+              style={{ borderStyle: "solid", borderColor: "#04b8e2" }}
               className="tablaSecciones"
             >
               <TableHead>
                 <TableRow>
                   <TableCell
                     style={{
-                      backgroundColor: "#017A97",
+                      backgroundColor: "#04b8e2",
                       color: "white",
                       fontSize: "20px",
                       textAlign: "center",
@@ -697,14 +697,14 @@ export default function ConfigurarSecciones() {
             <ListItem className="lisItem">
               <TableContainer component={Paper}>
                 <Table
-                  style={{ borderStyle: "solid", borderColor: "#017A97" }}
+                  style={{ borderStyle: "solid", borderColor: "#04b8e2" }}
                   className="tablaVerFuncionarios"
                 >
                   <TableHead>
                     <TableRow>
                       <TableCell
                         style={{
-                          backgroundColor: "#017A97",
+                          backgroundColor: "#04b8e2",
 
                           color: "white",
                           fontSize: "20px",

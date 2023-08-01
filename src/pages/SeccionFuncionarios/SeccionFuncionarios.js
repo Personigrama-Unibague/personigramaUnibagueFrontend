@@ -106,14 +106,14 @@ function SeccionFuncionarios() {
         <TableContainer component={Paper}>
           <Table
             sx={{ minWidth: 200 }}
-            style={{ borderStyle: "solid", borderColor: "#017A97" }}
+            style={{ borderStyle: "solid", borderColor: "#04b8e2" }}
             className="tablaFuncionarios"
           >
             <TableHead>
               <TableRow>
                 <TableCell
                   style={{
-                    backgroundColor: "#017A97",
+                    backgroundColor: "#04b8e2",
                     color: "white",
                     fontSize: "20px",
                     textAlign: "center",
@@ -203,7 +203,7 @@ function SeccionFuncionarios() {
               </IconButton>
             </Toolbar>
 
-            <ListItem style={{ paddingTop: "30px", width: "450px" }}>
+            <ListItem style={{paddingTop: "10px"}}>
               <Autocomplete
                 id="autocomplete"
                 options={funcionariosCompletos}
