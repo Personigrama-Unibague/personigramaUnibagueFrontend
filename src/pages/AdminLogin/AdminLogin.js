@@ -139,6 +139,8 @@ function AdminLogin() {
                     style={{
                       borderRadius: "30px 0px 0px 30px",
                       backgroundColor: "#04B8E2",
+                      left: "-15px",
+                      padding: "16px"
                     }}
                     position="start"
                     disabled={true}
@@ -171,6 +173,8 @@ function AdminLogin() {
                     style={{
                       borderRadius: "30px 0px 0px 30px",
                       backgroundColor: "#04B8E2",
+                      left: "-15px",
+                      padding: "16px"
                     }}
                     position="start"
                     disabled={true}
