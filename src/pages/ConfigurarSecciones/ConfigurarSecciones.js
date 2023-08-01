@@ -680,7 +680,6 @@ export default function ConfigurarSecciones() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    variant="standard"
                     className="textField"
                     placeholder="Funcionario"
                     focused
@@ -689,9 +688,7 @@ export default function ConfigurarSecciones() {
                       borderRadius: "30px",
                       borderColor: "#04B8E2",
                     }}
-                    InputProps={{
-                      disableUnderline: true, // <== added this
-                    }}
+
                   />
                 )}
               />
