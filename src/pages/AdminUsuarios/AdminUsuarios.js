@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import  Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,7 +12,7 @@ import TableHead from "@mui/material/TableHead";
 import CloseIcon from "@mui/icons-material/Close";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import  Button  from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import IconButton from "@mui/material/IconButton";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
@@ -217,6 +217,8 @@ function AdminUsuarios() {
                         style={{
                           borderRadius: "30px 0px 0px 30px",
                           backgroundColor: "#04B8E2",
+                          left: "-15px",
+                          padding: "16px"
                         }}
                         position="start"
                       >
@@ -252,6 +254,8 @@ function AdminUsuarios() {
                         style={{
                           borderRadius: "30px 0px 0px 30px",
                           backgroundColor: "#04B8E2",
+                          left: "-15px",
+                          padding: "16px"
                         }}
                         position="start"
                       >
