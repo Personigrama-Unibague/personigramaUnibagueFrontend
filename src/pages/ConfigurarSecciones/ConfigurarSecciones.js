@@ -554,9 +554,7 @@ export default function ConfigurarSecciones() {
 
           <Box style={{ padding: "15px" }}>
             <TextField
-              id="outlined-required"
               className="textField"
-              variant="outlined"
               placeholder="Nombre de la Sección"
               value={inputValue}
               onChange={handleInputChange}
@@ -601,7 +599,7 @@ export default function ConfigurarSecciones() {
               <CloseIcon className="icon" style={{ color: "white" }} />
             </IconButton>
           </Toolbar>
-          
+
           <Grid container spacing={2} className="gridContainerDialog">
             <Grid item xs={6} className="titlesActualizarSeccion">
               Prioridad

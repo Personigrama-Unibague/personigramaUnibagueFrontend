@@ -215,7 +215,6 @@ function SeccionFuncionarios() {
                   <TextField
                     ref={textFieldRef}
                     placeholder="Funcionario"
-                    variant="outlined"
                     className="textField"
                     style={{
                       backgroundColor: "#FFFFFF",
