@@ -59,6 +59,7 @@
 
 .unidad {
   font-size: 3vw;
+  text-align: center;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -85,6 +86,7 @@
 
   .unidad {
     font-size: 3vw;
+    text-align: center;
   }
 
   .css-dudo9s-MuiTypography-root {
@@ -106,6 +108,7 @@
 
   .unidad {
     font-size: 2vw;
+    text-align: center;
   }
 }
 
@@ -122,6 +125,7 @@
 
   .unidad {
     font-size: 2vw;
+    text-align: center;
   }
 
   .h6 {
@@ -142,10 +146,15 @@
     font-size: 15px;
     line-height: 30px !important;
   }
+  .unidad {
+    font-size: 2vw;
+    text-align: center;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .unidad {
     font-size: 2vw;
+    text-align: center;
   }
 
   .personigrama {
