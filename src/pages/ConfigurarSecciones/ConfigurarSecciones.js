@@ -58,10 +58,7 @@ export default function ConfigurarSecciones() {
     setIdJerarRolDialogParametersDialog,
   ] = React.useState();
 
-  const [
-    idJerarParametersDialog,
-    setIdJerarParametersDialog,
-  ] = React.useState();
+  const [idJerarParametersDialog, setIdJerarParametersDialog] = React.useState();
 
   /* General Hooks */
   const [idParametersDialog, setIdParametersDialog] = React.useState();
@@ -171,11 +168,13 @@ export default function ConfigurarSecciones() {
       alert(
         "No puede asignar el id 0 ya que este se encuentra asignado a roles predeterminados"
       );
+      setIdJerarParametersDialog("");
       return "";
     } else if (idJerarParametersDialog === "1") {
       alert(
         "No puede asignar el id 1 ya que este se encuentra asignado a roles predeterminados"
       );
+      setIdJerarParametersDialog("");
       return "";
     } else if (rol.length > 0) {
       alert(
@@ -188,14 +187,14 @@ export default function ConfigurarSecciones() {
       );
       setIdJerarParametersDialog();
       return "";
-    }
+    } 
 
     return idJerarParametersDialog;
   };
 
   /* METODOS */
 
-  /* Actualizar nombre del rol */
+  /* Actualizar nombre del rol y idJerar */
   const updateRol = () => {
     const rol = roles.filter((rol) => rol.id === idParametersDialog);
 
