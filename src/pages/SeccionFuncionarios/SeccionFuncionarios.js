@@ -126,21 +126,25 @@ function SeccionFuncionarios() {
             </TableHead>
             <TableBody>
               {funcionarios.map((row) => (
+                /* Unidad */
                 <TableRow key={row.nombre}>
                   <TableCell
                     component="th"
                     scope="row"
-                    style={{ display: "flex", justifyContent: "center" }}
                   >
                     {params.unidad}
                   </TableCell>
-                  <TableCell align="center">{row.nombre}</TableCell>
+                  {/* Nombre */}
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    align="center">{row.nombre}</TableCell>
                   <TableCell align="center">
                     <IconButton
                       className="IconButton"
                       variant="outlined"
                       style={{
-                        backgroundColor: "#B8B9BA",
+                        backgroundColor: "#04b8e2",
                         borderRadius: "10px",
                         color: "white",
                         marginRight: "10px",
