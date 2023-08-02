@@ -25,10 +25,10 @@ export default function Organigrama() {
     toggleNode,
     foreignObjectProps,
   }) => {
-    const handleNodeClick = () => {
+    const handleNodeClick = (nodeDatum) => {
       // Lógica para obtener la profundidad del nodo clickeado
       const profundidad = calculateDepthById(
-        unidades.children[2],
+        unidades.children[3],
         nodeDatum.id
       );
       const prfundidadTotal = profundidad + 1;
@@ -46,7 +46,7 @@ export default function Organigrama() {
 
                 variant="contained"
                 onClick={() => {
-                  handleNodeClick(); // Llama al método al hacer clic en el nodo
+                  handleNodeClick(nodeDatum); // Llama al método al hacer clic en el nodo
                   toggleNode();
                 }}
               >
