@@ -2,6 +2,11 @@
 node__branch {
   stroke-width: 1 !important;
 }
+.rd3t-link {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px; /* Ajusta el grosor de la línea según tus preferencias */
+}
 .node {
   background: #02afd8 !important;
   position: relative !important;

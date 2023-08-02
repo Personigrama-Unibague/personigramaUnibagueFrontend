@@ -8,6 +8,9 @@
 .css-rru43x-MuiGrid-root > .MuiGrid-item {
   padding-left: 0px !important;
 }
+.css-1d1w8o2 > .MuiGrid-item {
+  padding-left: 0px !important;
+}
 .bannerPersonal {
   width: 100% !important;
   height: 100% !important;
@@ -28,19 +31,34 @@
 }
 
 .nombreBannerPrincipal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute; /* posición absolute con respecto al padre */
   top: 38%;
-  left: 15%;
-  text-align: left !important;
+  left: 25%;
+  color: white !important;
+  width: 35vw;
+}
+.nombreBanner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute; /* posición absolute con respecto al padre */
+  top: 35%;
+  left: 35%;
   color: white !important;
 }
 
 .personigrama {
-  font-size: 4vw;
+  font-size: 20px;
+  line-height: 30px !important;
 }
 
 .unidad {
-  font-size: 4vw;
+  font-size: 3vw;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -48,33 +66,30 @@
   .gridContainer {
     justify-content: center !important;
   }
+  .nombreBannerPrincipal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* posición absolute con respecto al padre */
+    top: 38%;
+    left: 15%;
+    color: white !important;
+    width: 50vw;
+  }
 
   .personigrama {
-    font-size: 3vw;
+    font-size: 8px;
+    line-height: 15px !important;
   }
 
   .unidad {
-    font-size: 4vw;
-  }
-
-  .nombreBanner {
-    position: absolute; /* posición absolute con respecto al padre */
-    top: 18%;
-    left: 11%;
-    text-align: left !important;
-    color: white !important;
+    font-size: 3vw;
   }
 
   .css-dudo9s-MuiTypography-root {
     display: block;
     margin-left: -300px !important;
-  }
-  .nombreBannerPrincipal {
-    position: absolute; /* posición absolute con respecto al padre */
-    top: 38%;
-    left: 5%;
-    text-align: left !important;
-    color: white !important;
   }
 }
 
@@ -85,21 +100,12 @@
   }
 
   .personigrama {
-    font-size: 3.5vw;
-    margin-right: 15vw !important;
+    font-size: 10px;
+    line-height: 30px !important;
   }
 
   .unidad {
-    font-size: 4.5vw;
-    margin-right: 9vw !important;
-  }
-
-  .nombreBanner {
-    position: absolute; /* posición absolute con respecto al padre */
-    top: 25%;
-    left: 11%;
-    text-align: left !important;
-    color: white !important;
+    font-size: 2vw;
   }
 }
 
@@ -110,20 +116,14 @@
   }
 
   .personigrama {
-    font-size: 3vw;
+    font-size: 10px;
+    line-height: 30px !important;
   }
 
   .unidad {
-    font-size: 3.5vw;
+    font-size: 2vw;
   }
 
-  .nombreBanner {
-    position: absolute; /* posición absolute con respecto al padre */
-    top: 35%;
-    left: 11%;
-    text-align: left !important;
-    color: white !important;
-  }
   .h6 {
     font-size: 14px;
     font-weight: 500;
@@ -138,15 +138,19 @@
     display: block;
     margin-left: -300px !important;
   }
+  .personigrama {
+    font-size: 15px;
+    line-height: 30px !important;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .unidad {
-    font-size: 3vw;
-    margin-right: 12vw !important;
+    font-size: 2vw;
   }
+
   .personigrama {
-    font-size: 2.5vw;
-    margin-right: 15vw !important;
+    font-size: 20px;
+    line-height: 30px !important;
   }
   .bannerPersonal {
     width: 100% !important;
@@ -154,6 +158,5 @@
     object-fit: cover !important;
     padding: 0;
     margin: 0;
-    padding-right: 15px !important;
   }
 }
