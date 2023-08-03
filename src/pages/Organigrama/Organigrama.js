@@ -43,7 +43,6 @@ export default function Organigrama() {
             <div>
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
-
                 variant="contained"
                 onClick={() => {
                   handleNodeClick(nodeDatum); // Llama al método al hacer clic en el nodo
@@ -105,7 +104,7 @@ export default function Organigrama() {
     );
   };
 
-  const [translate, setTranslate] = useState({ x: 0, y: 0 });
+  const [translate, setTranslate] = useState({ x: 100, y: 320 });
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
   const calculateDepthById = (rootNode, nodeIdToFind) => {
@@ -175,10 +174,6 @@ export default function Organigrama() {
 
   useEffect(() => {}, [unidades]);
 
-  useEffect(() => {
-    setTranslate({ x: 100, y: 320 }); // Ejemplo de valor para translate
-  }, [unidades]);
-
   const calculateTotalLevels = (data) => {
     // Si no hay datos o es un array vacío, el total de niveles es 0
     if (!data || data.length === 0) {
@@ -244,6 +239,10 @@ export default function Organigrama() {
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
+            dimensions={{
+              width: window.innerWidth,
+              height: window.innerHeight,
+            }}
           />
         </>
       )}

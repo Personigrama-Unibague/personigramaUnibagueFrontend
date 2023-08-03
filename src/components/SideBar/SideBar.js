@@ -1,15 +1,20 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import SchemaIcon from '@mui/icons-material/Schema';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import { Box, Button, Divider, ListItemButton, ListItemIcon } from '@mui/material';
-
+import SchemaIcon from "@mui/icons-material/Schema";
+import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import LogOut from "../LogOut/LogOut";
+import {
+  Box,
+  Button,
+  Divider,
+  ListItemButton,
+  ListItemIcon,
+} from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -30,15 +35,17 @@ const useStyles = makeStyles((theme) => ({
   titleContainer: {
     backgroundColor: "#193F76",
     paddingBottom: "15px",
-    
-  }
+  },
 }));
 
 const Sidebar = ({ open, onClose }) => {
   const classes = useStyles();
 
   const toggleDrawer = (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
 
@@ -89,6 +96,16 @@ const Sidebar = ({ open, onClose }) => {
             </Link>
           </ListItemButton>
         </ListItem>
+        <ListItem>
+          <ListItemButton>
+            <ListItemIcon style={{ display: "flex" }}>
+              <LogOut />
+            </ListItemIcon>
+            <ListItemIcon style={{ color: "#193F76" }}>
+              Cerrar Sesión
+            </ListItemIcon>
+          </ListItemButton>
+        </ListItem>
         <Divider />
       </List>
     </Box>
@@ -97,11 +114,7 @@ const Sidebar = ({ open, onClose }) => {
   return (
     <div>
       <Button onClick={toggleDrawer}>Open Left Sidebar</Button>
-      <Drawer
-        anchor="left"
-        open={open}
-        onClose={toggleDrawer}
-      >
+      <Drawer anchor="left" open={open} onClose={toggleDrawer}>
         {list()}
       </Drawer>
     </div>

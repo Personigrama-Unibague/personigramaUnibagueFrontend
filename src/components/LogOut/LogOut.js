@@ -1,6 +1,6 @@
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
+import LogoutIcon from '@mui/icons-material/Logout';
 import * as React from "react";
 import Cookies from "js-cookie";
 
@@ -21,20 +21,11 @@ function LogOut() {
   };
   const username = Cookies.get("username");
   return (
-    <div >
-      <IconButton
-        variant="outlined"
-        onClick={() => logOutConfirmation()}
-        style={{
-          borderRadius: "10px",
-          color: "white",
-        }}
-      >
-        <InputOutlinedIcon          
-          color="inherit"
-        >
+    <div>
+      <IconButton onClick={() => logOutConfirmation()}>
+        <LogoutIcon>
           <MenuIcon />
-        </InputOutlinedIcon>
+        </LogoutIcon>
       </IconButton>
     </div>
   );

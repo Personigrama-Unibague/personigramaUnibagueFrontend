@@ -1,17 +1,13 @@
 import * as React from "react";
 import { useState } from "react";
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 import "./Navbar.css";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Box,
-} from "@mui/material";
+import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "../../components/SideBar/SideBar";
+import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 import AdminUsername from "../AdminUsername/AdminUsername";
-import LogOut from "../LogOut/LogOut";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: "#193f76 !important"
+    backgroundColor: "#193f76 !important",
   },
   title: {
     flexGrow: 1,
@@ -62,7 +58,11 @@ const Navbar = ({ title }) => {
           {/* Right  */}
           <Box display="flex" alignItems="center">
             <AdminUsername />
-            <LogOut />
+            <Link to={"/adminUnidades"}>
+              <IconButton style={{ color: "white" }}>
+                <LoginRoundedIcon />
+              </IconButton>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
