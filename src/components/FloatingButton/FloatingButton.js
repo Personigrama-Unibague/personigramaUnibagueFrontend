@@ -17,13 +17,24 @@ function FloatingButton() {
     console.log(currentDepth);
     const depth = localStorage.getItem("niveles");
     localStorage.setItem("depth", depth);
+    const deptht = parseInt(localStorage.getItem("depth"));
+    const calculatedNodeX = calculateNodeX(deptht);
+    localStorage.setItem("nodeX", calculatedNodeX);
     setTimeout(window.location.reload(), 10000);
   };
 
   const handleDecreaseDepth = () => {
     setDepth(1);
     localStorage.setItem("depth", 1);
+    const depth = parseInt(localStorage.getItem("depth"));
+    const calculatedNodeX = calculateNodeX(depth);
+    localStorage.setItem("nodeX", calculatedNodeX);
     setTimeout(window.location.reload(), 10000);
+  };
+  const calculateNodeX = (depth) => {
+    const initialX = 100;
+    const subtractionAmount = 240;
+    return initialX - subtractionAmount * (depth - 1);
   };
 
   const addDepth = () => {
@@ -38,6 +49,9 @@ function FloatingButton() {
         parseInt(localStorage.getItem("depth")) + 1
       );
       console.log(currentDepth);
+      const depth = parseInt(localStorage.getItem("depth"));
+      const calculatedNodeX = calculateNodeX(depth);
+      localStorage.setItem("nodeX", calculatedNodeX);
       setTimeout(window.location.reload(), 10);
     }
   };
@@ -51,6 +65,9 @@ function FloatingButton() {
         parseInt(localStorage.getItem("depth")) - 1
       );
       console.log(currentDepth);
+      const depth = parseInt(localStorage.getItem("depth"));
+      const calculatedNodeX = calculateNodeX(depth);
+      localStorage.setItem("nodeX", calculatedNodeX);
       setTimeout(window.location.reload(), 10);
     }
   };

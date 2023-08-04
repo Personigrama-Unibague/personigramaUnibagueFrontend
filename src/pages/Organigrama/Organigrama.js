@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Tree from "react-d3-tree";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Button, IconButton } from "@mui/material";
-import { makeStyles, createStyles } from "@mui/styles";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
@@ -25,7 +24,9 @@ export default function Organigrama() {
     toggleNode,
     foreignObjectProps,
   }) => {
-    const handleNodeClick = (nodeDatum) => {
+    const handleNodeClick = (nodeDatum, event) => {
+      // Evitar la recarga de la página al hacer clic
+      event.preventDefault();
       // Lógica para obtener la profundidad del nodo clickeado
       const profundidad = calculateDepthById(
         unidades.children[3],
@@ -34,6 +35,10 @@ export default function Organigrama() {
       const prfundidadTotal = profundidad + 1;
       localStorage.setItem("depth", prfundidadTotal);
       console.log("Profundidad del nodo clickeado:", prfundidadTotal);
+
+      const depth = parseInt(localStorage.getItem("depth"));
+      const calculatedNodeX = calculateNodeX(depth);
+      localStorage.setItem("nodeX", calculatedNodeX);
     };
 
     return (
@@ -44,8 +49,8 @@ export default function Organigrama() {
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
                 variant="contained"
-                onClick={() => {
-                  handleNodeClick(nodeDatum); // Llama al método al hacer clic en el nodo
+                onClick={(event) => {
+                  handleNodeClick(nodeDatum, event); // Llama al método al hacer clic en el nodo
                   toggleNode();
                 }}
               >
@@ -104,7 +109,28 @@ export default function Organigrama() {
     );
   };
 
-  const [translate, setTranslate] = useState({ x: 100, y: 320 });
+  const treeContainerRef = useRef(null);
+
+  if (parseInt(localStorage.getItem("depth")) === 1) {
+    localStorage.setItem("nodeX", 100);
+  }
+  const calculateNodeX = (depth) => {
+    const initialX = 100;
+    const subtractionAmount = 240;
+    return initialX - subtractionAmount * (depth - 1);
+  };
+  const [translate, setTranslate] = useState({
+    x: parseInt(localStorage.getItem("nodeX")),
+    y: parseInt(localStorage.getItem("nodeY")),
+  });
+
+  useEffect(() => {
+    setTranslate({
+      x: parseInt(localStorage.getItem("nodeX")),
+      y: parseInt(localStorage.getItem("nodeY")),
+    });
+    console.log(translate);
+  }, []);
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
   const calculateDepthById = (rootNode, nodeIdToFind) => {
@@ -200,7 +226,7 @@ export default function Organigrama() {
   localStorage.setItem("niveles", parseInt(totalNiveles));
 
   return (
-    <div style={containerStyles}>
+    <div style={containerStyles} ref={treeContainerRef}>
       {isLoading ? ( // Verificar si los datos están cargando
         <div
           style={{
@@ -243,6 +269,7 @@ export default function Organigrama() {
               width: window.innerWidth,
               height: window.innerHeight,
             }}
+            zoom={0.9}
           />
         </>
       )}
