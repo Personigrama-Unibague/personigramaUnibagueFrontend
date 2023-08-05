@@ -12,22 +12,28 @@ export default function PersonigramaCard(props) {
       <Card className="cardBack">
         <div className="cardBackContainer">
           <Typography className="profileName">
-          {props.personal.nombre}
+            {props.personal.nombre}
           </Typography>
-          <Typography className="profileCharge">{props.personal.cargo}</Typography>
+          <Typography className="profileCharge">
+            {props.personal.cargo}
+          </Typography>
 
           <Typography className="profileSubtitle">Correo</Typography>
           <Typography className="profileSubInfoCorreo">
-          {props.personal.correo}
+            {props.personal.correo}
           </Typography>
 
           <Typography className="profileSubtitle">Telefono</Typography>
-          <Typography className="profileSubInfo">{props.personal.telefono}</Typography>
+          <Typography className="profileSubInfo">
+            {props.personal.telefono}
+          </Typography>
 
           {/* Dot */}
           <div className="footerDot">
             <Typography className="FooterTitle">Extensión</Typography>
-            <Typography className="FooterDescription">{props.personal.extension}</Typography>
+            <Typography className="FooterDescription">
+              {props.personal.extension}
+            </Typography>
           </div>
         </div>
       </Card>
@@ -37,14 +43,17 @@ export default function PersonigramaCard(props) {
         <div>
           <CardMedia
             className="cardMedia"
+            component="img"
             image={"https://" + props.personal.foto}
-            title="green iguana"
+            title="Funcionario"
           />
           <CardContent>
             <Typography className="profileName">
               {props.personal.nombre}
             </Typography>
-            <Typography className="profileCharge">{props.personal.cargo}</Typography>
+            <Typography className="profileCharge">
+              {props.personal.cargo}
+            </Typography>
           </CardContent>
         </div>
       </Card>

@@ -113,7 +113,9 @@ export default function Organigrama() {
 
   if (parseInt(localStorage.getItem("depth")) === 1) {
     localStorage.setItem("nodeX", 100);
+    localStorage.setItem("nodeY", 320);
   }
+  
   const calculateNodeX = (depth) => {
     const initialX = 100;
     const subtractionAmount = 240;
@@ -130,7 +132,9 @@ export default function Organigrama() {
       y: parseInt(localStorage.getItem("nodeY")),
     });
     console.log(translate);
-  }, []);
+  }, [translate]);
+
+  
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
   const calculateDepthById = (rootNode, nodeIdToFind) => {
@@ -269,7 +273,7 @@ export default function Organigrama() {
               width: window.innerWidth,
               height: window.innerHeight,
             }}
-            zoom={0.9}
+            zoom={0.8}
           />
         </>
       )}

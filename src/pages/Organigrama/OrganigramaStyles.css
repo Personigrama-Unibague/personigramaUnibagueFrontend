@@ -9,7 +9,7 @@ node__branch {
 }
 .node {
   background: #02afd8 !important;
-  position: relative !important;
+  position: fixed !important;
   width: 400px !important;
   height: 90px !important;
   border-radius: 30px !important;

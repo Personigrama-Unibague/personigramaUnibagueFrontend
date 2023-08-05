@@ -37,6 +37,8 @@
 .cardMedia {
   height: 245px;
   width: 100% !important;
+  object-fit: contain !important;
+  padding-top: 15px !important;
 }
 
 .profileName {
