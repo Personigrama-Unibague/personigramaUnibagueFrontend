@@ -5,7 +5,7 @@ import "./Navbar.css";
 import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "../../components/SideBar/SideBar";
-import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import AdminUsername from "../AdminUsername/AdminUsername";
 import { Link } from "react-router-dom";
 
@@ -60,7 +60,7 @@ const Navbar = ({ title }) => {
             <AdminUsername />
             <Link to={"/adminUnidades"}>
               <IconButton style={{ color: "white" }}>
-                <LoginRoundedIcon />
+                <KeyboardReturnIcon />
               </IconButton>
             </Link>
           </Box>

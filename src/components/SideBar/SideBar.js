@@ -98,7 +98,7 @@ const Sidebar = ({ open, onClose }) => {
         </ListItem>
         <ListItem>
           <ListItemButton>
-            <ListItemIcon style={{ display: "flex" }}>
+            <ListItemIcon style={{ display: "flex", marginLeft:"-2px" }}>
               <LogOut />
             </ListItemIcon>
             <ListItemIcon style={{ color: "#193F76" }}>

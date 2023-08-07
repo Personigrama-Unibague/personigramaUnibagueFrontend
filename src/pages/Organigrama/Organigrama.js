@@ -29,7 +29,7 @@ export default function Organigrama() {
       event.preventDefault();
       // Lógica para obtener la profundidad del nodo clickeado
       const profundidad = calculateDepthById(
-        unidades.children[3],
+        unidades.children[2],
         nodeDatum.id
       );
       const prfundidadTotal = profundidad + 1;
@@ -115,7 +115,7 @@ export default function Organigrama() {
     localStorage.setItem("nodeX", 100);
     localStorage.setItem("nodeY", 320);
   }
-  
+
   const calculateNodeX = (depth) => {
     const initialX = 100;
     const subtractionAmount = 240;
@@ -134,7 +134,6 @@ export default function Organigrama() {
     console.log(translate);
   }, [translate]);
 
-  
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
   const calculateDepthById = (rootNode, nodeIdToFind) => {

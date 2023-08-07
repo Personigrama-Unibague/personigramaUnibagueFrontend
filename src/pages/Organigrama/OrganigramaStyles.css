@@ -4,8 +4,8 @@ node__branch {
 }
 .rd3t-link {
   fill: none;
-  stroke: black;
-  stroke-width: 1px; /* Ajusta el grosor de la línea según tus preferencias */
+  stroke: gray !important;
+  stroke-width: 3px !important; /* Ajusta el grosor de la línea según tus preferencias */
 }
 .node {
   background: #02afd8 !important;
@@ -14,18 +14,19 @@ node__branch {
   border-radius: 30px !important;
   color: white !important;
   font-size: 15px !important;
+  transform-origin: 0px 0px;
 }
 .node:hover {
   background: #193f76 !important; /* Cambia el color del nodo */
 }
 .nodeParent {
   background: #193f76 !important;
-  position: relative !important;
   width: 400px !important;
   height: 90px !important;
   border-radius: 30px !important;
   color: white !important;
   font-size: 15px !important;
+  transform-origin: 0px 0px;
 }
 .nodeParent:hover {
   background: #02afd8 !important; /* Cambia el color del nodo */
