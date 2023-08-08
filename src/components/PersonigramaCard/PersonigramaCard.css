@@ -116,6 +116,9 @@
   .card {
     width: 225px !important;
   }
+  .css-zow5z4-MuiGrid-root > .MuiGrid-item {
+    padding-left: 0px !important;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

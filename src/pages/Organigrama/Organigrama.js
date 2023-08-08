@@ -29,7 +29,7 @@ export default function Organigrama() {
       event.preventDefault();
       // Lógica para obtener la profundidad del nodo clickeado
       const profundidad = calculateDepthById(
-        unidades.children[2],
+        unidades.children[1],
         nodeDatum.id
       );
       const prfundidadTotal = profundidad + 1;
@@ -45,7 +45,7 @@ export default function Organigrama() {
       <>
         {nodeDatum.id !== "X" ? (
           <foreignObject {...foreignObjectProps}>
-            <div>
+            <div style={{ position: "fixed" }}>
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
                 variant="contained"
@@ -92,7 +92,7 @@ export default function Organigrama() {
           </foreignObject>
         ) : (
           <foreignObject {...foreignObjectProps}>
-            <div>
+            <div style={{ position: "fixed" }}>
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
                 variant="contained"
