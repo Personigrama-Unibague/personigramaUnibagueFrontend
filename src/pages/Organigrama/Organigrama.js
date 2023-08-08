@@ -132,7 +132,7 @@ export default function Organigrama() {
       y: parseInt(localStorage.getItem("nodeY")),
     });
     console.log(translate);
-  }, [translate]);
+  }, []);
 
   const [unidades, setUnidades] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Nuevo estado isLoading
