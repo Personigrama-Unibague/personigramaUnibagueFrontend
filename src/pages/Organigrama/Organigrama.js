@@ -42,6 +42,15 @@ export default function Organigrama() {
     };
     const hasChildren = nodeDatum.children && nodeDatum.children.length > 0;
 
+    const desplegar = () => {
+      if (collapse) {
+        setCollapsed(false);
+      } else {
+        desplegar(true);
+      }
+      toggleNode();
+    };
+
     return (
       <>
         {nodeDatum.id !== "X" ? (
@@ -52,7 +61,6 @@ export default function Organigrama() {
                 variant="contained"
                 onClick={(event) => {
                   handleNodeClick(nodeDatum, event);
-                  toggleNode();
                 }}
               >
                 {nodeDatum.nombre !== undefined && (
@@ -61,13 +69,15 @@ export default function Organigrama() {
                 {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
                 {hasChildren && ( // Agregar esta condición
                   <div>
-                    <IconButton className="ArrowButton">
-                      <div>
-                        <ArrowBackIosOutlinedIcon
-                          style={{ color: "#FFFFFF" }}
-                        />
-                      </div>
-                    </IconButton>
+                    {collapse && (
+                      <IconButton className="ArrowButton" onClick={desplegar()}>
+                        <div>
+                          <ArrowBackIosOutlinedIcon
+                            style={{ color: "#FFFFFF" }}
+                          />
+                        </div>
+                      </IconButton>
+                    )}
                   </div>
                 )}
                 {!hasChildren && ( // Agregar esta condición
@@ -89,6 +99,15 @@ export default function Organigrama() {
                 </div>
                 {hasChildren && ( // Agregar esta condición
                   <div>
+                    {!collapse && (
+                      <IconButton className="ArrowButton" onClick={desplegar()}>
+                        <div>
+                          <ArrowBackIosOutlinedIcon
+                            style={{ color: "#FFFFFF" }}
+                          />
+                        </div>
+                      </IconButton>
+                    )}
                     <IconButton className="ArrowButton" onClick={toggleNode}>
                       <div>
                         <ArrowForwardIosRoundedIcon
@@ -136,6 +155,7 @@ export default function Organigrama() {
     x: parseInt(localStorage.getItem("nodeX")),
     y: parseInt(localStorage.getItem("nodeY")),
   });
+  const [collapse, setCollapsed] = useState(true);
 
   useEffect(() => {
     setTranslate({

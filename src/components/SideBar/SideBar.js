@@ -7,7 +7,8 @@ import ListItem from "@mui/material/ListItem";
 import SchemaIcon from "@mui/icons-material/Schema";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import LogOut from "../LogOut/LogOut";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Cookies from "js-cookie";
 import {
   Box,
   Button,
@@ -37,6 +38,21 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "15px",
   },
 }));
+const logOut = () => {
+  Cookies.remove("username");
+  Cookies.remove("jwt");
+  Cookies.remove("loginTime");
+  setTimeout(window.location.reload(), 10000);
+};
+const logOutConfirmation = () => {
+  const confirmed = window.confirm(
+    "¿Estás seguro de que deseas cerrar sesión: " + username + "?"
+  );
+  if (confirmed) {
+    logOut();
+  }
+};
+const username = Cookies.get("username");
 
 const Sidebar = ({ open, onClose }) => {
   const classes = useStyles();
@@ -101,10 +117,10 @@ const Sidebar = ({ open, onClose }) => {
         </ListItem>
         <Divider />
         {/* Cerrar Sesion */}
-        <ListItem>
+        <ListItem onClick={logOutConfirmation}>
           <ListItemButton>
-            <ListItemIcon style={{ display: "flex", marginLeft: "-10px" }}>
-              <LogOut />
+            <ListItemIcon>
+              <LogoutIcon />
             </ListItemIcon>
             <ListItemIcon style={{ color: "#193F76" }}>
               Cerrar Sesión
