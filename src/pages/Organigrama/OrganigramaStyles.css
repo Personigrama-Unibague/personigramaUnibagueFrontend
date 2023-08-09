@@ -56,3 +56,7 @@ node__branch {
 .ArrowButton {
   padding: 8px !important;
 }
+
+.botonDependencias {
+  padding-left: 8px !important;
+}
