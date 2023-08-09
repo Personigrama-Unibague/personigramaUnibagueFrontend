@@ -116,14 +116,14 @@ function AdminUsuarios() {
                   <TableCell
                     className="tableCellTitle"
                     align="center"
-                    style={{ backgroundColor: "#04b8e2", color: "white" }}
+                    style={{ backgroundColor: "#04b8e2", color: "#002b4e" }}
                   >
                     <Typography className="adminUserText">Usuario</Typography>
                   </TableCell>
                   <TableCell
                     className="tableCellTitle"
                     align="center"
-                    style={{ backgroundColor: "#04b8e2", color: "white" }}
+                    style={{ backgroundColor: "#04b8e2", color: "#002b4e" }}
                   >
                     <Typography className="adminUserText">Opciones</Typography>
                   </TableCell>
@@ -178,6 +178,7 @@ function AdminUsuarios() {
                     flexGrow: 1,
                     textAlign: "center",
                     fontWeight: "bold",
+                    color: "#002b4e"
                   }}
                 >
                   Agregar Usuario
@@ -286,7 +287,7 @@ function AdminUsuarios() {
                   onClick={saveUser}
                   style={{
                     backgroundColor: "#04B8E2",
-                    color: "white",
+                    color: "#002b4e",
                     marginTop: "30px",
                     borderRadius: "50px",
                   }}
@@ -306,7 +307,7 @@ function AdminUsuarios() {
           startIcon={<PersonAddAltOutlinedIcon />}
           style={{
             backgroundColor: "#04B8E2",
-            color: "white",
+            color: "#002b4e",
             marginTop: "30px",
             borderRadius: "50px",
           }}
