@@ -28,7 +28,7 @@ function createTree(organigram) {
 
   return {
     id: "X",
-    nombre: "ORGANIGRAMA UNIBAGUE",
+    nombre: "CONSEJOS",
     children: tree,
   };
 }
