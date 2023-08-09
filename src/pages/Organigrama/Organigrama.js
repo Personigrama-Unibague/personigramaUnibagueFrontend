@@ -40,6 +40,7 @@ export default function Organigrama() {
       const calculatedNodeX = calculateNodeX(depth);
       localStorage.setItem("nodeX", calculatedNodeX);
     };
+    const hasChildren = nodeDatum.children && nodeDatum.children.length > 0;
 
     return (
       <>
@@ -50,7 +51,7 @@ export default function Organigrama() {
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
                 variant="contained"
                 onClick={(event) => {
-                  handleNodeClick(nodeDatum, event); // Llama al método al hacer clic en el nodo
+                  handleNodeClick(nodeDatum, event);
                   toggleNode();
                 }}
               >
@@ -58,13 +59,21 @@ export default function Organigrama() {
                   <div className="name">{nodeDatum.name}</div>
                 )}
                 {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-                <div>
-                  <IconButton className="ArrowButton">
-                    <div>
-                      <ArrowBackIosOutlinedIcon style={{ color: "#FFFFFF" }} />
-                    </div>
-                  </IconButton>
-                </div>
+                {hasChildren && ( // Agregar esta condición
+                  <div>
+                    <IconButton className="ArrowButton">
+                      <div>
+                        <ArrowBackIosOutlinedIcon
+                          style={{ color: "#FFFFFF" }}
+                        />
+                      </div>
+                    </IconButton>
+                  </div>
+                )}
+                {!hasChildren && ( // Agregar esta condición
+                  <div style={{ paddingLeft: "10px" }} />
+                )}
+
                 <div>
                   <Link
                     to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
@@ -78,15 +87,17 @@ export default function Organigrama() {
                     </IconButton>
                   </Link>
                 </div>
-                <div>
-                  <IconButton className="ArrowButton" onClick={toggleNode}>
-                    <div>
-                      <ArrowForwardIosRoundedIcon
-                        style={{ color: "#FFFFFF" }}
-                      />
-                    </div>
-                  </IconButton>
-                </div>
+                {hasChildren && ( // Agregar esta condición
+                  <div>
+                    <IconButton className="ArrowButton" onClick={toggleNode}>
+                      <div>
+                        <ArrowForwardIosRoundedIcon
+                          style={{ color: "#FFFFFF" }}
+                        />
+                      </div>
+                    </IconButton>
+                  </div>
+                )}
               </Button>
             </div>
           </foreignObject>
