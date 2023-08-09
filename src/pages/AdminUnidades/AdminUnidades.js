@@ -91,33 +91,33 @@ export default function AdminUnidades() {
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
-                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
+                      style={{ backgroundColor: "#02AFD8", color: "#002b4e", fontWeight: "bold" }}
                     >-</TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="left"
-                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
+                      style={{ backgroundColor: "#02AFD8", color: "#002b4e", fontWeight: "bold" }}
                     >
                       Unidad
                     </TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
-                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
+                      style={{ backgroundColor: "#02AFD8", color: "#002b4e", fontWeight: "bold" }}
                     >
                       Numero
                     </TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
-                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
+                      style={{ backgroundColor: "#02AFD8", color: "#002b4e", fontWeight: "bold" }}
                     >
                       Secciones
                     </TableCell>
                     <TableCell
                       className="tableCellTitleAdmin"
                       align="center"
-                      style={{ backgroundColor: "#02AFD8", color: "white", fontWeight: "bold" }}
+                      style={{ backgroundColor: "#02AFD8", color: "#002b4e", fontWeight: "bold" }}
                     >
                       Funcionarios
                     </TableCell>

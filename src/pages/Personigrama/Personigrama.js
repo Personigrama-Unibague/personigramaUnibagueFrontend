@@ -72,7 +72,7 @@ export default function Personigrama() {
             <img src={BannerPersonal} className="bannerPersonal" alt="" />
             <div className="nombreBannerPrincipal">
               <p className="personigrama">PERSONIGRAMA</p>
-              <p className="unidad">{params.nombre}</p>
+              <p className="unidadInicial">{params.nombre}</p>
             </div>
           </Grid>
           <Grid item md={3} className="imageContainer">

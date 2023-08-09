@@ -60,7 +60,7 @@
   position: absolute; /* posición absolute con respecto al padre */
   top: 35%;
   left: 35%;
-  color: white !important;
+  color: #002b4e !important;
 }
 
 
@@ -106,6 +106,12 @@
     left: 25%;
     color: white !important;
   }
+
+  .unidadInicial{
+    font-size: 3vw;
+    text-align: center;
+    padding-top: 5px;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -135,6 +141,12 @@
     left: 35%;
     color: white !important;
   }
+
+  .unidadInicial{
+    font-size: 2vw;
+    text-align: center;
+    padding-top: 5px;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -162,6 +174,12 @@
     margin-left: -250px !important;
     padding-left: 0px !important;
   }
+
+  .unidadInicial{
+    font-size: 2vw;
+    text-align: center;
+    padding-top: 5px;
+  }
 }
 @media only screen and (min-width: 992px) {
   .css-dudo9s-MuiTypography-root {
@@ -177,13 +195,24 @@
     font-size: 2.8vw;
     text-align: center;
   }
+
+  .unidadInicial{
+    font-size: 2vw;
+    text-align: center;
+    padding-top: 5px;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .unidad {
     font-size: 2.8vw;
     text-align: center;
     padding-top: 20px;
+  }
 
+  .unidadInicial{
+    font-size: 2vw;
+    text-align: center;
+    padding-top: 5px;
   }
 
   .personigrama {

@@ -292,7 +292,7 @@ export default function ConfigurarSecciones() {
                   <TableCell
                     style={{
                       backgroundColor: "#04b8e2",
-                      color: "white",
+                      color: "#002b4e",
                       fontSize: "20px",
                       textAlign: "center",
                     }}
@@ -534,7 +534,7 @@ export default function ConfigurarSecciones() {
             <Typography
               className="typpgraphyTitleSeccion"
               variant="h5"
-              style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
+              style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold", color: "#002b4e" }}
             >
               Agregar Sección
             </Typography>
@@ -585,7 +585,7 @@ export default function ConfigurarSecciones() {
             <Typography
               className="typpgraphyTitleSeccion"
               variant="h5"
-              style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
+              style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold", color: "#002b4e" }}
             >
               Actualizar Sección
             </Typography>
@@ -661,7 +661,7 @@ export default function ConfigurarSecciones() {
             <Typography
               className="typpgraphyTitleSeccion"
               variant="h5"
-              style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
+              style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold", color: "#002b4e" }}
             >
               Agregar Funcionario
             </Typography>
@@ -736,6 +736,7 @@ export default function ConfigurarSecciones() {
                               flexGrow: 1,
                               textAlign: "center",
                               fontWeight: "bold",
+                              color: "#002b4e"
                             }}
                           >
                             Ver Funcionarios
@@ -821,7 +822,7 @@ export default function ConfigurarSecciones() {
           startIcon={<SaveIcon />}
           style={{
             backgroundColor: "#04B8E2",
-            color: "white",
+            color: "#002b4e",
             marginTop: "30px",
             borderRadius: "50px",
           }}

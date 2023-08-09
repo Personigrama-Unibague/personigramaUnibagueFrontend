@@ -114,7 +114,7 @@ function SeccionFuncionarios() {
                 <TableCell
                   style={{
                     backgroundColor: "#04b8e2",
-                    color: "white",
+                    color: "#002b4e",                    
                     fontSize: "20px",
                     textAlign: "center",
                   }}
@@ -171,7 +171,7 @@ function SeccionFuncionarios() {
           startIcon={<PersonAddAltIcon />}
           style={{
             backgroundColor: "#04B8E2",
-            color: "white",
+            color: "#002b4e",
             marginTop: "30px",
             marginLeft: "70px",
             borderRadius: "50px",
@@ -190,7 +190,7 @@ function SeccionFuncionarios() {
               <Typography
                 className="typpgraphyTitleFuncionario"
                 variant="h5"
-                style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
+                style={{ flexGrow: 1, textAlign: "center", fontWeight: "bold", color: "#002b4e" }}
               >
                 Agregar Funcionario
               </Typography>

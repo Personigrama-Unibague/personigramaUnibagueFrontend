@@ -2,24 +2,32 @@
 node__branch {
   stroke-width: 1 !important;
 }
+
 .rd3t-link {
   fill: none;
   stroke: gray !important;
-  stroke-width: 3px !important; /* Ajusta el grosor de la línea según tus preferencias */
+  stroke-width: 3px !important;
+  /* Ajusta el grosor de la línea según tus preferencias */
 }
+
 .node {
   background: #02afd8 !important;
+  color: black !important;
   width: 400px !important;
   height: 90px !important;
   border-radius: 30px !important;
-  color: white !important;
   font-size: 15px !important;
   transform-origin: 0px 0px;
   position: fixed;
 }
+
 .node:hover {
-  background: #193f76 !important; /* Cambia el color del nodo */
+  background: #193f76 !important;
+  /* Cambia el color del nodo */
+  color: white !important;
+
 }
+
 .nodeParent {
   background: #193f76 !important;
   position: fixed;
@@ -30,14 +38,19 @@ node__branch {
   font-size: 15px !important;
   transform-origin: 0px 0px;
 }
+
 .nodeParent:hover {
-  background: #02afd8 !important; /* Cambia el color del nodo */
+  background: #02afd8 !important;
+  color: black !important;
+
+  /* Cambia el color del nodo */
 }
 
 .name {
   font-size: 16px !important;
   padding-right: 5px !important;
 }
+
 .edit {
   position: absolute;
   top: 0;
