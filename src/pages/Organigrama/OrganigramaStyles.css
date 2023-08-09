@@ -16,7 +16,9 @@ node__branch {
   width: 400px !important;
   height: 90px !important;
   border-radius: 30px !important;
+  color: black !important;
   font-size: 15px !important;
+  font-weight: 200 !important;
   transform-origin: 0px 0px;
   position: fixed;
 }
@@ -26,6 +28,8 @@ node__branch {
   /* Cambia el color del nodo */
   color: white !important;
 
+  background: #193f76 !important; /* Cambia el color del nodo */
+  color: white !important;
 }
 
 .nodeParent {
@@ -36,6 +40,7 @@ node__branch {
   border-radius: 30px !important;
   color: white !important;
   font-size: 15px !important;
+  font-weight: 300 !important;
   transform-origin: 0px 0px;
 }
 
@@ -44,6 +49,8 @@ node__branch {
   color: black !important;
 
   /* Cambia el color del nodo */
+  background: #02afd8 !important; /* Cambia el color del nodo */
+  color: black !important;
 }
 
 .name {
