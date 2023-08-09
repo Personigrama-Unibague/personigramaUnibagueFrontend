@@ -65,6 +65,7 @@ const Sidebar = ({ open, onClose }) => {
       </div>
       <List>
         <ListItem>
+          {/* Organigrama */}
           <ListItemButton>
             <ListItemIcon>
               <SchemaIcon />
@@ -75,6 +76,7 @@ const Sidebar = ({ open, onClose }) => {
           </ListItemButton>
         </ListItem>
         <Divider />
+        {/* Admin Unidades */}
         <ListItem>
           <ListItemButton>
             <ListItemIcon>
@@ -86,6 +88,7 @@ const Sidebar = ({ open, onClose }) => {
           </ListItemButton>
         </ListItem>
         <Divider />
+        {/* Adminstrar Usuarios */}
         <ListItem>
           <ListItemButton>
             <ListItemIcon>
@@ -97,6 +100,7 @@ const Sidebar = ({ open, onClose }) => {
           </ListItemButton>
         </ListItem>
         <Divider />
+        {/* Cerrar Sesion */}
         <ListItem>
           <ListItemButton>
             <ListItemIcon style={{ display: "flex", marginLeft: "-10px" }}>

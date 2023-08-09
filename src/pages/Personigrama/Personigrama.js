@@ -103,10 +103,7 @@ export default function Personigrama() {
                       alt=""
                       key={data.id + 30}
                     />
-                    <div className="nombreBanner" key={data.id + 100}>
-                      <p className="personigrama" key={data.id + 300}>
-                        SECCIÓN
-                      </p>
+                    <div className="nombreBannerDinamico" key={data.id + 100}>
                       <p className="unidad" key={data.id + 200}>
                         {data.nombre}
                       </p>
@@ -149,7 +146,7 @@ export default function Personigrama() {
           />
           <div className="nombreBanner">
             <p className="personigrama">NUESTROS</p>
-            <p className="unidad">INTEGRANTES</p>
+            <p className="personigrama">INTEGRANTES</p>
           </div>
         </Grid>
 

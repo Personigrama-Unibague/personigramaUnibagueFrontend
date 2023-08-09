@@ -41,16 +41,6 @@
   color: white !important;
   width: 35vw;
 }
-.nombreBanner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute; /* posición absolute con respecto al padre */
-  top: 35%;
-  left: 35%;
-  color: white !important;
-}
 
 .personigrama {
   font-size: 20px;
@@ -61,6 +51,18 @@
   font-size: 3vw;
   text-align: center;
 }
+
+.nombreBannerDinamico {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute; /* posición absolute con respecto al padre */
+  top: 35%;
+  left: 35%;
+  color: white !important;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -80,18 +82,29 @@
   }
 
   .personigrama {
-    font-size: 8px;
-    line-height: 15px !important;
+    font-size: 20px;
+    line-height: 20px !important;
   }
 
   .unidad {
-    font-size: 3vw;
+    font-size: 4.5vw;
     text-align: center;
   }
 
   .css-dudo9s-MuiTypography-root {
     display: block;
     margin-left: -300px !important;
+  }
+  
+  .nombreBanner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* posición absolute con respecto al padre */
+    top: 25%;
+    left: 25%;
+    color: white !important;
   }
 }
 
@@ -102,13 +115,25 @@
   }
 
   .personigrama {
-    font-size: 10px;
-    line-height: 30px !important;
+    font-size: 20px;
+    line-height: 20px !important;
   }
 
   .unidad {
-    font-size: 2vw;
+    padding-top: 8px;
+    font-size: 3vw;
     text-align: center;
+  }
+
+  .nombreBanner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* posición absolute con respecto al padre */
+    top: 35%;
+    left: 35%;
+    color: white !important;
   }
 }
 
@@ -119,12 +144,13 @@
   }
 
   .personigrama {
-    font-size: 10px;
+    font-size: 20px;
     line-height: 30px !important;
   }
 
   .unidad {
-    font-size: 2vw;
+    font-size: 2.8vw;
+    padding-top: 13px;
     text-align: center;
   }
 
@@ -143,22 +169,25 @@
     margin-left: -300px !important;
   }
   .personigrama {
-    font-size: 15px;
+    font-size: 25px;
     line-height: 30px !important;
   }
   .unidad {
-    font-size: 2vw;
+    padding-top: 15px;
+    font-size: 2.8vw;
     text-align: center;
   }
 }
 @media only screen and (min-width: 1200px) {
   .unidad {
-    font-size: 2vw;
+    font-size: 2.8vw;
     text-align: center;
+    padding-top: 20px;
+
   }
 
   .personigrama {
-    font-size: 20px;
+    font-size: 30px;
     line-height: 30px !important;
   }
   .bannerPersonal {
