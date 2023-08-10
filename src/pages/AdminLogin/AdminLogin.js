@@ -1,10 +1,5 @@
-import {
-  Button,
-  Grid,
-  TextField,
-  IconButton,
-} from "@mui/material";
-import { makeStyles } from '@mui/styles';
+import { Button, Grid, TextField, IconButton } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import fondo from "../../utils/images/adminLoginBackground.jpeg";
 import navbar from "../../utils/images/navbar.jfif";
 import logoUnibague from "../../utils/images/logoUnibague.PNG";
@@ -15,9 +10,7 @@ import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import {
-  loginAuthentication,
-} from "../../api/loginAdmin";
+import { loginAuthentication } from "../../api/loginAdmin";
 import Cookies from "js-cookie";
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +58,7 @@ function AdminLogin() {
         Cookies.set("username", username);
         Cookies.set("loginTime", new Date().getTime());
         setTimeout(handleRedirect(), 9000);
+        setTimeout(window.location.reload(), 1000);
       } else {
         window.alert("Usuario o contraseña incorrectos");
         //setTimeout(window.location.reload(), 10000);
@@ -124,7 +118,7 @@ function AdminLogin() {
           <Grid item>
             <TextField
               sx={{
-                "& fieldset": { border: 'none' },
+                "& fieldset": { border: "none" },
               }}
               className="textFieldLogIn"
               placeholder="Usuario"
@@ -143,7 +137,7 @@ function AdminLogin() {
                       borderRadius: "30px 0px 0px 30px",
                       backgroundColor: "#04B8E2",
                       left: "-15px",
-                      padding: "16px"
+                      padding: "16px",
                     }}
                     position="start"
                     disabled={true}
@@ -161,7 +155,7 @@ function AdminLogin() {
           <Grid item>
             <TextField
               sx={{
-                "& fieldset": { border: 'none' },
+                "& fieldset": { border: "none" },
               }}
               className="textFieldLogIn"
               placeholder="Contraseña"
@@ -180,7 +174,7 @@ function AdminLogin() {
                       borderRadius: "30px 0px 0px 30px",
                       backgroundColor: "#04B8E2",
                       left: "-15px",
-                      padding: "16px"
+                      padding: "16px",
                     }}
                     position="start"
                     disabled={true}

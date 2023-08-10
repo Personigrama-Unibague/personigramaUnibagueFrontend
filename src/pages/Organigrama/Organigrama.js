@@ -58,20 +58,8 @@ export default function Organigrama() {
                   <div className="name">{nodeDatum.name}</div>
                 )}
                 {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-                {hasChildren && ( // Agregar esta condición
-                  <div>
-                    <IconButton className="ArrowButton">
-                      <div>
-                        <ArrowBackIosOutlinedIcon
-                          style={{ color: "#FFFFFF" }}
-                        />
-                      </div>
-                    </IconButton>
-                  </div>
-                )}
-                {!hasChildren && ( // Agregar esta condición
-                  <div style={{ paddingLeft: "10px" }} />
-                )}
+
+                <div style={{ paddingLeft: "10px" }} />
 
                 <div>
                   <Link
@@ -91,7 +79,9 @@ export default function Organigrama() {
                     <IconButton className="ArrowButton" onClick={toggleNode}>
                       <div>
                         <ArrowForwardIosRoundedIcon
-                          style={{ color: "#FFFFFF" }}
+                          style={{
+                            color: "#FFFFFF",
+                          }}
                         />
                       </div>
                     </IconButton>
@@ -135,7 +125,8 @@ export default function Organigrama() {
     x: parseInt(localStorage.getItem("nodeX")),
     y: parseInt(localStorage.getItem("nodeY")),
   });
-  const [open, setOpen] = useState(false);
+  const [isArrowDown, setIsArrowDown] = useState(false);
+  const [arrowRotation, setArrowRotation] = useState(0);
 
   useEffect(() => {
     setTranslate({
