@@ -45,10 +45,7 @@ export default function Organigrama() {
     return (
       <>
         {nodeDatum.id !== "X" ? (
-          <foreignObject
-            {...foreignObjectProps}
-            style={{ transform: `scale(${zoomLevel})` }}
-          >
+          <foreignObject {...foreignObjectProps}>
             <div className="nodePosition">
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
@@ -94,10 +91,7 @@ export default function Organigrama() {
             </div>
           </foreignObject>
         ) : (
-          <foreignObject
-            {...foreignObjectProps}
-            style={{ transform: `scale(${zoomLevel})` }}
-          >
+          <foreignObject {...foreignObjectProps}>
             <div className="nodePosition">
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
@@ -125,21 +119,16 @@ export default function Organigrama() {
     const subtractionAmount = 240;
     return initialX - subtractionAmount * (depth - 1);
   };
+  const [isSafari, setIsSafari] = useState(false); // Add state for Safari detection
 
   const [translate, setTranslate] = useState({
     x: parseInt(localStorage.getItem("nodeX")),
     y: parseInt(localStorage.getItem("nodeY")),
   });
-  const [zoomLevel, setZoomLevel] = useState(1);
-  const handleZoom = () => {
-    const currentZoomLevel = window.devicePixelRatio || 1;
-    setZoomLevel(currentZoomLevel);
-  };
   useEffect(() => {
-    window.addEventListener("resize", handleZoom);
-    return () => {
-      window.removeEventListener("resize", handleZoom);
-    };
+    // Detect if Safari is being used
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafari);
   }, []);
 
   useEffect(() => {
@@ -285,10 +274,8 @@ export default function Organigrama() {
             }
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
-            translate={{
-              x: translate.x * zoomLevel,
-              y: translate.y * zoomLevel,
-            }}
+            translate={translate}
+            zoomable={!isSafari} // Disable zooming if Safari is being used
           />
         </>
       )}
