@@ -231,7 +231,10 @@ export default function Organigrama() {
   localStorage.setItem("niveles", parseInt(totalNiveles));
 
   return (
-    <div style={containerStyles} ref={treeContainerRef}>
+    <div
+      style={{ overflow: "auto", width: "100%", height: "100%" }}
+      ref={treeContainerRef}
+    >
       {isLoading ? ( // Verificar si los datos están cargando
         <div
           style={{
