@@ -235,7 +235,7 @@ export default function Organigrama() {
       {isLoading ? ( // Verificar si los datos están cargando
         <div
           style={{
-            position: "fixed",
+            position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",

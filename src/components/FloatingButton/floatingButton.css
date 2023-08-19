@@ -1,5 +1,6 @@
 .root {
   position: fixed !important;
+  z-index: 9999;
   bottom: 10px !important;
   left: 10px !important;
   background-color: white !important;
