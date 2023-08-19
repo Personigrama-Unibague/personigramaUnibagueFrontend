@@ -18,16 +18,9 @@ const containerStyles = {
 };
 
 export default function Organigrama() {
-
-  const renderForeignObjectNode = ({
-    nodeDatum,
-    toggleNode,
-  }) => {
-
+  const renderSVGNode = ({ nodeDatum, toggleNode }) => {
     const handleNodeClick = (nodeDatum, event) => {
-      // Evitar la recarga de la página al hacer clic
       event.preventDefault();
-      // Lógica para obtener la profundidad del nodo clickeado
       const profundidad = calculateDepthById(
         unidades.children[1],
         nodeDatum.id
@@ -40,76 +33,56 @@ export default function Organigrama() {
       const calculatedNodeX = calculateNodeX(depth);
       localStorage.setItem("nodeX", calculatedNodeX);
     };
-
     const hasChildren = nodeDatum.children && nodeDatum.children.length > 0;
 
     return (
-      <svg>
-        {nodeDatum.id !== "X" ? (
-          
-          <foreignObject width="500" height="130" >
-            <div className="nodePosition">
-              <Button
-                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
-                variant="contained"
-                onClick={(event) => {
-                  handleNodeClick(nodeDatum, event);
-                }}
-              >
-                {nodeDatum.nombre !== undefined && (
-                  <div className="name">{nodeDatum.name}</div>
-                )}
-                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-
-                <div style={{ paddingLeft: "10px" }} />
-
-                <div>
-                  <Link
-                    to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
-                  >
-                    <IconButton className="edit" aria-label="edit">
-                      <div>
-                        <Tooltip title="Visualizar dependencia">
-                          <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
-                        </Tooltip>
-                      </div>
-                    </IconButton>
-                  </Link>
-                </div>
-                {hasChildren && ( // Agregar esta condición
-                  <div>
-                    <IconButton className="ArrowButton" onClick={toggleNode}>
-                      <div>
-                        <ArrowForwardIosRoundedIcon
-                          style={{
-                            color: "#FFFFFF",
-                          }}
-                        />
-                      </div>
-                    </IconButton>
-                  </div>
-                )}
-              </Button>
-            </div>
-          </foreignObject>
-        ) : (
-          <foreignObject width="500" height="130">
-            <div className="nodePosition">
-              <Button
-                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
-                variant="contained"
-              >
-                {nodeDatum.nombre !== undefined && (
-                  <div className="name">{nodeDatum.name}</div>
-                )}
-                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-              </Button>
-            </div>
-          </foreignObject>
+      <g>
+        <rect
+          className={nodeDatum.id === "X" ? "nodeParent" : "node"}
+          x="-200"
+          y="-45"
+          width="400"
+          height="90"
+          rx="30"
+          ry="30"
+          fill={nodeDatum.id === "X" ? "#193f76" : "#02afd8"}
+          onClick={(event) => {
+            handleNodeClick(nodeDatum, event);
+          }}
+        />
+        {nodeDatum.nombre && (
+          <text
+            className="name"
+            x="0"
+            y="0"
+            textAnchor="middle"
+            dy="0.3em"
+            fontSize="16"
+            fill={nodeDatum.id === "X" ? "white" : "black"}
+          >
+            {nodeDatum.nombre}
+          </text>
         )}
-      </svg>
+
+        <Link
+          to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
+          style={{ textDecoration: "none" }}
+        >
+          <circle className="edit" cx="160" cy="-45" r="10" fill="#4ba083" />
+        </Link>
+        {hasChildren && (
+          <circle
+            className="ArrowButton"
+            cx="200"
+            cy="-45"
+            r="10"
+            fill="#4ba083"
+            onClick={toggleNode}
+          />
+        )}
+      </g>
     );
-  }
+  };
 
   if (parseInt(localStorage.getItem("depth")) === 1) {
     localStorage.setItem("nodeX", 100);
@@ -121,7 +94,6 @@ export default function Organigrama() {
     const subtractionAmount = 240;
     return initialX - subtractionAmount * (depth - 1);
   };
-
 
   const [translate, setTranslate] = useState({
     x: parseInt(localStorage.getItem("nodeX")),
@@ -178,7 +150,6 @@ export default function Organigrama() {
     x: -100,
     y: -50,
   };
-
   const sortChildrenAlphabetically = (node) => {
     if (node.children) {
       node.children.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -205,7 +176,7 @@ export default function Organigrama() {
     fetchData();
   }, []);
 
-  useEffect(() => { }, [unidades]);
+  useEffect(() => {}, [unidades]);
 
   const calculateTotalLevels = (data) => {
     // Si no hay datos o es un array vacío, el total de niveles es 0
@@ -264,11 +235,7 @@ export default function Organigrama() {
           orientation="horizontal"
           initialDepth={localStorage.getItem("depth")}
           translate={translate}
-          renderCustomNodeElement={(rd3tProps) =>
-            renderForeignObjectNode({
-              ...rd3tProps
-            })
-          }
+          renderCustomNodeElement={renderSVGNode} // Cambio aquí
         />
       )}
     </div>
