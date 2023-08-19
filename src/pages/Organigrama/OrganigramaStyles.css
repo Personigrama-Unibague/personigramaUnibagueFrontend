@@ -64,11 +64,14 @@ node__branch {
 }
 
 .edit {
-  position: absolute;
-  top: 0;
-  right: 0 !important;
-  padding: 4px !important;
-  color: #4ba083;
+  padding-top: 10px !important;
+  color: white !important;
+}
+
+.faUsers {
+  color: black !important;
+  margin-top: 10px !important;
+  margin-left: -10px !important;
 }
 
 .attributes {

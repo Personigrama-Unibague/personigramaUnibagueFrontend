@@ -1,15 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Tree from "react-d3-tree";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Button, IconButton } from "@mui/material";
-import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
-import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
-import Tooltip from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
 import { getUnities } from "../../api/unidades";
 import { useState } from "react";
-import FloatingButton from "../../components/FloatingButton/FloatingButton";
 import "./OrganigramaStyles.css";
+import { FaUsers } from "react-icons/fa"; // Importa el ícono de grupo de personas
+
+// Resto de tu código...
 
 const containerStyles = {
   width: "1800px",
@@ -68,18 +66,10 @@ export default function Organigrama() {
           to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
           style={{ textDecoration: "none" }}
         >
-          <circle className="edit" cx="160" cy="-45" r="10" fill="#4ba083" />
+          <FaUsers style={{ color: "white" }} />
         </Link>
-        {hasChildren && (
-          <circle
-            className="ArrowButton"
-            cx="200"
-            cy="-45"
-            r="10"
-            fill="#4ba083"
-            onClick={toggleNode}
-          />
-        )}
+
+        {hasChildren && <path d="M10 7l5 5-5 5" />}
       </g>
     );
   };
