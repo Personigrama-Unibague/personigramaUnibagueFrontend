@@ -10,6 +10,9 @@ node__branch {
   /* Ajusta el grosor de la línea según tus preferencias */
 }
 
+.nodePosition {
+  position: fixed !important;
+}
 .node {
   background: #02afd8 !important;
   color: black !important;

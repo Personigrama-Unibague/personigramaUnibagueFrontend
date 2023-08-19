@@ -46,7 +46,7 @@ export default function Organigrama() {
       <>
         {nodeDatum.id !== "X" ? (
           <foreignObject {...foreignObjectProps}>
-            <div style={{ position: "fixed" }}>
+            <div className="nodePosition">
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
                 variant="contained"
@@ -92,7 +92,7 @@ export default function Organigrama() {
           </foreignObject>
         ) : (
           <foreignObject {...foreignObjectProps}>
-            <div style={{ position: "fixed" }}>
+            <div className="nodePosition">
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
                 variant="contained"
@@ -270,7 +270,10 @@ export default function Organigrama() {
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
-            zoom={0.8}
+            dimensions={{
+              width: window.innerWidth,
+              height: window.innerHeight,
+            }}
           />
         </>
       )}
