@@ -268,7 +268,6 @@ export default function Organigrama() {
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
             transform="translate(0, 0)" // Agrega esta línea
-            zoom={0.8}
           />
         </>
       )}
