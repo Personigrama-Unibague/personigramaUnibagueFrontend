@@ -45,7 +45,10 @@ export default function Organigrama() {
     return (
       <>
         {nodeDatum.id !== "X" ? (
-          <foreignObject {...foreignObjectProps}>
+          <foreignObject
+            {...foreignObjectProps}
+            style={{ transform: `scale(${zoomLevel})` }}
+          >
             <div className="nodePosition">
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
@@ -91,7 +94,10 @@ export default function Organigrama() {
             </div>
           </foreignObject>
         ) : (
-          <foreignObject {...foreignObjectProps}>
+          <foreignObject
+            {...foreignObjectProps}
+            style={{ transform: `scale(${zoomLevel})` }}
+          >
             <div className="nodePosition">
               <Button
                 className={nodeDatum.id === "X" ? "nodeParent" : "node"}
@@ -124,12 +130,22 @@ export default function Organigrama() {
     x: parseInt(localStorage.getItem("nodeX")),
     y: parseInt(localStorage.getItem("nodeY")),
   });
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const handleZoom = () => {
+    const currentZoomLevel = window.devicePixelRatio || 1;
+    setZoomLevel(currentZoomLevel);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleZoom);
+    return () => {
+      window.removeEventListener("resize", handleZoom);
+    };
+  }, []);
 
   useEffect(() => {
     setTranslate({
       x: parseInt(localStorage.getItem("nodeX")),
       y: parseInt(localStorage.getItem("nodeY")),
-      scale: 1,
     });
     console.log(translate);
   }, []);
@@ -269,8 +285,10 @@ export default function Organigrama() {
             }
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
-            translate={translate}
-            scale={translate.scale}
+            translate={{
+              x: translate.x * zoomLevel,
+              y: translate.y * zoomLevel,
+            }}
           />
         </>
       )}

@@ -12,7 +12,6 @@ node__branch {
 
 .nodePosition {
   position: fixed !important;
-  transform: scale(1);
 }
 
 .node {
@@ -24,7 +23,6 @@ node__branch {
   color: black !important;
   font-size: 15px !important;
   font-weight: 200 !important;
-  transform: scale(1);
 }
 
 .node:hover {
