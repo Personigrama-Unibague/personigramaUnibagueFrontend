@@ -12,8 +12,8 @@ import FloatingButton from "../../components/FloatingButton/FloatingButton";
 import "./OrganigramaStyles.css";
 
 const containerStyles = {
-  width: "100vw",
-  height: "100vh",
+  width: "1800px",
+  height: "800px",
   background: "#eee",
 };
 
@@ -107,8 +107,6 @@ export default function Organigrama() {
       </>
     );
   };
-
-  const treeContainerRef = useRef(null);
 
   if (parseInt(localStorage.getItem("depth")) === 1) {
     localStorage.setItem("nodeX", 100);
@@ -228,7 +226,7 @@ export default function Organigrama() {
   localStorage.setItem("niveles", parseInt(totalNiveles));
 
   return (
-    <div style={containerStyles} ref={treeContainerRef}>
+    <div style={containerStyles}>
       {isLoading ? ( // Verificar si los datos están cargando
         <div
           style={{
