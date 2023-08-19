@@ -2,9 +2,6 @@
 node__branch {
   stroke-width: 1 !important;
 }
-svg {
-  transform: translateZ(0) !important;
-}
 
 .rd3t-link {
   fill: none;
@@ -15,7 +12,9 @@ svg {
 
 .nodePosition {
   position: fixed !important;
+  /* Si falla error aqui */
 }
+
 .node {
   background: #02afd8 !important;
   color: black !important;
@@ -32,7 +31,8 @@ svg {
   /* Cambia el color del nodo */
   color: white !important;
 
-  background: #193f76 !important; /* Cambia el color del nodo */
+  background: #193f76 !important;
+  /* Cambia el color del nodo */
   color: white !important;
 }
 
@@ -53,7 +53,8 @@ svg {
   color: black !important;
 
   /* Cambia el color del nodo */
-  background: #02afd8 !important; /* Cambia el color del nodo */
+  background: #02afd8 !important;
+  /* Cambia el color del nodo */
   color: black !important;
 }
 

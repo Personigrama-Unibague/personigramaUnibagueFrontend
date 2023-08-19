@@ -39,6 +39,7 @@ export default function Organigrama() {
       const calculatedNodeX = calculateNodeX(depth);
       localStorage.setItem("nodeX", calculatedNodeX);
     };
+    
     const hasChildren = nodeDatum.children && nodeDatum.children.length > 0;
 
     return (
@@ -175,6 +176,7 @@ export default function Organigrama() {
     x: -100,
     y: -50,
   };
+
   const sortChildrenAlphabetically = (node) => {
     if (node.children) {
       node.children.sort((a, b) => a.nombre.localeCompare(b.nombre));
