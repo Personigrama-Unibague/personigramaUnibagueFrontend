@@ -30,6 +30,10 @@ export default function Organigrama() {
    x: -100,
    y: -50,
  };
+ const [translate, setTranslate] = useState({
+  x: parseInt(localStorage.getItem("nodeX")),
+  y: parseInt(localStorage.getItem("nodeY")),
+});
 
   const sortChildrenAlphabetically = (node) => {
     if (node.children) {
@@ -58,6 +62,14 @@ export default function Organigrama() {
   }, []);
 
   useEffect(() => { }, [unidades]);
+
+  useEffect(() => {
+    setTranslate({
+      x: parseInt(localStorage.getItem("nodeX")),
+      y: parseInt(localStorage.getItem("nodeY")),
+    });
+    console.log(translate);
+  }, []);
 
   
   return (
@@ -90,6 +102,8 @@ export default function Organigrama() {
           branchNodeClassName="node__branch"
           leafNodeClassName="node__leaf"
           orientation="horizontal"
+          translate={translate}
+          transform="translate(0, 0)"
         />
       )}
     </div>
