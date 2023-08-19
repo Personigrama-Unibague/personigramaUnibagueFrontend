@@ -87,3 +87,11 @@ node__branch {
 .botonDependencias {
   padding-left: 8px !important;
 }
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    /* Safari-specific styles here */
+    html {
+      zoom: 0.8;
+    }
+  }
+}
