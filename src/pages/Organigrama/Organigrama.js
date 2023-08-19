@@ -233,7 +233,6 @@ export default function Organigrama() {
     height: "100vh",
     background: "#eee",
     transform: isSafari ? "scale(0.8)" : "scale(1.0)",
-    transformOrigin: "top left",
   };
 
   return (
