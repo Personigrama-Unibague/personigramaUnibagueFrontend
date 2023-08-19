@@ -266,6 +266,7 @@ export default function Organigrama() {
             }
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
+            translate={translate}
             transform="translate(0, 0)" // Agrega esta línea
           />
         </>
