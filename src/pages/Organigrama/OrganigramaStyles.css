@@ -14,7 +14,7 @@ svg {
 }
 
 .nodePosition {
-  position: absolute !important;
+  position: fixed !important;
 }
 .node {
   background: #02afd8 !important;
