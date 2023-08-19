@@ -1,24 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Tree from "react-d3-tree";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Button, IconButton } from "@mui/material";
+import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import Tooltip from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
 import { getUnities } from "../../api/unidades";
 import { useState } from "react";
+import FloatingButton from "../../components/FloatingButton/FloatingButton";
 import "./OrganigramaStyles.css";
-import { FaUsers } from "react-icons/fa"; // Importa el ícono de grupo de personas
-
-// Resto de tu código...
 
 const containerStyles = {
-  width: "1800px",
-  height: "800px",
+  width: "100%",
+  height: "100vh",
   background: "#eee",
 };
 
 export default function Organigrama() {
-  const renderSVGNode = ({ nodeDatum, toggleNode }) => {
+  const renderForeignObjectNode = ({
+    nodeDatum,
+    toggleNode,
+    foreignObjectProps,
+  }) => {
     const handleNodeClick = (nodeDatum, event) => {
+      // Evitar la recarga de la página al hacer clic
       event.preventDefault();
+      // Lógica para obtener la profundidad del nodo clickeado
       const profundidad = calculateDepthById(
         unidades.children[1],
         nodeDatum.id
@@ -31,46 +39,73 @@ export default function Organigrama() {
       const calculatedNodeX = calculateNodeX(depth);
       localStorage.setItem("nodeX", calculatedNodeX);
     };
+
     const hasChildren = nodeDatum.children && nodeDatum.children.length > 0;
 
     return (
-      <g>
-        <rect
-          className={nodeDatum.id === "X" ? "nodeParent" : "node"}
-          x="-200"
-          y="-45"
-          width="400"
-          height="90"
-          rx="30"
-          ry="30"
-          fill={nodeDatum.id === "X" ? "#193f76" : "#02afd8"}
-          onClick={(event) => {
-            handleNodeClick(nodeDatum, event);
-          }}
-        />
-        {nodeDatum.nombre && (
-          <text
-            className="name"
-            x="0"
-            y="0"
-            textAnchor="middle"
-            dy="0.3em"
-            fontSize="16"
-            fill={nodeDatum.id === "X" ? "white" : "black"}
-          >
-            {nodeDatum.nombre}
-          </text>
+      <>
+        {nodeDatum.id !== "X" ? (
+          <foreignObject {...foreignObjectProps}>
+            <div className="nodePosition">
+              <Button
+                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
+                variant="contained"
+                onClick={(event) => {
+                  handleNodeClick(nodeDatum, event);
+                }}
+              >
+                {nodeDatum.nombre !== undefined && (
+                  <div className="name">{nodeDatum.name}</div>
+                )}
+                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+
+                <div style={{ paddingLeft: "10px" }} />
+
+                <div>
+                  <Link
+                    to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
+                  >
+                    <IconButton className="edit" aria-label="edit">
+                      <div>
+                        <Tooltip title="Visualizar dependencia">
+                          <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+                        </Tooltip>
+                      </div>
+                    </IconButton>
+                  </Link>
+                </div>
+                {hasChildren && ( // Agregar esta condición
+                  <div>
+                    <IconButton className="ArrowButton" onClick={toggleNode}>
+                      <div>
+                        <ArrowForwardIosRoundedIcon
+                          style={{
+                            color: "#FFFFFF",
+                          }}
+                        />
+                      </div>
+                    </IconButton>
+                  </div>
+                )}
+              </Button>
+            </div>
+          </foreignObject>
+        ) : (
+          <foreignObject {...foreignObjectProps}>
+            <div className="nodePosition">
+              <Button
+                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
+                variant="contained"
+              >
+                {nodeDatum.nombre !== undefined && (
+                  <div className="name">{nodeDatum.name}</div>
+                )}
+                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+              </Button>
+            </div>
+          </foreignObject>
         )}
-
-        <Link
-          to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
-          style={{ textDecoration: "none" }}
-        >
-          <FaUsers style={{ color: "white" }} />
-        </Link>
-
-        {hasChildren && <path d="M10 7l5 5-5 5" />}
-      </g>
+      </>
     );
   };
 
@@ -140,6 +175,7 @@ export default function Organigrama() {
     x: -100,
     y: -50,
   };
+
   const sortChildrenAlphabetically = (node) => {
     if (node.children) {
       node.children.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -195,7 +231,7 @@ export default function Organigrama() {
 
   return (
     <div style={containerStyles}>
-      {isLoading ? (
+      {isLoading ? ( // Verificar si los datos están cargando
         <div
           style={{
             position: "absolute",
@@ -212,21 +248,31 @@ export default function Organigrama() {
           </div>
         </div>
       ) : (
-        <Tree
-          data={unidades}
-          nodeSize={nodeSize}
-          separation={separation}
-          depthFactor={650}
-          transitionDuration={1}
-          pathFunc="step"
-          rootNodeClassName="node__root"
-          branchNodeClassName="node__branch"
-          leafNodeClassName="node__leaf"
-          orientation="horizontal"
-          initialDepth={localStorage.getItem("depth")}
-          translate={translate}
-          renderCustomNodeElement={renderSVGNode} // Cambio aquí
-        />
+        <>
+          <FloatingButton />
+          <Tree
+            data={unidades}
+            nodeSize={nodeSize}
+            separation={separation}
+            depthFactor={650}
+            transitionDuration={1}
+            pathFunc="step"
+            NodeClassName="node__root"
+            branchNodeClassName="node__branch"
+            leafNodeClassName="node__leaf"
+            renderCustomNodeElement={(rd3tProps) =>
+              renderForeignObjectNode({
+                ...rd3tProps,
+                foreignObjectProps,
+              })
+            }
+            orientation="horizontal"
+            initialDepth={localStorage.getItem("depth")}
+            translate={translate}
+            scale={1} // O el valor adecuado para el zoom
+            viewBox={`0 0 ${containerStyles.width} ${containerStyles.height}`} // Agrega esta línea
+          />
+        </>
       )}
     </div>
   );
