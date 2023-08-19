@@ -270,10 +270,6 @@ export default function Organigrama() {
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
-            dimensions={{
-              width: window.innerWidth,
-              height: window.innerHeight,
-            }}
             zoom={0.8}
           />
         </>
