@@ -4,7 +4,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Button, IconButton } from "@mui/material";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
-import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import Tooltip from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
 import { getUnities } from "../../api/unidades";
@@ -125,8 +124,6 @@ export default function Organigrama() {
     x: parseInt(localStorage.getItem("nodeX")),
     y: parseInt(localStorage.getItem("nodeY")),
   });
-  const [isArrowDown, setIsArrowDown] = useState(false);
-  const [arrowRotation, setArrowRotation] = useState(0);
 
   useEffect(() => {
     setTranslate({
@@ -231,10 +228,7 @@ export default function Organigrama() {
   localStorage.setItem("niveles", parseInt(totalNiveles));
 
   return (
-    <div
-      style={{ overflow: "auto", width: "100%", height: "100%" }}
-      ref={treeContainerRef}
-    >
+    <div style={containerStyles} ref={treeContainerRef}>
       {isLoading ? ( // Verificar si los datos están cargando
         <div
           style={{
