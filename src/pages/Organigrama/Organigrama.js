@@ -129,6 +129,7 @@ export default function Organigrama() {
     setTranslate({
       x: parseInt(localStorage.getItem("nodeX")),
       y: parseInt(localStorage.getItem("nodeY")),
+      scale: 1,
     });
     console.log(translate);
   }, []);
@@ -269,8 +270,7 @@ export default function Organigrama() {
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
-            scale={1} // O el valor adecuado para el zoom
-            viewBox={`0 0 ${containerStyles.width} ${containerStyles.height}`} // Agrega esta línea
+            scale={translate.scale}
           />
         </>
       )}
