@@ -16,6 +16,16 @@ svg {
 .nodePosition {
   position: fixed !important;
 }
+.node {
+  background: #02afd8 !important;
+  color: black !important;
+  width: 400px !important;
+  height: 90px !important;
+  border-radius: 30px !important;
+  color: black !important;
+  font-size: 15px !important;
+  font-weight: 200 !important;
+}
 
 .node:hover {
   background: #193f76 !important;
