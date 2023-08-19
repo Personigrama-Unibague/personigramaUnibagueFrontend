@@ -13,6 +13,10 @@ svg {
   /* Ajusta el grosor de la línea según tus preferencias */
 }
 
+.nodePosition {
+  position: fixed !important;
+}
+
 .node:hover {
   background: #193f76 !important;
   /* Cambia el color del nodo */
