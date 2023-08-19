@@ -260,7 +260,7 @@ export default function Organigrama() {
             data={unidades}
             nodeSize={nodeSize}
             separation={separation}
-            depthFactor={650}
+            depthFactor={isSafari ? 630 : 650} // Ajustar el factor de profundidad según si es Safari o no
             transitionDuration={1}
             pathFunc="step"
             NodeClassName="node__root"

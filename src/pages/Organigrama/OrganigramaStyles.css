@@ -1,3 +1,9 @@
+@supports (-webkit-zoom: 1) {
+  body {
+    zoom: 0.8; /* Establece el nivel de zoom para Safari */
+  }
+}
+
 .rd3t-node,
 node__branch {
   stroke-width: 1 !important;
@@ -86,12 +92,4 @@ node__branch {
 
 .botonDependencias {
   padding-left: 8px !important;
-}
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) {
-    /* Safari-specific styles here */
-    html {
-      zoom: 0.8;
-    }
-  }
 }
