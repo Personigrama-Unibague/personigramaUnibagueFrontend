@@ -18,11 +18,7 @@ const containerStyles = {
 };
 
 export default function Organigrama() {
-  const renderForeignObjectNode = ({
-    nodeDatum,
-    toggleNode,
-    foreignObjectProps,
-  }) => {
+  const renderForeignObjectNode = ({ nodeDatum, toggleNode }) => {
     const handleNodeClick = (nodeDatum, event) => {
       // Evitar la recarga de la página al hacer clic
       event.preventDefault();
@@ -43,69 +39,90 @@ export default function Organigrama() {
     const hasChildren = nodeDatum.children && nodeDatum.children.length > 0;
 
     return (
-      <>
+      <g>
         {nodeDatum.id !== "X" ? (
-          <foreignObject {...foreignObjectProps}>
-            <div className="nodePosition">
-              <Button
-                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
-                variant="contained"
-                onClick={(event) => {
-                  handleNodeClick(nodeDatum, event);
-                }}
-              >
-                {nodeDatum.nombre !== undefined && (
-                  <div className="name">{nodeDatum.name}</div>
-                )}
-                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+          <svg width="400" height="85" xmlns="http://www.w3.org/2000/svg">
+            <rect
+              x="0"
+              y="0"
+              width="400"
+              height="85"
+              rx="30"
+              ry="30"
+              class={nodeDatum.id === "X" ? "nodeParent" : "node"}
+              onClick={(event) => handleNodeClick(nodeDatum, event)}
+            />
 
-                <div style={{ paddingLeft: "10px" }} />
+            <text
+              x="50%"
+              y="50%"
+              fill="black"
+              font-size="15"
+              font-weight="200"
+              text-anchor="middle"
+              alignment-baseline="middle"
+            >
+              {nodeDatum.nombre !== undefined &&
+                nodeDatum.nombre !== "" &&
+                nodeDatum.name}
+              {nodeDatum.nombre !== "" && nodeDatum.nombre}
+            </text>
 
-                <div>
-                  <Link
-                    to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
-                  >
-                    <IconButton className="edit" aria-label="edit">
-                      <div>
-                        <Tooltip title="Visualizar dependencia">
-                          <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
-                        </Tooltip>
-                      </div>
-                    </IconButton>
-                  </Link>
-                </div>
-                {hasChildren && ( // Agregar esta condición
-                  <div>
-                    <IconButton className="ArrowButton" onClick={toggleNode}>
-                      <div>
-                        <ArrowForwardIosRoundedIcon
-                          style={{
-                            color: "#FFFFFF",
-                          }}
-                        />
-                      </div>
-                    </IconButton>
-                  </div>
-                )}
-              </Button>
-            </div>
-          </foreignObject>
+            <a href={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
+              <g transform="translate(350, 32.5)">
+                <rect x="0" y="0" width="20" height="20" fill="black" />
+                <text x="50%" y="50%" fill="#FFFFFF">
+                  <GroupRoundedIcon />
+                </text>
+              </g>
+            </a>
+
+            {hasChildren && (
+              <g transform="translate(370, 32.5)">
+                <rect
+                  x="0"
+                  y="0"
+                  width="20"
+                  height="20"
+                  fill="black"
+                  class="ArrowButton"
+                  onClick={toggleNode}
+                />
+                <text x="50%" y="50%" fill="#FFFFFF">
+                  <ArrowForwardIosRoundedIcon />
+                </text>
+              </g>
+            )}
+          </svg>
         ) : (
-          <foreignObject {...foreignObjectProps}>
-            <div className="nodePosition">
-              <Button
-                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
-                variant="contained"
-              >
-                {nodeDatum.nombre !== undefined && (
-                  <div className="name">{nodeDatum.name}</div>
-                )}
-                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
-              </Button>
-            </div>
-          </foreignObject>
+          <svg width="400" height="85" xmlns="http://www.w3.org/2000/svg">
+            <rect
+              x="0"
+              y="0"
+              width="400"
+              height="85"
+              rx="30"
+              ry="30"
+              class={nodeDatum.id === "X" ? "nodeParent" : "node"}
+            />
+
+            <text
+              x="50%"
+              y="50%"
+              fill="black"
+              font-size="15"
+              font-weight="200"
+              text-anchor="middle"
+              alignment-baseline="middle"
+            >
+              {nodeDatum.nombre !== undefined &&
+                nodeDatum.nombre !== "" &&
+                nodeDatum.name}
+              {nodeDatum.nombre !== "" && nodeDatum.nombre}
+            </text>
+          </svg>
         )}
-      </>
+      </g>
     );
   };
 
