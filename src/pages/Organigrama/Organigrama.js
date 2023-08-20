@@ -120,6 +120,9 @@ export default function Organigrama() {
     return initialX - subtractionAmount * (depth - 1);
   };
   const [isSafari, setIsSafari] = useState(false); // Add state for Safari detection
+  function setZoom(zoom) {
+    document.querySelector("html").style.zoom = zoom;
+  }
 
   const [translate, setTranslate] = useState({
     x: parseInt(localStorage.getItem("nodeX")),
@@ -130,6 +133,9 @@ export default function Organigrama() {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     setIsSafari(isSafari);
   }, []);
+  if (isSafari) {
+    setZoom(0.8);
+  }
 
   useEffect(() => {
     setTranslate({
@@ -174,7 +180,6 @@ export default function Organigrama() {
   }
 
   const nodeSize = { x: 500, y: 130 };
-  const separation = { siblings: 20, nonSiblings: 20 };
   const foreignObjectProps = {
     width: nodeSize.x,
     height: nodeSize.y,
