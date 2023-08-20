@@ -23,8 +23,8 @@ node__branch {
 .node {
   background: #02afd8 !important;
   color: black !important;
-  width: 20vw !important;
-  height: 8vh !important;
+  width: 400px !important;
+  height: 90px !important;
   border-radius: 30px !important;
   color: black !important;
   font-size: 15px !important;
@@ -44,8 +44,8 @@ node__branch {
 .nodeParent {
   background: #193f76 !important;
   position: fixed;
-  width: 20vw !important;
-  height: 8vh !important;
+  width: 400px !important;
+  height: 90px !important;
   border-radius: 30px !important;
   color: white !important;
   font-size: 15px !important;
