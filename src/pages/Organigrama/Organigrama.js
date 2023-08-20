@@ -11,6 +11,12 @@ import { useState } from "react";
 import FloatingButton from "../../components/FloatingButton/FloatingButton";
 import "./OrganigramaStyles.css";
 
+const containerStyles = {
+  width: "100%",
+  height: "100vh",
+  background: "#eee",
+};
+
 export default function Organigrama() {
   const renderForeignObjectNode = ({
     nodeDatum,
@@ -228,12 +234,7 @@ export default function Organigrama() {
 
   const totalNiveles = calculateTotalLevels(unidades);
   localStorage.setItem("niveles", parseInt(totalNiveles));
-  const containerStyles = {
-    width: "100%",
-    height: "100vh",
-    background: "#eee",
-    transform: isSafari ? "scale(0.8)" : "scale(1.0)",
-  };
+  
 
   return (
     <div style={containerStyles}>
