@@ -51,29 +51,48 @@ export default function Organigrama() {
             <rect
               x="0" // Ajusta esta coordenada para que esté alineada con las líneas
               y="0"
+              stroke="none"
               width="400"
               height="85"
               rx="30"
               ry="30"
               class={nodeDatum.id === "X" ? "nodeParent" : "node"}
               onClick={(event) => handleNodeClick(nodeDatum, event)}
-              fill="#02afd8"
+              style={{
+                fill: "#02afd8", // Color normal
+                stroke: "none",
+                transition: "fill 0.3s", // Agregar transición para suavizar el cambio de color
+              }}
+              onMouseOver={(event) => {
+                event.target.style.fill = "#193f76"; // Cambiar el color al pasar el mouse
+                event.target.nextSibling.style.fill = "#FFFFFF";
+                event.target.nextSibling.style.stroke = "none";
+              }}
+              onMouseOut={(event) => {
+                event.target.style.fill = "#02afd8"; // Restaurar el color original al salir del mouse
+                event.target.nextSibling.style.fill = "black";
+                event.target.nextSibling.style.stroke = "black";
+              }}
             />
 
-            <text
-              x="50%"
-              y="50%"
-              fill="black"
-              font-size="15"
-              font-weight="200"
-              text-anchor="middle"
-              alignment-baseline="middle"
-            >
-              {nodeDatum.nombre !== undefined &&
-                nodeDatum.nombre !== "" &&
-                nodeDatum.name}
-              {nodeDatum.nombre !== "" && nodeDatum.nombre}
-            </text>
+            <foreignObject x="0" y="0" width="350" height="85">
+              <div
+                xmlns="http://www.w3.org/1999/xhtml"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "hidden",
+                }}
+              >
+                {nodeDatum.nombre !== undefined &&
+                  nodeDatum.nombre !== "" &&
+                  nodeDatum.name}
+                {nodeDatum.nombre !== "" && nodeDatum.nombre}
+              </div>
+            </foreignObject>
 
             <a href={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
               <g transform="translate(350, 32.5)">
@@ -126,14 +145,30 @@ export default function Organigrama() {
               height="85"
               rx="30"
               ry="30"
+              stroke="none"
               class={nodeDatum.id === "X" ? "nodeParent" : "node"}
-              fill="#193f76"
+              style={{
+                fill: "#193f76", // Color normal
+                stroke: "none",
+                transition: "fill 0.3s", // Agregar transición para suavizar el cambio de color
+              }}
+              onMouseOver={(event) => {
+                event.target.style.fill = "#02afd8"; // Cambiar el color al pasar el mouse
+                event.target.nextSibling.style.fill = "black";
+                event.target.nextSibling.style.stroke = "none";
+              }}
+              onMouseOut={(event) => {
+                event.target.style.fill = "#193f76"; // Restaurar el color original al salir del mouse
+                event.target.nextSibling.style.fill = "#FFFFFF";
+                event.target.nextSibling.style.stroke = "none";
+              }}
             />
 
             <text
               x="50%"
               y="50%"
-              fill="black"
+              fill="#FFFFFF"
+              stroke="#FFFFFF"
               font-size="15"
               font-weight="200"
               text-anchor="middle"
