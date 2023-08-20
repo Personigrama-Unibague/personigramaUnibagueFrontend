@@ -62,6 +62,17 @@ node__branch {
   /* Cambia el color del nodo */
   color: black !important;
 }
+/* Estilo específico para Safari */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    /* Cambia el ancho de los nodos en Safari */
+    .node,
+    .nodeParent {
+      width: 300px !important;
+      height: 80px;
+    }
+  }
+}
 
 .name {
   font-size: 16px !important;
