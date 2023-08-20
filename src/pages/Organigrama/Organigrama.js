@@ -119,11 +119,17 @@ export default function Organigrama() {
     const subtractionAmount = 240;
     return initialX - subtractionAmount * (depth - 1);
   };
+  const [isSafari, setIsSafari] = useState(false); // Add state for Safari detection
 
   const [translate, setTranslate] = useState({
     x: parseInt(localStorage.getItem("nodeX")),
     y: parseInt(localStorage.getItem("nodeY")),
   });
+  useEffect(() => {
+    // Detect if Safari is being used
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafari);
+  }, []);
 
   useEffect(() => {
     setTranslate({
@@ -168,7 +174,7 @@ export default function Organigrama() {
   }
 
   const nodeSize = { x: 500, y: 130 };
-  const separation = { siblings: 1, nonSiblings: 2 };
+  const separation = { siblings: 20, nonSiblings: 20 };
   const foreignObjectProps = {
     width: nodeSize.x,
     height: nodeSize.y,
@@ -253,8 +259,7 @@ export default function Organigrama() {
           <Tree
             data={unidades}
             nodeSize={nodeSize}
-            separation={separation}
-            depthFactor={800}
+            depthFactor={isSafari ? 630 : 650} // Ajustar el factor de profundidad según si es Safari o no
             transitionDuration={1}
             pathFunc="step"
             NodeClassName="node__root"
@@ -269,6 +274,7 @@ export default function Organigrama() {
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
+            zoomable={!isSafari} // Disable zooming if Safari is being used
           />
         </>
       )}
