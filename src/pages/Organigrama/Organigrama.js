@@ -275,14 +275,6 @@ export default function Organigrama() {
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
-            zoomFactor={(zoom) => {
-              if (isSafari) {
-                // Ajustar el factor de zoom para evitar que los nodos se distorsionen
-                return 1;
-              } else {
-                return zoom;
-              }
-            }}
           />
         </>
       )}
