@@ -23,8 +23,8 @@ node__branch {
 .node {
   background: #02afd8 !important;
   color: black !important;
-  width: 400px !important;
-  height: 90px !important;
+  width: 20vw !important;
+  height: 8vh !important;
   border-radius: 30px !important;
   color: black !important;
   font-size: 15px !important;
@@ -44,8 +44,8 @@ node__branch {
 .nodeParent {
   background: #193f76 !important;
   position: fixed;
-  width: 400px !important;
-  height: 90px !important;
+  width: 20vw !important;
+  height: 8vh !important;
   border-radius: 30px !important;
   color: white !important;
   font-size: 15px !important;
@@ -61,17 +61,6 @@ node__branch {
   background: #02afd8 !important;
   /* Cambia el color del nodo */
   color: black !important;
-}
-/* Estilo específico para Safari */
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) {
-    /* Cambia el ancho de los nodos en Safari */
-    .node,
-    .nodeParent {
-      width: 300px !important;
-      height: 80px;
-    }
-  }
 }
 
 .name {

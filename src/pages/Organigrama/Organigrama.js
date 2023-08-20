@@ -234,7 +234,6 @@ export default function Organigrama() {
 
   const totalNiveles = calculateTotalLevels(unidades);
   localStorage.setItem("niveles", parseInt(totalNiveles));
-  
 
   return (
     <div style={containerStyles}>
