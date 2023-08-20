@@ -13,17 +13,16 @@ node__branch {
 .nodePosition {
   position: fixed !important;
 }
+
 .node {
   background: #02afd8 !important;
   color: black !important;
   width: 400px !important;
-  height: 90px !important;
+  height: 85px !important;
   border-radius: 30px !important;
   color: black !important;
   font-size: 15px !important;
   font-weight: 200 !important;
-  transform-origin: 0px 0px;
-  position: fixed;
 }
 
 .node:hover {
@@ -31,7 +30,8 @@ node__branch {
   /* Cambia el color del nodo */
   color: white !important;
 
-  background: #193f76 !important; /* Cambia el color del nodo */
+  background: #193f76 !important;
+  /* Cambia el color del nodo */
   color: white !important;
 }
 
@@ -39,7 +39,7 @@ node__branch {
   background: #193f76 !important;
   position: fixed;
   width: 400px !important;
-  height: 90px !important;
+  height: 85px !important;
   border-radius: 30px !important;
   color: white !important;
   font-size: 15px !important;
@@ -52,7 +52,8 @@ node__branch {
   color: black !important;
 
   /* Cambia el color del nodo */
-  background: #02afd8 !important; /* Cambia el color del nodo */
+  background: #02afd8 !important;
+  /* Cambia el color del nodo */
   color: black !important;
 }
 
@@ -62,11 +63,14 @@ node__branch {
 }
 
 .edit {
-  position: absolute;
-  top: 0;
-  right: 0 !important;
-  padding: 4px !important;
-  color: #4ba083;
+  padding-top: 10px !important;
+  color: white !important;
+}
+
+.faUsers {
+  color: black !important;
+  margin-top: 10px !important;
+  margin-left: -10px !important;
 }
 
 .attributes {

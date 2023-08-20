@@ -14,7 +14,6 @@ export const loginAuthentication = async (username, password) => {
     `${API_URL}/api/v1/login/loginAuthentication`,
     { user: username, password }
   );
-  console.log("Login Data")
-  console.log(response.data);
+
   return response;
 };
