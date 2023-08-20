@@ -275,7 +275,6 @@ export default function Organigrama() {
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
             translate={translate}
-            zoomable={!isSafari} // Disable zooming if Safari is being used
           />
         </>
       )}
