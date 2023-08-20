@@ -148,8 +148,6 @@ export default function Organigrama() {
     setIsSafari(isSafari);
   }, []);
 
-  const zoomable = !isSafari; // Disable zooming if Safari is being used
-
   useEffect(() => {
     setTranslate({
       x: parseInt(localStorage.getItem("nodeX")),
