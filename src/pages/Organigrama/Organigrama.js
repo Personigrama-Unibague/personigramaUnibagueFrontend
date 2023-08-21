@@ -52,7 +52,7 @@ export default function Organigrama() {
               x="0" // Ajusta esta coordenada para que esté alineada con las líneas
               y="0"
               stroke="none"
-              width="400"
+              width="500"
               height="85"
               rx="30"
               ry="30"
@@ -74,23 +74,40 @@ export default function Organigrama() {
                 event.target.nextSibling.style.stroke = "none";
               }}
             />
-            <text
-              x="35%"
-              y="50%"
-              fill="black"
-              stroke="none"
-              font-size="13"
-              font-weight="180"
-              text-anchor="middle"
-              alignment-baseline="middle"
-              textWrap="20"
-              whiteSpace="pre-wrap"
+            <svg
+              x="10%"
+              y="5%"
+              width="300"
+              height="100"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              {nodeDatum.nombre !== undefined &&
-                nodeDatum.nombre !== "" &&
-                nodeDatum.name}
-              {nodeDatum.nombre !== "" && nodeDatum.nombre}
-            </text>
+              <text
+                x="10"
+                y="20"
+                fill="black"
+                stroke="none"
+                font-size="13"
+                font-weight="180"
+                text-anchor="start"
+              >
+                {nodeDatum.nombre !== undefined &&
+                  nodeDatum.nombre !== "" &&
+                  nodeDatum.name}
+                {nodeDatum.nombre !== "" && (
+                  <>
+                    {splitIntoLines(nodeDatum.nombre).map((line, index) => (
+                      <tspan
+                        x="10"
+                        dy={index === 0 ? "1.2em" : "1em"}
+                        key={index}
+                      >
+                        {line}
+                      </tspan>
+                    ))}
+                  </>
+                )}
+              </text>
+            </svg>
 
             <a href={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}>
               <g transform="translate(350, 32.5)">
@@ -163,19 +180,29 @@ export default function Organigrama() {
             />
 
             <text
-              x="50%"
-              y="50%"
-              fill="#FFFFFF"
-              stroke="none"
-              font-size="15"
-              font-weight="200"
-              text-anchor="middle"
-              alignment-baseline="middle"
+              x="10"
+              y="20"
+              fill="black"
+              font-size="12"
+              font-weight="180"
+              text-anchor="start"
             >
               {nodeDatum.nombre !== undefined &&
                 nodeDatum.nombre !== "" &&
                 nodeDatum.name}
-              {nodeDatum.nombre !== "" && nodeDatum.nombre}
+              {nodeDatum.nombre !== "" && (
+                <>
+                  {splitIntoLines(nodeDatum.nombre).map((line, index) => (
+                    <tspan
+                      x="10"
+                      dy={index === 0 ? "1.2em" : "1em"}
+                      key={index}
+                    >
+                      {line}
+                    </tspan>
+                  ))}
+                </>
+              )}
             </text>
           </svg>
         )}
@@ -187,7 +214,28 @@ export default function Organigrama() {
     localStorage.setItem("nodeX", 100);
     localStorage.setItem("nodeY", 320);
   }
+  function splitIntoLines(text) {
+    const words = text.split(" ");
+    const lines = [];
+    let currentLine = "";
 
+    for (const word of words) {
+      if (currentLine.length === 0) {
+        currentLine = word;
+      } else if (currentLine.length + word.length + 1 <= 30) {
+        currentLine += " " + word;
+      } else {
+        lines.push(currentLine);
+        currentLine = word;
+      }
+    }
+
+    if (currentLine.length > 0) {
+      lines.push(currentLine);
+    }
+
+    return lines;
+  }
   const calculateNodeX = (depth) => {
     const initialX = 100;
     const subtractionAmount = 240;
