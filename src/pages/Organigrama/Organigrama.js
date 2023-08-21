@@ -18,7 +18,7 @@ const containerStyles = {
 };
 
 export default function Organigrama() {
-  const renderForeignObjectNode = ({ nodeDatum, toggleNode }) => {
+  const renderSGVNode = ({ nodeDatum, toggleNode }) => {
     const handleNodeClick = (nodeDatum, event) => {
       // Evitar la recarga de la página al hacer clic
       event.preventDefault();
@@ -180,29 +180,19 @@ export default function Organigrama() {
             />
 
             <text
-              x="10"
-              y="20"
+              x="50%"
+              y="50%"
               fill="black"
-              font-size="12"
+              stroke="none"
+              font-size="15"
               font-weight="180"
-              text-anchor="start"
+              text-anchor="middle"
+              alignment-baseline="middle"
             >
               {nodeDatum.nombre !== undefined &&
                 nodeDatum.nombre !== "" &&
                 nodeDatum.name}
-              {nodeDatum.nombre !== "" && (
-                <>
-                  {splitIntoLines(nodeDatum.nombre).map((line, index) => (
-                    <tspan
-                      x="10"
-                      dy={index === 0 ? "1.2em" : "1em"}
-                      key={index}
-                    >
-                      {line}
-                    </tspan>
-                  ))}
-                </>
-              )}
+              {nodeDatum.nombre !== "" && nodeDatum.nombre}
             </text>
           </svg>
         )}
@@ -387,7 +377,7 @@ export default function Organigrama() {
             branchNodeClassName="node__branch"
             leafNodeClassName="node__leaf"
             renderCustomNodeElement={(rd3tProps) =>
-              renderForeignObjectNode({
+              renderSGVNode({
                 ...rd3tProps,
                 foreignObjectProps,
               })
