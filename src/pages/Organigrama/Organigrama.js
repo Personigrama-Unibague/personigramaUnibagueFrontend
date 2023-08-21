@@ -199,6 +199,96 @@ export default function Organigrama() {
       </g>
     );
   };
+  const renderForeignObjectNode = ({
+    nodeDatum,
+    toggleNode,
+    foreignObjectProps,
+  }) => {
+    const handleNodeClick = (nodeDatum, event) => {
+      // Evitar la recarga de la página al hacer clic
+      event.preventDefault();
+      // Lógica para obtener la profundidad del nodo clickeado
+      const profundidad = calculateDepthById(
+        unidades.children[1],
+        nodeDatum.id
+      );
+      const prfundidadTotal = profundidad + 1;
+      localStorage.setItem("depth", prfundidadTotal);
+      console.log("Profundidad del nodo clickeado:", prfundidadTotal);
+
+      const depth = parseInt(localStorage.getItem("depth"));
+      const calculatedNodeX = calculateNodeX(depth);
+      localStorage.setItem("nodeX", calculatedNodeX);
+    };
+
+    const hasChildren = nodeDatum.children && nodeDatum.children.length > 0;
+
+    return (
+      <>
+        {nodeDatum.id !== "X" ? (
+          <foreignObject {...foreignObjectProps}>
+            <div className="nodePosition">
+              <Button
+                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
+                variant="contained"
+                onClick={(event) => {
+                  handleNodeClick(nodeDatum, event);
+                }}
+              >
+                {nodeDatum.nombre !== undefined && (
+                  <div className="name">{nodeDatum.name}</div>
+                )}
+                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+
+                <div style={{ paddingLeft: "10px" }} />
+
+                <div>
+                  <Link
+                    to={`/personigrama/${nodeDatum.id}/${nodeDatum.nombre}`}
+                  >
+                    <IconButton className="edit" aria-label="edit">
+                      <div>
+                        <Tooltip title="Visualizar dependencia">
+                          <GroupRoundedIcon style={{ color: "#FFFFFF" }} />
+                        </Tooltip>
+                      </div>
+                    </IconButton>
+                  </Link>
+                </div>
+                {hasChildren && ( // Agregar esta condición
+                  <div>
+                    <IconButton className="ArrowButton" onClick={toggleNode}>
+                      <div>
+                        <ArrowForwardIosRoundedIcon
+                          style={{
+                            color: "#FFFFFF",
+                          }}
+                        />
+                      </div>
+                    </IconButton>
+                  </div>
+                )}
+              </Button>
+            </div>
+          </foreignObject>
+        ) : (
+          <foreignObject {...foreignObjectProps}>
+            <div className="nodePosition">
+              <Button
+                className={nodeDatum.id === "X" ? "nodeParent" : "node"}
+                variant="contained"
+              >
+                {nodeDatum.nombre !== undefined && (
+                  <div className="name">{nodeDatum.name}</div>
+                )}
+                {nodeDatum.nombre !== "" && <div>{nodeDatum.nombre}</div>}
+              </Button>
+            </div>
+          </foreignObject>
+        )}
+      </>
+    );
+  };
 
   if (parseInt(localStorage.getItem("depth")) === 1) {
     localStorage.setItem("nodeX", 100);
@@ -377,10 +467,9 @@ export default function Organigrama() {
             branchNodeClassName="node__branch"
             leafNodeClassName="node__leaf"
             renderCustomNodeElement={(rd3tProps) =>
-              renderSGVNode({
-                ...rd3tProps,
-                foreignObjectProps,
-              })
+              isSafari
+                ? renderSGVNode({ ...rd3tProps, foreignObjectProps })
+                : renderForeignObjectNode({ ...rd3tProps, foreignObjectProps })
             }
             orientation="horizontal"
             initialDepth={localStorage.getItem("depth")}
