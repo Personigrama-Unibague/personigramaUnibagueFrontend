@@ -48,7 +48,9 @@ export default function AdminUnidades() {
           <TableCell>
             {row.children && (
               <IconButton size="small" onClick={handleOpenRow}>
-                {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                {row.children.length > 0 ? (
+                  open ? <KeyboardArrowUp /> : <KeyboardArrowDown />
+                ) : null}
               </IconButton>
             )}
           </TableCell>
