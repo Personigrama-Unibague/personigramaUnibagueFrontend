@@ -40,43 +40,68 @@ jobs:
 
       - name: Test internal connectivity with SSH
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+            ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
 
       - name: Deploy Frontend
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
-            cd /var/personigrama/personigramaUnibagueFrontend;
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
+            cd /var/personigrama;
 
-            # Eliminar build anterior antes de generar uno nuevo
-            echo "Eliminando build anterior..."
+            # 🔹 1️⃣ Si el directorio existe, eliminarlo para clonar la última versión
+            if [ -d "personigramaUnibagueFrontend" ]; then
+              echo "⚠️ Eliminando código anterior..."
+              sudo rm -rf personigramaUnibagueFrontend;
+            fi
+
+            # 🔹 2️⃣ Clonar el repositorio de cero para evitar conflictos
+            echo "⬇️ Clonando el repositorio..."
+            git clone https://github.com/Personigrama-Unibague/personigramaUnibagueFrontend.git;
+
+            cd personigramaUnibagueFrontend;
+
+            # 🔹 3️⃣ Verificar la última versión del código
+            echo "📌 Verificando código más reciente..."
+            git checkout release;
+            git pull origin release;
+
+            # 🔹 4️⃣ Eliminar el build anterior (si existe)
+            echo "⚠️ Eliminando build anterior..."
             sudo rm -rf build;
 
-            # Asegurar que Node.js y npm están instalados
+            # 🔹 5️⃣ Asegurar que Node.js y npm están instalados
             if ! command -v node &> /dev/null; then
-              echo "Node.js no encontrado. Instalando...";
+              echo "⚙️ Node.js no encontrado. Instalando...";
               curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -;
               sudo -S apt-get install -y nodejs;
             fi
 
-            # Instalar dependencias
+            # 🔹 6️⃣ Instalar dependencias
+            echo "📦 Instalando dependencias..."
             npm install;
 
-            # Construir la aplicación
+            # 🔹 7️⃣ Construir la aplicación
+            echo "🚀 Generando build..."
             npm run build;
 
-            # Verificar que el build se creó correctamente
+            # 🔹 8️⃣ Verificar que el build se creó correctamente
             if [ ! -d "build" ]; then
-              echo "Error: La carpeta build no fue creada!";
+              echo "❌ Error: La carpeta build no fue creada!";
               exit 1;
             fi
 
-            # Asignar los permisos correctos
+            # 🔹 9️⃣ Asegurar permisos correctos
             sudo chown -R www-data:www-data build;
             sudo chmod -R 755 build;
 
-            # Reiniciar Apache para aplicar cambios
+            # 🔹 🔟 Forzar reinicio de Apache y limpiar caché
+            echo "♻️ Reiniciando Apache y limpiando caché..."
+            sudo systemctl restart apache2 || sudo systemctl restart nginx;
+            sudo rm -rf /var/cache/apache2;
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
 
-            # Verificar el estado del servidor
+            # 🔹 ✅ Verificar el estado del servidor
+            echo "✅ Verificando estado del servidor..."
             sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager;
           '
