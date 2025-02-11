@@ -44,47 +44,72 @@ jobs:
 
       - name: Test internal connectivity with SSH
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
-          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} "echo 'SSH connection successful'"
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
 
-      - name: Deploy Frontend to Server
+      - name: Clone repository on remote server
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
-          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} << 'EOF'
-            set -e
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
+            cd /var/personigrama/personigramaUnibagueFrontend || exit;
+
+            # Ensure Git recognizes the directory as safe
+            git config --global --add safe.directory /var/personigrama/personigramaUnibagueFrontend;
             
-            cd /var/personigrama/personigramaUnibagueFrontend
+            # Check if there are local changes before stashing
+            if [[ $(git status --porcelain) ]]; then
+              git stash;
+              echo "Local changes saved with git stash";
+              STASHED=true;
+            else
+              echo "No local changes found";
+              STASHED=false;
+            fi
+            
+            # Perform git pull with rebase
+            git pull --rebase;
+            
+            # Remove stash only if one was created
+            if [[ "$STASHED" == "true" ]]; then
+              git stash drop;
+              echo "Stash removed";
+            fi'      
+
+      - name: Build and Deploy Frontend
+        run: |
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
+            cd /var/personigrama/personigramaUnibagueFrontend;
 
             # Ensure Node.js and npm are installed
             if ! command -v node &> /dev/null; then
-              echo "Node.js not found. Installing..."
-              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -
-              sudo -S apt-get install -y nodejs
+              echo "Node.js not found. Installing...";
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -;
+              sudo -S apt-get install -y nodejs;
             fi
+
+            # Clean previous build
+            echo "Removing previous build folder..."
+            sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
 
             # Install dependencies
-            npm install
+            npm install;
 
             # Build the React project
-            npm run build
+            npm run build;
 
-            # Check if build was successful
+            # Ensure the build folder was created
             if [ ! -d "build" ]; then
-              echo "Error: The build folder was not created!"
-              exit 1
+              echo "Error: The build folder was not created!";
+              exit 1;
             fi
 
-            # Ensure the correct destination
-            sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build
-            sudo mv build /var/personigrama/personigramaUnibagueFrontend/
+            # Move built files to the correct directory
+            sudo mv build /var/personigrama/personigramaUnibagueFrontend/;
 
             # Set correct permissions
-            sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build
-            sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build
+            sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build;
+            sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build;
 
-            # Restart web server
-            sudo systemctl restart apache2 || sudo systemctl restart nginx
+            # Restart the web server (Apache or Nginx)
+            sudo systemctl restart apache2 || sudo systemctl restart nginx;
 
             # Check server status
-            sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager
-          EOF
+            sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager;'
