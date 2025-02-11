@@ -34,7 +34,7 @@ jobs:
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
           ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
           
-            echo " Setting correct permissions on /var/personigrama..."
+            echo "Ensuring correct permissions on /var/personigrama..."
             sudo mkdir -p /var/personigrama;
             sudo chown -R pasante:www-data /var/personigrama;
             sudo chmod -R 775 /var/personigrama;
@@ -61,22 +61,16 @@ jobs:
               sudo apt-get install -y nodejs;
             fi
 
-            echo " Installing dependencies..."
+            echo "Installing dependencies..."
             sudo -u pasante npm install --legacy-peer-deps;
 
-            echo "♻️ Cleaning and forcing a new build..."
-            sudo -u pasante npm run clean;
+            echo "Building the application..."
             sudo -u pasante npm run build;
 
             if [ ! -d "build" ]; then
-              echo " Error: Build folder was not created!";
+              echo "Error: Build folder was not created!";
               exit 1;
             fi
-
-            echo " Ensuring `index.html` and assets are correctly copied..."
-            sudo cp public/index.html build/index.html
-            sudo cp public/manifest.json build/manifest.json
-            sudo cp public/favicon_logo.png build/favicon_logo.png
 
             echo "Setting correct permissions for build..."
             sudo chown -R www-data:www-data build;
@@ -87,6 +81,6 @@ jobs:
             sudo rm -rf /var/cache/apache2;
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
 
-            echo " Checking server status..."
+            echo "Checking server status..."
             sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager;
           '
