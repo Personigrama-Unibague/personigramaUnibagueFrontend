@@ -91,9 +91,9 @@ jobs:
             # Build the React project
             npm run build;
 
-            # Move built files to the server directory
-            sudo rm -rf /var/www/html/personigramaFrontend;
-            sudo mv build /var/www/html/personigramaFrontend;
+            # Move built files to the correct directory
+            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
+            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S mv build /var/personigrama/personigramaUnibagueFrontend/build;
 
             # Restart the web server (Nginx/Apache)
             echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl restart apache2 || sudo systemctl restart nginx;
