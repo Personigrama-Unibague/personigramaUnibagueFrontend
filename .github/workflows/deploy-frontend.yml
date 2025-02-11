@@ -17,11 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install OpenConnect
-        run: sudo apt-get install -y openconnect
-
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y openconnect sshpass
 
       - name: Connect to VPN
         run: |
@@ -36,24 +33,18 @@ jobs:
         run: |
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
           ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
-            # 🔹 1️⃣ Asegurar que la carpeta tiene los permisos correctos
-            echo "🔧 Corrigiendo permisos en /var/personigrama..."
+          
+            echo "Ensuring correct permissions on /var/personigrama..."
             sudo mkdir -p /var/personigrama;
-            sudo chown -R $USER:www-data /var/personigrama;
+            sudo chown -R pasante:www-data /var/personigrama;
             sudo chmod -R 775 /var/personigrama;
 
             cd /var/personigrama;
 
-            # 🔹 2️⃣ Marcar el directorio como seguro para Git
-            echo "🔧 Configurando Git..."
-            git config --global --add safe.directory /var/personigrama;
-            git config --global --add safe.directory /var/personigrama/personigramaUnibagueFrontend;
-
-            # 🔹 3️⃣ Eliminar código viejo y clonar nuevamente
-            echo "⚠️ Eliminando código anterior..."
+            echo "⚠️ Removing old repository..."
             sudo rm -rf personigramaUnibagueFrontend;
 
-            echo "⬇️ Clonando el repositorio..."
+            echo "⬇️ Cloning the repository..."
             git clone https://github.com/Personigrama-Unibague/personigramaUnibagueFrontend.git;
 
             cd personigramaUnibagueFrontend;
@@ -61,42 +52,35 @@ jobs:
             git checkout release;
             git pull origin release;
 
-            # 🔹 4️⃣ Eliminar el build anterior (si existe)
-            echo "⚠️ Eliminando build anterior..."
+            echo "⚠️ Removing previous build..."
             sudo rm -rf build;
 
-            # 🔹 5️⃣ Asegurar que Node.js y npm están instalados
             if ! command -v node &> /dev/null; then
-              echo "⚙️ Node.js no encontrado. Instalando...";
-              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -;
-              sudo -S apt-get install -y nodejs;
+              echo "⚙️ Installing Node.js..."
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -;
+              sudo apt-get install -y nodejs;
             fi
 
-            # 🔹 6️⃣ Instalar dependencias con permisos correctos
-            echo "📦 Instalando dependencias..."
-            sudo -u $USER npm install;
+            echo "Installing dependencies..."
+            sudo -u pasante npm install --legacy-peer-deps;
 
-            # 🔹 7️⃣ Construir la aplicación
-            echo "🚀 Generando build..."
-            sudo -u $USER npm run build;
+            echo "Building the application..."
+            sudo -u pasante npm run build;
 
-            # 🔹 8️⃣ Verificar que el build se creó correctamente
             if [ ! -d "build" ]; then
-              echo "❌ Error: La carpeta build no fue creada!";
+              echo "Error: Build folder was not created!";
               exit 1;
             fi
 
-            # 🔹 9️⃣ Asegurar permisos correctos
+            echo "Setting correct permissions for build..."
             sudo chown -R www-data:www-data build;
             sudo chmod -R 755 build;
 
-            # 🔹 🔟 Forzar reinicio de Apache y limpiar caché
-            echo "♻️ Reiniciando Apache y limpiando caché..."
+            echo "♻️ Restarting Apache and clearing cache..."
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
             sudo rm -rf /var/cache/apache2;
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
 
-            # 🔹 ✅ Verificar el estado del servidor
-            echo "✅ Verificando estado del servidor..."
+            echo "Checking server status..."
             sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager;
           '
