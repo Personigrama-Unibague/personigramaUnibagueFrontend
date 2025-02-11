@@ -32,37 +32,32 @@ jobs:
             ${{ secrets.VPN_HOST }} \
             --servercert pin-sha256:e+mVC0ZMBRpVuuepldqN0mN6RvimRBTzlm5zZbGbcmA= -b
 
-      - name: Verify VPN connection
-        run: ip a
-
-      - name: List network routes
-        run: ip route
-
-      - name: Test internal connectivity with SSH
-        run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
-            ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
-
       - name: Deploy Frontend
         run: |
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
           ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
+            # 🔹 1️⃣ Asegurar que la carpeta tiene los permisos correctos
+            echo "🔧 Corrigiendo permisos en /var/personigrama..."
+            sudo mkdir -p /var/personigrama;
+            sudo chown -R $USER:www-data /var/personigrama;
+            sudo chmod -R 775 /var/personigrama;
+
             cd /var/personigrama;
 
-            # 🔹 1️⃣ Si el directorio existe, eliminarlo para clonar la última versión
-            if [ -d "personigramaUnibagueFrontend" ]; then
-              echo "⚠️ Eliminando código anterior..."
-              sudo rm -rf personigramaUnibagueFrontend;
-            fi
+            # 🔹 2️⃣ Marcar el directorio como seguro para Git
+            echo "🔧 Configurando Git..."
+            git config --global --add safe.directory /var/personigrama;
+            git config --global --add safe.directory /var/personigrama/personigramaUnibagueFrontend;
 
-            # 🔹 2️⃣ Clonar el repositorio de cero para evitar conflictos
+            # 🔹 3️⃣ Eliminar código viejo y clonar nuevamente
+            echo "⚠️ Eliminando código anterior..."
+            sudo rm -rf personigramaUnibagueFrontend;
+
             echo "⬇️ Clonando el repositorio..."
             git clone https://github.com/Personigrama-Unibague/personigramaUnibagueFrontend.git;
 
             cd personigramaUnibagueFrontend;
 
-            # 🔹 3️⃣ Verificar la última versión del código
-            echo "📌 Verificando código más reciente..."
             git checkout release;
             git pull origin release;
 
@@ -77,13 +72,13 @@ jobs:
               sudo -S apt-get install -y nodejs;
             fi
 
-            # 🔹 6️⃣ Instalar dependencias
+            # 🔹 6️⃣ Instalar dependencias con permisos correctos
             echo "📦 Instalando dependencias..."
-            npm install;
+            sudo -u $USER npm install;
 
             # 🔹 7️⃣ Construir la aplicación
             echo "🚀 Generando build..."
-            npm run build;
+            sudo -u $USER npm run build;
 
             # 🔹 8️⃣ Verificar que el build se creó correctamente
             if [ ! -d "build" ]; then
