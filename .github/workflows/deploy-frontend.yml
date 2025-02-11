@@ -47,6 +47,10 @@ jobs:
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
             cd /var/personigrama/personigramaUnibagueFrontend;
 
+            # Eliminar build anterior antes de generar uno nuevo
+            echo "Eliminando build anterior..."
+            sudo rm -rf build;
+
             # Asegurar que Node.js y npm están instalados
             if ! command -v node &> /dev/null; then
               echo "Node.js no encontrado. Instalando...";
@@ -66,17 +70,11 @@ jobs:
               exit 1;
             fi
 
-            # Eliminar el build anterior
-            sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
-
-            # Mover el nuevo build a la ubicación correcta
-            sudo mv build /var/personigrama/personigramaUnibagueFrontend/;
-
             # Asignar los permisos correctos
-            sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build;
-            sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build;
+            sudo chown -R www-data:www-data build;
+            sudo chmod -R 755 build;
 
-            # Reiniciar Apache
+            # Reiniciar Apache para aplicar cambios
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
 
             # Verificar el estado del servidor
