@@ -45,68 +45,46 @@ jobs:
       - name: Test internal connectivity with SSH
         run: |
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
-          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
+          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} "echo 'SSH connection successful'"
 
-      - name: Clone repository on remote server
+      - name: Deploy Frontend to Server
         run: |
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
-          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
-            cd /var/personigrama/personigramaUnibagueFrontend || exit;
+          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} << 'EOF'
+            set -e
             
-            git config --global --add safe.directory /var/personigrama/personigramaUnibagueFrontend;
+            cd /var/personigrama/personigramaUnibagueFrontend
 
-            if [[ $(git status --porcelain) ]]; then
-              git stash
-              echo "Local changes saved with git stash"
-              STASHED=true
-            else
-              echo "No local changes found"
-              STASHED=false
+            # Ensure Node.js and npm are installed
+            if ! command -v node &> /dev/null; then
+              echo "Node.js not found. Installing..."
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -
+              sudo -S apt-get install -y nodejs
             fi
-            
-            git pull --rebase;
-            
-            if [[ "$STASHED" == "true" ]]; then
-              git stash drop
-              echo "Stash removed"
-            fi'      
 
-      - name: Build and Deploy Frontend
-        run: |
-              sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
-              ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
-                cd /var/personigrama/personigramaUnibagueFrontend;
-    
-                # Ensure Node.js and npm are installed
-                if ! command -v node &> /dev/null; then
-                  echo "Node.js not found. Installing...";
-                  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -;
-                  sudo -S apt-get install -y nodejs;
-                fi
-    
-                # Install dependencies
-                npm install;
-    
-                # Build the React project
-                npm run build;
-    
-                # Check if build was successful
-                if [ ! -d "build" ]; then
-                  echo "Error: The build folder was not created!";
-                  exit 1;
-                fi
-    
-                # Ensure the correct destination
-                sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
-                sudo mv build /var/personigrama/personigramaUnibagueFrontend/;
-    
-                # Set correct permissions
-                sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build;
-                sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build;
-    
-                # Restart web server
-                sudo systemctl restart apache2 || sudo systemctl restart nginx;
-    
-                # Check server status
-                sudo systemctl
-    
+            # Install dependencies
+            npm install
+
+            # Build the React project
+            npm run build
+
+            # Check if build was successful
+            if [ ! -d "build" ]; then
+              echo "Error: The build folder was not created!"
+              exit 1
+            fi
+
+            # Ensure the correct destination
+            sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build
+            sudo mv build /var/personigrama/personigramaUnibagueFrontend/
+
+            # Set correct permissions
+            sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build
+            sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build
+
+            # Restart web server
+            sudo systemctl restart apache2 || sudo systemctl restart nginx
+
+            # Check server status
+            sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager
+          EOF
