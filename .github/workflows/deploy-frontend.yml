@@ -44,63 +44,68 @@ jobs:
 
       - name: Test internal connectivity with SSH
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
 
       - name: Clone repository on remote server
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
             cd /var/personigrama/personigramaUnibagueFrontend || exit;
-
-            # Ensure Git recognizes the directory as safe
-            git config --global --add safe.directory /var/personigrama/personigramaUnibagueFrontend;
             
-            # Check if there are local changes before stashing
+            git config --global --add safe.directory /var/personigrama/personigramaUnibagueFrontend;
+
             if [[ $(git status --porcelain) ]]; then
-              git stash;
-              echo "Local changes saved with git stash";
-              STASHED=true;
+              git stash
+              echo "Local changes saved with git stash"
+              STASHED=true
             else
-              echo "No local changes found";
-              STASHED=false;
+              echo "No local changes found"
+              STASHED=false
             fi
             
-            # Perform git pull with rebase
             git pull --rebase;
             
-            # Remove stash only if one was created
             if [[ "$STASHED" == "true" ]]; then
-              git stash drop;
-              echo "Stash removed";
+              git stash drop
+              echo "Stash removed"
             fi'      
 
       - name: Build and Deploy Frontend
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
+          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
             cd /var/personigrama/personigramaUnibagueFrontend;
 
             # Ensure Node.js and npm are installed
             if ! command -v node &> /dev/null; then
-              echo "Node.js not found. Installing...";
-              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -;
-              echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S apt-get install -y nodejs;
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -
+              sudo -S apt-get install -y nodejs
             fi
 
+            # Ensure correct permissions for writing
+            sudo chown -R $USER:www-data /var/personigrama/personigramaUnibagueFrontend
+            sudo chmod -R 775 /var/personigrama/personigramaUnibagueFrontend
+
             # Install dependencies
-            npm install;
+            npm install
 
             # Build the React project
-            npm run build;
+            npm run build || { echo "Build failed"; exit 1; }
+
+            # Verify build output
+            ls -lah /var/personigrama/personigramaUnibagueFrontend/build || echo "Build directory not found!"
 
             # Move built files to the correct directory
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S mv build /var/personigrama/personigramaUnibagueFrontend/build;
+            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S rm -rf /var/personigrama/personigramaUnibagueFrontend/build
+            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S mv build /var/personigrama/personigramaUnibagueFrontend/build
 
-            # Ensure correct permissions
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build;
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build;
+            # Ensure correct permissions for Apache to serve the files
+            sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build
+            sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build
 
             # Restart the web server (Apache or Nginx)
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl restart apache2 || echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl restart nginx;
+            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl restart apache2 || sudo systemctl restart nginx
 
             # Check server status
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl status apache2 --no-pager || echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl status nginx --no-pager;'
+            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager'
