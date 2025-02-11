@@ -73,39 +73,40 @@ jobs:
 
       - name: Build and Deploy Frontend
         run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
-          ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
-            cd /var/personigrama/personigramaUnibagueFrontend;
-
-            # Ensure Node.js and npm are installed
-            if ! command -v node &> /dev/null; then
-              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -
-              sudo -S apt-get install -y nodejs
-            fi
-
-            # Ensure correct permissions for writing
-            sudo chown -R $USER:www-data /var/personigrama/personigramaUnibagueFrontend
-            sudo chmod -R 775 /var/personigrama/personigramaUnibagueFrontend
-
-            # Install dependencies
-            npm install
-
-            # Build the React project
-            npm run build || { echo "Build failed"; exit 1; }
-
-            # Verify build output
-            ls -lah /var/personigrama/personigramaUnibagueFrontend/build || echo "Build directory not found!"
-
-            # Move built files to the correct directory
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S rm -rf /var/personigrama/personigramaUnibagueFrontend/build
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S mv build /var/personigrama/personigramaUnibagueFrontend/build
-
-            # Ensure correct permissions for Apache to serve the files
-            sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build
-            sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build
-
-            # Restart the web server (Apache or Nginx)
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl restart apache2 || sudo systemctl restart nginx
-
-            # Check server status
-            echo "${{ secrets.INTERNAL_SSH_PASSWORD }}" | sudo -S systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager'
+              sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+              ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
+                cd /var/personigrama/personigramaUnibagueFrontend;
+    
+                # Ensure Node.js and npm are installed
+                if ! command -v node &> /dev/null; then
+                  echo "Node.js not found. Installing...";
+                  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -;
+                  sudo -S apt-get install -y nodejs;
+                fi
+    
+                # Install dependencies
+                npm install;
+    
+                # Build the React project
+                npm run build;
+    
+                # Check if build was successful
+                if [ ! -d "build" ]; then
+                  echo "Error: The build folder was not created!";
+                  exit 1;
+                fi
+    
+                # Ensure the correct destination
+                sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
+                sudo mv build /var/personigrama/personigramaUnibagueFrontend/;
+    
+                # Set correct permissions
+                sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build;
+                sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build;
+    
+                # Restart web server
+                sudo systemctl restart apache2 || sudo systemctl restart nginx;
+    
+                # Check server status
+                sudo systemctl
+    
