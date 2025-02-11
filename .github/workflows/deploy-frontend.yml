@@ -34,53 +34,53 @@ jobs:
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
           ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
           
-            echo "Ensuring correct permissions on /var/personigrama..."
+            echo "🔧 Asegurando permisos correctos en /var/personigrama..."
             sudo mkdir -p /var/personigrama;
-            sudo chown -R pasante:www-data /var/personigrama;
+            sudo chown -R pasante:pasante /var/personigrama;
             sudo chmod -R 775 /var/personigrama;
 
             cd /var/personigrama;
 
-            echo "⚠️ Removing old repository..."
+            echo "⚠️ Eliminando repositorio anterior..."
             sudo rm -rf personigramaUnibagueFrontend;
 
-            echo "⬇️ Cloning the repository..."
-            git clone https://github.com/Personigrama-Unibague/personigramaUnibagueFrontend.git;
+            echo "⬇️ Clonando el repositorio..."
+            sudo -u pasante git clone https://github.com/Personigrama-Unibague/personigramaUnibagueFrontend.git;
 
             cd personigramaUnibagueFrontend;
 
-            git checkout release;
-            git pull origin release;
+            sudo -u pasante git checkout release;
+            sudo -u pasante git pull origin release;
 
-            echo "⚠️ Removing previous build..."
+            echo "⚠️ Eliminando build anterior..."
             sudo rm -rf build;
 
             if ! command -v node &> /dev/null; then
-              echo "⚙️ Installing Node.js..."
+              echo "⚙️ Instalando Node.js..."
               curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -;
               sudo apt-get install -y nodejs;
             fi
 
-            echo "Installing dependencies..."
+            echo "📦 Instalando dependencias..."
             sudo -u pasante npm install --legacy-peer-deps;
 
-            echo "Building the application..."
+            echo "🚀 Generando el build..."
             sudo -u pasante npm run build;
 
             if [ ! -d "build" ]; then
-              echo "Error: Build folder was not created!";
+              echo "❌ Error: La carpeta build no fue creada!";
               exit 1;
             fi
 
-            echo "Setting correct permissions for build..."
-            sudo chown -R www-data:www-data build;
+            echo "🛠 Estableciendo permisos correctos para build..."
+            sudo chown -R pasante:pasante build;
             sudo chmod -R 755 build;
 
-            echo "♻️ Restarting Apache and clearing cache..."
+            echo "♻️ Reiniciando Apache y limpiando caché..."
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
             sudo rm -rf /var/cache/apache2;
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
 
-            echo "Checking server status..."
+            echo "✅ Verificando estado del servidor..."
             sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager;
           '
