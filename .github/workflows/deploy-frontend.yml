@@ -31,10 +31,6 @@ jobs:
             --passwd-on-stdin \
             ${{ secrets.VPN_HOST }} \
             --servercert pin-sha256:e+mVC0ZMBRpVuuepldqN0mN6RvimRBTzlm5zZbGbcmA= -b
-        env:
-          VPN_PASSWORD: ${{ secrets.VPN_PASSWORD }}
-          VPN_USER: ${{ secrets.VPN_USER }}
-          VPN_HOST: ${{ secrets.VPN_HOST }}
 
       - name: Verify VPN connection
         run: ip a
@@ -46,70 +42,43 @@ jobs:
         run: |
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} 'echo "SSH connection successful"'
 
-      - name: Clone repository on remote server
-        run: |
-          sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
-            cd /var/personigrama/personigramaUnibagueFrontend || exit;
-
-            # Ensure Git recognizes the directory as safe
-            git config --global --add safe.directory /var/personigrama/personigramaUnibagueFrontend;
-            
-            # Check if there are local changes before stashing
-            if [[ $(git status --porcelain) ]]; then
-              git stash;
-              echo "Local changes saved with git stash";
-              STASHED=true;
-            else
-              echo "No local changes found";
-              STASHED=false;
-            fi
-            
-            # Perform git pull with rebase
-            git pull --rebase;
-            
-            # Remove stash only if one was created
-            if [[ "$STASHED" == "true" ]]; then
-              git stash drop;
-              echo "Stash removed";
-            fi'      
-
-      - name: Build and Deploy Frontend
+      - name: Deploy Frontend
         run: |
           sshpass -p "${{ secrets.INTERNAL_SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.INTERNAL_USER }}@${{ secrets.INTERNAL_RESOURCE_IP }} '
             cd /var/personigrama/personigramaUnibagueFrontend;
 
-            # Ensure Node.js and npm are installed
+            # Asegurar que Node.js y npm están instalados
             if ! command -v node &> /dev/null; then
-              echo "Node.js not found. Installing...";
+              echo "Node.js no encontrado. Instalando...";
               curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -S bash -;
               sudo -S apt-get install -y nodejs;
             fi
 
-            # Clean previous build
-            echo "Removing previous build folder..."
-            sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
-
-            # Install dependencies
+            # Instalar dependencias
             npm install;
 
-            # Build the React project
+            # Construir la aplicación
             npm run build;
 
-            # Ensure the build folder was created
+            # Verificar que el build se creó correctamente
             if [ ! -d "build" ]; then
-              echo "Error: The build folder was not created!";
+              echo "Error: La carpeta build no fue creada!";
               exit 1;
             fi
 
-            # Move built files to the correct directory
+            # Eliminar el build anterior
+            sudo rm -rf /var/personigrama/personigramaUnibagueFrontend/build;
+
+            # Mover el nuevo build a la ubicación correcta
             sudo mv build /var/personigrama/personigramaUnibagueFrontend/;
 
-            # Set correct permissions
+            # Asignar los permisos correctos
             sudo chown -R www-data:www-data /var/personigrama/personigramaUnibagueFrontend/build;
             sudo chmod -R 755 /var/personigrama/personigramaUnibagueFrontend/build;
 
-            # Restart the web server (Apache or Nginx)
+            # Reiniciar Apache
             sudo systemctl restart apache2 || sudo systemctl restart nginx;
 
-            # Check server status
-            sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager;'
+            # Verificar el estado del servidor
+            sudo systemctl status apache2 --no-pager || sudo systemctl status nginx --no-pager;
+          '
